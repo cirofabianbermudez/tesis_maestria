@@ -12,6 +12,10 @@
 *.cb2
 .*.lb
 
+## Ignore folders
+bibliografia/
+docs_de_ayuda/
+
 ## Intermediate documents:
 *.dvi
 *.xdv

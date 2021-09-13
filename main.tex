@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage[utf8]{inputenc}								% Codificación
+\usepackage[spanish,es-tabla]{babel}					% Lenguaje español, Tabla n: 
+\usepackage[T1]{fontenc}								% Agregar fuentes con acentos
+\usepackage{amsmath}									% Paquetes necesarios  para matemáticas
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}									% Paquete para indices
+\usepackage{graphicx}									% Para manejar imagenes
+\graphicspath{{imagenes/}}								% Ruta de las imagenes, solo escribir nombre de la imagen
+\usepackage[top=1in, left=0.9in, right=1.25in, bottom=1in]{geometry}	% Margenes
+\author{Ciro Fabian Bermudez Marquez}
+\title{Tesis}
+\date{}
+%-------------------------------------------------------------------------------
+%                            Paquetes adicionales                              %
+%-------------------------------------------------------------------------------
+\input{librerias}
+%-------------------------------------------------------------------------------
+%                             Archivos a incluir                               %
+%-------------------------------------------------------------------------------
+\includeonly{
+	capitulos/portada,
+	capitulos/agradecimientos,
+	capitulos/resumen,
+	capitulos/ch1,
+	capitulos/ch2,
+	capitulos/ch3,
+	capitulos/ch4,
+	capitulos/ch5,
+	capitulos/Ap_A
+}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+	\include{capitulos/portada}
+	\thispagestyle{empty}								% Limpiar estilos de pagina
+
+\frontmatter
+\onehalfspacing											% Desde este punto interlineado de 1.5
+% 	\spacing{1.213}
+	\include{capitulos/agradecimientos}
+
+\pagestyle{normalstyle}									% Estilos de pagina personalizados
+\tableofcontents            							% Genera el índice
+\addcontentsline{toc}{chapter}{\contentsname}
+
+\listoffigures              							% Indice de figuras
+\listoftables               							% Indice de tablas
+
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{\lstlistlistingname}
+
+
+	\include{capitulos/resumen}
+	\pagestyle{Resumen}	
+	
+\mainmatter
+\pagestyle{normalstyle}	
+	\include{capitulos/ch1}
+	\include{capitulos/ch2}
+	\include{capitulos/ch3}
+	\include{capitulos/ch4}
+	\include{capitulos/ch5}
+
+\appendix
+	\include{capitulos/Ap_A}
+
+
+\backmatter
+
+\bibliographystyle{ieeetr}
+\bibliography{bibliografia}
+\end{document}
