@@ -95,10 +95,14 @@
 
 ## Mapas Caóticos
 
-* Sprott 2D map
-* Henon 2D map
-* Chevysehv  2D map
+* Sprott
+* Henon
+* Chevysehv 
 * Sine ICMIC modulation
+* Bernoulli shift map
+* Tent
+* Zigzag
+* Borujeni
 
 
 
@@ -108,7 +112,7 @@
 
 1. **2021 - Luis Gerardo De La Fraga - Designing an authenticated Hash function with a 2D chaotic map.**
 
-   **Keywords: **2D chaotic map · Data integrity · Keyed hash · Stream cipher · Chaos-based cryptography
+   **Keywords:** 2D chaotic map · Data integrity · Keyed hash · Stream cipher · Chaos-based cryptography
 
    > The justification to image encryption is that images have certain characteristics as dataredundancy, strong correlation among adjacent pixels,being less sensitive as compared to the text data
 
@@ -142,11 +146,11 @@
    
    
 2. **2017 - Luis Gerardo De La Fraga - Hardware implementation of pseudo-random number
-   generators based on chaotic maps **
+   generators based on chaotic maps**
    
-   **Keywords: **2D chaotic map · Data integrity · Keyed hash · Stream cipher · Chaos-based cryptography
+   **Keywords:** 2D chaotic map · Data integrity · Keyed hash · Stream cipher · Chaos-based cryptography
    
-   > Nota
+   > The usefulness of bifurcation diagrams to implement a pseudo-random number generator (PRNG) based on chaotic maps. We provide details on the selection of the best parameter values to obtain high entropy and positive Lyapunov exponent from the bifurcation diagram of four chaotic maps namely: Bernoulli shift map, tent, zigzag, and Borujeni maps.
    
    > Nota
    
@@ -264,7 +268,7 @@ Experienced FPGA designers can use the Vivado® HL Edition design tools to targe
    ```
    # Reloj
    set_property -dict { PACKAGE_PIN W5 IOSTANDARD LVCMOS33 } [get_ports { Input_Clk }];
-   create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports { Input_Clk }];  # Todavia no se para que sirve 
+   create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports { Input_Clk }]; 
    
    #Reset
    set_property -dict { PACKAGE_PIN R2 IOSTANDARD LVCMOS33 } [get_ports { Reset_Top }];
