@@ -15,6 +15,7 @@
 ## Ignore folders
 bibliografia/
 docs_de_ayuda/
+temporal/
 
 ## Intermediate documents:
 *.dvi
