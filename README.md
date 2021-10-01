@@ -147,40 +147,41 @@
    
    
    
-2. **2017 - Luis Gerardo De La Fraga - Hardware implementation of pseudo-random number
-   generators based on chaotic maps**
-
+2. **2017 - Luis Gerardo De La Fraga - Hardware implementation of pseudo-random number generators based on chaotic maps**
+   
    **Keywords:** Chaotic map 
-
+   
    > The usefulness of bifurcation diagrams to implement a pseudo-random number generator (PRNG) based on chaotic maps. We provide details on the selection of the best parameter values to obtain high entropy and positive Lyapunov exponent from the bifurcation diagram of four chaotic maps namely: Bernoulli shift map, tent, zigzag, and Borujeni maps.
-
-   > The binary sequences obtained from these maps are analyzed to implement a PRNG both in software and in hardware. The software implementation is realized using 32 and 64bits microprocessor architectures, and with floating point and fixed point computer arithmetic. The hardware implementation is done by using a field-programmable gate array (FPGA) architecture.
-
+   
+   > The binary sequences obtained from these maps are analyzed to implement a PRNG both in software and in hardware. The software implementation is realized using 32 and 64 bits microprocessor architectures, and with floating point and fixed point computer arithmetic. The hardware implementation is done by using a field-programmable gate array (FPGA) architecture.
+   
    > We show that those chaotic maps are suitable to implement a PRNG but according to the hardware resources, the one based on the Bernoulli shift map isbetter. In addition, another advantage is that the required initial value for the sequences can be within the whole interval [−1,1], including its bounds.
-
+   
    > In 1999, Intel introduced a silicon-based random number generator (RNG).  Intel suggested that to define the concept of a RNG, it is first necessary to understand the idea of randomness, which is typically associated with unpredictability, chance and luck.
-
+   
    > Knuth D.E in The Art of Computer Programming Volume 2 defines random numbers as a sequence of independent numbers with a specified distribution and a specified probability of falling in any given range of values. As a result, the ideal RNG will provide a stream of uniformly distributed, nondeterministic, and independent bits over an infinite data set.
-
+   
    > As nowadays known, because the mathematical evaluation of randomness is difficult, it is only possible to use statistical analyses on sample data sets to detect characteristics that point to non-randomness, and one way is by performing tests from the NIST suite.
-
+   
    > Applications: Entertainment like lotteries, video games, music, graphics, complex scientific, financial models, artificial intelligence,  to test programs and algorithms to detect bugs, equation-Solving, cryptography, digital signatures, protected communication protocols, and so on.
-
+   
    > A RNG is a physical device or software from which a sequence of random binary numbers is obtained. If this generator is a nondeterministic system; then, it is called a truly RNG (TRNG); otherwise, the system is called a pseudo-RNG (PRNG).
-
+   
    > Because PRNGs employ a mathematical algorithm for number generation, all PRNGs possess the following properties: A seed value is required to initialize the equation, and the sequence will cycle after a particular period. Therefore, application developers must provide unguessable seed value and an algorithm with a period that is sufficiently long, and also they must verify that the PRNG output contains no correlation or bias.
-
-   > It is known that map-based TRNGs have many challenges associated with non-ideal effects, which in the majority of cases are inherent to the integrated circuit (IC) fabrication technology process. 
-
-   > Nota
-
-   > Nota
-
-   > Nota
    
-   > Nota
+   > It is known that map-based TRNGs have many challenges associated with non-ideal effects, which in the majority of cases are inherent to the integrated circuit (IC) fabrication technology process. Those undesirable effects may degrade or even terminate the normal behavior of the chaotic oscillator at the heart of the TRNG.
    
-   > Nota
+   > The very big challenge is how to provide high-frequency bit rate, which is quite difficult by using continuous-time mathematical models and then discrete-time ones are preferred, like the chaotic maps that in fact have simple mathematical descriptions and their behavior is quite rich and complex. This nature is ideal for the development of IC designs and applications.
+   
+   > Among the available chaotic maps, the logistic map has been the most used to develop PRNGs.
+   
+   > Those applications of maps for the development of PRNGs have the same goal: improving randomness, high maximum Lyapunov exponent and entropy.
+   
+   > Bernoulli shift map
+   >
+   > ![asd](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+x_%7Bn%2B1%7D+%3D+%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7Brcl%7D%0Ab+x_%7Bn%7D+-a+%26+%5Cmbox%7Bsi%7D+%26+x_%7Bn%7D%5Cgeq+0%5C%5C%0Ab+x_%7Bn%7D+%2Ba+%26+%5Cmbox%7Bsi%7D+%26+x_%7Bn%7D%3C+0%0A%5Cend%7Barray%7D%0A%5Cright.)
+   
+   > asd
    
    > Nota
    
@@ -359,7 +360,7 @@ Experienced FPGA designers can use the Vivado® HL Edition design tools to targe
   
   # Clock signal
   #set_property -dict { PACKAGE_PIN R2 IOSTANDARD LVCMOS33 } [get_ports { CLK100MHZ }]; 
-  #create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports CLK100MHZ]
+  #create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {  CLK100MHZ }];
    
   # Switches
   #set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports { sw[0] }];
@@ -412,12 +413,91 @@ Experienced FPGA designers can use the Vivado® HL Edition design tools to targe
   #set_property -dict { PACKAGE_PIN V4   IOSTANDARD LVCMOS33 } [get_ports { an[2] }];
   #set_property -dict { PACKAGE_PIN W4   IOSTANDARD LVCMOS33 } [get_ports { an[3] }];
   
-  #Buttons
+  # Buttons
   #set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports { btnC }];
   #set_property -dict { PACKAGE_PIN T18   IOSTANDARD LVCMOS33 } [get_ports { btnU }];
   #set_property -dict { PACKAGE_PIN W19   IOSTANDARD LVCMOS33 } [get_ports { btnL }];
   #set_property -dict { PACKAGE_PIN T17   IOSTANDARD LVCMOS33 } [get_ports { btnR }];
   #set_property -dict { PACKAGE_PIN U17   IOSTANDARD LVCMOS33 } [get_ports { btnD }];
+  
+  # Pmod Header JA
+  #set_property -dict { PACKAGE_PIN J1   IOSTANDARD LVCMOS33 } [get_ports { JA[0] }];	#Sch name = JA1
+  #set_property -dict { PACKAGE_PIN L2   IOSTANDARD LVCMOS33 } [get_ports { JA[1] }];	#Sch name = JA2
+  #set_property -dict { PACKAGE_PIN J2   IOSTANDARD LVCMOS33 } [get_ports { JA[2] }];	#Sch name = JA3
+  #set_property -dict { PACKAGE_PIN G2   IOSTANDARD LVCMOS33 } [get_ports { JA[3] }];	#Sch name = JA4
+  #set_property -dict { PACKAGE_PIN H1   IOSTANDARD LVCMOS33 } [get_ports { JA[4] }];	#Sch name = JA7
+  #set_property -dict { PACKAGE_PIN K2   IOSTANDARD LVCMOS33 } [get_ports { JA[5] }];	#Sch name = JA8
+  #set_property -dict { PACKAGE_PIN H2   IOSTANDARD LVCMOS33 } [get_ports { JA[6] }];	#Sch name = JA9
+  #set_property -dict { PACKAGE_PIN G3   IOSTANDARD LVCMOS33 } [get_ports { JA[7] }];	#Sch name = JA10
+  
+  # Pmod Header JB
+  #set_property -dict { PACKAGE_PIN A14   IOSTANDARD LVCMOS33 } [get_ports { JB[0] }]; #Sch name = JB1
+  #set_property -dict { PACKAGE_PIN A16   IOSTANDARD LVCMOS33 } [get_ports { JB[1] }]; #Sch name = JB2
+  #set_property -dict { PACKAGE_PIN B15   IOSTANDARD LVCMOS33 } [get_ports { JB[2] }]; #Sch name = JB3
+  #set_property -dict { PACKAGE_PIN B16   IOSTANDARD LVCMOS33 } [get_ports { JB[3] }]; #Sch name = JB4
+  #set_property -dict { PACKAGE_PIN A15   IOSTANDARD LVCMOS33 } [get_ports { JB[4] }]; #Sch name = JB7
+  #set_property -dict { PACKAGE_PIN A17   IOSTANDARD LVCMOS33 } [get_ports { JB[5] }]; #Sch name = JB8
+  #set_property -dict { PACKAGE_PIN C15   IOSTANDARD LVCMOS33 } [get_ports { JB[6] }]; #Sch name = JB9
+  #set_property -dict { PACKAGE_PIN C16   IOSTANDARD LVCMOS33 } [get_ports { JB[7] }]; #Sch name = JB10 
+  
+  # Pmod Header JC
+  #set_property -dict { PACKAGE_PIN K17   IOSTANDARD LVCMOS33 } [get_ports { JC[0] }]; #Sch name = JC1
+  #set_property -dict { PACKAGE_PIN M18   IOSTANDARD LVCMOS33 } [get_ports { JC[1] }]; #Sch name = JC2
+  #set_property -dict { PACKAGE_PIN N17   IOSTANDARD LVCMOS33 } [get_ports { JC[2] }]; #Sch name = JC3
+  #set_property -dict { PACKAGE_PIN P18   IOSTANDARD LVCMOS33 } [get_ports { JC[3] }]; #Sch name = JC4
+  #set_property -dict { PACKAGE_PIN L17   IOSTANDARD LVCMOS33 } [get_ports { JC[4] }]; #Sch name = JC7
+  #set_property -dict { PACKAGE_PIN M19   IOSTANDARD LVCMOS33 } [get_ports { JC[5] }]; #Sch name = JC8
+  #set_property -dict { PACKAGE_PIN P17   IOSTANDARD LVCMOS33 } [get_ports { JC[6] }]; #Sch name = JC9
+  #set_property -dict { PACKAGE_PIN R18   IOSTANDARD LVCMOS33 } [get_ports { JC[7] }]; #Sch name = JC10
+  
+  # Pmod Header JXADC
+  #set_property -dict { PACKAGE_PIN J3   IOSTANDARD LVCMOS33 } [get_ports { JXADC[0] }];	#Sch name = XA1_P
+  #set_property -dict { PACKAGE_PIN L3   IOSTANDARD LVCMOS33 } [get_ports { JXADC[1] }];	#Sch name = XA2_P
+  #set_property -dict { PACKAGE_PIN M2   IOSTANDARD LVCMOS33 } [get_ports { JXADC[2] }];	#Sch name = XA3_P
+  #set_property -dict { PACKAGE_PIN N2   IOSTANDARD LVCMOS33 } [get_ports { JXADC[3] }];	#Sch name = XA4_P
+  #set_property -dict { PACKAGE_PIN K3   IOSTANDARD LVCMOS33 } [get_ports { JXADC[4] }];	#Sch name = XA1_N
+  #set_property -dict { PACKAGE_PIN M3   IOSTANDARD LVCMOS33 } [get_ports { JXADC[5] }];	#Sch name = XA2_N
+  #set_property -dict { PACKAGE_PIN M1   IOSTANDARD LVCMOS33 } [get_ports { JXADC[6] }];	#Sch name = XA3_N
+  #set_property -dict { PACKAGE_PIN N1   IOSTANDARD LVCMOS33 } [get_ports { JXADC[7] }];	#Sch name = XA4_N
+  
+  # VGA Connector
+  #set_property -dict { PACKAGE_PIN G19   IOSTANDARD LVCMOS33 } [get_ports { vgaRed[0] }];
+  #set_property -dict { PACKAGE_PIN H19   IOSTANDARD LVCMOS33 } [get_ports { vgaRed[1] }];
+  #set_property -dict { PACKAGE_PIN J19   IOSTANDARD LVCMOS33 } [get_ports { vgaRed[2] }];
+  #set_property -dict { PACKAGE_PIN N19   IOSTANDARD LVCMOS33 } [get_ports { vgaRed[3] }];
+  #set_property -dict { PACKAGE_PIN N18   IOSTANDARD LVCMOS33 } [get_ports { vgaBlue[0] }];
+  #set_property -dict { PACKAGE_PIN L18   IOSTANDARD LVCMOS33 } [get_ports { vgaBlue[1] }];
+  #set_property -dict { PACKAGE_PIN K18   IOSTANDARD LVCMOS33 } [get_ports { vgaBlue[2] }];
+  #set_property -dict { PACKAGE_PIN J18   IOSTANDARD LVCMOS33 } [get_ports { vgaBlue[3] }];
+  #set_property -dict { PACKAGE_PIN J17   IOSTANDARD LVCMOS33 } [get_ports { vgaGreen[0] }];
+  #set_property -dict { PACKAGE_PIN H17   IOSTANDARD LVCMOS33 } [get_ports { vgaGreen[1] }];
+  #set_property -dict { PACKAGE_PIN G17   IOSTANDARD LVCMOS33 } [get_ports { vgaGreen[2] }];
+  #set_property -dict { PACKAGE_PIN D17   IOSTANDARD LVCMOS33 } [get_ports { vgaGreen[3] }];
+  #set_property -dict { PACKAGE_PIN P19   IOSTANDARD LVCMOS33 } [get_ports { Hsync }];
+  #set_property -dict { PACKAGE_PIN R19   IOSTANDARD LVCMOS33 } [get_ports { Vsync }];
+  
+  # USB-RS232 Interface
+  #set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS33 } [get_ports { RsRx }]:
+  #set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports { RsTx }]:
+  
+  # USB HID (PS/2)
+  #set_property -dict { PACKAGE_PIN C17   IOSTANDARD LVCMOS33 } [get_ports { PS2Clk }];
+  #set_property PULLUP true [get_ports { PS2Clk }];
+  #set_property -dict { PACKAGE_PIN B17   IOSTANDARD LVCMOS33 } [get_ports { PS2Data }];
+  #set_property PULLUP true [get_ports { PS2Data }];
+  
+  # Quad SPI Flash
+  # Note that CCLK_0 cannot be placed in 7 series devices. You can access it using the
+  # STARTUPE2 primitive.
+  #set_property -dict { PACKAGE_PIN D18   IOSTANDARD LVCMOS33 } [get_ports { QspiDB[0] }];
+  #set_property -dict { PACKAGE_PIN D19   IOSTANDARD LVCMOS33 } [get_ports { QspiDB[1] }];
+  #set_property -dict { PACKAGE_PIN G18   IOSTANDARD LVCMOS33 } [get_ports { QspiDB[2] }];
+  #set_property -dict { PACKAGE_PIN F18   IOSTANDARD LVCMOS33 } [get_ports { QspiDB[3] }];
+  #set_property -dict { PACKAGE_PIN K19   IOSTANDARD LVCMOS33 } [get_ports { QspiCSn }];		
+  
+  # Configuration options, can be used for all designs
+  #set_property CONFIG_VOLTAGE 3.3 [current_design]
+  #set_property CFGBVS VCCO [current_design]
   ```
 
   
@@ -438,6 +518,16 @@ $$
 $$
 s_{n+1} = \{ x_{n+1} \text{ mod } 256, \quad y_{n+1} \text{ mod } 256\}
 $$
+
+$$
+x_{n+1} = 	\left\{ \begin{array}{rcl}
+                    b x_{n} -a & \mbox{si} & x_{n}\geq 0\\
+					b x_{n} +a & \mbox{si} & x_{n}< 0\\
+                    \end{array}
+            \right.
+$$
+
+
 
 
 
