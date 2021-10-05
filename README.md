@@ -79,6 +79,8 @@
 * TISEAN.
 * Context-tree weighting (CTW) algorithm.
 * Bit counting redundancy reduction technique.
+* Programmable delay lines (PDLs) 
+* MD5 algorithm
 
 
 
@@ -89,16 +91,17 @@
   * Rabbit. (38 different statistical tests)
   * Alphabit. (17different statistical tests)
   * BlockAlphabit.
+* Diehard.
 
 
 
 ## Arquitecturas
 
-* STM32F746ZG (development board Nucleo F746ZG, 216 MHz Cortex-M7F core, 1024 KB flash, and 336
-  KB SRAM).
-* FPGA Spartan 3E
-* FPGA Cyclone IV EP4CGX150DF31C7
-* FPGA XC7VX485T-2-FFG1761 chip of the Virtex-7 VC707
+* STM32F746ZG (development board Nucleo F746ZG, 216 MHz Cortex-M7F core, 1024 KB flash, and 336 KB SRAM).
+* FPGA Spartan 3E (xc3s500e-4fg320).
+* FPGA Cyclone IV EP4CGX150DF31C7.
+* FPGA XC7VX485T-2-FFG1761 chip of the Virtex-7 VC707.
+* Xilinx Spartan-3A FPGAs (XC3S400A-4FTG256).
 
 ## Mapas Caóticos
 
@@ -112,6 +115,11 @@
 * Borujeni
 
 
+
+## Throughput
+
+* 12.84 Kbits/s at 16 MHz or 173.35 Kbits/s at 216 MHz
+*  7.38 Mb/s 
 
 
 
@@ -301,13 +309,40 @@
 
    **Keywords:** TRNG, FPGA, ring oscillators, entropy, PDLs.
 
-   > d
+   > A new and efficient method to generate true random numbers on field programmable gate array (FPGA) by utilizing the random jitter of free-running oscillators as a source of randomness. The free-running oscillator rings incorporate to generate large  variation of the oscillations and to introduce jitter in the generated ring oscillators clocks.  The main advantage of the proposed TRNG utilizing PDLs is to reduce correlation between several equal length oscillator rings, and thus improve the randomness qualities.
 
-   > a
+   > The TRNGs must fulfill strict statistical requirements, be unpredictable and generate truly random numbers by making use of a physical source that is non-deterministic.The randomness of a TRNG is usually assessed through Diehard [2] and NIST [3] statistical tests while the unpredictability is verified by estimating entropy-per-bit through stochastic model [4].
 
-   > a
+   > Typical TRNGs use a single source of entropy and postprocessing operation. Commonly used sources of entropy are thermal noise [5], metastability [6], [7], clock jitter in cir- cuits [8], [9] and chaos [10].
 
-   > a
+   > Randomness is first extracted from the physical noise source and then this is interpreted into raw random bit-stream using a sampler (digitization). In practice, the raw random bit-stream usually does not bear good quality of randomness. Therefore, auxiliary post-processing operations, such as von Neumann corrector [11] or hash func- tion [5] is required to improve the quality of the output TRNG bit stream and increase its randomness.
+
+   >  In this context, a number of field programmable gate array (FPGAs) prototypes of TRNG with post-processing designs have been proposed [6],[7], [12], [13]. These designs derive entropy from the jitter of Ring Oscillators (RO) [12], [13] or the metastability of flip-flops [6], [7] which is caused by setup or hold time violations of flip-flops (FFs).
+
+   > There are different problems that might arise in the construction of a TRNG based on oscillator rings implemented in FPGAs [14]. For example, the entropy of the output bit sequence from the TRNG would be drastically reduced when equal length oscillator rings configured in FPGAs are highly correlated with each other due to identical delays. To address this issue, we use programmable delay lines (PDLs) in the oscillator rings in the current work. This creates higher variation in RO oscillations from cycle to cycle and causes jitter in the generated RO clocks. Also, the output of the RO’s are not correlated with each other due to the incorporation of the PDLs in the oscillator rings for each sampling clock which produces higher randomness. In addition, Von Neumann corrector is used as post-processor for improving statistical properties of the bitsteam produced by the proposed TRNG.
+
+   > A number of RO based TRNG designs have been reported in literature [12]–[18]. Typically, jitter is accumulated in the free-running RO’s consisting of odd number of inverters or delay elements connected in ring configuration. This causes digital value of the oscillators output to change with a period of approximately 2DL where D is the delay of a single inverter and L is the number of inverters in an oscillator. Period of these oscillations vary from cycle to cycle causing jitter of the rising and falling edges of the generated RO clocks as shown in Fig. 2. Such oscillations, and hence jitter, in digital circuits can occur due to power supply variations, cross talks, semiconductor noise, temperature variations, and propagation delays. These jitters can be used to generate a stream of truly random bits using D flip-flop (DFF) based sampler for sampling the output of a high frequency oscillator as illustrated in Fig. 3.
+
+   > Post-Processing
+   > The proposed implementation employs a simple post-processing unit based on a von Neumann corrector [11] for enhancing the entropy and for removing any bias in the generated random bits. The post-processor also provides robustness of the TRNG output sequence. 
+
+5. **1999 - Benjamin Jun and Paul Kocher - The Intel Random Number Generator.**
+
+   > Good cryptography requires good random numbers. This paper evaluates the hardware-based Intel Random Number Generator (RNG) for use in cryptographic applications.
+
+   > MD5 algorithm  to compute the exact seed generated
+
+   > Because security protocols rely on the unpredictability of the keys they use, random number generators for cryptographic applications must meet stringent requirements. The most important is that attackers, including those who know the RNG design, must not be able to make any useful predictions about the RNG outputs. In particular, the apparent entropy of the RNG output should be as close as possible to the bit length.
+
+   > Most “random” number sources actually utilize a pseudorandom generator (PRNG). PRNGs use deterministic processes to generate a series of outputs from an initial seed state. Because the output is purely a function of the seed data, the actual entropy of the output can never exceed the entropy of the seed. It can, however, be computationally infeasible to distinguish a good PRNG from a perfect RNG
+
+   > Although properly-implemented and seeded PRNGs are suitable for most cryptographic applications, great care must be taken in the development, testing, and selection of PRNG algorithms. It is critical that a PRNG be properly seeded from a reliable source. For example, most PRNGs included in standard software libraries use predictable seed or state values or produce output that can be distinguished from random data.
+
+   > A true random number generator (TRNG) uses a non-deterministic source to produce randomness. Most operate by measuring unpredictable natural processes, such as thermal (resistance or shot) noise, atmospheric noise, or nuclear decay. The entropy, trustworthiness, and performance all depend on the TRNG design. A PRNG by itself will be insecure without a TRNG for seeding. Seeding requires a source of true randomness, since it is impossible to create true randomness from within a deterministic system.
+
+6. **2021 - Xinyu Wang - High-Throughput Portable True Random Number Generator Based on Jitter-Latch Structure.**
+
+   **Keywords:** TRNG, FPGA, STRs, jitter-latch structure, portability.
 
    > a
 
@@ -325,9 +360,7 @@
 
    
 
-   
-
-5. 
+7. 
 
 ## Bibliografía
 
