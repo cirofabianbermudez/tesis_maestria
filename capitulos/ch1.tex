@@ -14,6 +14,8 @@
 				\item 2021 - Xinyu Wang - High-Throughput Portable True Random Number Generator Based on Jitter-Latch Structure. \cite{Wang2021}
 				\item 2021 - Adriaan Peetermans - Design and Analysis of Configurable Ring Oscillators for True Random Number Generation Based on Coherent Sampling. \cite{Peetermans2021}
 				\item 2016 - Oto Petura - A Survey of AIS-20/31 Compliant TRNG Cores Suitable for FPGA Devices. \cite{Petura2016}
+				\item 1993 - J.C. Sprott - Automatic generation of strange attractors. \cite{Sprott1993}
+				\item 2015 - A Physical Approach for Stochastic Modeling of TERO-Based TRNG. \cite{Haddad2015}
 			\end{enumerate}
 
 	\hrulefill
@@ -240,12 +242,20 @@ noise by amplifying the voltage measured across undriven resistors. In addition 
 				%---------------------------------------------------------------------------------------------------------------------
 				\item - 
 					\begin{itemize}
-						\item -
-						\item -
-						\item -
-						\item -
-						\item -
-						\item -
+						\item The coefficients are chosen in increments of 0.1 over the range —1.2 to 1.2 (25 possible values). Thus each attractor is uniquely identified by a 12-letter name. The number of possible cases is thus $25^12$ or about $6 \times 10^16$. Of these, approximately 1.6\% are chaotic or about $10^15$ cases. Viewing them all at a rate of one per second would require over 30 million years! Thus it is very unlikely that any patterns produced by the program will ever have been seen before, and like snowflakes, nearly all of them are different.
+						\item Initial conditions are set arbitrarily to $x = y = 0.05$.
+						\item Lyapunov exponent.
+					\end{itemize}
+				%---------------------------------------------------------------------------------------------------------------------
+				\item - 
+					\begin{itemize}
+						\item There are two main categories of random number generators: deterministic random number generators (DRNG) and true random number generators (TRNG), which can be physical (P-TRNG) or non-physical (NP-TRNG). While deterministic generators are based on algorithmic processes and are thus not truly random, TRNGs exploit an unpredictable process, such as analog phenomena in electronic devices, to produce a random binary sequence or a sequence of random numbers. The unpredictability of DRNGs is guaranteed computationally and that of TRNGs is guaranteed physically. A good knowledge of the underlying physical process in TRNG that ensures its randomness and hence its unpredictability is therefore necessary.
+						\item The statistical quality of TRNGs and DRNGs is usually evaluated using statistical test suites such as the one first proposed by George Marsaglia and extended by the NIST. The goal of these suites is to detect statistical weaknesses such as non-uniformity or the appearance of patterns in a generated random sequence of only limited size. In no case can these tests guarantee the unpredictability of the random binary sequence.
+						\item One of the interesting generators recently proposed by Varchola and Drutarovsky uses a so-called transient effect ring oscillator (TERO) as a source of randomness. Although the generator produces good statistical results, a corresponding stochastic model has not yet been proposed and the generic model proposed in other paper is clearly not suitable in this case.
+						\item Our Contributions: (1) We propose and validate a novel physical TERO model including electric noises that serve as sources of randomness. (2) From the physical model, we derive a TERO stochastic model. (3) From the TERO model, we propose and validate a stochastic model of a complete TERO-based TRNG and illustrate the use of this model to estimate the entropy rate in conjunction with the output bit rate.
+						\item The TERO is an electronic circuit that oscillates temporarily. It is composed of an even number of inverters and a couple of gates that restart temporary oscillations (e.g. two NAND or two XOR gates). It is composed of two NAND gates and two inverter branches. The TERO can be seen as an RS latch with two inputs featuring the same voltage $V_{\text{ctr}}$ and two different outputs $V_{\text{out}1}$ and $V_{\text{out}2}$.
+						\item Physical and Stochastic Model of TERO.
+						\item Stochastic Model of the Complete TERO-Based TRNG
 					\end{itemize}
 				%---------------------------------------------------------------------------------------------------------------------
 				\item - 
@@ -258,28 +268,8 @@ noise by amplifying the voltage measured across undriven resistors. In addition 
 						\item -
 					\end{itemize}
 				%---------------------------------------------------------------------------------------------------------------------
-				\item - 
-					\begin{itemize}
-						\item -
-						\item -
-						\item -
-						\item -
-						\item -
-						\item -
-					\end{itemize}
-				%---------------------------------------------------------------------------------------------------------------------
-				\item - 
-					\begin{itemize}
-						\item -
-						\item -
-						\item -
-						\item -
-						\item -
-						\item -
-					\end{itemize}
-				%---------------------------------------------------------------------------------------------------------------------
-			\end{enumerate}
 
+			\end{enumerate}
 
 	
 	\section{Palabras clave}
@@ -292,44 +282,39 @@ noise by amplifying the voltage measured across undriven resistors. In addition 
 		\item NIST) The National Institute of Standards and Technology.
 		\item Entropy
 		\item (CTW) Contexttree weighting  algorithm.
-		
 	\end{enumerate}
 	
 	
 	
 	
 	
+	\section{Revisión}
 	
 	
 	
 	
+	Los True Random Number Generators (TRNGs) se utilizan ampliamente en aplicaciones criptográficas para crear llaves aleatorias (random keys), parámetros en protocolos de desafió-respuesta, valores de relleno y máscaras. Para aplicaciones donde la seguridad no es un aspecto crítico el método de Monte-Carlo, simulaciones de computadora, modelado,  aplicaciones de análisis numérico y algoritmos probabilísticos. Además se pueden utilizar en el día a día en sorteos de lotería, juegos de computadora, juegos de azar. \cite{Vaidyanathan2021} \cite{Anandakumar2020} \cite{Haddad2015}.
 	
-	Los True Random Number Generators (TRNGs) se utilizan en aplicaciones criptográficas para crear llaves aleatorias (random keys), parámetros en protocolos de desafió-respuesta, valores de relleno y máscaras.
+	Los generadores de números aleatorios se dividen en dos categorías principales, los generadores de números aleatorios deterministic random number generators (DRNG) y los true random number generators (TRNG), los cuales pueden ser físicos (P-TRNG) o no físicos (NP-TRNG). Mientas que los generadores deterministicos se basan en procesos algorítmicos y, por tanto, no son verdaderamente aleatorios, los TRNGs explotan un proceso impredecible, como los fenómenos analógicos de los dispositivos electrónicos, para producir una secuencia binaria aleatoria o una secuencia de números aleatorios. La imprevisibilidad de los DRNG se garantiza computacionalmente y la de los TRNG se garantiza físicamente. Por tanto, es necesario conocer bien el proceso físico subyacente en los TRNG que garantiza su aleatoriedad y, por tanto, su imprevisibilidad.
 	
-	Para construir aplicaciones de este tipo usualmente se utilizan Field-Programmable Gate Arrays (FPGAs) debido a su flexibilidad, alto rendimiento y bajo costo en comparación con otras alternativas. Sin embargo la implementación de TRNGs en FPGAs es un reto debido a los limitados recursos y técnicas específicas de TRNG disponibles para el diseñador. Debido a la disponibilidad de recursos digitales en las FPGAs, estos TRNGs se basan normalmente en la imprevisibilidad de los elementos de memoria metaestable o en el jitter de tiempo presente en los osciladores de funcionamiento libre (free-running oscillators).
+	La calidad estadísticas de los TRNGs se evalúan normalmente utilizando conjuntos de pruebas estadísticas como las pruebas NIST o DIEHARD, además de realizar análisis de correlación y entropía de acuerdo al tipo de información o aplicación que se este desarrollando.
 	
-	La salida de un TRNG debe ser capaz de pasar pruebas estadísticas, sin embargo, no basta con pasar estas pruebas estadísticas para garantizar la seguridad de un TRNG, la seguridad debe justificarse mediante un modelo estocástico de la fuente de entropía.
+	Para construir y probar TRNGs usualmente se utilizan Field-Programmable Gate Arrays (FPGAs) debido a su flexibilidad, alto rendimiento y bajo costo en comparación con otras alternativas. Sin embargo la implementación de TRNGs en FPGAs es un reto debido a los limitados recursos y técnicas específicas de TRNG disponibles para el diseñador. Debido a la disponibilidad de recursos digitales en las FPGAs, estos TRNGs se basan normalmente en la imprevisibilidad de los elementos de memoria metaestable o en el jitter de tiempo presente en los osciladores de funcionamiento libre (free-running oscillators). Muchos TRNG se han publicado en los últimos años sin embargo muchos sufren de la dependencia de fuentes de entropía externas, convertidores analógicos digitales o de recursos propios de una familia de FPGAs lo que los hace poco prácticos para su uso continuo y portabilidad. Se debe hacer entonces una distinción entre los núcleos TRNGs que sean candidato dadas ciertas características que favorezcan su desarrollo y mejora continua. \cite{Petura2016}
 	
-	
-	
-	
-	\section{Clasificación}	
-	
+	Estos núcleos TRNG deben cumplir varios requisitos: 1) su diseño debe ser sencillo y comprensible, la fuente de aleatoriedad debe estar claramente definida; 2) el proceso aleatorio subyacente debe ser estacionario y el modelo estocástico debe ser factible; 3) la señal binaria bruta (raw) debe estar disponible para posteriores pruebas fuera de línea y en línea. Además, es útil que la fuente de aleatoriedad (por ejemplo, la clock jitter procedente del ruido térmico) sea cuantificable: su medición dentro del dispositivo puede servir de base para realizar pruebas estadísticas integradas rápidas y eficaces.
+
+Los núcleos TRNG que utilizan circuitos oscilantes son los siguientes:
+
 	\begin{enumerate}
-		\item Implementación en FPGA
-			\begin{enumerate}
-				\item Based on Self-Timed Ring oscillators (STRs) and delay chains.
-				\item COherent Sampling ring Oscillator based TRNG (COSO-TRNG).
-				\item Based Phase-Locked Loop– (PLL) 
- 
-			\end{enumerate}
-	\end{enumerate}	
+		\item Ring Oscillator Based Elementary TRNG (ERO-TRNG)
+		\item Ring Oscillator Coherent Sampling Based TRNG (COSO-TRNG)
+		\item Multi-Ring Oscillator Based TRNG (MURO-TRNG)
+		\item Coherent Sampling Based TRNG Using PLLs (PLL-TRNG)
+		\item Transition Effect Ring Oscilaltor Based TRNG (TERO-TRNG)
+		\item Self Timed Ring Based TRNG (STR) 
+	\end{enumerate}
 	
-	
-	
-	
-	
-	
+
 	
 	En todos los artículos que se han leído se tiene la misma visión que cuando se trata con TRNGs es importante tener una \textbf{alta entropía} de los números generados, \textbf{alto rendimiento} (throughput), \textbf{portabilidad}, y pasar las pruebas estándar.
 	
