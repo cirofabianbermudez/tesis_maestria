@@ -1,6 +1,575 @@
 \chapter{Fundamentos teóricos}		
 
-Esto es un ejemplo de una cita \cite{Fraga2021}
 
+\begin{comment}
 
+	\section{Fundamentos teóricos de criptografía}
+	
+	HTTPS (SSL/TLS)
+	No eavesdropping (sscuchar a escondidas)
+	No tampering (manipulación)
+	
+	
+	\begin{enumerate}
+		\item Handshake protocol: Establish secret key using publib-key cryptography.
+		\item Record layer: Transmit data using shared secret key, ensure confidentiality and integrity.
+	\end{enumerate}
+	
+	Building block for securing traffic is called symmetric encryption systems.
+	
+	
+	\begin{itemize}
+		\item $k$: secret key (e.g. 128 bits).
+		\item $E$ (encryption algorithm), $D$(decryption algorithm): cipher.
+		\item $m$ (message or plaintext), $c$ (ciphertext)
+	\end{itemize}
+	
+	
+	 The encryption algorithm takes the message and the key as inputs, and produces a corresponding ciphertext $E(k,m) = c$ and $D(k,c)=m$.
+	
+
+	ms, E and D. E is called an encryption algorithm and D is called the decryption algorithm. The encryption algorithm takes the message and the key as inputs, and produces a corresponding ciphertext. And the decryption algorithm does the opposite. It takes the ciphertext as input along with the key key and produces the corresponding message. 
+	
+	
+	 It is an extremely important point. And that is: that the algorithms $E$ and $D$, the actual encryption algorithms are publicly known. Adversary knows exactly how they work. The only thing that's kept secret is the secret key $k$.
+	 
+	 
+	 Other than that everything else is completely public and it's really important to realize that you should only use algorithms that are public because those algorithms have been peer-reviewed by a very large community of hundreds of people for many, many, many years, and these algorithms only begin to be used once this community has shown that they cannot be broken, essentially.
+	 
+	 Never use a proprietary ciphers
+	 
+	 
+	 \begin{itemize}
+	 	\item Single use key (one time key), 
+	 	\item Multi use key (many time key)
+	 \end{itemize}
+	 
+	 \begin{itemize}
+		\item Secret key establishment
+		\item Secure communication ($k$) confidentiality and integrity
+	 \end{itemize}
+	 
+	 Digital signatures
+	 Anonymous communication (mix net)
+	 Anonymous digital cash
+	 Elections
+	 Private auctions
+	 Secure multi-party computation
+	 Privately outsourcing computation
+	 Zero knowledge (proof of knowledge)
+	 	$N =pq$,$p$,$q$ are primes of 1000-digits, multiplying two 1000-digit numbers is fairly easy. But if I just give you their product, figuring out their factorization into primes is actually quite difficult. And, in fact, we're gonna use the fact that factoring is difficult to build public key cryptosystems
+	 
+	 
+	 
+	 
+	Modern cryptography is a very rigorous science. And in fact, every concept we're gonna describe is gonna follow three very rigorous steps. So the first thing we're gonna do when we introduce a new primitive like a digital signature is we're gonna specify precisely what the threat model is. That is, what can an attacker do to attack a digital signature and what is his goal in forging signatures? Okay, so we're gonna define exactly what does it mean for a signature for example to be unforgeable. Unforgeable. Okay and I'm giving digital signatures just as an example. For every primitive we describe we're gonna precisely define what the threat model is. Then we're gonna propose a construction and then we're gonna give a proof that any attacker that's able to attack the construction under this threat model. That attacker can also be used to solve some underlying hard problem. And as a result, if the problem really is hard, that actually proves that no attacker can break the construction under the threat model. Okay. But these three steps are actually quite important. In the case of signatures, we'll define what it means for a signature to be, forgeable, then we'll give a construction, and then for example we'll say that anyone who can break our construction can then be used to say factor integers, which is believed to be a hard problem. Okay, so we're going to follow these three steps throughout, and then you'll see how this actually comes about. Okay, so this is the end of the segment. And then in the next segment we'll talk a little bit about the history of cryptography.	 
+	 
+	 The tree steps in cryptography
+	 \begin{itemize}
+	 	\item Precisely specify threat model.
+	 	\item Propose a construction
+	 	\item Prove that breaking construction under threat mode will solve an underlying hard problem
+	 \end{itemize}
+	 
+	 
+	 Symmetric Ciphers (Same key)
+	 
+	 \begin{enumerate}
+		\item Substitution cipher $c:= E(k,\text{``}bcza\text{''}) = \text{``}wnac\text{''}$ and $D(k,c) = \text{``}bcza\text{''}$
+		(1) use frequency of English letters
+		(2) Use frequency of pairs of letters (diagrams)
+		
+		
+		\item Vigener cipher
+	 \end{enumerate}
+	 
+	 
+	 ciphertext only attack
+	 
+	 
+	 
+	 
+	 
+	\section{Repaso de probabilidad}
+		\subsection{Espacio muestral y eventos}
+	 
+	 La teoría de la probabilidad es el análisis matemático de experimentos aleatorios. Un experimento es un procedimiento que realizamos y que produce algún resultado o consecuencia.
+	 
+	 Un experimento se considera aleatorio si el resultado del experimento no se puede determinar con exactitud. Aunque el resultado particular del experimento no se conoce de antemano, supongamos que se conocen todos los resultados posibles.
+	 
+	 La descripción matemática del experimento aleatorio se da en términos de:
+	 
+	 \begin{itemize}
+	 	\item Espacio muestral.
+	 	\item Eventos.
+	 	\item Probabilidad.
+	 \end{itemize}
+	 
+	 
+	 El conjunto de todos los resultados posibles se denomina \textbf{espacio muestral} y se le asigna el símbolo $S$. Por ejemplo, al lanzar un dado, los resultados corresponden a los números de puntos (1 al 6). En consecuencia, el espacio muestral de este experimento es:
+	\begin{equation}
+		S = \{1, 2, 3, 4, 5, 6\}
+		\label{ec:sample_space}
+	\end{equation}	 
+	
+	Cada elemento de $S$ se denomina punto muestral, $s_{i}$. Cada resultado está representado por un punto muestral correspondiente. Por ejemplo, los puntos de muestra en (\ref{ec:sample_space}) son:
+	\begin{equation}
+		s_{1} = 1, \quad s_{2} = 2, \quad s_{3} = 3, \quad \ldots
+	\end{equation}
+	
+	Suponemos que el dado es justo y no tienen memoria, es decir, que cada resultado tiene la misma probabilidad en cada lanzamiento, independientemente de los resultados de los lanzamientos anteriores.
+	
+	 El espacio muestral de (\ref{ec:sample_space}) es discreto y finito. Los espacios muestrales también pueden ser discretos e infinitos. Si los elementos del espacio son continuos entonces el espacio muestral $S$ es continuo. 
+	 
+		\subsection{Operaciones con eventos}	 
+	 
+	 Cualquier subconjunto del espacio muestral $S$ se denomina \textbf{evento} y se denota con letras mayúsculas ($A$, $B$, etc.). En el experimento de lanzamiento del dado, el evento puede ser, por ejemplo, la aparición de un número par de puntos,
+	 \begin{equation}
+	 	A = \{2, 4, 6\}
+	 \end{equation}
+	 
+	 Hay que tener en cuenta que un resultado también puede ser un evento. Por ejemplo, en el espacio muestral (\ref{ec:sample_space}) el evento que al lanzar el dado resulte $5$ se denota por $A=\{ 5\}$. Un evento que no tiene puntos de muestreo se llama evento nulo.
+	 
+	 El complemento de un evento $A$ denominado $\bar{A}$ es un evento que contiene todos los puntos de muestra que no están en $A$. 
+	 
+	 La unión (o suma) de los evento $A$ y $B$ denominada  $A \cup B$ es un evento que contiene todos los puntos de $A$ y $B$.
+	 
+	 El evento conjunto o la intersección de los eventos $A$ y $B$ denominado $A \cap B$ es un evento que contiene puntos comunes a $A$ y $B$ (es decir, el suceso ocurrieron tanto A como B). La intersección se llama a veces el producto de los eventos y se denota como $AB$.
+	  
+	  Si los eventos $A$ y $B$ no tienen elementos en común, $A \cap B = \varnothing$, entonces se dice que son disjuntos, o \textbf{mutuamente excluyentes}. 
+		
+		\subsection{Probabilidad de eventos}
+
+	La probabilidad del evento $A$ es un número real asignado al evento $A$, denominado $P( A )$ que satisface los siguientes axiomas.	
+	
+	\begin{axiom} La probabilidad del evento $A$ es un número no negativo.
+		\begin{equation}
+			P(A) \geq 0
+		\end{equation}
+		\label{ax1}
+	\end{axiom}
+	
+	\begin{axiom} El espacio muestral es en sí mismo un evento que siempre ocurre.
+		\begin{equation}
+			P(S) = 1
+		\end{equation}
+		\label{ax2}
+	\end{axiom}
+
+	\begin{axiom} Para un número infinito de conjuntos mutuamente excluyentes, $ A_{i} $, $ i=1,2,3,\ldots $, $ A_{i} \cap A_{j} \varnothing $ para todo $ i\neq j $,
+		\begin{equation}
+			P\left( \bigcup_{i=1}^{\infty} A_{i}\right) =  \sum_{i=1}^{\infty} P (A_{i} )
+		\end{equation}
+		\label{ax3}
+	\end{axiom}
+	
+	\begin{corollary} Si dos eventos $A$ y $B$ son mutuamente excluyentes ($A \cap B = \varnothing$) entonces la probabilidad que ocurra cualquiera de los eventos $A$ o $B$, $P(A \cup B)$, es la suma de las probabilidades.
+		\begin{equation}
+			P( A \cup B) = P( A + B) = P( A ) +  P( B )
+		\end{equation}
+		\label{col1}
+	\end{corollary}
+	
+	\begin{corollary} Si consideramos $M$ conjuntos de eventos $ A_{1}, A_{2}, \ldots, A_{M} $ que son mutuamente exclusivos, $ A_{i} \cap A_{j} = \varnothing$ para todo $ i\neq j $,
+		\begin{equation}
+			P\left( \bigcup_{i=1}^{M} A_{i}\right) =  \sum_{i=1}^{M} P (A_{i} )
+		\end{equation}
+		\label{col2}
+	\end{corollary}
+
+	Si consideramos $M$ conjuntos de eventos $ A_{1}, A_{2}, \ldots, A_{M} $ que son mutuamente exclusivos, $ A_{i} \cap A_{j} = \varnothing$ para todo $ i\neq j $ y $ A_{1} \cup A_{2} \cup \ldots ,A_{M} = S$. Entonces por el axioma  \ref{ax2} y  el corolario \ref{col2}.
+	\begin{equation}
+		P\left( \bigcup_{i=1}^{M} A_{i}\right) =  \sum_{i=1}^{M} P (A_{i} ) = 1
+	\end{equation}
+	
+	
+	
+	
+		\subsection{Teoremas}
+	\begin{property}
+	\end{property}
+
+	\begin{theorem} El evento $ A $ y su complemento $ \bar{A} $ son mutuamente excluyentes. En consecuencia, la unión de $ A $ y $ \bar{A} $ es un evento seguro con probabilidad 1.
+		\begin{equation}
+			P(\bar{A}) = 1 - P(A)
+		\end{equation}
+	\end{theorem}
+
+	\begin{theorem} Para cualquier conjunto $ A $ y $ B $ (no necesariamente excluyente),
+		\begin{equation}
+			P(A \cup B) = P(A) + P(B) - P(A\cap B)
+		\end{equation}
+	\end{theorem}
+
+	\begin{theorem} Si $ A \subset B $ entonces,
+		\begin{equation}
+			P(A) \leq P(B) 
+		\end{equation}
+	\end{theorem}
+	
+	
+		\subsection{Resultados igualmente probables en el espacio muestral}
+	
+	Consideremos un experimento aleatorio cuyo espacio muestral $S$ está dado como
+	\begin{equation}
+		S = \{ s_{1}, s_{2}, \ldots ,s_{N}\}
+	\end{equation}
+	En muchos casos prácticos, es natural suponer que todos los resultados tienen la misma probabilidad de ocurrir:
+	\begin{equation}
+		P(s_{1}) = P(s_{2}) = \ldots = P(s_{N})
+		\label{ec:eq_prop}	
+	\end{equation}
+	De los axiomas \ref{ax1} y \ref{ax2}, tenemos:
+	\begin{equation}
+		P( S ) = 1 = P(s_{1}) + P(s_{1}) + \cdots + P(s_{N})		
+	\end{equation}
+	lo que implica, teniendo en cuenta (\ref{ec:eq_prop}):
+	\begin{equation}
+		P(s_{1}) = P(s_{2}) = \ldots = P(s_{N}) = 1/N
+		\label{ec:prob1}
+	\end{equation}
+	De (\ref{ec:prob1}) y del axioma \ref{ax3} se deduce que para cualquier $A$, tal y como se define en $S$, será cierto lo siguiente:
+	\begin{equation}
+		P(A) = \frac{\text{Número de resultados en } A}{\text{Número de resultados en } S}
+	\end{equation}
+
+	
+
+		\subsection{Variables aleatorias}
+	El concepto de variable aleatoria es uno de los más importantes en la teoría probabilística. Para introducir este concepto, relacionaremos las variables aleatorias con el experimento aleatorio. Hay que recordar que los resultados $s_{i}$ de un experimento aleatorio son aleatorios.
+	
+	Sin embargo, desde un punto de vista matemático, sería útil asignar un determinado valor no aleatorio a un resultado aleatorio.
+	
+	Para que esta idea abstracta quede más clara, consideremos el experimento aleatorio del lanzamiento de dados.
+	
+	En un experimento de lanzamiento de dados, los resultados son números de puntos (1-6).
+	
+	Los resultados son del tipo palabra. Podemos observar fácilmente que tales descripciones no son convenientes desde el punto de vista matemático.
+	
+	En general, es más conveniente asignar valores numéricos a los resultados de los experimentos aleatorios para poder obtener expresiones matemáticas en función de los valores numéricos. Esta idea nos lleva al concepto de variable aleatoria.
+	
+	
+	Una \textbf{variable aleatoria} real $X$ es una función que asigna un número real $X(s_{i})$ a cada resultado aleatorio $s_{i}$, según ciertas reglas. Por ejemplo, una función que mapea el espacio $S$ al eje real $x$. 
+Cada punto del espacio $S$ debe corresponder a un solo punto del eje real.
+Esto significa que no es posible asignar el resultado particular $s_{i}$ del espacio $S$ a dos o más puntos en un eje real.
+Sin embargo, es posible asignar diferentes resultados $s_{i}$ al mismo punto en la línea $x$.
+
+Por lo tanto, el mapeo puede ser \textit{uno a uno}, en el que cada resultado $s_{i}$ se mapea en un solo punto o \textit{muchos a uno}, en el que diferentes resultados se mapean en el mismo punto.
+	
+	Los valores numéricos $x$ en el eje real son el \textit{rango} de la variable aleatoria.
+	
+	Denotaremos la variable aleatoria con letras mayúsculas, como $X, Y, Z,$ y el rango correspondiente con letras minúsculas, como $x, y, z$. 
+	
+	
+	Si el rango de la variable aleatoria es discreto, entonces la variable aleatoria es discreta. En caso contrario, se trata de una variable aleatoria continua. Recordemos que un conjunto discreto es un conjunto contable de puntos que también puede ser infinito. Un conjunto continuo, en cambio, es siempre incontable e infinito.
+
+	En el caso de las variables aleatorias discretas, los valores discretos pueden ser enteros o no enteros. Sin embargo, no se admiten valores entre puntos discretos.
+
+	Si el rango es continuo pero también tiene algunos puntos discretos, la variable aleatoria es una variable aleatoria mixta.
+
+	
+	
+	Por ejemplo: Consideremos el experimento de lanzar un dado. Aquí, los resultados aleatorios $s_{i}$, $i = 1,2,\ldots,6$, son el número de puntos (1, 2, 3, 4, 5 y 6). En este caso, lo más conveniente es asignar el número de puntos al valor numérico correspondiente.
+	\begin{equation}
+		\begin{array}{c}
+			X(s_{1}) = 1\\
+			X(s_{2}) = 2\\
+			\cdots\\
+			X(s_{6}) = 6\\
+		\end{array}
+	\end{equation}
+	Este mapeo es uno a uno. Nótese que los resultados $s_{i}$ no son valores numéricos, sino el número de puntos.
+	
+	Definamos ahora la variable aleatoria de una forma diferente. La variable aleatoria $X(s_{i})$ se define en función de si el número de puntos es menor o igual que 4, o mayor que 4. Por tanto, sólo tenemos dos posibilidades, y lo más fácil es asignarles valores numéricos de 0 y 1.
+	\begin{equation}
+		\begin{array}{l}
+			X(s_{1},s_{2},s_{3},s_{4}) = 0\\
+			X(s_{5},s_{6}) = 1\\
+		\end{array}
+	\end{equation}
+	
+	La variable aleatoria $X$ tiene dos valores discretos: $x_{1} = 0$, $x_{2} = 1$.  Este mapeo es de muchos a uno, porque cuatro puntos del espacio muestral se mapean en 0, y dos puntos del espacio muestral se mapean en 1.
+	
+	
+		Podemos obtener diferentes variables aleatorias a partir del mismo espacio muestral y también podemos obtener las mismas variables aleatorias a partir de diferentes espacios muestrales (todo depende de la regla que se elija).
+	
+	Es importante notar lo siguiente:	
+	
+	El espacio muestral de la variable aleatoria continua debe ser continuo. De lo contrario, algunos valores del rango continuo $x$ no tendrían los correspondientes pares de cuentas en el espacio muestral $S$.
+	
+	El espacio continuo no siempre da lugar a una variable aleatoria continua. Generalmente, a partir del espacio continuo, podemos obtener la variable aleatoria continua, la variable aleatoria discreta y también la variable aleatoria mixta.	
+	
+	
+	
+		\subsection{Función de distribución}
+		
+	Para describir completamente una variable aleatoria, es necesario conocer no sólo todos los valores posibles que toma, sino también la frecuencia con la que toma esos valores. En otras palabras, es necesario conocer las probabilidades correspondientes.
+	
+	La probabilidad de que la variable aleatoria $X$ tenga valores menores o iguales a $x$ se llama \textit{función de distribución} o \textit{distribución}.
+	\begin{equation}
+		F_{X}(x) = P( X \leq x), \quad - \infty < x < \infty
+	\end{equation}
+	
+	Algunos autores también utilizan el nombre de función de \textit{distribución acumulativa}.
+	Este término incluye tanto las variables discretas como las continuas.
+		
+		
+	Tenga en cuenta lo siguiente:
+	
+	\begin{itemize}
+		\item La función de distribución tiene una forma escalonada.
+		\item La distribución tiene saltos en los valores discretos de la variable aleatoria. Cada salto es igual a la probabilidad de que la variable aleatoria tome el valor discreto correspondiente. En caso contrario, es constante.
+	\end{itemize}
+	
+	Denotando la función de escalón unitario $u(x)$ como
+	
+	\begin{equation}
+		u(x)= \left\{
+				\begin{array}{lcl}
+				1 & \mbox{ si } & x \geq 0 \\ 
+				0 & \mbox{ si } & x<0
+				\end{array}
+				\right.
+	\end{equation}
+	
+	En general, la variable aleatoria discreta con los valores discretos particulares $x_{k}$, y las probabilidades correspondientes $P(x_{k})$, tiene la función de distribución:
+	\begin{equation}
+		F_{X}(x) = \sum_{k=-\infty}^{\infty} P(x_{k})u(x-x_{k})
+	\end{equation}
+	
+	El conjunto de probabilidades $P(x_{k}) = P( X = x_{k})$, $k=1,2,3,\ldots,$ se denomina \textbf{función de masa de probabilidad} (distribución de probabilidad discreta).
+	
+	Es importante notar que si el espacio muestral es $ S $ donde $ x_{k} \in S $ entonces:
+		\begin{equation}
+			\sum_{x_{k} \in S} P(x_{k}) = 1
+		\end{equation}
+	
+	Por ejemplo la función de distribución de la variable aleatoria que sólo tiene los valores discretos 1, . . ., 6, suponiendo que todos los valores tienen la misma probabilidad de ocurrencia:
+	\begin{equation}
+		P(x_{k}) = 1/6, \qquad k =1, \ldots,6
+	\end{equation}
+	es:
+	\begin{equation}
+		F_{X}(x) = \sum_{k=1}^{6} P(x_{k})u(x-x_{k}) = \frac{1}{6} \left[ u(x-1) + \cdots + u(x-6)\right]
+	\end{equation}
+	
+		\subsection{Propiedades}
+		
+	
+	\begin{property}
+		\begin{equation}
+			0 \leq F_{X}(x) \leq 1
+		\end{equation}
+	\end{property}
+	
+	
+	
+	
+		\subsection{Para criptografia}	
+	
+	Para nuestro análisis de necesitamos conocer lo siguiente:
+	
+	La probabilidad discreta es siempre definida sobre un universo (espacio muestral) que denotaremos $U$ y este universo en nuestro caso siempre va a ser un conjunto finito. 
+	
+	Comúnmente nuestro universo  va a ser simplemente el conjunto de todas las cadenas de $n$ bits que se denota por $U = \{0,1\}^{n}$. Por ejemplo el conjunto $\{0,1\}^{2}= \{00,01,10,11\}$. En general en el conjunto $\{0,1\}^{n}$ hay $2^{N}$ elementos. 
+	
+	La distribución de probabilidad como se menciono anteriormente es una función que asigna a cada elemento del universo una probabilidad o peso entre 0 y 1 con la única condición que la suma de todas las probabilidades sea igual a uno, en otra palabras $ f_{X}: U \to [1,0] $ de tal manera que $ \displaystyle{\sum_{x\in U} f_{X}(x) = 1}$
+	
+	Ejemplos de distribuciones son:
+	\begin{itemize}
+		\item Distribución uniforme
+			\begin{equation}
+				f_{X}(x)= \left\{
+				\begin{array}{lcl}
+					\frac{1}{N} & \mbox{ para } & x = x_{1}, x_{2}, \ldots, x_{N} \\ 
+					0 & \mbox{  } & \text{de lo contrario}
+				\end{array}
+				\right.
+			\end{equation}
+		\item  Distribución puntual en $ x_{0} $
+			\begin{equation}
+				f_{X}(x)= \left\{
+				\begin{array}{lcl}
+					1 & \mbox{ para } & x = x_{0} \\ 
+					0 & \mbox{  } & \text{de lo contrario}
+				\end{array}
+				\right.
+			\end{equation}
+	\end{itemize}
+	
+	Como se trata de distribuciones discretas finitas podemos representar la distribución en forma de lista o de manera más precisa como un \textit{vector de distribución}, para el ejemplo de $ \{0,1\}^{2} $ el vector de distribución es:
+	\begin{equation}
+		(P(00),P(01),P(10),P(11)) \in \mathbb{R}^{4}
+	\end{equation}
+
+	Un evento es un subconjunto del universo $ A\subseteq U $  cuya probabilidad cumple que  $ \displaystyle{P(A) = \sum_{x\in A} P(x) \in [0,1]}$.
+	
+	Por ejemplo si tenemos $ U = \{ 0,1\}^{8} $ el cual contiene $ 2^{8}=256 $ elementos y se trata una distribución uniforme, la probabilidad que los bits menos significativos sean 11, \begin{equation}\label{key}
+		A = \{\text{todas las } x \text{ que } \text{lsb}_{2}(x) = 11 \} \subseteq U
+	\end{equation}
+	es $ P(A)  = 1/4$.
+	
+	Para un espacio muestral dado $ U $ de algún experimento, una variable aleatoria es cualquier regla que asocia un número con cada resultado en $ U $.  En lenguaje matemático una variable aleatoria es una función cuyo domino es el espacio muestral y cuyo rango es el conjunto de números reales.
+	
+	
+	
+	Variable aleatoria uniforme
+	
+	
+	
+	Algoritmo deterministico 
+	
+	Algoritmo aleatorio
+	
+	
+	
+	Probabilidad y estadística para ingeniería y ciencias
+	
+	El \textbf{espacio muestral} de un experimento denotado por $ S $, es el conjunto de todos los
+	posibles resultados de dicho experimento.
+	
+	Un \textbf{evento} es cualquier recopilación (subconjunto) de resultados contenidos en el espacio muestral $ S $. Un evento es simple si consiste en exactamente un resultado y compuesto si consiste en más de un resultado.
+	
+	\begin{itemize}
+		\item El complemento de un evento A, denotado por A, es el conjunto de todos los resultados en S que no están contenidos en A
+		\item La unión de dos eventos A y B, denotados por A B y leídos “A o B”, es el evento que consiste en todos los resultados que están en A o en B o en ambos eventos (de tal suerte que la unión incluya resultados donde tanto A como B ocurren, así también resultados donde ocurre exactamente uno), es decir, todos los resultados en por lo menos uno de los eventos.
+		\item La intersección de dos eventos A y B, denotada por A  B y leída “A y B”, es el evento que consiste en todos los resultados que están tanto en A como en B.
+	\end{itemize}
+
+	Que denote el evento nulo (el evento sin resultados). Cuando A  B, se dice que A y B son eventos mutuamente excluyentes o disjuntos
+	
+	
+	Operacion XOR 
+	
+	La oiperación XOR es la suma bit a bit modulo 2
+	\begin{table}[!hbp]                                 
+		\centering            
+		\caption{Tabla de verdad de XOR}                           
+		\label{tab:xor}                               
+		\begin{tabular}{ccc}
+			\hline                                             
+			$ X $ & $ Y $ & $ X \oplus Y $\\                    
+			\hline                                             
+			 0 & 0 & 0  \\
+			 0 & 1 & 1  \\
+			 1 & 0 & 1  \\
+			 1 & 1 & 0  \\
+			\hline                                             
+		\end{tabular}                                                             
+	\end{table}
+
+	XOR tiene una propiedad muy importante, sea $ Y $ una variable aleatoria con espacio muestral $ \{0,1\}^{n} $ de la que no sabemos como esta distribuida y sea $ X $ una variable aleatoria independiente y uniforme sobre el mismo espacio muestral, entonces $ Z = X \oplus Y$ es una variable aleatoria uniforme en el espacio muestral $ \{0,1\}^{n} $
+	
+	
+	Un cifrador consiste en dos algoritmos, un algoritmo de encriptación y otro de desencriptación y una llave(key) $ k $, el conjunto de todas las llaves posibles, el conjunto de todos los posibles mensajes $ m $ y el conjunto de todos los posibles mensajes cifrados $ c $,
+	
+	
+	Un cifrador se define a partir de $ (K,M,C) $ y es un par de algoritmos eficientes $ (E,D) $ donde $ E(K,M) \to C $ y $ D(K,C) \to M $ 
+	
+	
+	Ecuación de consistencia, $ \forall m \in \mathbb{M}, k\in \mathbb{K} $
+	
+	\begin{equation}
+		D(k,E(k,m)) = m
+	\end{equation}
+
+	eficiente puede significar diferentes cosas, ejecutarse en tiempo polinomial dependiente de sus entradas, o eficiente dependiendo del tiempo.
+	
+	
+	El algoritmo $ E $ es usualmente un algoritmo aleatorio y $ D $ es siempre un algoritmo deterministico.
+	
+	
+	Ejemplos:
+	\begin{itemize}
+		\item  The One Time Pad Vernam 1917
+			$ \mathbb{M} = \mathbb{C} = \{0,1\}^{n}  $ y $ \mathbb{K} = \{0,1\}^{n} $, la llave es un flujo de bits aleatorios tan largo como el mensaje.
+	\end{itemize}
+	
+	¿Qué hace a un cifrador seguro?
+	El primero es estudiarlo fue Shannon 1949, el padre de la teoría de la información, la idea es que teniendo el texto cifrado no revele nada de la información del texto.
+	56
+	Un cifrador $ (E,D) $ sobre $ \mathbb{K},\mathbb{M}, \mathbb{C}  $ tiene un secreto perfecto si $ \forall m_{0},m_{1}, \in \mathbb{M} $, $ \text{len}(m_{0}) = \text{len}(m_{1}) $ y $ \forall c \in \mathbb{C} $, $ P(E(k,m_{0}) = c) = P(E(k,m_{1}) = c) $ donde $ k $ es uniforme en $ \mathbb{K} $
+
+\end{comment}
+	
+	Los articulos que más me han gustado son los siguientes:
+	\begin{enumerate}
+		\item Survey of AIS-20/31 Compliant TRNG Cores Suitable for FPGA Devices
+		\item  On the Security of Oscillator-Based Random Number Generators
+	\end{enumerate}
+	
+	
+	Cuando evaluamos diferentes implementaciones en FPGAs de TRNGs hay que tener en cuenta el área, el bit rate de salida, los requerimientos de potencia y la calidad estadística de la salida.
+	
+	
+	\begin{enumerate}
+		\item  Ring Oscillator Cased Elementary TRNG (ERO-TRNG)
+		
+			El ring oscillator based elementary TRNG (ERO-TRNG) fue propuesto y modelado en \cite{Baudet2010}. El diagrama de bloques del ERO-TRNG implementado en FPGAs se representa en la Figura \ref{fig:A1_ERO}.
+			
+			\begin{figure}[hbtp]
+				\caption{Arquitectura del núcleo ERO-TRNG.}
+				\centering
+				\includegraphics[width=0.8\linewidth]{A1_ERO}
+				\label{fig:A1_ERO}
+			\end{figure}
+			
+			
+			El generador utiliza dos osciladores de anillo idénticos (RO1 y RO2) como fuentes de aleatoriedad. La salida de uno de los anillos (una señal de reloj con jittery) se muestrea en un flip-flop D tras un periodo de acumulación suficientemente largo derivado de la segunda señal de reloj mediante un divisor de frecuencia por $ K $ (un contador síncrono de 17 bits).
+			El número de elementos del anillo ($ N $) se elije para obtener aproximadamente la misma frecuencia de reloj (300 MHz).
+			El periodo de muestreo (y, por tanto, el parámetro $ K $) se seleccionó en función de la frecuencia de reloj y del tamaño del jitter.
+			
+			Los dos osciladores de anillo se colocan y conectan manualmente para garantizar la repetibilidad del diseño. Aunque los dos anillos se colocaron muy cerca, aparentemente no se bloquearon.
+			
+			El área del TRNG es relativamente pequeña a costa de una baja tasa de bits de salida.
+			
+			El ERO-TRNG tiene una tasa de bits de salida muy pequeña, pero también un potencial de seguridad muy alto: para garantizar una tasa de entropía suficiente para el factor de división $ K $ dado, basta con que la prueba incrustada compruebe que los anillos están oscilando y que no están bloqueados. 
+			
+			Una mayor frecuencia de reloj aumenta la tasa de bits de salida a costa de un mayor consumo de energía
+
+			\textbf{Resumen de características}
+			\begin{itemize}
+				\item Recursos: dos ring oscillators (RO1 y RO2) idénticos como fuente de aleatoriedad, un flip-flop D, un divisor de frecuencia por $ K $.
+			\end{itemize}
+
+		\item Ring Oscillator Coherent Sampling Based TRNG (COSO-TRNG)
+		
+		\item Multi-Ring Oscillator Based TRNG (MURO-TRNG)
+		
+		\item Coherent Sampling Based TRNG Using PLLs (PLL-TRNG)
+		
+		\item Transition Effect Ring Oscilaltor Based TRNG (TERO-TRNG)
+			
+			El TRNG basado en el oscilador de anillo de efecto de transición (TERO-TRNG) fue propuesto en \cite{Varchola2010} y su modelo estocástico en \cite{Haddad2015}. El diagrama de bloques del núcleo TERO-TRNG implementado en dispositivos FPGA se representa en la Figura \ref{fig:A5_TERO}.
+			
+			\begin{figure}[hbtp]
+				\caption{Arquitectura del núcleo TERO-TRNG.}
+				\centering
+				\includegraphics[width=0.8\linewidth]{A1_ERO}
+				\label{fig:A5_TERO}
+			\end{figure}
+		
+			El oscilador de anillo de efecto de transición (TERO) es un oscilador de anillo de múltiples eventos con colisiones construido como un bucle de puertas lógicas. El bucle contiene un número par de puertas inversoras y un número cualquiera de puertas no inversoras. Debido al número par de compuertas inversoras, el oscilador tiene que reiniciarse con regularidad: los dos eventos creados después de cada reinicio circulan dentro del bucle hasta que se produce una colisión, durante la cual el flanco que se mueve más rápido alcanza al más lento.
+			
+			La diferencia en la velocidad de los eventos circulantes está causada por las diferencias en los retrasos entre los inversores en las ramas del bucle y por los fenómenos analógicos en los inversores y los buffers. Los eventos circulantes crean oscilaciones temporales que desaparecen tras la colisión.
+		
+			El corazón del TERO-TRNG es la celda TERO, a la que sigue un contador (en la Figura \ref{fig:A5_TERO}, el contador está representado por un flip-flop T) y un registro de datos de salida.
+			
+			El área del núcleo del TRNG es muy pequeña, mientras que la tasa de bits de salida puede ser relativamente alta. La arquitectura del TRNG es sencilla, pero para conseguir una tasa de entropía suficiente, las dos ramas de la célula TERO deben estar desequilibradas de tal forma que el número de periodos de oscilación M cumpla la siguiente condición:
+			
+			
+		
+		\textbf{Resumen de caracteristicas}
+		
+		\item Self Timed Ring Based TRNG (STR)
+	\end{enumerate}
+	
+	
+	
+	
+	
+	
+	 
+	
+	
 	
