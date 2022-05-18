@@ -12,9 +12,10 @@
 *.cb2
 .*.lb
 
-## Ignore folders
+## Ignore folders|
 docs_de_ayuda/
 temporal/
+bibliografia/
 
 ## Intermediate documents:
 *.dvi

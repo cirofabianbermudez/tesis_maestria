@@ -42,14 +42,18 @@
 	\include{capitulos/agradecimientos}
 
 \pagestyle{normalstyle}									% Estilos de pagina personalizados
-\tableofcontents            							% Genera el índice
+\tableofcontents            								% Genera el índice
 \addcontentsline{toc}{chapter}{\contentsname}
 
-\listoffigures              							% Indice de figuras
-\listoftables               							% Indice de tablas
+\listoffigures              								% Indice de figuras
+\listoftables               								% Indice de tablas
 
 \lstlistoflistings
 \addcontentsline{toc}{chapter}{\lstlistlistingname}
+
+
+\printglossary[title=Lista de símbolos, toctitle=Lista de símbolos]
+
 
 	\include{capitulos/resumen}
 	\pagestyle{Resumen}	

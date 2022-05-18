@@ -1,89 +1,155 @@
-\chapter{Fundamentos teóricos}		
-
-
-
+\chapter{Selección y evaluación de núcleos TRNGs}		
 	
-	Cuando evaluamos diferentes implementaciones en FPGAs de TRNGs hay que tener en cuenta el área, el bit rate de salida, los requerimientos de potencia y la calidad estadística de la salida.
-	
-	
-	\begin{enumerate}
-		\item  Ring Oscillator Cased Elementary TRNG (ERO-TRNG)
-		
-			El ring oscillator based elementary TRNG (ERO-TRNG) fue propuesto y modelado en \cite{Baudet2010}. El diagrama de bloques del ERO-TRNG implementado en FPGAs se representa en la Figura \ref{fig:A1_ERO}.
-			
-			\begin{figure}[hbtp]
-				\caption{Arquitectura del núcleo ERO-TRNG.}
-				\centering
-				\includegraphics[width=0.8\linewidth]{A1_ERO}
-				\label{fig:A1_ERO}
-			\end{figure}
-			
-			
-			El generador utiliza dos osciladores de anillo idénticos (RO1 y RO2) como fuentes de aleatoriedad. La salida de uno de los anillos (una señal de reloj con jittery) se muestrea en un flip-flop D tras un periodo de acumulación suficientemente largo derivado de la segunda señal de reloj mediante un divisor de frecuencia por $ K $ (un contador síncrono de 17 bits).
-			El número de elementos del anillo ($ N $) se elije para obtener aproximadamente la misma frecuencia de reloj (300 MHz).
-			El periodo de muestreo (y, por tanto, el parámetro $ K $) se seleccionó en función de la frecuencia de reloj y del tamaño del jitter.
-			
-			Los dos osciladores de anillo se colocan y conectan manualmente para garantizar la repetibilidad del diseño. Aunque los dos anillos se colocaron muy cerca, aparentemente no se bloquearon.
-			
-			El área del TRNG es relativamente pequeña a costa de una baja tasa de bits de salida.
-			
-			El ERO-TRNG tiene una tasa de bits de salida muy pequeña, pero también un potencial de seguridad muy alto: para garantizar una tasa de entropía suficiente para el factor de división $ K $ dado, basta con que la prueba incrustada compruebe que los anillos están oscilando y que no están bloqueados. 
-			
-			Una mayor frecuencia de reloj aumenta la tasa de bits de salida a costa de un mayor consumo de energía
+	\section{Arquitectura de núcleos TRNG seleccionados}
 
-			\textbf{Resumen de características}
+	Con base en los criterios del AIS-20/31, y los núcleos \gls{TRNG} que usan estructuras oscilantes como se clasifican en \cite{Petura2016}:
+	
+	\begin{itemize}
+		\item Single-event ring oscillators
 			\begin{itemize}
-				\item Recursos: dos ring oscillators (RO1 y RO2) idénticos como fuente de aleatoriedad, un flip-flop D, un divisor de frecuencia por $ K $.
+				\item Elementary ring oscillator based TRNG (\gls{ERO-TRNG})
+				\item Coherent sampling ring oscillator based TRNG (\gls{COSO-TRNG})
+				\item Multi-ring oscillator based TRNG (\gls{MURO-TRNG})
 			\end{itemize}
+		\item Multi-event ring oscillators with signal collisions
+			\begin{itemize}
+				\item Transient effect ring oscillator based TRNG (\gls{TERO-TRNG})
+			\end{itemize}
+		\item Multi-event ring oscillators without signal collisions
+			\begin{itemize}
+				\item Self-timed ring based TRNG (\gls{STR-TRNG})
+			\end{itemize}
+		\item Phase-locked loops
+			\begin{itemize}
+				\item PLL based TRNG (\gls{PLL-TRNG})
+			\end{itemize}
+	\end{itemize}
+	
+		\subsection{Elementary ring oscillator based TRNG (ERO-TRNG)}
+		
+					
+				\begin{figure}[hbtp]
+					\caption{Arquitectura del núcleo ERO-TRNG.}
+					\centering
+					\includegraphics[width=0.8\linewidth]{A1_ERO_TRNG}
+					\label{fig:A1_ERO_TRNG}
+				\end{figure}
+			
+			
+			
+		\subsection{Coherent sampling ring oscillator based TRNG (COSO-TRNG)}
+	
+				
+				\begin{figure}[hbtp]
+					\caption{Arquitectura del núcleo COSO-TRNG.}
+					\centering
+					\includegraphics[width=0.8\linewidth]{A2_COSO_TRNG}
+					\label{fig:A2_COSO_TRNG}
+				\end{figure}
+				
+				
+				
+		\subsection{Multi-ring oscillator based TRNG (MURO-TRNG)}
+	
+				
+				\begin{figure}[hbtp]
+					\caption{Arquitectura del núcleo MURO-TRNG.}
+					\centering
+					\includegraphics[width=0.8\linewidth]{A3_MURO_TRNG}
+					\label{fig:A3_MURO_TRNG}
+				\end{figure}
+				
+				
+				
+		\subsection{Transient effect ring oscillator based TRNG (TERO-TRNG)}
+	
+				
+				\begin{figure}[hbtp]
+					\caption{Arquitectura del núcleo TERO-TRNG.}
+					\centering
+					\includegraphics[width=0.8\linewidth]{A4_TERO_TRNG}
+					\label{fig:A4_TERO_TRNG}
+				\end{figure}
+				
+				
+				
+		\subsection{Self-timed ring based TRNG (STR-TRNG)}
+	
+				
+				\begin{figure}[hbtp]
+					\caption{Arquitectura del núcleo STR-TRNG.}
+					\centering
+					\includegraphics[width=0.8\linewidth]{A5_STR_TRNG}
+					\label{fig:A5_STR_TRNG}
+				\end{figure}
+				
+				
+				
+		\subsection{PLL based TRNG (PLL-TRNG)}
+	
+				
+				\begin{figure}[hbtp]
+					\caption{Arquitectura del núcleo PLL-TRNG.}
+					\centering
+					\includegraphics[width=0.8\linewidth]{A6_PLL_TRNG}
+					\label{fig:A6_PLL_TRNG}
+				\end{figure}
+				
+				
+			
+		   
 
-		\item Ring Oscillator Coherent Sampling Based TRNG (COSO-TRNG)
-		
-		\item Multi-Ring Oscillator Based TRNG (MURO-TRNG)
-		
-		\item Coherent Sampling Based TRNG Using PLLs (PLL-TRNG)
-		
-		\item Transition Effect Ring Oscilaltor Based TRNG (TERO-TRNG)
-			
-			El TRNG basado en el oscilador de anillo de efecto de transición (TERO-TRNG) fue propuesto en \cite{Varchola2010} y su modelo estocástico en \cite{Haddad2015}. El diagrama de bloques del núcleo TERO-TRNG implementado en dispositivos FPGA se representa en la Figura \ref{fig:A5_TERO}.
-			
-			\begin{figure}[hbtp]
-				\caption{Arquitectura del núcleo TERO-TRNG.}
-				\centering
-				\includegraphics[width=0.8\linewidth]{A1_ERO}
-				\label{fig:A5_TERO}
-			\end{figure}
-		
-			El oscilador de anillo de efecto de transición (TERO) es un oscilador de anillo de múltiples eventos con colisiones construido como un bucle de puertas lógicas. El bucle contiene un número par de puertas inversoras y un número cualquiera de puertas no inversoras. Debido al número par de compuertas inversoras, el oscilador tiene que reiniciarse con regularidad: los dos eventos creados después de cada reinicio circulan dentro del bucle hasta que se produce una colisión, durante la cual el flanco que se mueve más rápido alcanza al más lento.
-			
-			La diferencia en la velocidad de los eventos circulantes está causada por las diferencias en los retrasos entre los inversores en las ramas del bucle y por los fenómenos analógicos en los inversores y los buffers. Los eventos circulantes crean oscilaciones temporales que desaparecen tras la colisión.
-		
-			El corazón del TERO-TRNG es la celda TERO, a la que sigue un contador (en la Figura \ref{fig:A5_TERO}, el contador está representado por un flip-flop T) y un registro de datos de salida.
-			
-			El área del núcleo del TRNG es muy pequeña, mientras que la tasa de bits de salida puede ser relativamente alta. La arquitectura del TRNG es sencilla, pero para conseguir una tasa de entropía suficiente, las dos ramas de la célula TERO deben estar desequilibradas de tal forma que el número de periodos de oscilación M cumpla la siguiente condición:
-			
-			
-		
-		\textbf{Resumen de caracteristicas}
-		
-		\item Self Timed Ring Based TRNG (STR)
-	\end{enumerate}
 
-	\begin{equation}
-		\begin{array}{ccl}
-			x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
-			y_{n+1} & = &  a_{7} + a_{8}x_{n} + a_{9}x_{n}^{2} + a_{10}x_{n}y_{n} + a_{11}y_{n} + a_{12}y_{n}^{2}
-		\end{array}
-	\end{equation}
 
-	
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  \caption{Resumen de los resultados de implementación de las TRNGs}
+\resizebox{0.8\linewidth}{!}{ 
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \rowcolor[rgb]{ .682,  .667,  .667} TRNG Type & FPGA  & Area  & Power cons. & Bit Rate & Efficiency & Entropy & Entropy * Bit rate & Feasib. \\
+    \rowcolor[rgb]{ .682,  .667,  .667}       & device & (LUT/Reg) & [mW]  & [Mbits/s] & [bits/$\mu$Ws] & per bit &       & \& Repeat. \\
+    \hline
+    \multirow{3}[2]{*}{ERO} & Spartan 6 & 46/19 & 2.16  & 0.0042 & 1.94  & 0.999 & 0.004 & \multirow{3}[2]{*}{5} \\
+          & Cyclone V & 34/20 & 3.24  & 0.0027 & 0.83  & 0.990 & 0.003 &  \\
+          & SmartFusion 2 & 45/19 & 4     & 0.014 & 3.5   & 0.980 & 0.013 &  \\
+    \hline
+    \multirow{3}[2]{*}{COSO} & Spartan 6 & 18/3  & 1.22  & 0.54  & 442.6 & 0.999 & 0.539 & \multirow{3}[2]{*}{1} \\
+          & Cyclone V & 13/3  & 0.9   & 1.44  & 1600  & 0.999 & 1.438 &  \\
+          & SmartFusion 2 & 23/3  & 1.94  & 0.328 & 169   & 0.999 & 0.327 &  \\
+    \hline
+    \multirow{3}[2]{*}{MURO} & Spartan 6 & 521/131 & 54.72 & 2.57  & 46.9  & 0.999 & 2.567 & \multirow{3}[2]{*}{4} \\
+          & Cyclone V & 525/130 & 34.93 & 2.2   & 62.9  & 0.999 & 2.197 &  \\
+          & SmartFusion 2 & 545/130 & 66.41 & 3.62  & 54.5  & 0.999 & 3.616 &  \\
+    \hline
+    \multirow{3}[2]{*}{PLL} & Spartan 6 & 34/14 & 10.6  & 0.44  & 41.5  & 0.981 & 0.431 & \multirow{3}[2]{*}{3} \\
+          & Cyclone V & 24/14 & 23    & 0.6   & 43.4  & 0.986 & 0.592 &  \\
+          & SmartFusion 2 & 30/15 & 19.7  & 0.37  & 18.7  & 0.921 & 0.340 &  \\
+    \hline
+    \multirow{3}[2]{*}{TERO} & Spartan 6 & 39/12 & 3.312 & 0.625 & 188.7 & 0.999 & 0.624 & \multirow{3}[2]{*}{1} \\
+          & Cyclone V & 46/12 & 9.36  & 1     & 106.8 & 0.987 & 0.985 &  \\
+          & SmartFusion 2 & 46/12 & 1.23  & 1     & 813   & 0.999 & 0.999 &  \\
+    \hline
+    \multirow{3}[2]{*}{STR} & Spartan 6 & 346/256 & 65.9  & 154   & 2343.2 & 0.998 & 154.121 & \multirow{3}[2]{*}{2} \\
+          & Cyclone V & 352/256 & 49.4  & 245   & 4959.1 & 0.999 & 244.755 &  \\
+          & SmartFusion 2 & 350/256 & 82.52 & 188   & 2286.7 & 0.999 & 188.522 &  \\
+    \hline
+    \end{tabular}%
+}
+  \label{tab:addlabel}%
 
-	donde los parámetros $\{a_{1}, a_{2}, \ldots a_{12}\}$ pueden tomar diferentes valores, sin embargo para este trabajo se usaron los siguientes
-	
-	
-	
-	
-	
-	
+\end{table}%
+
+
+\gls{FPGA}.
+
+\gls{RNG}.
+
+
+\gls{TERO}.
+
+
 	 
 	
 	
