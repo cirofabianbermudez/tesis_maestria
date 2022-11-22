@@ -13,7 +13,8 @@
    9. [Sumatra PDF](https://www.sumatrapdfreader.org/free-pdf-reader): Lector de pdf gratis y ligero.
    10. [InfranView](https://www.irfanview.com/): visualizador de imágenes.
 	   1. Recomendado instalar [Plugins](https://www.irfanview.com/plugins.htm) para poder visualizar`.eps`.
-   11. [Vivado 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html): herramienta para trabajar con FPGAs de Xilinx.
+   12. [Putty](https://www.putty.org/): Terminal para comunicación RS232.
+   13. [Vivado 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html): herramienta para trabajar con FPGAs de Xilinx.
 	   1. Recomendado instalar Vitis durante el proceso de instalación de ser necesario trabajar con MicroBlaze.
 	   2. Para la instalación de Vivado 2020.2 se recomienda utilizar la versión de instalador ***"Windows self extracting web installer"*** para ahorrar tiempo y espacio en el disco duro, tiene un tamaño de 246.44  MB, como recomendación realizar la instalación utilizando una conexión por cable ethernet. Se debe seleccionar la versión **Vivado HL Design Edition** ya que esta es la que cuenta con más herramientas de síntesis, sin embargo es necesario tener acceso a una licencia. 
 
