@@ -1,6 +1,10 @@
 ## Ignore folders
 .obsidian/
 bibliografia/
+Excalidraw/
+
+## C executables
+*.exe
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
