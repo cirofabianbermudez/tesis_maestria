@@ -3,6 +3,8 @@
  * Date: 16/06/2022
  * Desing name: check_sys_bytes_wind.c
  * Description: Check the number of byte of each data type for windows.
+ * Compile: gcc -o check_wind.exe A1_check_sys_bytes_wind.c
+ * Run: ./check_wind.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,5 +33,3 @@ int main(void){
     
     return 0;
 }
-// gcc -o check_wind check_sys_bytes_wind.c
-// ./check_wind 

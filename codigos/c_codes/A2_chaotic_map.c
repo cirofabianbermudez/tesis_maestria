@@ -3,11 +3,11 @@
  * Date: 16/06/2022
  * Desing name: chaotic_map.c
  * Description: Sproot chaotic map simulation using floating point
+ * Compile: gcc -o chaotic.exe A2_chaotic_map.c
+ * Run: ./chaotic.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <string.h>
 
 int main(void){
 
@@ -21,6 +21,7 @@ int main(void){
     double yn = y0;
     double xni = 0.0;
     double yni = 0.0;
+    int iter = 100000;
 
     // Initial conditions
     printf(" # x0: %lf\n", x0 );
@@ -29,7 +30,7 @@ int main(void){
     printf(" # chaotic map generated,see output_chaotic.txt\n");
        
     fprintf(fpointer,"%32.29lf\t%32.29lf\n",xn, yn);
-    for(int i = 0; i<100000; i++){
+    for(int i = 0; i < iter; i++){
         xni = ai[0] + ai[1]*xn + ai[2]*xn*xn + ai[3]*xn*yn + ai[4]*yn + ai[5]*yn*yn;
         yni = ai[6] + ai[7]*xn + ai[8]*xn*xn + ai[9]*xn*yn + ai[10]*yn + ai[11]*yn*yn;
         
@@ -41,5 +42,3 @@ int main(void){
     fclose(fpointer); // Close file
     return 0;
 }
-// gcc -o chaotic chaotic_map.c
-// ./chaotic

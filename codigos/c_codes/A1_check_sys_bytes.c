@@ -3,6 +3,8 @@
  * Date: 16/06/2022
  * Desing name: check_sys_bytes.c
  * Description: Check the number of byte of each data type.
+ * Compile: gcc -o check.exe A1_check_sys_bytes.c
+ * Run: ./check.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,5 +33,3 @@ int main(void){
     
     return 0;
 }
-// gcc -o check check_sys_bytes.c
-// ./check 

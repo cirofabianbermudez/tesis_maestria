@@ -2,7 +2,9 @@
  * Engineer: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
  * Desing name: rom_generator.c
- * Description: VHDL ROM generator for RS232 protocol
+ * Description: VHDL ROM generator for message in RS232 protocol
+ * Compile: gcc -o rom.exe A0_rom_generator.c
+ * Run: ./rom.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,5 +53,3 @@ int main(void){
 	fclose(fpointer); // Close file
 	return 0;
 }
-// gcc -o rom rom_generator.c
-// ./rom
