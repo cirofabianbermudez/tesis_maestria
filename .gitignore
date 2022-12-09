@@ -1,7 +1,7 @@
 ## Ignore folders
 .obsidian/
 bibliografia/
-Excalidraw/
+excalidraw/
 
 ## C executables
 *.exe
