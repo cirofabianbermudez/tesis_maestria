@@ -1,5 +1,7 @@
 - [x] Revisar que la bibliografia sea correcta
 	- [ ] Agregar articulos nuevos del correo.
-- [ ] Pasar estructura de LaTeX
-- [ ] 
-- [ ] 
+- [x] Pasar estructura de LaTeX
+- [ ] Mejorar archivo main de LaTeX
+- [x] Generar archivo de portada
+	- [ ] Código en C para convertir colores RGB a RGB compatibles con LaTeX
+- [ ] Agregar parte teórica de mapas caóticos
