@@ -1,0 +1,5 @@
+- [x] Revisar que la bibliografia sea correcta
+	- [ ] Agregar articulos nuevos del correo.
+- [ ] Pasar estructura de LaTeX
+- [ ] 
+- [ ] 
