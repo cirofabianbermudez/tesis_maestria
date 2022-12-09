@@ -1,0 +1,206 @@
+%-------------------------------------------------------------------------------
+%                                Paquetes extras                               %
+%-------------------------------------------------------------------------------
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3} 
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{axiom}{Axioma} %[chapter]
+\renewcommand\theaxiom{\Roman{axiom}}
+
+\theoremstyle{definition}
+\newtheorem{property}{Propiedad} %[chapter]
+
+\theoremstyle{definition}
+\newtheorem{corollary}{Corolario} %[chapter]
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema} %[chapter]
+
+\usepackage{lipsum}												% Texto de ejemplo \lipsum[1-30]
+\decimalpoint													% Punto decimal en lugar de coma
+\spanishsignitems												% Viñetas en lugar de cuadros
+\raggedbottom													% Eliminar molestos warnings
+
+\usepackage{comment}												% Comentarios largos
+\usepackage{pdfpages}											% Incluir portada echa en Inkscape
+\usepackage{setspace}											% Interlineado
+\usepackage{makecell}											% Para tablas
+\usepackage{xcolor}												% Colores en tablas
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{array}												% Necesario para algunas tablas
+\usepackage[inline]{enumitem}										% Personalizar itemize
+\usepackage{multicol}											% Item 2 columns
+
+\definecolor{Red}{RGB}{255,191,191}								% Colores definidos por el usuario
+
+\usepackage[nottoc]{tocbibind}									% Bibliografia en table of contents
+
+\usepackage[figuresright]{rotating}								% Rotar figuras con caption
+\usepackage{subcaption}											% Subfiguras
+%-------------------------------------------------------------------------------
+%                            Comandos matematicos                              %
+%-------------------------------------------------------------------------------
+\usepackage{steinmetz}											% Para representar fasores
+\usepackage{bm}													% Bold math  \bm command
+\newcommand{\binomb}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+%-------------------------------------------------------------------------------
+%                        Paquetes para hipervinculos                           %
+%-------------------------------------------------------------------------------
+\usepackage[hidelinks]{hyperref}								% Añade los bookmarks y le quita la caja roja, \url{}
+\urlstyle{same}
+%-------------------------------------------------------------------------------
+%                           Estilos de encabezados                             %
+%-------------------------------------------------------------------------------
+\usepackage{fancyhdr, blindtext}								% Libreria para encabezados
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}					% Capitulos y secciones en minusculas
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\fancypagestyle{normalstyle}{%
+  \fancyhf{}													% Reinicial estilos de header y footer
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[LO]{\nouppercase{\rightmark}}
+	\fancyhead[RE]{\nouppercase{\leftmark}}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0pt}
+	\setlength{\headheight}{14.62pt}
+}
+
+\fancypagestyle{Resumen}{%
+  \fancyhf{}													% Reinicial estilos de header y footer
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[LO]{\nouppercase{Resumen}}
+	\fancyhead[RE]{\nouppercase{Resumen}}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0pt}
+	\setlength{\headheight}{14.62pt}
+}
+%-------------------------------------------------------------------------------
+%                            Libreria de codigos                               %
+%-------------------------------------------------------------------------------
+% Paquetes necesarios
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Colores para tablas
+\definecolor{Gray}{RGB}{230,230,230}
+\definecolor{Red}{RGB}{255,191,191}
+
+% Colores personalizados
+\definecolor{verde}{rgb}{0,0.6,0}
+\definecolor{gris}{RGB}{253, 253, 253}
+\definecolor{grisfuerte}{RGB}{140, 140, 140}
+
+% Deficion de lenguajes perzonalizados
+
+% Estilos MATLAB
+\lstdefinestyle{MATLAB}{
+	language=MATLAB,
+	basicstyle=\linespread{1}\tiny\fontfamily{pcr}\selectfont,
+	backgroundcolor=\color{gris},
+	frame=single,
+	frameround=tttt,
+	rulecolor=\color{black},
+	commentstyle=\color{verde},
+	keywordstyle=\color{blue}, %magenta
+	stringstyle=\color{grisfuerte},                  
+	captionpos=t,                    
+	breaklines=true,                       
+	breakatwhitespace=false,
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces=true,
+	columns=flexible,
+	tabsize=4,   
+}
+
+\lstdefinestyle{VHDL}{
+	language=VHDL,
+	basicstyle=\linespread{1}\tiny\fontfamily{pcr}\selectfont,
+	backgroundcolor=\color{gris},
+	frame=single,
+	frameround=tttt,
+	rulecolor=\color{black},
+	commentstyle=\color{verde},
+	keywordstyle=\color{blue}, %magenta
+	stringstyle=\color{grisfuerte},                  
+	captionpos=t,                    
+	breaklines=true,                       
+	breakatwhitespace=false,
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces=true,
+	columns=flexible,
+	tabsize=4,
+	upquote=true,
+}
+
+
+\lstdefinestyle{VHDL_TEXT}{
+	language=VHDL,
+	basicstyle=\linespread{1}\footnotesize\fontfamily{pcr}\selectfont,
+	backgroundcolor=\color{gris},
+	frame=single,
+	frameround=tttt,
+	rulecolor=\color{black},
+	commentstyle=\color{verde},
+	keywordstyle=\color{blue}, %magenta
+	stringstyle=\color{grisfuerte},                  
+	captionpos=t,                    
+	breaklines=true,                       
+	breakatwhitespace=false,
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces=true,
+	columns=flexible,
+	tabsize=4,
+	upquote=true,
+}
+
+
+\lstdefinestyle{C}{
+	language=C,
+	basicstyle=\linespread{1}\tiny\fontfamily{pcr}\selectfont,
+	backgroundcolor=\color{gris},
+	frame=single,
+	frameround=tttt,
+	rulecolor=\color{black},
+	commentstyle=\color{verde},
+	keywordstyle=\color{blue}, %magenta
+	stringstyle=\color{grisfuerte},                  
+	captionpos=t,                    
+	breaklines=true,                       
+	breakatwhitespace=false,
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces=true,
+	columns=flexible,
+	tabsize=4,
+	upquote=true,    
+}
+
+\renewcommand{\lstlistingname}{Código}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{Lista de códigos}% 
+
+
+%-------------------------------------------------------------------------------
+%                           Caption en negritas                                %
+%-------------------------------------------------------------------------------
+\usepackage[labelfont=bf]{caption}
+\captionsetup{labelfont=bf}
+
+
+%-------------------------------------------------------------------------------
+%                           Lista de conceptos                                %
+%-------------------------------------------------------------------------------
+\usepackage[nopostdot,style=super,nonumberlist,toc,nogroupskip]{glossaries}
+\setlength{\glsdescwidth}{0.7\textwidth}
+\makeglossaries
+
+\input{glossaries}

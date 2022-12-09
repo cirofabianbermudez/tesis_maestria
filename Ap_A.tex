@@ -1,0 +1,75 @@
+\chapter{Códigos}
+
+%\lstinputlisting[style = MATLAB, caption =  Nombre de abajo, label = cod:nombre1]{codigos/matlab/test_code.m}
+
+	\section{Códigos en C}
+% Simulaciones en C
+\lstinputlisting[style = C, caption =  Comprobar el número de bytes de los tipos de dato del sistema., label = cod:A1]{codigos/c_codes/A1_check_sys_bytes.c}
+
+\newpage
+\lstinputlisting[style = C, caption =  Simulación de mapa caótico en punto flotante., label = cod:A2]{codigos/c_codes/A2_chaotic_map.c}
+
+\newpage
+\lstinputlisting[style = C, caption =  Simulación de mapa caótico en punto fijo., label = cod:A3]{codigos/c_codes/A3_chaotic_map_fp.c}
+
+\newpage
+\lstinputlisting[style = C, caption =  Convertidor de punto flotante a punto fijo., label = cod:A5]{codigos/c_codes/A5_fixed_point_converter.c}
+
+\newpage
+\lstinputlisting[style = C, caption = Generador de memoria ROM., label = cod:A4]{codigos/c_codes/A4_rom_gen_chaotic_map.c}
+
+\newpage
+	\section{Códigos en VHDL de mapa caótico}
+
+\lstinputlisting[style = VHDL, caption = Multiplexor para control de condición inicial y retroalimentación., label = cod:mux_ic]{codigos/vhdl_codes/chaotic_map/mux_ic.vhd}
+
+\lstinputlisting[style = VHDL, caption = Sumador genérico compatible con punto fijo., label = cod:adder]{codigos/vhdl_codes/chaotic_map/adder.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = ROM para almacenar parámetros en punto fijo del mapa caótico., label = cod:rom_cm]{codigos/vhdl_codes/chaotic_map/rom_cm.vhd}
+
+\lstinputlisting[style = VHDL, caption = Testbench de mapa caótico., label = cod:tb_cm]{codigos/vhdl_codes/chaotic_map/tb_cm.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Multiplicador en punto fijo con truncamiento., label = cod:mult]{codigos/vhdl_codes/chaotic_map/mult.vhd}
+
+\lstinputlisting[style = VHDL, caption = Flip-Flop con habilitación., label = cod:ff_hab]{codigos/vhdl_codes/chaotic_map/ff_hab.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Máquina de estados para control de las iteraciones del mapa caótico., label = cod:fsm_cm]{codigos/vhdl_codes/chaotic_map/fsm_cm.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Descripción completa del mapa caótico., label = cod:chaotic_map]{codigos/vhdl_codes/chaotic_map/chaotic_map.vhd}
+
+
+\newpage
+	\section{Códigos en VHDL de comunicación RS232}
+\lstinputlisting[style = VHDL, caption = Divisor de frecuencia., label = cod:freq_div]{codigos/vhdl_codes/rs232/freq_div.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Detector de paridad tipo par., label = cod:parity]{codigos/vhdl_codes/rs232/parity.vhd}
+
+\lstinputlisting[style = VHDL, caption = Multiplexor para la selección de bits de la comunicación., label = cod:mux_trans]{codigos/vhdl_codes/rs232/mux_trans.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Transmisión del protocolo RS232., label = cod:transmission]{codigos/vhdl_codes/rs232/transmission.vhd}
+
+\lstinputlisting[style = VHDL, caption = Testbench de comunicación RS232., label = cod:tb_trans]{codigos/vhdl_codes/rs232/tb_trans.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Máquina de estados para el control de la transmisión., label = cod:fsm_trans]{codigos/vhdl_codes/rs232/fsm_trans.vhd}
+
+	\section{Códigos en VHDL de ERO}
+
+
+\newpage
+	\section{Códigos en VHDL de arquitectura TRNG}
+\lstinputlisting[style = VHDL, caption = Multiplexor para conexión con la comunicación RS232., label = cod:mux_system_mod]{codigos/vhdl_codes/trng/mux_system_mod.vhd}
+
+\lstinputlisting[style = VHDL, caption = Operación mod 256., label = cod:mod_256]{codigos/vhdl_codes/trng/mod_256.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Máquina de estados de sistema TRNG., label = cod:fsm_system_mod]{codigos/vhdl_codes/trng/fsm_system_mod.vhd}
+
+\newpage
+\lstinputlisting[style = VHDL, caption = Descripción de arquitectura TRNG., label = cod:system_mod]{codigos/vhdl_codes/trng/system_mod.vhd}

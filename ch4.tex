@@ -1,0 +1,165 @@
+\chapter{Pruebas NIST (National Institute of Standards and Technology) }
+
+	Los generadores adecuados para su uso en aplicaciones criptográficas deben cumplir requisitos más estrictos que para otras aplicaciones. En particular, sus resultados deben ser impredecibles en ausencia de conocimiento de las entradas.
+	
+	 *** En este documento se discuten algunos criterios para caracterizar y seleccionar los generadores adecuados. También se trata el tema de las pruebas estadísticas y su relación con el criptoanálisis, y se ofrecen algunas pruebas estadísticas recomendadas.***
+	 
+	 Estas pruebas pueden ser útiles como primer paso para determinar si un generador es o no adecuado para una aplicación criptográfica concreta. Sin embargo, ningún conjunto de pruebas estadísticas puede certificar de forma absoluta que un generador es adecuado para su uso en una aplicación concreta, es decir, las pruebas estadísticas no pueden sustituir al criptoanálisis.
+	 
+	
+	\section{Introducción a las pruebas de números aleatorios}	
+	 
+	La necesidad de números aleatorios y pseudoaleatorios surge en muchas aplicaciones criptográficas. Por ejemplo, los criptosistemas habituales emplean claves que deben generarse de forma aleatoria. Muchos protocolos criptográficos también requieren entradas aleatorias o pseudoaleatorias en varios puntos, por ejemplo, para las cantidades auxiliares utilizadas en la generación de firmas digitales, o para generar desafíos en los protocolos de autenticación.
+	
+	Estas pruebas tratan de la comprobación de la aleatoriedad de los generadores de números aleatorios y pseudoaleatorios que pueden utilizarse para muchos fines, incluyendo aplicaciones criptográficas, de modelado y de simulación
+	
+	Es un conjunto de pruebas estadísticas de aleatoriedad. El Instituto Nacional de Normas y Tecnología (NIST) considera que estos procedimientos son útiles para detectar desviaciones de una secuencia binaria respecto a la aleatoriedad. Sin embargo, el probador debe tener en cuenta que las desviaciones aparentes de la aleatoriedad pueden deberse a un generador mal diseñado o a anomalías que aparecen en la secuencia binaria que se prueba (es decir, se espera un cierto número de fallos en las secuencias aleatorias producidas por un generador particular). Corresponde a la persona que realiza la prueba determinar la interpretación correcta de los resultados de la misma. *** En el apartado 4 se explica la estrategia de las pruebas y la interpretación de los resultados.***
+
+	\subsection{Discusión general}
+	Hay dos tipos básicos de generadores utilizados para producir secuencias aleatorias: los \textbf{generadores de números aleatorios} (RNGs) y los \textbf{generadores de números pseudoaleatorios} (PRNGs). Para las aplicaciones criptográficas, ambos tipos de generadores producen una secuencia de ceros y unos que puede dividirse en sub-secuencias o bloques de números aleatorios. 
+	
+	\subsection{Aleatoriedad}
+	
+	Una secuencia de bits aleatoria podría interpretarse como el resultado de los lanzamientos de una moneda imparcial con caras etiquetadas como ``0'' y ``1'', en la que cada lanzamiento tiene una probabilidad de exactamente $1/2$ de producir un ``0'' o un ``1''. Además, los lanzamientos son independientes entre sí: el resultado de cualquier lanzamiento anterior de la moneda no afecta a los lanzamientos futuros. La moneda ``justa'' insesgada es, por tanto, el generador perfecto de secuencias de bits aleatorias, ya que los valores ``0'' y ``1'' se distribuirán aleatoriamente (y [0,1] se distribuirá uniformemente). Todos los elementos de la secuencia se generan independientemente unos de otros, y no se puede predecir el valor del siguiente elemento de la secuencia, independientemente de cuántos elementos se hayan producido ya.
+	
+	Obviamente, el uso de monedas insesgadas para fines criptográficos es poco práctico. No obstante, la salida hipotética de un generador idealizado de una secuencia aleatoria verdadera sirve como punto de referencia para la evaluación de los generadores de números aleatorios y pseudoaleatorios.
+	
+	\subsection{Imprevisibilidad}
+	
+	Los números aleatorios y pseudoaleatorios generados para aplicaciones criptográficas deben ser impredecibles. En el caso de los PRNGs, si la semilla es desconocida, el siguiente número de salida en la secuencia debe ser impredecible a pesar de cualquier conocimiento de los números aleatorios anteriores en la secuencia. Esta propiedad se conoce como imprevisibilidad hacia adelante. Tampoco debe ser posible determinar la semilla a partir del conocimiento de cualquier valor generado (es decir, también se requiere la imprevisibilidad hacia atrás). No debe ser evidente ninguna correlación entre una semilla y cualquier valor generado a partir de esa semilla; cada elemento de la secuencia debe parecer el resultado de un evento aleatorio independiente cuya probabilidad es $1/2$.
+	
+	Para garantizar la imprevisibilidad hacia adelante, hay que tener cuidado al obtener las semillas. Los valores producidos por un PRNG son completamente predecibles si se conocen la semilla y el algoritmo de generación. Dado que en muchos casos el algoritmo de generación está disponible públicamente, la semilla debe mantenerse en secreto y no debe poder derivarse de la secuencia pseudoaleatoria que produce. Además, la propia semilla debe ser impredecible 
+	
+	\subsection{Generadores de números aleatorios (RNG)}
+	
+	El primer tipo de generador de secuencias es un generador de números aleatorios (RNG). Un RNG utiliza una fuente no determinista (es decir, la fuente de entropía), junto con alguna función de procesamiento (es decir, el proceso de destilación de entropía) para producir aleatoriedad. El uso de un proceso de destilación es necesario para superar cualquier debilidad en la fuente de entropía que resulte en la producción de números no aleatorios (por ejemplo, la aparición de largas cadenas de ceros o unos). La fuente de entropía suele consistir en alguna cantidad física, como el ruido en un circuito eléctrico, el tiempo de los procesos del usuario (por ejemplo, las pulsaciones de las teclas o los movimientos del ratón) o los efectos cuánticos en un semiconductor. Se pueden utilizar varias combinaciones de estas entradas.
+	
+	Los resultados de un RNG pueden utilizarse directamente como números aleatorios o pueden introducirse en un generador de números pseudoaleatorios (PRNG). Para ser utilizado directamente (es decir, sin procesamiento adicional), la salida de cualquier RNG necesita satisfacer estrictos criterios de aleatoriedad medidos por pruebas estadísticas para determinar que las fuentes físicas de las entradas del RNG sean aleatorias. Por ejemplo, una fuente física como el ruido electrónico puede contener una superposición de estructuras regulares, como ondas u otros fenómenos periódicos, que pueden parecer aleatorios, pero que se determinan como no aleatorios mediante pruebas estadísticas.
+	
+	Para fines criptográficos, la salida de los RNGs debe ser impredecible. Sin embargo, algunas fuentes físicas (por ejemplo, los vectores fecha/hora) son bastante predecibles. Estos problemas pueden mitigarse combinando las salidas de diferentes tipos de fuentes para utilizarlas como entradas de un RNG. Sin embargo, las salidas resultantes del RNG pueden seguir siendo deficientes cuando se evalúan mediante pruebas estadísticas. Además, la producción de números aleatorios de alta calidad puede llevar demasiado tiempo, lo que hace que dicha producción no sea deseable cuando se necesita una gran cantidad de números aleatorios. Para producir grandes cantidades de números aleatorios, pueden ser preferibles los generadores de números pseudoaleatorios.
+	
+	\subsection{Generadores de números pseudoaleatorios (PRNG)}
+	
+	El segundo tipo de generador es un generador de números pseudoaleatorios (PRNG). Un PRNG utiliza una o más entradas y genera múltiples números ``pseudoaleatorios''. Las entradas de los PRNG se denominan semillas. En contextos en los que se necesita la imprevisibilidad, la propia semilla debe ser aleatoria e imprevisible. Por lo tanto, por defecto, un PRNG debe obtener sus semillas de las salidas de un RNG; es decir, un PRNG requiere un RNG como compañero.
+	
+	Los resultados de un PRNG suelen ser funciones deterministas de la semilla; es decir, toda la aleatoriedad real se limita a la generación de la semilla. La naturaleza determinista del proceso da lugar al término ``pseudoaleatorio''. Dado que cada elemento de una secuencia pseudoaleatoria es reproducible a partir de su semilla, sólo es necesario guardar la semilla si se requiere la reproducción o validación de la secuencia pseudoaleatoria.
+	
+	Irónicamente, los números pseudoaleatorios suelen parecer más aleatorios que los obtenidos de fuentes físicas. Si una secuencia pseudoaleatoria se construye correctamente, cada valor de la secuencia se produce a partir del valor anterior mediante transformaciones que parecen introducir aleatoriedad adicional. Una serie de estas transformaciones puede eliminar las autocorrelaciones estadísticas entre la entrada y la salida. Así, las salidas de un PRNG pueden tener mejores propiedades estadísticas y producirse más rápidamente que un RNG.
+	
+	\subsection{Testing (Pruebas) }
+	
+	Se pueden aplicar varias pruebas estadísticas a una secuencia para intentar comparar y evaluar la secuencia con una secuencia verdaderamente aleatoria. La aleatoriedad es una propiedad probabilística; es decir, las propiedades de una secuencia aleatoria pueden caracterizarse y describirse en términos de probabilidad. El resultado probable de las pruebas estadísticas, cuando se aplican a una secuencia verdaderamente aleatoria, se conoce a priori y puede describirse en términos probabilísticos. Hay un número infinito de pruebas estadísticas posibles, cada una de las cuales evalúa la presencia o ausencia de un ``patrón'' que, si se detecta, indicaría que la secuencia no es aleatoria. Dado que hay tantas pruebas para juzgar si una secuencia es aleatoria o no, ningún conjunto finito específico de pruebas se considera ``completo''. Además, los resultados de las pruebas estadísticas deben interpretarse con cierto cuidado y precaución para evitar conclusiones incorrectas sobre un generador concreto.
+	
+	Una prueba estadística se formula para probar una hipótesis nula específica (\textbf{null hyphotesis}) (H0). En este caso, la hipótesis nula que se somete a prueba es que la secuencia que se comprueba es \textbf{aleatoria}. Asociada a esta hipótesis nula está la hipótesis alternativa (Ha), que, en este caso, es que la secuencia no es aleatoria. Para cada prueba aplicada, se deriva una decisión o conclusión que acepta o rechaza la hipótesis nula, es decir, si el generador está (o no) produciendo valores aleatorios, basándose en la secuencia que se produjo.
+	
+	Para cada prueba, hay que elegir un estadístico(indicador) de aleatoriedad relevante y utilizarlo para determinar la aceptación o el rechazo de la hipótesis nula. Bajo una hipótesis de aleatoriedad, dicho estadístico(indicador) tiene una distribución de valores posibles. Una distribución teórica de referencia de este estadístico(indicador) bajo la hipótesis nula se determina mediante métodos matemáticos. A partir de esta distribución de referencia, se determina un \textbf{valor crítico} (normalmente, este valor está ``lejos'' en las colas de la distribución, por ejemplo, en el punto del 99 \%). Durante una prueba, se calcula un valor estadístico de prueba sobre los datos (la secuencia que se está probando). Este valor de la estadística de prueba se compara con el valor crítico. Si el valor de la estadística de prueba supera el valor crítico, se rechaza la hipótesis nula de aleatoriedad. En caso contrario, no se rechaza la hipótesis nula (la hipótesis de aleatoriedad) (es decir, se acepta la hipótesis).
+	
+	En la práctica, la razón por la que la prueba de hipótesis estadística funciona es que la distribución de referencia y el valor crítico dependen y se generan bajo un supuesto tentativo de aleatoriedad. Si el supuesto de aleatoriedad es, de hecho, cierto para los datos en cuestión, entonces el valor estadístico de prueba calculado resultante en los datos tendrá una probabilidad muy baja (por ejemplo, 0,01 \%) de superar el valor crítico. Por otro lado, si el valor calculado de la estadística de prueba supera el valor crítico (es decir, si el suceso de baja probabilidad se produce de hecho), entonces, desde el punto de vista de la prueba de hipótesis estadística, el suceso de baja probabilidad no debería producirse de forma natural. Por lo tanto, cuando el valor estadístico de la prueba calculado supera el valor crítico, se llega a la conclusión de que el supuesto original de aleatoriedad es sospechoso o defectuoso. En este caso, la prueba de hipótesis estadística arroja las siguientes conclusiones: rechazar H0 (aleatoriedad) y aceptar Ha (no aleatoriedad).
+	
+	La prueba de hipótesis estadística es un procedimiento de generación de conclusiones que tiene dos resultados posibles: aceptar H0 (los datos son aleatorios) o aceptar Ha (los datos no son aleatorios). La siguiente tabla relaciona el estado verdadero (desconocido) de los datos en cuestión con la conclusión a la que se llega mediante el procedimiento de prueba.
+	
+
+
+\begin{table}[htbp]
+\centering
+\caption{Tipos de errores.}
+\resizebox{0.95\linewidth}{!}{ 
+\begin{tabular}{|c|cc|}
+\hline
+\multirow{2}{*}{Situación Verdadera}               & \multicolumn{2}{c|}{Conclusión}             \\ \cline{2-3} 
+                                              & \multicolumn{1}{c|}{Aceptar H0}  & Aceptar Ha (rechazar H0)   \\ \hline
+Los datos son aleatorios (H0 es verdadera)    & \multicolumn{1}{c|}{No error} & Error de Tipo I \\ \hline
+Los datos no son aleatorios (Ha es verdadera) & \multicolumn{1}{c|}{Error de Tipo II} & No error \\ \hline
+\end{tabular}
+}
+\label{tab:asd}%
+\end{table}
+
+
+Si los datos son, en realidad, aleatorios, la conclusión de rechazar la hipótesis nula (es decir, concluir que los datos no son aleatorios) se producirá un pequeño porcentaje de veces. Esta conclusión se denomina error de Tipo I. Si los datos son, en realidad, no aleatorios, la conclusión de aceptar la hipótesis nula (es decir, concluir que los datos son realmente aleatorios) se denomina error de Tipo II. Las conclusiones de aceptar H0 cuando los datos son realmente aleatorios, y de rechazar H0 cuando los datos son no aleatorios, son correctas.
+
+
+La probabilidad de un error de Tipo I suele denominarse \textbf{nivel de significación} de la prueba. Esta probabilidad puede establecerse antes de una prueba y se denota como $\alpha$. Para la prueba, $\alpha$ es la probabilidad de que la prueba indique que la secuencia no es aleatoria cuando realmente lo es. Es decir, una secuencia parece tener propiedades no aleatorias incluso cuando un ``buen`` generador produjo la secuencia. Los valores habituales de $\alpha$ en criptografía son de aproximadamente 0,01.
+
+La probabilidad de un error de Tipo II se denota como $\beta$. Para la prueba, $\beta$ es la probabilidad de que la prueba indique que la secuencia es aleatoria cuando no lo es; es decir, un generador ``malo'' produjo una secuencia que parece tener propiedades aleatorias. A diferencia de $\alpha$, $\beta$ no es un valor fijo. $\beta$ puede tomar muchos valores diferentes porque hay un número infinito de formas en que una secuencia de datos puede ser no aleatoria, y cada forma diferente produce un $\beta$ diferente. El cálculo del error de Tipo II $\beta$ es más difícil que el cálculo de $\alpha$ debido a los muchos tipos posibles de no aleatoriedad.
+
+Uno de los principales objetivos de las siguientes pruebas es minimizar la probabilidad de un error de Tipo II, es decir, minimizar la probabilidad de aceptar una secuencia producida por un generador como buena cuando el generador era realmente malo. Las probabilidades $\alpha$ y $\beta$ están relacionadas entre sí y con el tamaño $n$ de la secuencia probada, de manera que si se especifican dos de ellas, el tercer valor se determina automáticamente. Los profesionales suelen seleccionar un tamaño de muestra $n$ y un valor para $\alpha$ (la probabilidad de un error de Tipo I, el nivel de significación). A continuación, se selecciona un punto crítico para una estadística determinada que produzca el menor $\beta$ (la probabilidad de un error de Tipo II). Es decir, se selecciona un tamaño de muestra adecuado junto con una probabilidad aceptable de decidir que un mal generador ha producido la secuencia cuando realmente es aleatoria. A continuación, se elige el punto de corte de la aceptabilidad de forma que la probabilidad de aceptar falsamente una secuencia como aleatoria tenga el menor valor posible.
+
+Cada prueba se basa en un valor estadístico de prueba calculado, que es una función de los datos. Si el valor estadístico de la prueba es $S$ y el valor crítico es $t$, entonces la probabilidad de error de Tipo I es :
+\begin{equation}
+P(S > t || \text{Ho es verdadera}) = P(\text{rechazar Ho} | \text{H0 es verdadera})
+\end{equation}
+, y la probabilidad de error de Tipo II es 
+
+\begin{equation}
+P(S \leq t | \text{H0 es falsa}) = P(\text{aceptar H0} | \text{H0 es falsa})
+\end{equation}
+
+
+La estadística de la prueba se utiliza para calcular un $P$-value que resume la fuerza de la evidencia contra la hipótesis nula. Para estas pruebas, cada $P$-value es la probabilidad de que un generador de números aleatorios perfecto hubiera producido una secuencia menos aleatoria que la secuencia que se probó, dado el tipo de no aleatoriedad evaluado por la prueba. Si el $P$-value de una prueba es igual a $1$, la secuencia parece tener una aleatoriedad perfecta. Un $P$-value de cero indica que la secuencia parece ser completamente no aleatoria. Se puede elegir un nivel de significación ($\alpha$) para las pruebas. Si el  $P\text{-value} \geq \alpha$, se acepta la hipótesis nula; es decir, la secuencia parece ser aleatoria. Si el $P\text{-value} < \alpha$, entonces se rechaza la hipótesis nula; es decir, la secuencia parece no ser aleatoria. El parámetro $\alpha$ denota la probabilidad del error de Tipo I. Normalmente, $\alpha$ se elige en el rango [0,001, 0,01].
+
+
+\begin{itemize}
+ \item Un $\alpha$ de 0,001 indica que se esperaría que una de cada 1000 secuencias fuera rechazada por la prueba si la secuencia fuera aleatoria. Para un $P\text{-value} \geq 0,001$, una secuencia se consideraría aleatoria con una confianza del 99,9\%. Para un $P\text{-value} < 0,001$, una secuencia se consideraría no aleatoria con una confianza del 99,9\%.
+ 
+ \item Un $\alpha$ de 0,01 indica que se esperaría que se rechazara 1 secuencia de cada 100. Un $P\text{-value} \geq 0,01$ significaría que la secuencia se consideraría aleatoria con una confianza del 99\%. Un $P\text{-value} < 0,01$ significaría que la conclusión es que la secuencia no es aleatoria con una confianza del 99\%
+\end{itemize}
+
+
+Se ha elegido que $\alpha$ sea 0,01. Obsérvese que, en muchos casos, los parámetros de los ejemplos no se ajustan a los valores recomendados; los ejemplos son sólo ilustrativos.
+
+	\subsection{Consideraciones sobre la aleatoriedad, la imprevisibilidad y las pruebas}
+	
+	Las siguientes suposiciones se hacen con respecto a las secuencias binarias aleatorias que se van a probar:
+	
+	\begin{enumerate}
+		\item Uniformidad: En cualquier punto de la generación de una secuencia de bits aleatorios o pseudoaleatorios, la aparición de un cero o un uno es igualmente probable, es decir, la probabilidad de cada uno es exactamente $1/2$. El número esperado de ceros (o unos) es $n/2$, donde n = la longitud de la secuencia.
+		\item Escalabilidad: Cualquier prueba aplicable a una secuencia puede aplicarse también a subsecuencias extraídas al azar. Si una secuencia es aleatoria, cualquier subsecuencia extraída debería ser también aleatoria. Por lo tanto, cualquier subsecuencia extraída debería pasar cualquier prueba de aleatoriedad.
+		\item Consistencia: El comportamiento de un generador debe ser consistente en todos los valores iniciales (semillas). Es inadecuado probar un PRNG basado en la salida de una sola semilla, o un RNG sobre la base de una salida producida a partir de una única salida física
+	\end{enumerate}
+	
+	\subsection{Definiciones}
+	
+	\begin{itemize}
+		\item \textbf{Valor critico: }El valor que supera la estadística de prueba con una pequeña probabilidad (nivel de significación). Valor ``buscado'' o calculado de una estadística de prueba (es decir, un valor de la estadística de prueba) que, por construcción, tiene una pequeña probabilidad de ocurrir (por ejemplo, 5\%) cuando la hipótesis nula de aleatoriedad es verdadera.
+		
+		\item \textbf{Dependencia lineal: }En el contexto de la prueba de la matriz de rango binario, la dependencia lineal se refiere a vectores de m bits que pueden expresarse como una combinación lineal de los vectores de m bits linealmente independientes.
+		
+		\item \textbf{$P\text{-value}$ :}La probabilidad (bajo la hipótesis nula de aleatoriedad) de que la estadística de prueba elegida asuma valores iguales o peores que el valor de la estadística de prueba observada al considerar la hipótesis nula. El valor P se denomina frecuentemente ``probabilidad de cola''.
+		
+		\item \textbf{Secuencia binaria aleatoria: }Una secuencia de bits para la que la probabilidad de que cada bit sea un ``0'' o un ``1'' es $172$. El valor de cada bit es independiente de cualquier otro bit de la secuencia, es decir, cada bit es imprevisible.
+		
+		\item \textbf{Run: }Una secuencia ininterrumpida de bits similares (es decir, todos ceros o todos unos).
+	\end{itemize}
+	
+	\section{Pruebas de generación de números aleatorios}
+	
+	El conjunto de pruebas del NIST es un paquete estadístico que consta de 15 pruebas desarrolladas para comprobar la aleatoriedad de secuencias binarias (de longitud arbitraria) producidas por generadores de números aleatorios o pseudoaleatorios basados en hardware o software. Estas pruebas se centran en una variedad de tipos diferentes de no aleatoriedad que podrían existir en una secuencia. Algunas pruebas son descomponibles en una variedad de subpruebas. Las 15 pruebas son:
+
+	\begin{enumerate}[noitemsep]
+		\item The Frequency (Monobit) Test
+		\item Frequency Test within a Block
+		\item The Runs Test
+		\item Tests for the Longest-Run-of-Ones in a Block
+		\item The Binary Matrix Rank Test
+		\item The Discrete Fourier Transform (Spectral) Test
+		\item The Non-overlapping Template Matching Test
+		\item The Overlapping Template Matching Test
+		\item Maurer's ``Universal Statistical'' Test
+		\item The Linear Complexity Test
+		\item The Serial Test
+		\item The Approximate Entropy Test
+		\item The Cumulative Sums (Cusums) Test
+		\item The Random Excursions Test
+		\item The Random Excursions Variant Test				\end{enumerate}
+
+El orden de aplicación de las pruebas en el conjunto de pruebas es arbitrario. Sin embargo, se recomienda realizar primero la prueba de frecuencia, ya que proporciona la prueba más básica de la existencia de no aleatoriedad en una secuencia, concretamente, de no uniformidad. Si esta prueba falla, la probabilidad de que otras pruebas fallen es alta. (Nota: La prueba estadística que requiere más tiempo es la prueba de Complejidad Lineal).
+
+El paquete estadístico incluye el código fuente y conjuntos de datos de muestra. El código de las pruebas se ha desarrollado en ANSI C. Se supone que algunas entradas son valores globales en lugar de parámetros de llamada.
+
+
+Una serie de pruebas del conjunto de pruebas tienen la \textbf{normal estándar} y la \textbf{chi-cuadrado} ( $\chi^{2}$ ) como distribuciones de referencia. Si la secuencia sometida a prueba no es aleatoria, la estadística de prueba calculada caerá en las regiones extremas de la distribución de referencia. La distribución normal estándar (es decir, la curva en forma de campana) se utiliza para comparar el valor de la estadística de prueba obtenida a partir del RNG con el valor esperado de la estadística bajo el supuesto de aleatoriedad. La estadística de prueba para la distribución normal estándar es de la forma $z = (x - \mu) / \sigma$, donde $x$ es el valor de la estadística de prueba de la muestra, y $\mu$ y $\sigma^{2}$ son el valor esperado y la varianza de la estadística de prueba. La distribución $\chi^{2}$ (es decir, una curva sesgada a la izquierda) se utiliza para comparar la bondad de ajuste de las frecuencias observadas de una medida de la muestra con las correspondientes frecuencias esperadas de la distribución hipotetizada. La estadística de la prueba es de la forma $\chi^{2} = \sum_{i=1}^{k} \frac{\left( o_{i} - e_{i}\right )^{2}}{e_{i}}   $ donde $o_{i}$ y $e_{i}$ son las frecuencias observadas y esperadas de la medida, respectivamente.
+
+Para muchas de las pruebas de este conjunto, se ha supuesto que el tamaño de la longitud de la secuencia, n, es grande (del orden de 103 a 107). Para tamaños de muestra tan grandes de n, se han derivado y aplicado distribuciones asintóticas de referencia para realizar las pruebas. La mayoría de las pruebas son aplicables a valores más pequeños de n. Sin embargo, si se utilizan para valores más pequeños de n, las distribuciones asintóticas de referencia serían inapropiadas y tendrían que ser sustituidas por distribuciones exactas que normalmente serían difíciles de calcular.
+
+	

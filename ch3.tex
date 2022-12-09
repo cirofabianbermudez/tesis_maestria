@@ -1,0 +1,118 @@
+\chapter{AES / algoritmo Rijndael}
+
+	\section{Evolución de los códigos y su impacto en la historia}
+	
+	
+	\section{Importancia de los códigos hoy}
+	
+	A medida que la información se convierte en un bien cada vez más valioso y que la revolución de las comunicaciones cambia la sociedad, el proceso de codificación de mensajes, conocido como encriptación, desempeñará un papel cada vez más importante en la vida cotidiana.
+	
+	Hoy en día nuestras llamadas telefónicas rebotan en los satélites y nuestros correos electrónicos pasan por varias computadoras, y ambas formas de comunicación pueden ser interceptadas con facilidad, poniendo en peligro nuestra privacidad.
+	
+	El cifrado(La encriptación) es la única forma de proteger nuestra privacidad y garantizar el éxito del mercado digital. El arte de la comunicación secreta, también conocida como criptografía, proporcionará los candados y las llaves de la era de la información.
+	
+	
+	La comunicación secreta lograda mediante la ocultación de la existencia de un mensaje se conoce como esteganografía, derivado de las palabras griegas \textit{steganos}, que significa encubierto, y \textit{grafo}, que significa escribir.  Padece de una debilidad fundamental. Si registran al mensajero y descubren el mensaje, el contenido de la comunicación secreta se revela en el acto.
+	
+	
+	(Histaiaero afeitó la cabeza de su mensajero, escribió el mensaje en su cuero cabelludo y luego esperó a que le volviera a crecer el pelo. )
+	
+	 (Se escribían mensajes sobre seda fina, que luego era aplastada hasta formar una pelotita diminuta que se recubría de cera. Entonces el mensajero se trabaja la bola de cera. ) 
+	 
+	 (Escribir con tinta invisible)
+	 
+	 paralelamente al desarrollo de la esteganografía, se produjo la evolución de la criptografía, término derivado de la palabra griega \textit{kryptos}, que significa escondido. El objetivo de la criptografía no es ocultar la existencia de un mensaje, sino más bien ocultar su significado, un proceso que se conoce como codificación (Encryption). Para hacer que el mensaje sea ininteligible se codifica siguiendo un protocolo específico, sobre el cual se han puesto de acuerdo de antemano el emisor y el receptor a quien va dirigido. De esta forma, dicho receptor puede invertir el protocolo codificador y hacer que el mensaje sea comprensible. La ventaja de la
+criptografía es que si el enemigo intercepta un mensaje cifrado, éste es ilegible. Sin conocer el protocolo codificador, al enemigo le resultaría difícil, cuando no imposible, recrear el mensaje original a partir del texto cifrado.
+	 
+	 
+	 De las dos ramas de la comunicación secreta, la criptografía es la más poderosa a causa de su habilidad para evitar que la información caiga en manos enemigas.
+	 
+	 
+	A su vez, la criptografía misma puede ser dividida en dos ramas, conocidas como \textbf{trasposición} y \textbf{sustitución}. En la trasposición, las letras del mensaje simplemente se colocan de otra manera, generando así un anagrama. Para que la trasposición sea efectiva, la combinación de letras necesita seguir un sistema sencillo, que haya sido acordado previamente por el emisor y el receptor, pero que se mantenga secreto frente al enemigo. Por ejemplo, los niños en la escuela a veces envían mensajes utilizando la trasposición de \textit{riel}(rail fence), en la que el mensaje se escribe alternando las letras en dos líneas separadas. A continuación, la secuencia de letras de la línea inferior se añade al final de la secuencia de la línea superior, creándose así el mensaje cifrado final.
+	
+	Otra forma de trasposición es la producida en el primer aparato criptográfico militar de la Historia, el escitalo espartano.  El escitalo es una vara de madera sobre la que se enrosca una tira de cuero o de pergamino. El emisor escribe el mensaje a lo largo de la longitud del escitalo y luego desenrosca la tira, que ahora parece llevar una lista de letras sin sentido. El mensaje ha sido codificado. Para recuperar el mensaje, el receptor simplemente enrosca la tira de cuero en torno a un escitalo del mismo diámetro que el usado por el emisor.
+	
+	
+	La alternativa a la trasposición es la sustitución. Una de las descripciones más antiguas de codificación por sustitución aparece en el Kamasutra, un texto escrito en el siglo IV por el erudito brahmín Vatsyayana, pero que se basa en manuscritos que se remontan al siglo IV a. C. El Kamasutra recomienda que las mujeres deberían estudiar 64 artes, como cocinar, saber vestirse, dar masajes y preparar perfumes. La lista incluye también algunas artes menos obvias, como la prestidigitación, el ajedrez, la encuadernación de libros y la carpintería. El número 45 de la lista es mlecchita-vikalpa, el arte de la escritura secreta, preconizado para ayudar a las mujeres a ocultar los detalles de sus relaciones amorosas.  Una de las técnicas recomendadas es emparejar al azar las letras del alfabeto y luego sustituir cada letra del mensaje original por su pareja.
+	
+	
+	Esta forma de escritura secreta se conoce como cifra de sustitución (substitution cipher) porque cada
+letra del texto llano (plain text) (el mensaje antes del cifrado [encryption]) se sustituye por una letra diferente para producir el texto cifrado (cyphertext) (el mensaje después del cifrado), actuando así de manera complementaria al cifrado de transposición. En la trasposición, cada letra mantiene su identidad pero cambia su posición, mientras que en la sustitución, cada letra cambia su identidad pero mantiene su posición.
+
+	Julio César utilizaba una cifra por sustitución, el simplemente reemplazó cada letra del mensaje con la letra que está tres lugares más abajo en el alfabeto. Los criptógrafos a menudo piensan en términos del alfabeto llano (plain alphabet), el alfabeto utilizado para escribir el mensaje original, y el alfabeto cifrado (cipher alphabet), las letras que sustituyen a las del alfabeto llano.
+	
+	Cuando el alfabeto llano se coloca sobre el alfabeto cifrado, queda claro que el alfabeto cifrado ha sido movido tres lugares, por lo que esta forma de sustitución a menudo es llamada la cifra de cambio del César (Caesar shift cipher), o simplemente, la cifra del César. Una cifra (Cipher) es el nombre que se da a cualquier forma de sustitución criptográfica en la que cada letra es reemplazada por otra letra o símbolo.
+	 
+	 Es evidente que al utilizar cualquier cambio de entre 1 y 25 lugares es posible generar 25 cifras distintas. De hecho, si no nos limitamos a cambiar ordenadamente el alfabeto y permitimos que el alfabeto cifrado sea cualquier combinación del alfabeto llano, podemos generar un número aún mayor de cifras distintas.
+	 
+	 
+	 Cada una de las cifras puede ser considerada en términos de un método de codificación(encryptino) general, conocido como el algoritmo(algorithm), y una clave(key), que especifica los detalles exactos de una codificación (encryption) particular.
+	 
+	 En este caso, el algoritmo conlleva sustituir cada letra del alfabeto llano por una letra proveniente de un alfabeto cifrado, y el alfabeto cifrado puede consistir en cualquier combinación del alfabeto llano. La clave define el alfabeto cifrado exacto que hay que usar para una codificación particular.
+	 
+	 
+	 Un enemigo que estudie un mensaje codificado interceptado puede tener una fuerte sospecha de la existencia del algoritmo, pero quizá no conozca la clave exacta. Si el alfabeto cifrado, la clave, se mantiene como secreto bien guardado entre el emisor y el receptor, el enemigo no podrá descifrar el mensaje interceptado.
+	 
+	 
+	  La importancia de la clave, a diferencia del algoritmo, es un principio perdurable de la criptografía. Fue expuesto definitivamente en 1883 por el lingüista holandés Augusto Kerckhoffs von Nieuwenhof en su libro La Cryptographie militaire: el Principio de Kerckhoffs: La seguridad de un cripto-sistema no debe depender de mantener secreto el cripto-algoritmo. La seguridad depende sólo de mantener secreta la clave. Además de mantener secreta la clave, un sistema de cifrado seguro debe tener también una amplia gama de claves potenciales
+	  
+	  La cifra de sustitución monoalfabética es el nombre general que se da a cualquier cifra de sustitución en la que el alfabeto cifrado consiste en letras o en símbolos, o en una mezcla de ambos. Todas las cifras de sustitución que hemos visto hasta ahora pertenecen a esta categoría general.
+	 
+	 Sin embargo, además de utilizar cifras, los eruditos árabes también eran capaces de destruirlas. De hecho, fueron ellos quienes inventaron el criptoanálisis, la ciencia de descifrar un mensaje sin conocer la clave. Mientras el criptógrafo desarrolla nuevos métodos de escritura secreta, es el criptoanalista el que se esfuerza por encontrar debilidades en estos métodos, para penetrar en los mensajes secretos. Los criptoanalistas árabes lograron encontrar un método para descifrar la cifra de sustitución monoalfabética, la cual había permanecido invulnerable durante muchos siglos.
+	 
+	 El criptoanálisis no podía ser inventado hasta que una civilización hubiese alcanzado un nivel suficientemente sofisticado de erudición en varias disciplinas, incluidas las matemáticas, la estadística y la lingüística.
+	 
+	 También analizaron las letras individuales y descubrieron en particular que algunas letras son más corrientes que otras. Las letras a y 1 son las más frecuentes en árabe, en parte a causa del artículo definido al-, mientras que letras como la j sólo aparecen con una décima parte de la frecuencia. Esta observación aparentemente inocua conduciría al primer gran avance hacia el criptoanálisis.
+	 
+		Al Kindi fue el autor de 290 libros de medicina, astronomía, matemáticas, lingüística y música. Su tratado más importante, que no fue redescubierto hasta 1987 en el Archivo Sulaimaniyyah Ottoman de Estambul, se titulaba Sobre el desciframiento de mensajes criptográficos	 
+	 
+	 
+	 Aunque contiene detallados debates sobre estadística, fonética árabe y sintaxis árabe,  el revolucionario sistema de criptoanálisis de Al Kindi está compendiado en dos breves párrafos: Una manera de resolver un mensaje cifrado, si sabemos en qué lengua está escrito, es encontrar un texto llano diferente escrito en la misma lengua y que sea lo suficientemente largo para llenar alrededor de una hoja, y luego contar cuántas veces aparece cada letra. A la letra que aparece con más frecuencia la llamamos primera, a la siguiente en frecuencia la llamamos segunda, a la siguiente tercera, y así sucesivamente, hasta que hayamos cubierto todas las letras que aparecen en la muestra de texto llano. Luego observamos el texto cifrado que queremos resolver y clasificamos sus símbolos de la misma manera. Encontramos el símbolo que aparece con más frecuencia y lo sustituimos con la forma de la letra primera de la muestra de texto llano, el siguiente símbolo más corriente lo sustituimos por la forma de la letra segunda, y el siguiente en frecuencia lo cambiamos por la forma de la letra tercera, y así sucesivamente, hasta que hayamos cubierto todos los símbolos del criptograma que queremos resolver.
+	 
+	 La técnica de Al Kindi, conocida como análisis de frecuencia, muestra que no es necesario revisar cada una de los billones de claves potenciales.
+	 
+	  Un código se define como una sustitución al nivel de las palabras o las frases, mientras que una cifra se define como una sustitución al nivel de las letras. 
+	  
+	  
+	  Technically, a code is defined as substitution at the level of words or phrases, whereas a cipher is defined as substitution at the level of letters. Hence the term encipher means to scramble a message using a cipher, while encode means to scramble a message using a code. Similarly, the term decipher applies to unscrambling an enciphered message, and decode to unscrambling an encoded message. The terms encrypt and decrypt are more general, and cover scrambling and unscrambling with respect to both codes and ciphers.
+	  
+	  Técnicamente, un código se define como una sustitución al nivel de las palabras o las frases, mientras que una cifra se define como una sustitución al nivel de las letras. Por eso, el término cifrar significa ocultar un mensaje utilizando una cifra, mientras que codificar significa ocultar un mensaje utilizando un código. De manera similar, el término descifrar se aplica a la resolución de un mensaje cifrado, es decir, en cifra, y el término descodificar a la resolución de un mensaje codificado.
+
+Los términos codificar(encrypt) y descodificar(decrypt) son más generales, y tienen relación tanto con códigos como con cifras. La Figura 7 presenta un breve resumen de estas definiciones. En general, me ajustaré a estas definiciones, pero cuando el sentido esté claro, puede que use términos como «descifrar un código» para describir un proceso que técnicamente se llamaría «descifrar una cifra» —el uso generalizado de estos términos hace que estén ampliamente aceptados.
+
+Un nomenclador es un sistema de codificación que se basa en un alfabeto cifrado, el cual se utiliza para codificar la mayor parte de un mensaje, y en una lista limitada de palabras codificadas. Por ejemplo, un libro nomenclador podría consistir de una portada que contiene el alfabeto cifrado y una segunda página que contiene una lista de palabras codificadas. A pesar del añadido de palabras codificadas, un nomenclador no es mucho más seguro que una cifra corriente, porque la mayor parte del mensaje puede ser descifrado utilizando el análisis de frecuencia y las palabras codificadas restantes pueden ser adivinadas por el contexto.
+	 
+	 
+	 \section{Conceptos importantes}
+	 	\begin{itemize}
+	 		\item Steganography - Esteganografia.
+	 		\item Cryptography - Criptografía
+	 		\item Encryption - Cifrado - codificación
+	 		\item Transposition - Transposición
+	 		\item Substitution - Sustitución
+	 		\item Substitution cipher - Cifrado por sustitución
+	 		\item Plaintext - texto sin formato - texto plano - texto simple - texto claro
+	 		\item Ciphertext - texto cifrado
+	 		\item Plain alphabet - alfabeto plano
+	 		\item Cipher alphabet - alfabeto cifrado
+	 		\item Caesar shift cipher - Cifrado Cesar de corrimiento
+	 		\item Chipher - cifrador - codificador
+	 		\item Algorithm - algoritmo
+	 		\item Key - clave - llave
+	 		\item Keyword - palabra clave
+	 		\item Keyphrase - Frase clave
+	 		\item monoalphabetic substitution cipher - Cifrado de sustitución monoalfabético
+	 		\item Cryptoanalysis - criptoanálisis
+	 		\item Nulls - nulos
+	 		\item Code - código
+	 		\item Encipher - codificar - cifrar
+	 		\item Encode - codificar
+	 		\item Code - código
+	 		\item decipher - descifrar
+	 		\item decode - descodificar
+	 		\item nomenclators- nomenclador - (code book)
+	 		\item Vinegere cipher
+	 		\item polyalphabetic - poly alfabetico
+	 		\item Charles Babbage
+	 		
+	 	\end{itemize}
