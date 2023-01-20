@@ -22,7 +22,7 @@
 \spanishsignitems												% Viñetas en lugar de cuadros
 \raggedbottom													% Eliminar molestos warnings
 
-\usepackage{comment}												% Comentarios largos
+\usepackage{comment}											% Comentarios largos
 \usepackage{pdfpages}											% Incluir portada echa en Inkscape
 \usepackage{setspace}											% Interlineado
 \usepackage{makecell}											% Para tablas
@@ -30,7 +30,7 @@
 \usepackage{colortbl}
 \usepackage{multirow}
 \usepackage{array}												% Necesario para algunas tablas
-\usepackage[inline]{enumitem}										% Personalizar itemize
+\usepackage[inline]{enumitem}									% Personalizar itemize
 \usepackage{multicol}											% Item 2 columns
 
 \definecolor{Red}{RGB}{255,191,191}								% Colores definidos por el usuario
@@ -188,7 +188,6 @@
 \renewcommand{\lstlistingname}{Código}% Listing -> Algorithm
 \renewcommand{\lstlistlistingname}{Lista de códigos}% 
 
-
 %-------------------------------------------------------------------------------
 %                           Caption en negritas                                %
 %-------------------------------------------------------------------------------
@@ -199,8 +198,9 @@
 %-------------------------------------------------------------------------------
 %                           Lista de conceptos                                %
 %-------------------------------------------------------------------------------
-\usepackage[nopostdot,style=super,nonumberlist,toc,nogroupskip]{glossaries}
+\usepackage[nonumberlist,nogroupskip,toc,style=super]{glossaries}
 \setlength{\glsdescwidth}{0.7\textwidth}
+
 \makeglossaries
 
 \input{glossaries}

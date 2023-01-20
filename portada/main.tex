@@ -1,21 +1,21 @@
 \documentclass[12pt,a4paper]{report}
-\usepackage[utf8]{inputenc}                         % Codificación
-\usepackage[spanish,es-tabla]{babel}                % Lenguaje español, Tabla n: 
-\usepackage[T1]{fontenc}                            % Agregar fuentes con acentos
-\usepackage{amsmath}                                % Paquetes necesarios  para matemáticas
+\usepackage[utf8]{inputenc}                                     % Codificación
+\usepackage[spanish,es-tabla]{babel}                            % Lenguaje español, Tabla n: 
+\usepackage[T1]{fontenc}                                        % Agregar fuentes con acentos
+\usepackage{amsmath}                                            % Paquetes necesarios  para matemáticas
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{makeidx}                                % Paquete para indices
-\usepackage{graphicx}                               % Para manejar imagenes
+\usepackage{makeidx}                                            % Paquete para indices
+\usepackage{graphicx}                                           % Para manejar imagenes
 \usepackage{color}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
-\graphicspath{{imagenes/}}                          % Ruta de las imagenes, solo escribir nombre de la imagen
-\usepackage[top=1in, left=1in, right=1in, bottom=1in]{geometry}	% Margenes ,showframe
+\graphicspath{{imagenes/}}                                      % Ruta de las imagenes, solo escribir nombre de la imagen
+\usepackage[top=1in, left=1in, right=1in, bottom=1in]{geometry}	% Margenes, showframe
 \usepackage{layout}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Editar aqui %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\Ptitle}{TRNGs para generación de secuencias muy largas}
 \newcommand{\Pauthor}{Ciro Fabian Bermudez Marquez}
 \newcommand{\Pdegree}{MSc. en Electrónica}
@@ -28,18 +28,18 @@
 \newcommand{\Pyear}{2022}
 \newcommand{\Paddres}{Santa María de Tonantzintla, Puebla}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% Configuración de color y medidas custom
 \newlength{\vertical}\setlength{\vertical}{0.8cm}
-\definecolor{inaoeblue}{rgb}{0.152941 ,0.250980 ,0.509804}
+\definecolor{inaoeblue}{rgb}{0.156863 ,0.266667 ,0.517647}
 \newlength{\thick}\setlength{\thick}{3pt}
 
-
+% Configuración de la página
 \addtolength{\hoffset}{60pt}
 \addtolength{\textwidth}{-120pt}
 \addtolength{\oddsidemargin}{60pt}
 \addtolength{\marginparsep}{60pt}
-
 
 \begin{document}
 
@@ -47,17 +47,15 @@
     \setlength{\unitlength}{1pt}
     \begin{picture}(0,0)(18,-12)
         \color{inaoeblue} \linethickness{3pt}                                         
-        \put(-0.1\textwidth,-0.5\thick){\line(1,0){1.2\textwidth}}                    % Horizontal superior 
-        \put(-0.1\textwidth,0){\line(0,-1){\textheight}}                              % Vertical izquierda
-        \put(1.1\textwidth,0){\line(0,-1){0.9\textheight}}                            % Vertical derecha
-        \put(-0.1\textwidth,-\textheight+0.5\thick){\line(1,0){0.95\textwidth}}       % Horizontal inferior
-        \put(0.88\textwidth,-\textheight){\includegraphics[scale=0.34]{Inaoe.eps}}    % Logo del INAOE (esquina inferior derecha)
+        \put(-0.1\textwidth,-0.5\thick){\line(1,0){1.2\textwidth}}                      % Horizontal superior 
+        \put(-0.1\textwidth,0){\line(0,-1){\textheight}}                                % Vertical izquierda
+        \put(1.1\textwidth,0){\line(0,-1){0.9\textheight}}                              % Vertical derecha
+        \put(-0.1\textwidth,-\textheight+0.5\thick){\line(1,0){0.95\textwidth}}         % Horizontal inferior
+        \put(0.88\textwidth,-\textheight){\includegraphics[scale=0.34]{Inaoe.eps}}      % Logo del INAOE (esquina inferior derecha)
         \put(-0.45\textwidth,-\textheight){\includegraphics[scale=0.37305]{Inaoep.eps}} % Logo INAOE (izquierda)
     \end{picture}
     
- 
     \begin{center}
-    
         {\Large\bf\Ptitle\par}
         \vspace{\vertical}
         
@@ -100,7 +98,6 @@
         {Todos los derechos reservados\par}
         {El autor otorga a INAOE el permiso para reproducir y distribuir este documento.\par}
     \end{center}
-
 
 \end{titlepage}
 

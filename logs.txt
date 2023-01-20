@@ -165,86 +165,38 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 (pdfpages)                DVI mode. 
 (pdfpages)                You can use the option `lastpage' to give me a hint.
 
-[1]) [2] [1] [2] [3] [4] [5] [6]
-No file main.gls.
-[7] [8] (./ch1.tex
-Cap\'{\i }tulo 1.
-
-LaTeX Warning: Citation `Petura2016' on page 1 undefined on input line 7.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 1 undefined on input line 7.
-
-[1]
-
-LaTeX Warning: Citation `Jun1999' on page 2 undefined on input line 14.
-
-
-LaTeX Warning: Citation `Nist2010' on page 2 undefined on input line 14.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 2 undefined on input line 14.
-
-[2] [3]
-
-LaTeX Warning: Reference `fig:A1_TRNG_estructura' on page 4 undefined on input 
-line 43.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 4 undefined on input line 46.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 4 undefined on input line 46.
-
-<imagenes//A0_TRNG_estructura.eps> [4]
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)
-
-LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 77.
-
-[5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
-
-LaTeX Warning: Reference `fig:A1_TRNG_estructura' on page 15 undefined on input
- line 250.
-
-[15] [16] [17] [18] [19] [20] [21]) [22]
+[1]) [2] (./agradecimientos.tex) [1] [2] [3] [4] [5] [6] [7] [8] (./main.gls
+[9] [10] (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd))
+Overfull \hbox (19.01938pt too wide) in paragraph at lines 2--58
+[] 
+[11] (./resumen.tex [12]) [13] [14] (./test.tex) [1] [2]
 No file main.bbl.
-(./main.aux (./portada.aux)
-No file agradecimientos.aux.
-No file resumen.aux.
-(./ch1.aux)
+(./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux)
+No file ch1.aux.
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
 No file ch5.aux.
 No file ch6.aux.
+(./test.aux)
 No file Ap_A.aux.
 )
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 
 Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-Output written on main.dvi (32 pages, 103232 bytes).
+(see the transcript file for additional information)
+Output written on main.dvi (18 pages, 18632 bytes).
 Transcript written on main.log.
 This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
 The top-level auxiliary file: main.aux
-I couldn't open auxiliary file agradecimientos.aux
----line 33 of file main.aux
- : \@input{agradecimientos.aux
- :                            }
-I'm skipping whatever remains of this command
-I couldn't open auxiliary file resumen.aux
----line 39 of file main.aux
- : \@input{resumen.aux
- :                    }
+I couldn't open auxiliary file ch1.aux
+---line 41 of file main.aux
+ : \@input{ch1.aux
+ :                }
 I'm skipping whatever remains of this command
 I couldn't open auxiliary file ch2.aux
 ---line 42 of file main.aux
@@ -272,11 +224,12 @@ I couldn't open auxiliary file ch6.aux
  :                }
 I'm skipping whatever remains of this command
 I couldn't open auxiliary file Ap_A.aux
----line 47 of file main.aux
+---line 49 of file main.aux
  : \@input{Ap_A.aux
  :                 }
 I'm skipping whatever remains of this command
 The style file: ieeetr.bst
+I found no \citation commands---while reading file main.aux
 Database file #1: bibliografia.bib
 (There were 8 error messages)
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=latex)
@@ -426,15 +379,15 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 (c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
-(./glossaries.tex)) (./main.aux (./portada.aux)
-No file agradecimientos.aux.
-No file resumen.aux.
-(./ch1.aux)
+(./glossaries.tex)) (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux)
+No file ch1.aux.
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
 No file ch5.aux.
 No file ch6.aux.
+(./test.aux)
 No file Ap_A.aux.
 )
 *geometry* driver: auto-detecting
@@ -452,68 +405,34 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 (pdfpages)                DVI mode. 
 (pdfpages)                You can use the option `lastpage' to give me a hint.
 
-[1]) [2] (./main.toc (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd) [1]) [2] (./main.lof
+[1]) [2] (./agradecimientos.tex) [1] [2] (./main.toc) [3] [4] (./main.lof)
+[5] [6] (./main.lot) [7] [8] (./main.lol) (./main.gls [9] [10]
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd))
+Overfull \hbox (19.01938pt too wide) in paragraph at lines 2--58
+[] 
+[11] (./resumen.tex [12]) [13] [14] (./test.tex) [1] [2] (./main.bbl
 
-LaTeX Warning: Citation `Badrignans2011' on page \es@scroman {iii} undefined on
- input line 3.
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [3] [4] (./main.lot) [5] [6] (./main.lol)
-No file main.gls.
-[7] [8] (./ch1.tex
-Cap\'{\i }tulo 1.
-
-LaTeX Warning: Citation `Petura2016' on page 1 undefined on input line 7.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 1 undefined on input line 7.
-
-[1]
-
-LaTeX Warning: Citation `Jun1999' on page 2 undefined on input line 14.
-
-
-LaTeX Warning: Citation `Nist2010' on page 2 undefined on input line 14.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 2 undefined on input line 14.
-
-[2] [3]
-
-LaTeX Warning: Citation `Badrignans2011' on page 4 undefined on input line 46.
-
-
-LaTeX Warning: Citation `Badrignans2011' on page 4 undefined on input line 46.
-
-<imagenes//A0_TRNG_estructura.eps> [4]
-
-LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 77.
-
-[5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
-[21]) [22] (./main.bbl) [23] (./main.aux (./portada.aux)
-No file agradecimientos.aux.
-No file resumen.aux.
-(./ch1.aux)
+) [3] (./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux)
+No file ch1.aux.
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
 No file ch5.aux.
 No file ch6.aux.
+(./test.aux)
 No file Ap_A.aux.
 )
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 
 Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
  )
-Output written on main.dvi (33 pages, 128552 bytes).
+(see the transcript file for additional information)
+Output written on main.dvi (19 pages, 22244 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -654,15 +573,15 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 (c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
-(./glossaries.tex)) (./main.aux (./portada.aux)
-No file agradecimientos.aux.
-No file resumen.aux.
-(./ch1.aux)
+(./glossaries.tex)) (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux)
+No file ch1.aux.
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
 No file ch5.aux.
 No file ch6.aux.
+(./test.aux)
 No file Ap_A.aux.
 ) (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -676,50 +595,45 @@ No file Ap_A.aux.
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
 (c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(./main.out) (./main.out) (./portada.tex [1 <./portada.pdf>]) [2] (./main.toc
+(./main.out) (./main.out) (./portada.tex [1 <./portada/main.pdf{c:/texlive/2021
+/texmf-var/fonts/map/pdftex/updmap/pdftex.map}>]) [2] (./agradecimientos.tex)
+[1] [2] (./main.toc) [3] [4] (./main.lof) [5] [6] (./main.lot) [7] [8]
+(./main.lol) (./main.gls [9] [10]
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{c:/texlive/2021/texm
-f-var/fonts/map/pdftex/updmap/pdftex.map}]) [2] (./main.lof) [3] [4]
-(./main.lot) [5] [6] (./main.lol)
-No file main.gls.
-[7] [8] (./ch1.tex
-Cap\'{\i }tulo 1.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd))
+Overfull \hbox (19.01938pt too wide) in paragraph at lines 2--58
+[] 
+[11] (./resumen.tex [12]) [13] [14] (./test.tex)pdfTeX warning (ext4): destinat
+ion with the same identifier (name{page.1}) has been already used, duplicate ig
+nored
 <to be read again> 
                    \relax 
-l.8 		
-       [1]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.2}) has been already used, duplicate ignored
+l.70 	\include{test}
+                     [1]pdfTeX warning (ext4): destination with the same identi
+fier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.20 			\item
-              Físicos (PTRNG), utiliza ruido físico a nivel de electrones ...
-[2] [3] [4] [5 <./imagenes//A0_TRNG_estructura-eps-converted-to.pdf>] [6]
-[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21])
-[22] (./main.bbl) [23] (./main.aux (./portada.aux)
-No file agradecimientos.aux.
-No file resumen.aux.
-(./ch1.aux)
+l.75 \backmatter
+                 [2] (./main.bbl
+
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
+
+) [3] (./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux)
+No file ch1.aux.
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
 No file ch5.aux.
 No file ch6.aux.
+(./test.aux)
 No file Ap_A.aux.
 ) )
 (see the transcript file for additional information){c:/texlive/2021/texmf-dist
-/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2021/texmf-dist/fonts/enc
-/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/t
-exlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/202
-1/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2021/texmf-di
-st/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/cm-super/sfcc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
-c/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super
-/sfti1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfxc1200.
-pfb>
-Output written on main.pdf (33 pages, 375434 bytes).
+/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sfbx1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+fbx2488.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pf
+b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
+Output written on main.pdf (19 pages, 137096 bytes).
 Transcript written on main.log.

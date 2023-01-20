@@ -1,0 +1,102 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(c:/texlive/2021/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(c:/texlive/2021/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.sty
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.def
+(c:/texlive/2021/texmf-dist/tex/generic/babel/txtbabel.def))
+(c:/texlive/2021/texmf-dist/tex/generic/babel-spanish/spanish.ldf))
+(c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/base/makeidx.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-def/dvips.def)))
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/dvipsnam.def))
+(c:/texlive/2021/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (c:/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty)))
+(c:/texlive/2021/texmf-dist/tex/latex/tools/layout.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
+No file main.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+<imagenes//Inaoe.eps> <imagenes//Inaoep.eps> [1] (./main.aux) )
+Output written on main.dvi (1 page, 1780 bytes).
+Transcript written on main.log.
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(c:/texlive/2021/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(c:/texlive/2021/texmf-dist/tex/latex/base/size12.clo))
+(c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.sty
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.def
+(c:/texlive/2021/texmf-dist/tex/generic/babel/txtbabel.def))
+(c:/texlive/2021/texmf-dist/tex/generic/babel-spanish/spanish.ldf))
+(c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/base/makeidx.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(c:/texlive/2021/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (c:/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty)))
+(c:/texlive/2021/texmf-dist/tex/latex/tools/layout.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./main.aux) (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+[1{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./imagenes//I
+naoe-eps-converted-to.pdf> <./imagenes//Inaoep-eps-converted-to.pdf>]
+(./main.aux) ){c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1
+.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/t
+exlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/202
+1/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2021/texmf-di
+st/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on main.pdf (1 page, 105580 bytes).
+Transcript written on main.log.
