@@ -1,7 +1,7 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: check_sys_bytes.c
+ * Desing name: A1_check_sys_bytes.c
  * Description: Check the number of byte of each data type.
  * Compile: gcc -o check.exe A1_check_sys_bytes.c
  * Run: ./check.exe

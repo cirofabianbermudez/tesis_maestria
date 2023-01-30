@@ -1,8 +1,10 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: chaotic_map_fp.c
- * Description: Sproot chaotic map simulation using fixed point
+ * Desing name: A3_chaotic_map_fixed.c
+ * Description: Sproot chaotic map simulation using fixed point for windows
+ * Compile: gcc -o chaotic_fixed.exe A2_chaotic_map_fixed.c
+ * Run: ./chaotic_fixed.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -90,5 +92,3 @@ int main(void){
 	fclose(fpointer);
 	return 0;
 }
-// gcc -o chaotic_fp chaotic_map_fp.c
-// ./chaotic_fp

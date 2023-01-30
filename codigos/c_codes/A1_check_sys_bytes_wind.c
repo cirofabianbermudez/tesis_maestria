@@ -1,7 +1,7 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: check_sys_bytes_wind.c
+ * Desing name: A1_check_sys_bytes_wind.c
  * Description: Check the number of byte of each data type for windows.
  * Compile: gcc -o check_wind.exe A1_check_sys_bytes_wind.c
  * Run: ./check_wind.exe
@@ -20,7 +20,7 @@ int main(void){
     printf("__int128 is %lu bytes.\n",sizeof(__int128));
 
     // Data type <long long> -> 8 bytes, in other words 64 bits.
-    printf("long is %lu bytes.\n",sizeof(long long));
+    printf("long long is %lu bytes.\n",sizeof(long long));
 
     // Data type <int> -> 4 bytes, in other words 32 bits.
     printf("int is %lu bytes.\n",sizeof(int));

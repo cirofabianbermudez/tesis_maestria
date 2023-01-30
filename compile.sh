@@ -15,5 +15,5 @@ echo "5. Generando PDF . . ."
 rm *.aux *.toc *.lol *.lot *.lof *.ist *.glo *.log *.bbl *.out *.dvi *.blg >> logs.txt
 echo "5. Eliminando archivos temporales . . ."
 echo "6. Proceso terminado . . ."
-read -p "7. Presiona [Enter] para salir . . ."
+# read -p "7. Presiona [Enter] para salir . . ."
 # sleep 0.5

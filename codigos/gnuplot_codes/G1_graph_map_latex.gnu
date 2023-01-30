@@ -1,6 +1,6 @@
-# Engineer: Ciro Fabian Bermudez Marquez
+# Author: Ciro Fabian Bermudez Marquez
 # Date: 16/06/2022
-# Desing name: graph_map_latex.gnu
+# Desing name: G1_graph_map_latex.gnu
 # Description: Plot from data file to latex
 # Run: gnuplot G1_graph_map_latex.gnu
 

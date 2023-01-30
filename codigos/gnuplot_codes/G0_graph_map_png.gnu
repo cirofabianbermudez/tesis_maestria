@@ -1,6 +1,6 @@
-# Engineer: Ciro Fabian Bermudez Marquez
+# Author: Ciro Fabian Bermudez Marquez
 # Date: 16/06/2022
-# Desing name: graph_map_png.gnu
+# Desing name: G0_graph_map_png.gnu
 # Description: Plot from data file to png
 # Run: gnuplot G0_graph_map_png.gnu
 

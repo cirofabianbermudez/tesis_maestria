@@ -1,8 +1,8 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: chaotic_map.c
- * Description: Sproot chaotic map simulation using floating point
+ * Desing name: A2_chaotic_map.c
+ * Description: Sproot chaotic map simulation using floating point, for unix and windows
  * Compile: gcc -o chaotic.exe A2_chaotic_map.c
  * Run: ./chaotic.exe
 */
@@ -27,7 +27,7 @@ int main(void){
     printf(" # x0: %lf\n", x0 );
     printf(" # y0: %lf\n", y0 );
     printf(" # iter: %d\n", iter );
-    printf(" # chaotic map generated,see output_chaotic.txt\n");
+    printf(" # chaotic map generated, see output_chaotic.txt\n");
        
     fprintf(fpointer,"%32.29lf\t%32.29lf\n",xn, yn);
     for(int i = 0; i < iter; i++){
