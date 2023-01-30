@@ -170,10 +170,12 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd))
 Overfull \hbox (19.01938pt too wide) in paragraph at lines 2--58
 [] 
-[11] (./resumen.tex [12]) [13] [14] (./test.tex) [1] [2]
+[11] (./resumen.tex [12]) [13] [14] (./ch1.tex
+Cap\'{\i }tulo 1.
+) [1] (./test.tex) [2]
 No file main.bbl.
-(./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux)
-No file ch1.aux.
+(./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux) (./ch1.aux)
+
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
@@ -189,37 +191,32 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (18 pages, 18632 bytes).
+Output written on main.dvi (18 pages, 20308 bytes).
 Transcript written on main.log.
 This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
 The top-level auxiliary file: main.aux
-I couldn't open auxiliary file ch1.aux
----line 41 of file main.aux
- : \@input{ch1.aux
- :                }
-I'm skipping whatever remains of this command
 I couldn't open auxiliary file ch2.aux
----line 42 of file main.aux
+---line 43 of file main.aux
  : \@input{ch2.aux
  :                }
 I'm skipping whatever remains of this command
 I couldn't open auxiliary file ch3.aux
----line 43 of file main.aux
+---line 44 of file main.aux
  : \@input{ch3.aux
  :                }
 I'm skipping whatever remains of this command
 I couldn't open auxiliary file ch4.aux
----line 44 of file main.aux
+---line 45 of file main.aux
  : \@input{ch4.aux
  :                }
 I'm skipping whatever remains of this command
 I couldn't open auxiliary file ch5.aux
----line 45 of file main.aux
+---line 46 of file main.aux
  : \@input{ch5.aux
  :                }
 I'm skipping whatever remains of this command
 I couldn't open auxiliary file ch6.aux
----line 46 of file main.aux
+---line 47 of file main.aux
  : \@input{ch6.aux
  :                }
 I'm skipping whatever remains of this command
@@ -231,7 +228,7 @@ I'm skipping whatever remains of this command
 The style file: ieeetr.bst
 I found no \citation commands---while reading file main.aux
 Database file #1: bibliografia.bib
-(There were 8 error messages)
+(There were 7 error messages)
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=latex)
  restricted \write18 enabled.
 entering extended mode
@@ -380,8 +377,7 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 (c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
 (./glossaries.tex)) (./main.aux (./portada.aux) (./agradecimientos.aux)
-(./resumen.aux)
-No file ch1.aux.
+(./resumen.aux) (./ch1.aux)
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
@@ -405,18 +401,20 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 (pdfpages)                DVI mode. 
 (pdfpages)                You can use the option `lastpage' to give me a hint.
 
-[1]) [2] (./agradecimientos.tex) [1] [2] (./main.toc) [3] [4] (./main.lof)
-[5] [6] (./main.lot) [7] [8] (./main.lol) (./main.gls [9] [10]
+[1]) [2] (./agradecimientos.tex) [1] [2] (./main.toc
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd))
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)) [3] [4] (./main.lof)
+[5] [6] (./main.lot) [7] [8] (./main.lol) (./main.gls [9] [10])
 Overfull \hbox (19.01938pt too wide) in paragraph at lines 2--58
 [] 
-[11] (./resumen.tex [12]) [13] [14] (./test.tex) [1] [2] (./main.bbl
+[11] (./resumen.tex [12]) [13] [14] (./ch1.tex
+Cap\'{\i }tulo 1.
+) [1] (./test.tex) [2] (./main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 ) [3] (./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux)
-No file ch1.aux.
+(./ch1.aux)
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
@@ -432,7 +430,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (19 pages, 22244 bytes).
+Output written on main.dvi (19 pages, 26472 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -574,8 +572,7 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 (c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
 (./glossaries.tex)) (./main.aux (./portada.aux) (./agradecimientos.aux)
-(./resumen.aux)
-No file ch1.aux.
+(./resumen.aux) (./ch1.aux)
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
@@ -597,29 +594,29 @@ No file Ap_A.aux.
 (c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./main.out) (./main.out) (./portada.tex [1 <./portada/main.pdf{c:/texlive/2021
 /texmf-var/fonts/map/pdftex/updmap/pdftex.map}>]) [2] (./agradecimientos.tex)
-[1] [2] (./main.toc) [3] [4] (./main.lof) [5] [6] (./main.lot) [7] [8]
-(./main.lol) (./main.gls [9] [10]
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd))
+[1] [2] (./main.toc (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)) [3] [4] (./main.lof)
+[5] [6] (./main.lot) [7] [8] (./main.lol) (./main.gls [9] [10])
 Overfull \hbox (19.01938pt too wide) in paragraph at lines 2--58
 [] 
-[11] (./resumen.tex [12]) [13] [14] (./test.tex)pdfTeX warning (ext4): destinat
-ion with the same identifier (name{page.1}) has been already used, duplicate ig
-nored
+[11] (./resumen.tex [12]) [13] [14] (./ch1.tex
+Cap\'{\i }tulo 1.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.64 	\include{ch1}
+                    [1] (./test.tex)pdfTeX warning (ext4): destination with the
+ same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.70 	\include{test}
-                     [1]pdfTeX warning (ext4): destination with the same identi
-fier (name{page.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.75 \backmatter
-                 [2] (./main.bbl
+                     [2] (./main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 ) [3] (./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux)
-No file ch1.aux.
+(./ch1.aux)
 No file ch2.aux.
 No file ch3.aux.
 No file ch4.aux.
@@ -629,11 +626,13 @@ No file ch6.aux.
 No file Ap_A.aux.
 ) )
 (see the transcript file for additional information){c:/texlive/2021/texmf-dist
-/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-cm-super/sfbx1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
-fbx2488.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pf
-b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texl
-ive/2021/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
-Output written on main.pdf (19 pages, 137096 bytes).
+/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/texlive/2021/texmf-dist/fonts/en
+c/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public
+/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
+sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfxc1200.pfb>
+Output written on main.pdf (19 pages, 153732 bytes).
 Transcript written on main.log.

@@ -13,7 +13,7 @@ TABLE Without ID
 	year as Año,
 	alias as Alias,
 	keywords as Keywords
-WHERE contains(year, 2017)
+WHERE contains(year, 2021)
 SORT year DESC
 ```
 
@@ -43,6 +43,6 @@ TABLE Without ID
 	year as Año,
 	alias as Alias,
 	keywords as Keywords
-WHERE contains(keywords, "cipher")
+WHERE contains(keywords, "fpga")
 SORT year DESC
 ```

@@ -26,3 +26,4 @@
 	      3. Marcar `También usar este proxy para HTTPS` y Aceptar
 	      4. Reiniciar el navegador e ingresar las credenciales del servidor las cuales son las mismas que en el correo institucional.
 	3. [Recursos electrónicos INAOE](https://www.inaoep.mx/biblioteca/recursos-electronicos) desde este link y una vez ingresadas las credenciales correctas se tiene acceso a todos lo recursos.
+3. Los resúmenes de los artículos y los aspectos más importantes se resaltan (hightlight) en color amarillo y lo 
