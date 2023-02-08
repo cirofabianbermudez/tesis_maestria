@@ -2,9 +2,9 @@
  * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
  * Desing name: A3_chaotic_map_fixed.c
- * Description: Sproot chaotic map simulation using fixed point for windows
- * Compile: gcc -o chaotic_fixed.exe A2_chaotic_map_fixed.c
- * Run: ./chaotic_fixed.exe
+ * Description: Sproot chaotic map simulation using fixed point
+ * Compile: gcc -o A3_chaotic_fixed.exe A3_chaotic_map_fixed.c
+ * Run: ./A3_chaotic_fixed.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,6 +62,7 @@ int main(void){
 	xi = setNumber( x0 );
 	yi = setNumber( y0 );
 	printf(" # x0 real: %2.10f\n # y0 real: %2.10f\n",getNumber(xi), getNumber(yi) );
+    printf(" # chaotic map generated, see output_chaotic_fixed.txt\n");
 
 	ai[0]  = setNumber( -0.6 );
 	ai[1]  = setNumber( -0.1 );

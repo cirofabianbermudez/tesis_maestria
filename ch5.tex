@@ -1,86 +1,151 @@
 \chapter{Implementación}
 
 	\section{Mapa caótico}
-	
-	\subsection{Modelo matemático}
-	En el artículo \cite{Sprott1993} y \cite{Fraga2021}
-	\begin{equation}
-	 \begin{array}{ccl}
-		x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
-		y_{n+1} & = &  a_{7} + a_{8}x_{n} + a_{9}x_{n}^{2} + a_{10}x_{n}y_{n} + a_{11}y_{n} + a_{12}y_{n}^{2}
-		\end{array}
-	\end{equation}
-	
-	donde los parámetros $\{a_{1}, a_{2}, \ldots a_{12}\}$ pueden tomar diferentes valores, sin embargo para este trabajo se usaron los siguientes:
-	
-	
-	
-	\begin{equation}
-	 \begin{array}{ccl}
-		x_{n+1} & = &  a_{1} + ( a_{2} + a_{3}x_{n} )x_{n} + a_{4}x_{n}y_{n} + ( a_{5} + a_{6}y_{n} )y_{n} \\
-		y_{n+1} & = &  a_{7} + ( a_{8} + a_{9}x_{n} )x_{n} + a_{10}x_{n}y_{n} + ( a_{11} + a_{12}y_{n})y_{n}
-		\end{array}
-	\end{equation}
-	
-	
-	\begin{figure}[hbtp]
-		\caption{Arquitectura a bloques del mapa caótico.}
-		\centering
-		\includegraphics[width=0.9\linewidth]{B1_architecture}
-		\label{fig:B1_architecture}
-	\end{figure}
-	
-	
-	\begin{figure}[hbtp]
-		\caption{Máquina de estados de mapa caótico.}
-		\centering
-		\includegraphics[width=0.6\linewidth]{B2_fsm_cm}
-		\label{fig:B2_fsm_cm}
-	\end{figure}
-	
-	
-	Simulación del sistema en punto flotante en C
-	
-	\begin{figure}[hbtp]
-		\caption{Mapa caótico.}
-		\centering
-		\includegraphics[width=0.8\linewidth]{B0_chaotic_map}
-		\label{fig:B0_chaotic_map}
-	\end{figure}
-	
-	
-	
-	\section{Comunicación RS232}
-	
-	\begin{figure}[hbtp]
-		\caption{Máquina de estados para transmisión.}
-		\centering
-		\includegraphics[width=0.8\linewidth]{C0_fsm_rs232}
-		\label{fig:C0_fsm_rs232}
-	\end{figure}	
-	
-	
-	\begin{figure}[hbtp]
-		\caption{Arquitectura de transmisión.}
-		\centering
-		\includegraphics[width=0.6\linewidth]{C1_architecture_rs232}
-		\label{fig:C1_architecture_rs232}
-	\end{figure}
-	
-	\begin{figure}[hbtp]
-		\caption{Arquitectura de TRNG.}
-		\centering
-		\includegraphics[width=0.9\linewidth]{D0_system}
-		\label{fig:D0_system}
-	\end{figure}
-	
-	\begin{figure}[hbtp]
-		\caption{Máquina de estados de arquitectura de TRNG.}
-		\centering
-		\includegraphics[width=0.7\linewidth]{D1_fsm_system}
-		\label{fig:D1_fsm_system}
-	\end{figure}
-	
+    
+        En el artículo \cite{Sprott1993} y \cite{Fraga2021}
+        \begin{equation}
+            \begin{array}{ccl}
+                x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
+                y_{n+1} & = &  a_{7} + a_{8}x_{n} + a_{9}x_{n}^{2} + a_{10}x_{n}y_{n} + a_{11}y_{n} + a_{12}y_{n}^{2}
+            \end{array}
+        \end{equation}
+        
+        donde los parámetros $\{a_{1}, a_{2}, \ldots a_{12}\}$ pueden tomar diferentes valores, sin embargo para este trabajo se usaron los siguientes:
+
+
+        \begin{equation}
+            \begin{array}{ccl}
+                x_{n+1} & = &  a_{1} + ( a_{2} + a_{3}x_{n} )x_{n} + a_{4}x_{n}y_{n} + ( a_{5} + a_{6}y_{n} )y_{n} \\
+                y_{n+1} & = &  a_{7} + ( a_{8} + a_{9}x_{n} )x_{n} + a_{10}x_{n}y_{n} + ( a_{11} + a_{12}y_{n})y_{n}
+            \end{array}
+        \end{equation}
+
+        \begin{equation}
+             \begin{array}{lcl}
+                M_{1} & = & \{ -0.6, -0.1, 1.1, 0.2, -0.8, 0.6, -0.7, 0.7, 0.7, 0.3, 0.6, 0.9 \}\\
+                M_{2} & = & \{ -1.0, 0.9, 0.4, -0.2, -0.6, -0.5, 0.4, 0.7, 0.3, -0.5, 0.7, -0.8 \}\\
+                M_{3} & = &  \{0.8, 1.0, -1.2, -1.0, 1.1, -0.9, 0.4, -0.4, -0.6, -0.2, -0.5, -0.7 \}\\
+                M_{4} & = & \{-0.6, -0.4, -0.4, -0.8, 0.7, 0.3, -0.4, 0.4, 0.5, 0.5, 0.8, -0.1 \}
+            \end{array}
+        \end{equation}
+
+        \begin{equation}
+            \begin{array}{lcl}
+                s_{n+1} = \{ x_{n+1} \text{ mod } 256, y_{n+1} \text{ mod } 256 \}
+            \end{array}
+        \end{equation}
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Exponentes de Lyapunov y dimensión fractal (tomados de \cite{Sprott1993}) de los mapas 2D usados.}
+            \begin{tabular}{|l|l|l|}
+                \hline
+                \rowcolor[rgb]{ .682,  .667,  .667}Mapa  & Exponentes de Lyapunov & Dimensión fractal \\
+                \hline
+                1     & 0.12                   & 1.77   \\
+                \hline
+                2     & 0.14                   & 1.79   \\
+                \hline
+                3     & 0.15                   & 1.69   \\
+                \hline
+                4     & 0.13                   & 1.50   \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Número de bits usados en la implementación de cada uno de los mapas con aritmética de punto fijo.}
+            \begin{tabular}{|l|l|l|}
+                \hline
+                \rowcolor[rgb]{ .682,  .667,  .667}Mapa  & Bits parte entera & Bits parte fraccionaria \\
+                \hline
+                1     & 3                   & 60   \\
+                \hline
+                2     & 4                   & 59   \\
+                \hline
+                3     & 4                   & 59   \\
+                \hline
+                3     & 3                   & 60   \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Rangos usados para la condición inicial para cada uno de los mapas.}
+            \begin{tabular}{|l|l|}
+                \hline
+                \rowcolor[rgb]{ .682,  .667,  .667}Mapa  & Rango de valores para $x_{0}$ y $y_{0}$ \\
+                \hline
+                $M_{1}$  & $x_{0} \in [-0.5, \phantom{-} 0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
+                \hline
+                $M_{2}$  & $x_{0} \in [-1.0, \phantom{-} 0.0]$, $y_{0} \in [\phantom{-}0.0, \phantom{-}1.0]$ \\
+                \hline
+                $M_{3}$  & $x_{0} \in [\phantom{-}0.0, \phantom{-} 1.0]$, $y_{0} \in [-0.6, \phantom{-}0.4]$ \\
+                \hline
+                $M_{4}$  & $x_{0} \in [-1.5, -0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \begin{figure}[hbtp]
+            \caption{Diagrama de bloques del mapa caótico.}
+            \centering
+            \includegraphics[width=0.9\linewidth]{B1_architecture}
+            \label{fig:B1_architecture}
+        \end{figure}
+
+        \begin{figure}[hbtp]
+            \caption{Máquina de estados de mapa caótico.}
+            \centering
+            \includegraphics[width=0.6\linewidth]{B2_fsm_cm}
+            \label{fig:B2_fsm_cm}
+        \end{figure}
+
+        \begin{figure}[hbtp]
+            \caption{Simulación del mapa caótico en punto flotante.}
+            \centering
+            \includegraphics[width=0.8\linewidth]{B0_chaotic_map}
+            \label{fig:B0_chaotic_map}
+        \end{figure}
+
+    \section{Single Constant Multiplier (SCM)}
+
+
+    \section{Comunicación RS232}
+
+        \begin{figure}[hbtp]
+            \caption{Diagrama de bloques de transmisión RS232.}
+            \centering
+            \includegraphics[width=0.6\linewidth]{C1_architecture_rs232}
+            \label{fig:C1_architecture_rs232}
+        \end{figure}
+
+        \begin{figure}[hbtp]
+            \caption{Máquina de estados para la transmisión RS232.}
+            \centering
+            \includegraphics[width=0.8\linewidth]{C0_fsm_rs232}
+            \label{fig:C0_fsm_rs232}
+        \end{figure}	
+
+    \section{Diseño de TRNG}
+
+        \begin{figure}[hbtp]
+            \caption{Diagrama de bloques de TRNG.}
+            \centering
+            \includegraphics[width=0.9\linewidth]{D0_system}
+            \label{fig:D0_system}
+        \end{figure}
+
+        \begin{figure}[hbtp]
+            \caption{Máquina de estados de TRNG.}
+            \centering
+            \includegraphics[width=0.7\linewidth]{D1_fsm_system}
+            \label{fig:D1_fsm_system}
+        \end{figure}
+
+	\begin{comment}
 
 	
 \begin{table}[htbp]
@@ -112,126 +177,10 @@
 
 
 \newpage
-	Para poder realizar la implementación del núcleo ERO es necesario utilizar las primitivas y macros propias del fabricante de FPGA que para este trabajo es Xilinx. Las primitivas son componentes de Xilinx que son nativos de la arquitectura a la que se dirige y los macros son elementos que se encuentran en las bibliotecas UniMacro y Xilinx Parameterized Macros, las cuales se utilizan para instanciar elementos que son complejos de instanciar simplemente usando las primitivas, después las herramientas de síntesis expanden automáticamente estas macros a sus primitivas subyacentes. Los métodos de diseño disponibles son la instanciación, la inferencia, el catalogo IP y el soporte de macros, no obstante para este diseño solo se utilizan la instanciación, la cual permite instanciar un componente directamente en el diseño y es útil si se desea controlar el uso, la implementación y la ubicación exactos de los bloques individuales y el soporte de macros, el cual, utilizando las librerías antes mencionadas permiten abstraer la complejidad de utilizar unicamente primitivas simples.
-	
-	Toda la información referente a los macros y primitivas se encuentran en la documentación oficial en el archivo llamado ``Vivado Design Suite 7 Series FPGA Libraries Guide''. Para poder utilizar las primitivas y las macros es necesario agregar la librería UniMacro en la cabecera del archivo VHDL de la siguiente manera: 
-
-\vspace{0.4cm}
-\begin{lstlisting}[style = VHDL_TEXT]
-LIBRARY UNISIM;
-USE UNISIM.vcomponents.ALL;
-\end{lstlisting}
-
-	\section{Primitivas}
-	
-		\subsection{LUT1: 1-Bit Look-Up Table with General Output}
-	
-	\begin{figure}[hbtp]
-		\caption{Esquemático de LUT1.}
-		\centering
-		\includegraphics[width=0.3\linewidth]{D3_lut1}
-		\label{fig:D2_lut1}
-	\end{figure}	
-	
-Este elemento proporciona una versión de look-up table de un búfer o inversor. Estos elementos son los bloques de construcción básicos. El parámetro INIT le da a la LUT su valor lógico. De forma predeterminada, este valor es cero, lo que lleva la salida a cero independientemente de los valores de entrada (actuando como tierra).Sin embargo, en la mayoría de los casos hay que determinar un nuevo valor INIT para especificar la función lógica de la primitiva LUT. Existen al menos dos métodos mediante los cuales se puede determinar el valor LUT. El método de la tabla lógica y el método de ecuación. En la Tabla \ref{tab:lut1} se muestran las entradas y salidas y la forma de configurar INIT y en el Código \ref{cod:lut1} se muestra su implementación en VHDL.
-
-
-	\begin{table}[htbp]
-		\centering
-		\caption{Tabla lógica de LUT1.}
-		\begin{tabular}{|cc|}
-		\hline
-		\multicolumn{1}{|c|}{\textbf{Inputs}} & \textbf{Outputs} \\ 
-		\multicolumn{1}{|c|}{\textbf{I0}} & \textbf{O} \\ \hline 
-		\multicolumn{1}{|c|}{0} & INIT[0] \\ \hline
-		\multicolumn{1}{|c|}{1} & INIT[1] \\ \hline
-		\multicolumn{2}{|c|}{INIT = Binary number assigned to the INIT attribute}          \\ \hline
-		\end{tabular}
-		\label{tab:lut1}
-	\end{table}	
 	
 
-\vspace{0.4cm}
-\begin{lstlisting}[style = VHDL_TEXT, caption = Primitiva LUT1., label = cod:lut1]
-Library UNISIM;
-use UNISIM.vcomponents.all;
--- LUT1: 1-input Look-Up Table with general output
--- 7 Series
--- Xilinx HDL Language Template, version 2021.2
-LUT1_inst : LUT1
-generic map (
-    INIT => "00")
-port map (
-    O => O, -- LUT general output
-    I0 => I0 -- LUT input
-);
--- End of LUT1_inst instantiation
-\end{lstlisting}
 
 
 
-
-
-
-	\subsection{OBUFDS: Differential Signaling Output Buffer}
-	
-	\begin{figure}[hbtp]
-		\caption{Esquemático de OBUFDS.}
-		\centering
-		\includegraphics[width=0.3\linewidth]{D3_obufds}
-		\label{fig:D3_obufds}
-	\end{figure}	
-	
-	Este elemento de diseño es un búfer de salida única que admite señalización diferencial de bajo voltaje. OBUFDS aísla el circuito interno y proporciona corriente de accionamiento para las señales que salen del chip. Su salida se representa como dos puertos distintos (O y OB), uno considerado el ``maestro'' y el otro el ``esclavo''. El maestro y el esclavo son fases opuestas de la misma señal lógica.  En la Tabla \ref{tab:obufsd} se muestran las entradas y salidas y en el Código \ref{cod:obufsd} se muestra su implementación en VHDL.
-
-	
-	\begin{table}[htbp]
-		\centering
-		\caption{Tabla lógica de OBUFDS.}
-		\begin{tabular}{|c|cc|}
-		\hline
-		\textbf{Inputs} & \multicolumn{2}{c|}{\textbf{Outputs}} \\ 
-		\textbf{I}      & \multicolumn{1}{c}{\textbf{O}}  & \textbf{OB} \\ \hline
-		0      & \multicolumn{1}{c|}{0}  & 1  \\ \hline
-		1      & \multicolumn{1}{c|}{1}  & 0  \\ \hline
-		\end{tabular}
-		\label{tab:obufsd}
-	\end{table}
-
-
-\vspace{0.4cm}
-\begin{lstlisting}[style = VHDL_TEXT, caption = Primitiva OBUFDS., label = cod:obufsd]
-Library UNISIM;
-use UNISIM.vcomponents.all;
--- OBUFDS: Differential Output Buffer
--- 7 Series
--- Xilinx HDL Language Template, version 2021.2
-OBUFDS_inst : OBUFDS
-generic map (
-    IOSTANDARD => "DEFAULT", -- Specify the output I/O standard
-    SLEW => "SLOW") -- Specify the output slew rate
-port map (
-    O => O, -- Diff_p output (connect directly to top-level port)
-    OB => OB, -- Diff_n output (connect directly to top-level port)
-    I => I -- Buffer input
-);
--- End of OBUFDS_inst instantiation
-\end{lstlisting}
-
-
-
-Datos para programar la tarjeta
-
-Default Board: Basys3
-Default Part: xc7a35tcpg236-1
-Product: Artix-7
-Family: Artix-7
-Package: cpg236
-Speed Grade: -1
-
-
-
-
-
-
+	\end{comment}
 

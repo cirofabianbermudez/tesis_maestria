@@ -1,8 +1,10 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: fixed_point_converter_wind.c
+ * Desing name: A5_fixed_point_converter_wind.c
  * Description: Fixed point converter for windows
+ * Compile: gcc -o A5_converter_wind.exe A5_fixed_point_converter_wind.c
+ * Run: ./A5_converter_wind.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,48 +33,43 @@ double getNumber( long long r ){
 	return ( (double)r/_power);
 }
 
-void fprintf_bin(FILE *fpointer,long long n){
-    unsigned long long mask = 1;
-    for(int i = sizeof(n)*8-1; i >= 0; i--){
-        mask = (long long)1 << i;
-        (n & mask) ? fprintf(fpointer,"1") : fprintf(fpointer,"0");
-    }
-}
-
-void printf_bin(long long n){
-    unsigned long long mask = 1;
-    for(int i = sizeof(n)*8-1; i >= 0; i--){
-        mask = (long long)1 << i;
-        (n & mask) ? printf("1") : printf("0");
-    }
+// fixed point to binary_string for 64 bits
+char *to_binary(long long n){
+	char *binary = (char *)malloc(sizeof(char) * (64 + 1) ); // extra byte for null terminator
+	int k = 0;
+    unsigned long long mask, i;
+    mask = ( (long long)1 << (64 - 1) ); 
+	for (i = mask; i > 0; i >>= 1) {
+		binary[k++] = (n & i) ? '1' : '0';
+	}
+	binary[k] = '\0';
+	return binary;
 }
 
 int main(void){
   	FILE *fpointer = fopen("convertion.txt","w");
 
-  	double values[2] = {0.1, 0.2};
-	long long values_fp[2] = {0};
+  	double values[] = {0.1, 0.2};
+    long long fixed_value = 0;
 	int length = sizeof(values)/sizeof(values[0]);
 	int integer, frac;
-	int i = 0;
 	
 	integer = 3; frac = 64 - integer - 1; 
 	initialize( integer, frac );
 	printf(" Representation A(a,b) = A(%d,%d)\n a: integer\tb: fractional \n",integer,frac);
-	printf(" Number of elements: %d\n", length);
+	printf(" # Number of elements: %d\n", length);
+	printf(" # See convertion.txt\n\n");
 
-    for(i = 0; i<length; i++){
-        values_fp[i] = setNumber(values[i]);
-        fprintf(fpointer,"v%d <= \"",i+1);
-        fprintf_bin(fpointer,values_fp[i]);    
-        fprintf(fpointer,"\"; -- %5.2lf\n",getNumber(values_fp[i]) );
-        printf(" v%d <= \"",i+1);
-        printf_bin(values_fp[i]);    
-        printf("\"; -- %5.2lf\n",getNumber(values_fp[i]) );
+    char *binary_string;
+    for (int i = 0; i < length; i++){
+        fixed_value = setNumber(values[i]);
+        binary_string = to_binary(fixed_value);
+        printf(" v%d <= \"%s\"; -- %5.2lf\n",i+1, binary_string, getNumber(fixed_value) );
+        fprintf(fpointer," v%d <= \"%s\"; -- %5.2lf\n",i+1, binary_string, getNumber(fixed_value) );
+        free(binary_string);
+        binary_string = NULL;
     }
-	
+
 	fclose(fpointer);
 	return 0;
 }
-// gcc -o convertion_wind fixed_point_converter_wind.c
-// ./convertion_wind

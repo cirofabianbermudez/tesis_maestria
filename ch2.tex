@@ -1,8 +1,98 @@
-\chapter{Selección y evaluación de núcleos TRNGs}		
+\chapter{Fundamentos teóricos}
+    \section{TRNGs}
+    \section{Gitter}
+    \section{Pruebas estadísticas}
+    \section{Mapas caóticos}
+
+
+    \section{Teoría de FPGAs en Xilinx}
+        Para poder realizar la implementación del núcleo ERO es necesario utilizar las primitivas y macros propias del fabricante de FPGA que para este trabajo es Xilinx. Las primitivas son componentes de Xilinx que son nativos de la arquitectura a la que se dirige y los macros son elementos que se encuentran en las bibliotecas UniMacro y Xilinx Parameterized Macros, las cuales se utilizan para instanciar elementos que son complejos de instanciar simplemente usando las primitivas, después las herramientas de síntesis expanden automáticamente estas macros a sus primitivas subyacentes. Los métodos de diseño disponibles son la instanciación, la inferencia, el catalogo IP y el soporte de macros, no obstante para este diseño solo se utilizan la instanciación, la cual permite instanciar un componente directamente en el diseño y es útil si se desea controlar el uso, la implementación y la ubicación exactos de los bloques individuales y el soporte de macros, el cual, utilizando las librerías antes mencionadas permiten abstraer la complejidad de utilizar unicamente primitivas simples.
+
+        Toda la información referente a los macros y primitivas se encuentran en la documentación oficial en el archivo llamado ``Vivado Design Suite 7 Series FPGA Libraries Guide''. Para poder utilizar las primitivas y las macros es necesario agregar la librería UniMacro en la cabecera del archivo VHDL de la siguiente manera: 
+
+        \vspace{0.4cm}
+        \lstinputlisting[style = VHDL_TEXT, caption = Librería para primitivas de Xilix., label = cod:library]{codigos/vhdl_codes/primitivas/library.vhd}
+        % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/library.vhd}
+
+	    \subsection{Primitivas}
+
+		    \subsubsection{LUT1: 1-Bit Look-Up Table with General Output}
+	
+                \begin{figure}[hbtp]
+                    \caption{Esquemático de LUT1.}
+                    \centering
+                    \includegraphics[width=0.3\linewidth]{D2_lut1}
+                    \label{fig:D2_lut1}
+                \end{figure}	
+	
+                Este elemento proporciona una versión de look-up table de un búfer o inversor. Estos elementos son los bloques de construcción básicos. El parámetro INIT le da a la LUT su valor lógico. De forma predeterminada, este valor es cero, lo que lleva la salida a cero independientemente de los valores de entrada (actuando como tierra).Sin embargo, en la mayoría de los casos hay que determinar un nuevo valor INIT para especificar la función lógica de la primitiva LUT. Existen al menos dos métodos mediante los cuales se puede determinar el valor LUT. El método de la tabla lógica y el método de ecuación. En la Tabla \ref{tab:lut1} se muestran las entradas y salidas y la forma de configurar INIT y en el Código \ref{cod:lut1} se muestra su implementación en VHDL.
+
+                \begin{table}[htbp]
+                    \centering
+                    \caption{Tabla lógica de LUT1.}
+                    \begin{tabular}{|cc|}
+                        \hline
+                        \multicolumn{1}{|c|}{\textbf{Inputs}} & \textbf{Outputs} \\ 
+                        \multicolumn{1}{|c|}{\textbf{I0}} & \textbf{O} \\ 
+                        \hline 
+                        \multicolumn{1}{|c|}{0} & INIT[0] \\ \hline
+                        \multicolumn{1}{|c|}{1} & INIT[1] \\ \hline
+                        \multicolumn{2}{|c|}{INIT = Binary number assigned to the INIT attribute} \\ 
+                        \hline
+                    \end{tabular}
+                    \label{tab:lut1}
+                \end{table}	
+	
+                \vspace{0.4cm}
+                \lstinputlisting[style = VHDL_TEXT, caption = Primitava de LUT1., label = cod:lut1]{codigos/vhdl_codes/primitivas/lut1.vhd}
+                % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/lut1.vhd}
+
+            \subsubsection{OBUFDS: Differential Signaling Output Buffer}
+
+                \begin{figure}[hbtp]
+                    \caption{Esquemático de OBUFDS.}
+                    \centering
+                    \includegraphics[width=0.3\linewidth]{D3_obufds}
+                    \label{fig:D3_obufds}
+                \end{figure}	
+
+                Este elemento de diseño es un búfer de salida única que admite señalización diferencial de bajo voltaje. OBUFDS aísla el circuito interno y proporciona corriente de accionamiento para las señales que salen del chip. Su salida se representa como dos puertos distintos (O y OB), uno considerado el ``maestro'' y el otro el ``esclavo''. El maestro y el esclavo son fases opuestas de la misma señal lógica.  En la Tabla \ref{tab:obufds} se muestran las entradas y salidas y en el Código \ref{cod:obufds} se muestra su implementación en VHDL.
+                
+                \begin{table}[htbp]
+                    \centering
+                    \caption{Tabla lógica de OBUFDS.}
+                    \begin{tabular}{|c|cc|}
+                        \hline
+                        \textbf{Inputs} & \multicolumn{2}{c|}{\textbf{Outputs}} \\ 
+                        \textbf{I}      & \multicolumn{1}{c}{\textbf{O}}  & \textbf{OB} \\ 
+                        \hline
+                        0      & \multicolumn{1}{c|}{0}  & 1  \\ \hline
+                        1      & \multicolumn{1}{c|}{1}  & 0  \\ \hline
+                    \end{tabular}
+                    \label{tab:obufds}
+                \end{table}
+
+                \vspace{0.4cm}
+                \lstinputlisting[style = VHDL_TEXT, caption = Primitava de OBUFDS., label = cod:obufds]{codigos/vhdl_codes/primitivas/obufds.vhd}
+                % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/obufds.vhd}
+\begin{comment}
+
+Datos para programar la tarjeta
+
+Default Board: Basys3
+Default Part: xc7a35tcpg236-1
+Product: Artix-7
+Family: Artix-7
+Package: cpg236
+Speed Grade: -1
+
+\end{comment}
+
+    
+    %\section{Selección y evaluación de núcleos TRNGs}
 
 %-----------------------------------------------------------------
 
-    \index{TRNG}	
 	Los números aleatorios se utilizan en muchos ámbitos de nuestra vida. Los utilizamos para elegir quién gana la lotería, decidir la dirección en la que atacará un equipo en el primer tiempo de un partido de futbol, asegurar una partida limpia en un juego de mesa y desempeñan un papel fundamental en la criptografía y la seguridad de la información. Para seleccionar qué equipo decide el lado del campo basta con lanzar una moneda. Para jugar a un juego de mesa, necesitamos más de dos valores aleatorios, por lo que utilizamos un dado. La criptografía, en cambio, requiere algo más que tirar un dado para asegurar nuestros datos en comunicaciones digitales o en transacciones bancarias. La seguridad de las comunicaciones es una parte muy importante de la vida moderna. En esta era de la información, la gente envía correos electrónicos, llama o envía mensajes a sus amigos y realiza transacciones en línea millones de veces al día. Se supone que cada uno de estos procesos cotidianos es seguro y confidencial. La seguridad de la comunicación depende de la capacidad de estos procesos para verificar que las personas que se comunican son realmente quienes dicen ser. La seguridad sólo puede lograrse mediante la distribución de identidades privadas conocidas sólo por el usuario individual, conocidas como claves, de modo que personas maliciosas no puedan suplantar a nadie y causar algún tipo de daño. Una clave privada es un gran número generado aleatoriamente que es único para el usuario. La aleatoriedad de los números de las claves privadas determina la seguridad de las conexiones. La capacidad de generar números aleatorios es, por tanto, una parte muy importante de la seguridad de los sistemas de comunicación.
 
 	En un sistema criptográfico, los generadores de números aleatorios o Random Number Generators (RNG) por sus siglas en inglés se utilizan no sólo para generar claves criptográficas, sino también para generar nonces, valores de relleno, vectores de inicialización, desafíos y máscaras aleatorias para la protección contra ataques de canal lateral \cite{Petura2016}. A pesar de que hay muchas aplicaciones diferentes de los números aleatorios, todos comparten dos requisitos básicos: buenas propiedades estadísticas, concretamente una distribución de probabilidad uniforme, cada valor de cualquier número aleatorio debe tener la misma probabilidad de aparecer e imprevisibilidad de los números aleatorios. Los números aleatorios, especialmente los utilizados para parámetros secretos como las claves, deben ser impredecibles para evitar que un atacante pueda calcular valores futuros o anteriores a partir de los datos ya generados y capturados. En los diseños modernos, se requieren algunas características adicionales: el generador debe ser intrínsecamente seguro, robusto y resistente a los ataques y probado en línea mediante pruebas específicas del generador \cite{Badrignans2011}.

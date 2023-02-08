@@ -1,8 +1,10 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: rom_gen_chaotic_map_wind.c
+ * Desing name: A4_rom_gen_chaotic_map_wind.c
  * Description: VHDL ROM generator for chaotic map for windows
+ * Compile: gcc -o A4_rom_cm_wind.exe A4_rom_gen_chaotic_map_wind.c
+ * Run: ./A4_rom_cm_wind.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,17 +33,22 @@ double getNumber( long long r ){
     return ( (double)r/_power);
 }
 
-void fprintf_bin(FILE *fpointer,long long n){
-    unsigned long long mask = 1;
-    for(int i = sizeof(n)*8-1; i >= 0; i--){
-        mask = (long long)1 << i;
-        (n & mask) ? fprintf(fpointer,"1") : fprintf(fpointer,"0");
-    }
+// fixed point to binary_string for 64 bits
+char *to_binary(long long n){
+	char *binary = (char *)malloc(sizeof(char) * (64 + 1) ); // extra byte for null terminator
+	int k = 0;
+    unsigned long long mask, i;
+    mask = ( (long long)1 << (64 - 1) ); 
+	for (i = mask; i > 0; i >>= 1) {
+		binary[k++] = (n & i) ? '1' : '0';
+	}
+	binary[k] = '\0';
+	return binary;
 }
 
 int main(void){
     double an[12] = {-0.6, -0.1, 1.1, 0.2, -0.8, 0.6, -0.7, 0.7, 0.7, 0.3, 0.6, 0.9};
-    long long an_fp[12] = {0};
+    long long fixed_value = 0;
     int i = 0;
     int length = sizeof(an)/sizeof(an[0]);
 
@@ -49,11 +56,8 @@ int main(void){
     integer = 3; frac = 64 - integer - 1; 
     initialize( integer, frac );
     printf(" Representation A(a,b) = A(%d,%d)\n a: integer\tb: fractional \n",integer,frac);
-    printf(" Number of elements: %d\n", length);
-
-    for(i = 0; i<length; i++){
-        an_fp[i] = setNumber(an[i]);
-    }
+    printf(" # Number of elements: %d\n", length);
+    printf(" # ROM generated, see rom_cm.vhd\n");
 
     FILE *fpointer = fopen("rom_cm.vhd","w");	    // Open file
 	fprintf(fpointer,"library ieee;\n");
@@ -73,14 +77,17 @@ int main(void){
     fprintf(fpointer,"end;\n\n");
     fprintf(fpointer,"architecture arch of rom_cm is\n");
     fprintf(fpointer,"begin\n");
+
+    char *binary_string;
     for(i = 0; i<length; i++){
-        fprintf(fpointer,"    a%d <= \"",i+1);
-        fprintf_bin(fpointer,an_fp[i]);    
-        fprintf(fpointer,"\"; -- %5.2lf\n",getNumber(an_fp[i]) );
+        fixed_value = setNumber(an[i]);
+        binary_string = to_binary(fixed_value);
+        fprintf(fpointer,"    a%d <= \"%s\"; --%5.2lf\n",i+1, binary_string, getNumber(fixed_value) );
+        free(binary_string);
+        binary_string = NULL;
     }
+
     fprintf(fpointer,"end;\n");
 	fclose(fpointer); // Close file
 	return 0;
 }
-// gcc -o rom_cm_wind rom_gen_chaotic_map_wind.c
-// ./rom_cm_wind

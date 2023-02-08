@@ -1,8 +1,10 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: serial_read_wind.c
+ * Desing name: A8_serial_read_wind.c
  * Description: Read from serial file and convert to double for windows
+ * Compile: gcc -o A8_serial_read_wind.exe A8_serial_read_wind.c
+ * Run: ./A8_serial_read_wind.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,5 +77,3 @@ int main(void){
     fclose(fptr2);
     return 0;
 }
-// gcc -o serial_read_wind serial_read_wind.c
-// ./serial_read_wind

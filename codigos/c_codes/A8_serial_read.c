@@ -1,8 +1,10 @@
 /*
- * Engineer: Ciro Fabian Bermudez Marquez
+ * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: serial_read.c
+ * Desing name: A8_serial_read.c
  * Description: Read from serial file and convert to double
+ * Compile: gcc -o A8_serial_read.exe A8_serial_read.c
+ * Run: ./A8_serial_read.exe
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,5 +77,3 @@ int main(void){
     fclose(fptr2);
     return 0;
 }
-// gcc -o serial_read serial_read.c
-// ./serial_read
