@@ -2,11 +2,20 @@
 - [x] Crear archivo de portada
 - [x] Mejorar archivo main de LaTeX y glosarios
 - [x] Hacer plantillas para bases de datos en obsidian
+- [x] Probar el pipeline
+- [x] Hacer convertidos de código verilog a vhdl para Single Constant Multiplier
 - [ ] Agregar parte teórica de mapas caóticos
-- [ ] Agregar articulos nuevos del correo.
-- [ ] Hacer código para Single Constant Multiplier
-- [ ] Probar el pipeline
-- [ ] 
+
+20/02/2023
+- [x] Agregar los dos artículos que mandó el Dr. Tlelo al correo a la bibliografía 
+- [x] Mejorar estructura de LaTeX.
+- [ ] Investigar sobre Exponentes de Liapunov
+- [ ] Agregar las demás gráficas del mapa caótico de Sprott.
+- [ ] Investigar que son los dominios de atracción y ver cómo graficarlos.
+- [ ] Hacer single constant multiplier a mano, hacer redacción de metodología.
+- [ ] Subir avances a github
+
+22/02/2023
 
 
 ## códigos
