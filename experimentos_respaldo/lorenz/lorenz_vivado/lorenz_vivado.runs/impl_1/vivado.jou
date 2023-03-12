@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Feb  5 17:08:42 2023
+# Process ID: 27640
+# Current directory: C:/Users/Ciro/Desktop/lorenz/lorenz_vivado/lorenz_vivado.runs/impl_1
+# Command line: vivado.exe -log lorenz.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source lorenz.tcl -notrace
+# Log file: C:/Users/Ciro/Desktop/lorenz/lorenz_vivado/lorenz_vivado.runs/impl_1/lorenz.vdi
+# Journal file: C:/Users/Ciro/Desktop/lorenz/lorenz_vivado/lorenz_vivado.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source lorenz.tcl -notrace

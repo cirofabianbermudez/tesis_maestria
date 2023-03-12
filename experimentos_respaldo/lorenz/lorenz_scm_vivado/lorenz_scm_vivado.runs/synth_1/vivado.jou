@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Feb 10 11:45:06 2023
+# Process ID: 15868
+# Current directory: C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1
+# Command line: vivado.exe -log lorenz.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lorenz.tcl
+# Log file: C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1/lorenz.vds
+# Journal file: C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source lorenz.tcl -notrace

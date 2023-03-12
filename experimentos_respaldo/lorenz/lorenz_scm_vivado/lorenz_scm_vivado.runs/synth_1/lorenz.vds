@@ -1,0 +1,314 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Feb 10 11:45:06 2023
+# Process ID: 15868
+# Current directory: C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1
+# Command line: vivado.exe -log lorenz.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lorenz.tcl
+# Log file: C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1/lorenz.vds
+# Journal file: C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source lorenz.tcl -notrace
+Command: synth_design -top lorenz -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 5304
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1109.113 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'lorenz' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/lorenz.vhd:19]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'cu' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/cu.vhd:14]
+INFO: [Synth 8-226] default block is never used [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/cu.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'cu' (1#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/cu.vhd:14]
+INFO: [Synth 8-638] synthesizing module 'mux' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/mux.vhd:14]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mux' (2#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/mux.vhd:14]
+INFO: [Synth 8-638] synthesizing module 'rom' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/rom.vhd:11]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'rom' (3#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/rom.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'sub' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/sub.vhd:13]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'sub' (4#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/sub.vhd:13]
+INFO: [Synth 8-638] synthesizing module 'scm_sigma' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/scm_sigma.vhd:13]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'scm_sigma' (5#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/scm_sigma.vhd:13]
+INFO: [Synth 8-638] synthesizing module 'scm_h' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/scm_h.vhd:13]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'scm_h' (6#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/scm_h.vhd:13]
+INFO: [Synth 8-638] synthesizing module 'adder' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/adder.vhd:13]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'adder' (7#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/adder.vhd:13]
+INFO: [Synth 8-638] synthesizing module 'ff_hab' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/ff_hab.vhd:15]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'ff_hab' (8#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/ff_hab.vhd:15]
+INFO: [Synth 8-638] synthesizing module 'mult' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/mult.vhd:13]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mult' (9#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/mult.vhd:13]
+INFO: [Synth 8-638] synthesizing module 'scm_beta' [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/scm_beta.vhd:13]
+	Parameter n bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'scm_beta' (10#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/scm_beta.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'lorenz' (11#1) [C:/Users/Ciro/Desktop/lorenz/vhdl_codes/lorenz_scm/lorenz.vhd:19]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1151.164 ; gain = 42.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1151.164 ; gain = 42.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1151.164 ; gain = 42.051
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1151.164 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Ciro/Desktop/lorenz/lorenz_pipeline_all_vivado/lorenz_pipeline_all_vivado.srcs/constrs_1/new/pines.xdc]
+Finished Parsing XDC File [C:/Users/Ciro/Desktop/lorenz/lorenz_pipeline_all_vivado/lorenz_pipeline_all_vivado.srcs/constrs_1/new/pines.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Ciro/Desktop/lorenz/lorenz_pipeline_all_vivado/lorenz_pipeline_all_vivado.srcs/constrs_1/new/pines.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/lorenz_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/lorenz_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1254.531 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1254.531 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1254.531 ; gain = 145.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1254.531 ; gain = 145.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1254.531 ; gain = 145.418
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'Qp_reg' in module 'cu'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                               00 |                               00
+                  iSTATE |                               01 |                               01
+                 iSTATE0 |                               10 |                               10
+                 iSTATE2 |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'Qp_reg' using encoding 'sequential' in module 'cu'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1254.531 ; gain = 145.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   53 Bit       Adders := 4     
+	   5 Input   53 Bit       Adders := 3     
+	   6 Input   53 Bit       Adders := 1     
+	   3 Input   32 Bit       Adders := 4     
+	   2 Input   32 Bit       Adders := 3     
+	   2 Input   31 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
++---Multipliers : 
+	              32x32  Multipliers := 2     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 9     
+	   4 Input    2 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP mult_1/temp, operation Mode is: A*B.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: Generating DSP mult_1/temp, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: Generating DSP mult_1/temp, operation Mode is: A*B.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: Generating DSP mult_1/temp, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: operator mult_1/temp is absorbed into DSP mult_1/temp.
+DSP Report: Generating DSP mult_2/temp, operation Mode is: A*B.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: Generating DSP mult_2/temp, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: Generating DSP mult_2/temp, operation Mode is: A*B.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: Generating DSP mult_2/temp, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+DSP Report: operator mult_2/temp is absorbed into DSP mult_2/temp.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1254.531 ; gain = 145.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping	Report (see note below)
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|lorenz      | A*B            | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | (PCIN>>17)+A*B | 15     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | (PCIN>>17)+A*B | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | A*B            | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | (PCIN>>17)+A*B | 15     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|lorenz      | (PCIN>>17)+A*B | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1290.219 ; gain = 181.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1350.895 ; gain = 241.781
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   181|
+|3     |DSP48E1 |     8|
+|4     |LUT1    |     3|
+|5     |LUT2    |   471|
+|6     |LUT3    |   395|
+|7     |LUT4    |   107|
+|8     |LUT5    |   140|
+|9     |LUT6    |   165|
+|10    |FDCE    |   103|
+|11    |IBUF    |     3|
+|12    |OBUF    |     3|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1351.922 ; gain = 242.809
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:25 . Memory (MB): peak = 1351.922 ; gain = 139.441
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1351.922 ; gain = 242.809
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 1363.836 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 189 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1363.836 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+40 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:51 . Memory (MB): peak = 1363.836 ; gain = 254.723
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Ciro/Desktop/lorenz/lorenz_scm_vivado/lorenz_scm_vivado.runs/synth_1/lorenz.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file lorenz_utilization_synth.rpt -pb lorenz_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Feb 10 11:46:01 2023...
