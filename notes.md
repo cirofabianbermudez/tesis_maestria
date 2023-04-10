@@ -1,15 +1,3 @@
-302 renglones
-
-GNUPLOT manual pagina 61
-
-ffmpeg -framerate 60 -i img_%04d.png -c:v libx264 -pix_fmt yuv420p myvideo.mp4
-
-
-if (ARGC >= 2) {
-    beta = ARG1
-} else {
-    beta = 3.0
-}
-
-
-	// 62600000
+- nonce:  is an arbitrary number that can be used just once in a cryptographic communication, It is often a random or pseudo-random number issued in an authentication protocol to ensure that old communications cannot be reused in replay attacks. They can also be useful as initialization vectors and in cryptographic hash functions.
+- Clock Jitter: se utiliza en electrónica para referirse a las variaciones aleatorias en la duración de un período de tiempo, como puede ser el caso del período de un reloj en un sistema electrónico. El "jitter del reloj" se refiere a las fluctuaciones en el tiempo de los pulsos generados por un reloj, lo que puede causar problemas en la sincronización y la integridad de los datos.
+- Señal binaria sin procesar, ruido digital sin procesar , Raw Bit Signal RBS

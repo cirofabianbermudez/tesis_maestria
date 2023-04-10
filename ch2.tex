@@ -1,348 +1,264 @@
 \chapter{Fundamentos teóricos}
-    \section{TRNGs}
-    \section{Jitter}
-    \section{Pruebas estadísticas}
-    \section{Mapas caóticos}
 
+    En este capitulo se presentan los conceptos necesarios para comprender cómo funcionan las diferentes clases de generadores de números aleatorios, sus fuentes de aleatoriedad, sus principales características, AGREGAR MÄS DESPUES. 
 
-    \section{Teoría de FPGAs en Xilinx}
-        Para poder realizar la implementación del núcleo ERO es necesario utilizar las primitivas y macros propias del fabricante de FPGA que para este trabajo es Xilinx. Las primitivas son componentes de Xilinx que son nativos de la arquitectura a la que se dirige y los macros son elementos que se encuentran en las bibliotecas UniMacro y Xilinx Parameterized Macros, las cuales se utilizan para instanciar elementos que son complejos de instanciar simplemente usando las primitivas, después las herramientas de síntesis expanden automáticamente estas macros a sus primitivas subyacentes. Los métodos de diseño disponibles son la instanciación, la inferencia, el catalogo IP y el soporte de macros, no obstante para este diseño solo se utilizan la instanciación, la cual permite instanciar un componente directamente en el diseño y es útil si se desea controlar el uso, la implementación y la ubicación exactos de los bloques individuales y el soporte de macros, el cual, utilizando las librerías antes mencionadas permiten abstraer la complejidad de utilizar unicamente primitivas simples.
+    \section{RNGs}
+        Agregar un párrafo sencillo.
 
-        Toda la información referente a los macros y primitivas se encuentran en la documentación oficial en el archivo llamado ``Vivado Design Suite 7 Series FPGA Libraries Guide''. Para poder utilizar las primitivas y las macros es necesario agregar la librería UniMacro en la cabecera del archivo VHDL de la siguiente manera: 
-
-        \vspace{0.4cm}
-        \lstinputlisting[style = VHDL_TEXT, caption = Librería para primitivas de Xilix., label = cod:library]{codigos/vhdl_codes/primitivas/library.vhd}
-        % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/library.vhd}
-
-	    \subsection{Primitivas}
-
-		    \subsubsection{LUT1: 1-Bit Look-Up Table with General Output}
-	
-                \begin{figure}[hbtp]
-                    \caption{Esquemático de LUT1.}
-                    \centering
-                    \includegraphics[width=0.3\linewidth]{D2_lut1}
-                    \label{fig:D2_lut1}
-                \end{figure}	
-	
-                Este elemento proporciona una versión de look-up table de un búfer o inversor. Estos elementos son los bloques de construcción básicos. El parámetro INIT le da a la LUT su valor lógico. De forma predeterminada, este valor es cero, lo que lleva la salida a cero independientemente de los valores de entrada (actuando como tierra).Sin embargo, en la mayoría de los casos hay que determinar un nuevo valor INIT para especificar la función lógica de la primitiva LUT. Existen al menos dos métodos mediante los cuales se puede determinar el valor LUT. El método de la tabla lógica y el método de ecuación. En la Tabla \ref{tab:lut1} se muestran las entradas y salidas y la forma de configurar INIT y en el Código \ref{cod:lut1} se muestra su implementación en VHDL.
-
-                \begin{table}[htbp]
-                    \centering
-                    \caption{Tabla lógica de LUT1.}
-                    \begin{tabular}{|cc|}
-                        \hline
-                        \multicolumn{1}{|c|}{\textbf{Inputs}} & \textbf{Outputs} \\ 
-                        \multicolumn{1}{|c|}{\textbf{I0}} & \textbf{O} \\ 
-                        \hline 
-                        \multicolumn{1}{|c|}{0} & INIT[0] \\ \hline
-                        \multicolumn{1}{|c|}{1} & INIT[1] \\ \hline
-                        \multicolumn{2}{|c|}{INIT = Binary number assigned to the INIT attribute} \\ 
-                        \hline
-                    \end{tabular}
-                    \label{tab:lut1}
-                \end{table}	
-	
-                \vspace{0.4cm}
-                \lstinputlisting[style = VHDL_TEXT, caption = Primitava de LUT1., label = cod:lut1]{codigos/vhdl_codes/primitivas/lut1.vhd}
-                % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/lut1.vhd}
-
-            \subsubsection{OBUFDS: Differential Signaling Output Buffer}
-
-                \begin{figure}[hbtp]
-                    \caption{Esquemático de OBUFDS.}
-                    \centering
-                    \includegraphics[width=0.3\linewidth]{D3_obufds}
-                    \label{fig:D3_obufds}
-                \end{figure}	
-
-                Este elemento de diseño es un búfer de salida única que admite señalización diferencial de bajo voltaje. OBUFDS aísla el circuito interno y proporciona corriente de accionamiento para las señales que salen del chip. Su salida se representa como dos puertos distintos (O y OB), uno considerado el ``maestro'' y el otro el ``esclavo''. El maestro y el esclavo son fases opuestas de la misma señal lógica.  En la Tabla \ref{tab:obufds} se muestran las entradas y salidas y en el Código \ref{cod:obufds} se muestra su implementación en VHDL.
+        \subsection{Clasificación de los RNGs}
+	        Dado el amplio rango de aplicaciones de los RNG, existan diferentes clases de RNG que satisfacen diversas necesidades. Basándonos en el método utilizado para generar números aleatorios, podemos distinguir dos tipos fundamentales de RNG:
+	        
+            \begin{enumerate}
+                \item Generadores de números aleatorios deterministas (DRNG/PRNG)
                 
-                \begin{table}[htbp]
-                    \centering
-                    \caption{Tabla lógica de OBUFDS.}
-                    \begin{tabular}{|c|cc|}
-                        \hline
-                        \textbf{Inputs} & \multicolumn{2}{c|}{\textbf{Outputs}} \\ 
-                        \textbf{I}      & \multicolumn{1}{c}{\textbf{O}}  & \textbf{OB} \\ 
-                        \hline
-                        0      & \multicolumn{1}{c|}{0}  & 1  \\ \hline
-                        1      & \multicolumn{1}{c|}{1}  & 0  \\ \hline
-                    \end{tabular}
-                    \label{tab:obufds}
-                \end{table}
-
-                \vspace{0.4cm}
-                \lstinputlisting[style = VHDL_TEXT, caption = Primitava de OBUFDS., label = cod:obufds]{codigos/vhdl_codes/primitivas/obufds.vhd}
-                % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/obufds.vhd}
-\begin{comment}
-
-Datos para programar la tarjeta
-
-Default Board: Basys3
-Default Part: xc7a35tcpg236-1
-Product: Artix-7
-Family: Artix-7
-Package: cpg236
-Speed Grade: -1
-
-\end{comment}
-
-    
-    %\section{Selección y evaluación de núcleos TRNGs}
-
-%-----------------------------------------------------------------
-
-	Los números aleatorios se utilizan en muchos ámbitos de nuestra vida. Los utilizamos para elegir quién gana la lotería, decidir la dirección en la que atacará un equipo en el primer tiempo de un partido de futbol, asegurar una partida limpia en un juego de mesa y desempeñan un papel fundamental en la criptografía y la seguridad de la información. Para seleccionar qué equipo decide el lado del campo basta con lanzar una moneda. Para jugar a un juego de mesa, necesitamos más de dos valores aleatorios, por lo que utilizamos un dado. La criptografía, en cambio, requiere algo más que tirar un dado para asegurar nuestros datos en comunicaciones digitales o en transacciones bancarias. La seguridad de las comunicaciones es una parte muy importante de la vida moderna. En esta era de la información, la gente envía correos electrónicos, llama o envía mensajes a sus amigos y realiza transacciones en línea millones de veces al día. Se supone que cada uno de estos procesos cotidianos es seguro y confidencial. La seguridad de la comunicación depende de la capacidad de estos procesos para verificar que las personas que se comunican son realmente quienes dicen ser. La seguridad sólo puede lograrse mediante la distribución de identidades privadas conocidas sólo por el usuario individual, conocidas como claves, de modo que personas maliciosas no puedan suplantar a nadie y causar algún tipo de daño. Una clave privada es un gran número generado aleatoriamente que es único para el usuario. La aleatoriedad de los números de las claves privadas determina la seguridad de las conexiones. La capacidad de generar números aleatorios es, por tanto, una parte muy importante de la seguridad de los sistemas de comunicación.
-
-	En un sistema criptográfico, los generadores de números aleatorios o Random Number Generators (RNG) por sus siglas en inglés se utilizan no sólo para generar claves criptográficas, sino también para generar nonces, valores de relleno, vectores de inicialización, desafíos y máscaras aleatorias para la protección contra ataques de canal lateral \cite{Petura2016}. A pesar de que hay muchas aplicaciones diferentes de los números aleatorios, todos comparten dos requisitos básicos: buenas propiedades estadísticas, concretamente una distribución de probabilidad uniforme, cada valor de cualquier número aleatorio debe tener la misma probabilidad de aparecer e imprevisibilidad de los números aleatorios. Los números aleatorios, especialmente los utilizados para parámetros secretos como las claves, deben ser impredecibles para evitar que un atacante pueda calcular valores futuros o anteriores a partir de los datos ya generados y capturados. En los diseños modernos, se requieren algunas características adicionales: el generador debe ser intrínsecamente seguro, robusto y resistente a los ataques y probado en línea mediante pruebas específicas del generador \cite{Badrignans2011}.
-		
-	Dado el amplio rango de aplicaciones de los RNG, existan diferentes clases de RNG que satisfacen diversas necesidades. Basándonos en el método utilizado para generar números aleatorios, hay dos tipos fundamentales de RNG:
-		
-	\begin{enumerate}
-		\item Generadores de números aleatorios deterministias (DRNG/PRNG)
-		
-		También conocidos como generadores de números pseudo-aleatorios (PRNG), son sistemas que producen una secuencia de aspecto aleatorio de forma matemática, hay un algoritmo subyacente y debido a esto los DRNG son fáciles de implementar en dispositivos lógicos \cite{Jun1999}. Si se conoce el algoritmo, la salida del generador es predecible. Incluso cuando no se conoce el algoritmo pero se han guardado algunas de las secuencias de salida del generador, su comportamiento durante la secuencia guardada puede utilizarse en futuros ataques. Los números producidos parecen aleatorios a corto plazo, pero la secuencia es periódica, normalmente con un periodo largo. Para producir una salida menos predecible, estos generadores utilizan valores de inicialización llamados semillas para empezar \cite{Nist2010}. Para cada semilla se genera una secuencia diferente. Por esta razón, los DRNG deben ser computacionalmente seguros, el algoritmo no debe poder adivinarse computacionalmente y su valor inicial nunca debe reutilizarse. La reutilización del valor inicial puede evitarse guardando el último valor haciendo uso de un contador y utilizando el siguiente valor del contador la próxima vez. La secuencia de salida de un buen DRNG está perfectamente distribuida de manera uniforme, tienen buenas propiedades estadísticas. Los DRNGs consiguen altas tasas de bits de salida y suelen utilizarse como generadores de claves en los cifrados de flujo \cite{Badrignans2011}.
-		
-		\item Generadores de números aleatorios verdaderos (TRNG)
-		
-		Son sistemas que extraen la aleatoriedad de fenómenos aleatorios no algorítmicos. Estos fenómenos pueden ser fluctuaciones de temperatura, decaimiento radiactivo, ruido de radio ambiental, tiempos de acceso al disco duro o interacciones del usuario con el PC. Dado que los fenómenos utilizados son intrínsecamente impredecibles, los TRNG producen datos aleatorios reales en lugar de simples secuencias periódicas de aspecto aleatorio. El comportamiento de un TRNG no está definido por una fórmula matemática, como es el caso de los DRNG. Dado que la calidad de la secuencia aleatoria generada depende de las propiedades físicas, la secuencia de salida puede presentar algunos defectos estadísticos, como el 	sesgo. Las características estadísticas de los TRNG suelen ser peores que las de los DRNG	y están estrechamente relacionadas con la calidad de la fuente de entropía, pero también con el método de extracción de la aleatoriedad. La velocidad final de los TRNG está limitada por el espectro de la señal aleatoria y por el principio utilizado para extraer la entropía de la misma por ejemplo, la frecuencia de muestreo vinculada al espectro del ruido. Los TRNG son, en general, más lentos que los DRNG. En función de la fuente utilizada, pueden dividirse en:
-		\begin{itemize}
-			\item Físicos (PTRNG), utiliza ruido físico a nivel de electrones presente en todos los semiconductores. Es un dispositivo físico y utiliza ruido físico.
-			\item No físicos (NPTRNG, puede no ser un dispositivo físico, sino una pieza de software. Utiliza una fuente de aleatoriedad no física, como las interacciones del usuario con un sistema operativo.
-		\end{itemize}
-	\end{enumerate}
+                    También conocidos como generadores de números pseudo-aleatorios o Pseudo-Random Numger Generators (PRNG), son sistemas que producen una secuencia de aspecto aleatorio de forma matemática, es decir, hay un algoritmo subyacente y debido a esto los Deterministic Random Number Generators (DRNG) son fáciles de implementar en dispositivos lógicos. Si se conoce el algoritmo, la salida del generador es predecible. Incluso cuando no se conoce el algoritmo pero se han guardado algunas de las secuencias de salida del generador, su comportamiento durante la secuencia guardada puede utilizarse en futuros ataques. Los números producidos parecen aleatorios a corto plazo, pero la secuencia es periódica, normalmente con un periodo largo. Para producir una salida menos predecible, estos generadores utilizan valores de inicialización llamados semillas para empezar a generar números \cite{Nist2010}. Para cada semilla se genera una secuencia diferente. Por esta razón, los DRNG deben ser computacionalmente seguros, el algoritmo no debe poder adivinarse computacionalmente y su valor inicial nunca debe reutilizarse. La reutilización del valor inicial puede evitarse guardando el último valor haciendo uso de un contador y utilizando el siguiente valor del contador la próxima vez. La secuencia de salida de un buen DRNG está perfectamente distribuida de manera uniforme, en otras palabras, tienen buenas propiedades estadísticas. Además, los DRNGs consiguen altas tasas de bits de salida y suelen utilizarse como generadores de claves en los cifrados de flujo \cite{Badrignans2011}.
+                
+                \item Generadores de números aleatorios verdaderos (TRNG)
+                
+                    Los True Random Number Generators (TRNG) son sistemas que extraen la aleatoriedad de fenómenos aleatorios no algorítmicos impredecibles como fluctuaciones de temperatura, decaimiento radiactivo, ruido de radio ambiental, tiempos de acceso al disco duro o interacciones del usuario con el PC, jitter, entre otros. A diferencia de los DRNG, que utilizan fórmulas matemáticas para generar números aleatorios, los TRNG producen datos aleatorios reales que no se pueden predecir. Sin embargo, debido a que los procesos físicos utilizados por los TRNG están sujetos a fluctuaciones, la calidad de la secuencia aleatoria generada puede presentar algunos defectos estadísticos, como el sesgo.
+                    
+                    Dado que los procesos físicos están sujetos a fluctuaciones, las características estadísticas de los TRNG suelen ser peores que las de los DRNG y están estrechamente relacionadas con la calidad de la fuente de entropía y con el método de extracción de la aleatoriedad. La velocidad final de los TRNG está limitada por el espectro de la señal aleatoria y por el principio utilizado para extraer la entropía de la misma, por ejemplo, la frecuencia de muestreo vinculada al espectro del ruido. En general, los TRNG son, más lentos que los DRNG. Dependiendo de la fuente utilizada los TRNG se pueden dividir en:
+                
+                \begin{itemize}
+                    \item Físicos (PTRNG), utilizan ruido físico a nivel de electrones presente en todos los semiconductores. Es un dispositivo físico y utiliza ruido físico.
+                    \item No físicos (NPTRNG), puede no ser dispositivos físicos, sino más bien una pieza de software que utilizan fuentes de aleatoriedad no físicas, como las interacciones del usuario con un sistema operativo, por mencionar algunas el movimiento del cursor del mouse.
+                \end{itemize}
+            \end{enumerate}
 	
-	La imprevisibilidad de los generadores de números aleatorios deterministas está garantizada computacionalmente, mientras que la imprevisibilidad de los generadores verdaderamente aleatorios está garantizada por fenómenos físicos aleatorios y se caracteriza por la tasa de entropía a la salida del generador. Tanto los TRNG como los DRNG tienen sus ventajas y desventajas, por lo que muchos sistemas criptográficos utilizan RNG híbridos. Los generadores de números aleatorios híbridos (HRNG) representan una combinación de un RNG determinista (rápido y de buena calidad) sembrado repetidamente por un RNG físico (lento pero impredecible). Se debe encontrar un compromiso entre la velocidad del generador y su previsibilidad ajustando el intervalo de tiempo entre semillas y el tamaño de una semilla. 	En función de su implementación, existen dos tipos de RNGs híbridos:
+            La imprevisibilidad de los generadores de números aleatorios deterministas está garantizada computacionalmente, mientras que la imprevisibilidad de los generadores verdaderamente aleatorios está garantizada por fenómenos físicos aleatorios y se caracteriza por la tasa de entropía a la salida del generador. Tanto los TRNG como los DRNG tienen sus ventajas y desventajas, por lo que muchos sistemas criptográficos utilizan RNG híbridos. Los generadores de números aleatorios híbridos, conocidos como Hybrid Random Number Generators (HRNG) combinan las fortalezas de los DRNG (rápidos y de buena calidad) sembrados repetidamente por un TRNG (lento pero impredecible). Es importante encontrar un equilibrio entre la velocidad del generador y su imprevisibilidad ajustando el intervalo de tiempo entre semillas y el tamaño de la semilla. En función de su implementación, existen dos tipos de RNG híbridos:
 	
-	\begin{enumerate}
-		\item Generadores de números aleatorios verdaderos híbridos
+			\begin{enumerate}		
+		        \item Generadores de números aleatorios verdaderos híbridos
+				
+				Combinan un TRNG con un postprocesamiento criptográfico. El postprocesamiento criptográfico asegura el secreto hacia adelante y hacia atrás de los números aleatorios producidos, no pueden calcularse los valores pasados o los futuros a partir del valor actual. Si la fuente física falla, también garantiza unas propiedades estadísticas perfectas de los datos de salida, ya que el núcleo de un postprocesamiento criptográfico suele ser un cifrador. La tasa de bits de salida de un TRNG híbrido está limitada por la del núcleo del TRNG.
+				
+				\item Generadores de números aleatorios deterministas híbridos. 
+				
+		            Utilizan un TRNG para generar periódicamente semillas para un DRNG. Dado que la salida de un DRNG es predecible si conocemos su semilla, ir renovando la semilla mediante un TRNG puede reducir la predictibilidad de un DRNG híbrido. Además la secuencia de salida de un generador de este tipo es perfectamente uniforme, lo que podría no ser el caso de un TRNG puro. Su tasa de bits de salida viene determinada por la tasa de bits del DRNG subyacente, ya que se pueden producir números aleatorios mientras no se alcance el periodo de repetición del DRNG.
+			\end{enumerate}
+
+            Para garantizar la seguridad de las claves confidenciales, es fundamental que se generen dentro del sistema criptográfico. Dado que la mayoría de los sistemas criptográficos actuales se implementan en dispositivos lógicos y sistemas digitales utilizando algoritmos y protocolos criptográficos, es natural que la investigación se centre en la implementación de generadores de números aleatorios en dispositivos lógicos, como los Field-Programmable Gate Arrays (FPGA). Esto ayuda a prevenir el acceso no autorizado a las claves y garantiza que sean generadas de manera segura y confiable dentro del sistema criptográfico.
 		
-		Combinan un TRNG con un postprocesamiento criptográfico. El postprocesamiento criptográfico asegura el secreto hacia adelante y hacia atrás de los números aleatorios producidos, no pueden calcularse los valores pasados o los futuros a partir del valor actual. Si la fuente física falla, también garantiza unas propiedades estadísticas perfectas de los datos de salida, ya que el núcleo de un postprocesamiento criptográfico suele ser un cifrador. La tasa de bits de salida de un TRNG híbrido está limitada por la del núcleo del TRNG.
-		
-		\item Generadores de números aleatorios deterministas híbridos. 
-		
-		Utilizan un TRNG para generar periódicamente semillas para un DRNG. Dado que la salida de un DRNG es predecible si conocemos su semilla, ir renovando la semilla mediante un TRNG puede reducir la predictibilidad de un DRNG híbrido. La secuencia de salida de un generador de este tipo es perfectamente uniforme, lo que podría no ser el caso de un TRNG puro. Su tasa de bits de salida viene determinada por la tasa de bits del DRNG subyacente, ya que se pueden producir números aleatorios mientras no se alcance el periodo de repetición del DRNG.
-	\end{enumerate}
-		
-	A pesar de la menor velocidad de los TRNG, estos se utilizan con más frecuencia en aplicaciones criptográficas que los DRNG. Los TRNG son las únicas primitivas criptográficas que no han sido objeto de normalización hasta ahora. Sin embargo, antes de utilizar un generador en la práctica, el principio de funcionamiento y su implementación dentro de un módulo criptográfico deben ser validados por una institución acreditada como parte de un proceso de evaluación de seguridad. Los generadores que no tienen un certificado de seguridad se consideran inseguros en cuanto a su uso en aplicaciones criptográficas. Por este motivo, es de gran interés el estudio de los principales TRNG existentes.
+	        A pesar de la menor velocidad de los TRNG, estos se utilizan con más frecuencia en aplicaciones criptográficas que los DRNG. Los TRNG son las únicas primitivas criptográficas que no han sido objeto de normalización hasta ahora. Sin embargo, antes de utilizar un generador en la práctica, el principio de funcionamiento y su implementación dentro de un módulo criptográfico deben ser validados por una institución acreditada como parte de un proceso de evaluación de seguridad. Los generadores que no tienen un certificado de seguridad se consideran inseguros en cuanto a su uso en aplicaciones criptográficas. Por este motivo, es de gran interés el estudio de los principales TRNG existentes y sus características.
 	
-	Para evitar que los atacantes accedan a las claves confidenciales, éstas deben generarse dentro del sistema criptográfico. Dado que los sistemas criptográficos actuales implementan esencialmente algoritmos y protocolos criptográficos, en su mayoría se implementan en dispositivos lógicos y sistemas digitales. Por lo tanto, es natural orientar la investigación hacia la implementación de generadores de números aleatorios en dispositivos lógicos, concretamente en matrices de puertas programables en campo (FPGA).
-	
-	\section{Estructura de los TRNG}	
-		
-	La estructura general de un TRNG se muestra en la Figura \ref{fig:A1_TRNG_estructura}. El generador debe utilizar un proceso físico incontrolable como fuente de aleatoriedad. Dado que los fenómenos físicos utilizados en los TRNG son en su mayoría procesos analógicos, suele ser necesario algún método que permita la conversión de datos del dominio analógico al digital. Se puede incluir una conversión de analógico a digital en el procedimiento de extracción de aleatoriedad. La señal binaria sin procesar obtenida, el llamado ruido digital, puede tener baja entropía, malas propiedades estadísticas o ambas. En este caso, se pueden usar algunos algoritmos de post-procesamiento para mejorar los parámetros estadísticos del flujo de bits de salida. Sin embargo, el post-procesamiento de la salida del TRNG a veces puede enmascarar una falla grave en el generador. Las pruebas estadísticas estándar pueden entonces fallar en detectar la debilidad enmascarada. Por lo tanto, se recomienda tener la posibilidad de probar el ruido digital sin procesar (RBS). La seguridad del generador se puede aumentar si las pruebas estadísticas se aplican sobre la marcha y si están diseñadas para adaptarse al principio de funcionamiento del generador teniendo presente sus posibles debilidades.
+	    \subsection{Estructura de los TRNG}	
+
+            La estructura general de un TRNG se muestra en la Figura \ref{fig:A1_TRNG_estructura}. El generador debe utilizar un proceso físico incontrolable como fuente de aleatoriedad. Dado que los fenómenos físicos utilizados en los TRNG son en su mayoría procesos analógicos, suele ser necesario algún método que permita la conversión de datos del dominio analógico al digital. Se puede incluir una conversión de analógico a digital en el procedimiento de extracción de aleatoriedad. La señal binaria sin procesar obtenida, el llamado ruido digital, puede tener baja entropía, malas propiedades estadísticas o ambas. En este caso, se pueden usar algunos algoritmos de postprocesamiento para mejorar los parámetros estadísticos del flujo de bits de salida. Sin embargo, el postprocesamiento de la salida del TRNG a veces puede enmascarar una falla grave en el generador. Las pruebas estadísticas estándar pueden entonces fallar en detectar la debilidad enmascarada. Por lo tanto, se recomienda tener la posibilidad de probar el ruido digital sin procesar o Raw Bit Signal (RBS). La seguridad del generador se puede aumentar si las pruebas estadísticas se aplican sobre la marcha y si están diseñadas para adaptarse al principio de funcionamiento del generador teniendo presente sus posibles debilidades. \cite{Badrignans2011}
 			
-	\begin{figure}[hbtp]
-		\caption{Estructura general de un TRNG \cite{Badrignans2011}.}
-		\centering
-		\includegraphics[width=0.9\textwidth]{A0_TRNG_estructura}
-		\label{fig:A1_TRNG_estructura}
-	\end{figure}
+            \begin{figure}[hbtp]
+                \caption{Estructura general de un TRNG \cite{Badrignans2011}.}
+                \centering
+                \includegraphics[width=0.9\textwidth]{A0_TRNG_estructura}
+                \label{fig:A1_TRNG_estructura}
+            \end{figure}
 	
-	Los TRNG usan diferentes fuentes de aleatoriedad y numerosos principios para extraerla. Se utilizan tres clases de características para evaluar a los TRNG: parámetros relacionados con la calidad, con la seguridad y con el diseño.
-			
-	\begin{itemize}[noitemsep]
-		\item Parámetros relacionados con la calidad
-			\begin{itemize}[noitemsep]
-				\item Fuente de aleatoriedad
-				\item Método de extracción de aleatoriedad y entropía del ruido digital
-				\item Método de procesamiento posterior aplicado (opcional)
-				\item Tasa de bits de salida y su estabilidad
-			\end{itemize}
-		\item Parámetros relacionados con la seguridad
-			\begin{itemize}[noitemsep]
-				\item Existencia de un modelo matemático
-				\item Comprobabilidad interna
-				\item Seguridad (robustez, resistencia contra ataques)
-			\end{itemize}
-		\item Parámetros relacionados con el diseño
-			\begin{itemize}[noitemsep]
-				\item El uso de recursos
-				\item El consumo de energía
-				\item Viabilidad en dispositivos lógicos y FPGAs
-				\item Automatización del diseño
-			\end{itemize}
-	\end{itemize}
-			
-	Es importante señalar que estas características de los TRNG no son todas igualmente importantes. Los parámetros de seguridad como la robustez, la disponibilidad de un modelo estocástico, la capacidad de prueba, etc. siempre tienen prioridad en un sistema de seguridad de datos. Su peso en la evaluación de TRNG es mucho mayor que el de otros parámetros como el consumo de energía, la tasa de bits, etc \cite{Badrignans2011}.
-			
-	\section{Parámetros relacionados con la calidad}	
-	
-		\subsection{Fuentes de aleatoriedad en dispositivos lógicos}
-	
-	
-	Los TRNG pueden utilizar fuentes de ruido físicas o no físicas. En los dispositivos lógicos, las fuentes de ruido físico son bastante limitadas, ya que en teoría los dispositivos lógicos están siempre en un estado bien definido, están diseñados para la implementación de sistemas lógicos deterministas. Para generar números aleatorios, necesitamos un fenómeno aleatorio incontrolable. Los fenómenos físicos más utilizados para generar números aleatorios en los dispositivos lógicos son:
-	
-	\begin{itemize}[noitemsep]
-		\item Metastabilidad: es la capacidad de un circuito de persistir en un estado indefinido durante un periodo de tiempo indefinido.
-		
-		\item Variación del reloj (Clock jitter): es una variación del flanco del reloj desde su posición ideal.
-		
-		\item Caos: es un comportamiento imprevisible de un sistema determinista, muy sensible a sus condiciones iniciales.
-		
-		\item Señales analógicas: como el ruido de disparo de un diodo, el ruido térmico, etc.		
-	\end{itemize}		
-	
-	Cualquier comportamiento imprevisible en un sistema de este tipo puede tener consecuencias catastróficas para el comportamiento del sistema global. Aunque los eventos impredecibles debidos a la naturaleza física de la tecnología son inevitables, los vendedores de dispositivos lógicos tienden a minimizarlos. Por esta razón, los métodos de extracción de aleatoriedad utilizados en el diseño del TRNG deben ser examinados críticamente para mantenerse al día con la evolución de la tecnología. La mayoría de los dispositivos lógicos, y concretamente los FPGA, no contienen bloques analógicos y de tenerlos seria necesario un convertidor analógico-digital para poder utilizar una señal analógica, lo cual agrega otra capa de complejidad. Por esta razón las fuentes de aleatoriedad más utilizadas en dispositivos lógicos están relacionadas con el funcionamiento de las puertas lógicas. Se pueden utilizar varios fenómenos y sus combinaciones: la variación del retardo de las puertas lógicas, el comportamiento analógico de las puertas lógicas entre dos niveles lógicos (la metaestabilidad), la violación del tiempo de preparación y retención y el ruido térmico generado dentro del dispositivo.	
-					
-	La inestabilidad de los retardos de las puertas lógicas provoca variaciones en la propagación de la señal a lo largo del tiempo. Estas variaciones pueden verse como una inestabilidad del período del reloj (jitter) en los generadores de reloj que contienen elementos de retardo ensamblados en un circuito cerrado (osciladores en anillo).
-					
-	Dado que las resistencias y los condensadores se pueden implementar fácilmente en la tecnología digital, el ruido térmico generado en las resistencias se puede utilizar para modular la frecuencia de un oscilador de funcionamiento libre (oscilador RC). El ruido térmico se convierte así al dominio del tiempo, donde se puede extraer fácilmente. Sin embargo, este principio no se puede utilizar en FPGA, porque no se dispone de estructuras apropiadas.
-					
-	Algunos generadores utilizan el jitter de seguimiento introducido por los bucles de bloqueo de fase, phase locked loops (PLL), para generar números aleatorios. Los PLLs analógicos son fáciles de implementar en dispositivos digitales, incluyendo los FPGA, porque el filtro RC que está en tales PLLs, es en su mayoría el único bloque ``analógico'', puede ser fácilmente implementado usando la misma tecnología. Por lo tanto, se puede considerar un TRNG basado en PLL como un generador que puede implementarse en dispositivos lógicos en general.
-	
-	
-	\subsection{Métodos de extracción de aleatoriedad}	
-	
-	En los dispositivos lógicos que no contienen un bloque analógico, la aleatoriedad a menudo se extrae mediante el muestreo de una señal de reloj en los flancos ascendentes o descendentes de una señal de reloj de referencia utilizando flip-flops síncronos o asíncronos (latches). El flujo de bits aleatorio se puede obtener de dos formas: muestreando señales aleatorias a intervalos regulares o muestreando señales regulares a intervalos de tiempo aleatorios. En sistemas síncronos, el primer método es preferible para garantizar una tasa de bits constante en la salida.
-					
-	La elección entre flip-flops síncronos y asíncronos es importante en los FPGA. Esto se debe a que los flip-flops síncronos están cableados en celdas lógicas como bloques optimizados y, en consecuencia, su comportamiento metaestable se minimiza. Por otro lado, los latches generalmente solo se pueden implementar en Look-Up Tables  y, por lo tanto, están sujetos a un comportamiento metaestable en mayor medida. 
-	
-	%Hasta el momento, el comportamiento de flip-flops síncronos y asíncronos y su uso para la extracción de aleatoriedad en FPGAs no ha sido suficientemente evaluado. 
-					
-	El método de extracción de aleatoriedad suele estar vinculado al principio básico del generador y a la fuente de aleatoriedad. El procedimiento de extracción de aleatoriedad y el post-procesamiento a veces se fusionan en el mismo bloque y no se pueden separar. En ese caso, la entropía de la fuente de aleatoriedad se modifica mediante el post-procesamiento y no se puede medir ni evaluar correctamente. 
-					
-	En el proceso de evaluación de los TRNG, la fuente de aleatoriedad y el método de extracción de aleatoriedad están estrechamente vinculados y no se pueden separar. Por esta razón, es más razonable evaluar estos dos parámetros del generador juntos. La mejor forma de hacerlo es evaluando la entropía incluida en el ruido digital.
-		
-	\subsection{Técnicas de post-procesamiento}
-					
-		La evaluación de los TRNG casi siempre se basa en pruebas estadísticas que se aplican a secuencias aleatorias producidas por el TRNG. A veces, la fuente de entropía puede tener algunas debilidades que conducen a la producción de números no aleatorios, secuencias largas de ceros o unos. Por esta razón, el post-procesamiento puede ser necesario para mejorar las propiedades estadísticas de los números aleatorios, por ejemplo, para aumentar la entropía por bit, reducir el sesgo y la correlación. 
-					
-	La calidad de la señal de ruido digital, la señal obtenida en el bloque de extracción de aleatoriedad, puede deteriorarse por varias razones: 
-	
-	\begin{enumerate}[noitemsep, label=(\alph*)]
-		\item La entropía de la fuente no es lo suficientemente alta, este suele ser el caso si se utiliza la metaestabilidad como fuente de aleatoriedad.
-		\item La entropía, que es alta en la señal original, no está bien extraída
-		\item Las muestras extraídas están correlacionadas. La entropía por bit a la salida del generador aumenta principalmente a costa de la reducción y/o variación de la tasa de bits.
-	\end{enumerate}		
-	
-	
-	El objetivo del bloque de post-procesamiento es hacer que la secuencia de salida no se distinga de la secuencia aleatoria ideal, que no está correlacionada y tiene una distribución uniforme. Existen dos tipos principales de post-procesamiento:
-	
-	\begin{enumerate}
-		\item Post-procesamiento algorítmico
-		
-		Utiliza algún algoritmo de procesamiento de datos para mejorar los parámetros estadísticos de los números generados. Puede tratarse de la XOR de varios bits de salida, la corrección de Von Neumann, varios tipos de algoritmos de compresión, etc.
-		
-		\item Posprocesamiento criptográfico 
-		
-		Utiliza algún algoritmo criptográfico seguro para asegurar la imprevisibilidad de los números generados en dirección hacia adelante y/o hacia atrás si la fuente física de aleatoriedad falla. El uso de un post-procesamiento criptográfico mejora la solidez del TRNG frente a los ataques.
-	\end{enumerate}
-		
-	Las técnicas más utilizadas para el post-procesamiento de la señal obtenida en el bloque de extracción de aleatoriedad son: 
-	
-	\begin{itemize}
-		\item Corrector XOR 
-		
-		Es una función lineal simple que aplica una operación OR exclusiva en bloques no superpuestos de $n$ bits para generar un bit de salida. Puede reducir drásticamente el sesgo de la salida del generador a costa de reducir su tasa de bits $n$ veces. Sin embargo, el sesgo del flujo de bits de salida sólo se reduce si los bits originales son independientes. Las principales ventajas del corrector XOR son su simplicidad y la posibilidad de mantener una tasa de bits de salida constante.
+	        Los TRNG emplean diferentes fuentes de aleatoriedad y una gran variedad de principios para extraerla. En este sentido, resulta relevante evaluar los principales principios utilizados por los TRNG: parámetros relacionados con la calidad, parámetros relacionados con la seguridad y parámetros relacionados con el diseño.
 
-		\item Corrector de Von Neumann
-		
-		Es una sencilla función no lineal que toma pares de bits sucesivos y, si los bits no son iguales, utiliza el primer bit del par y descarta los pares idénticos. Por tanto, la tasa de bits de salida depende de los datos. 
-		
-		Aunque el flujo de entrada es estacionario y puede estar sesgado, la salida será insesgada. Sin embargo, si el flujo original está autocorrelacionado, la salida puede seguir estando autocorrelacionada. También el corrector producirá una salida sesgada si el flujo de entrada presenta un ciclo con periodo 2. Si el corrector se implementa en hardware, puede interferir con el generador y provocar exactamente este tipo de ocurrencia.
-		
-		
-		\item Registros de desplazamiento de retroalimentación lineal (LFSRs)
-		
-		Linear Feedback Shift Registers en inglés, se utilizan en muchos generadores de flujos de bits aleatorios. Hay varias razones para ello, son fáciles de implementar en hardware, pueden producir secuencias de gran periodo, pueden producir secuencias con buenas propiedades estadísticas y  debido a su estructura, pueden ser fácilmente analizados utilizando técnicas algebraicas.	Un LFSR de longitud $L$ consta de $L$ elementos de retardo, cada uno de los cuales puede almacenar un bit y tiene una entrada y una salida, y un reloj que controla el movimiento de los datos. Durante cada unidad de tiempo, se realizan las siguientes operaciones:
-		\begin{enumerate}[noitemsep, label=(\roman*)]
-			 \item El contenido del primer elemento de retardo sale y forma parte de la secuencia de salida.
-			 \item  El contenido del elemento $i$ se mueve a la etapa $i - 1$ para cada $i$, $1 \leq i \leq L - 1$.
-			 \item El nuevo contenido del último elemento de retardo es el bit de retroalimentación que se calcula sumando módulo 2 los contenidos anteriores de un subconjunto fijo de elementos, dependiendo del polinomio subyacente.
-		 \end{enumerate}	
-		
-		\item Funciones resilientes
-		
-		Son funciones específicas utilizadas en criptografía y teoría de la codificación. Derivan de las funciones booleanas. El estudio de las funciones booleanas es muy importante en criptografía, sobre todo en el diseño de algoritmos de clave simétrica.  En términos más informales, las funciones resilientes son adecuadas para el post-procesamiento porque el conocimiento de cualquier $m$ valores de entrada a la función no permite a nadie hacer una conjetura mejor que el azar en la salida. Las funciones resistentes se basan en el mismo principio que los códigos de corrección de errores. Mientras que los códigos de corrección de errores se utilizan para suprimir los errores aleatorios, las funciones resistentes se utilizan para extraer estos bits aleatorios. La señal binaria sin procesar, ruido digital, puede considerarse como un flujo de bits que contiene una redundancia y la función resistente reduce la tasa de bits mientras extrae los bits aleatorios. De este modo, la función resistente aumenta la entropía por bit en la salida del generador.
+            \begin{itemize}[noitemsep]
+                \item Parámetros relacionados con la calidad
+                    \begin{itemize}[noitemsep]
+                        \item Fuente de aleatoriedad.
+                        \item Método de extracción de aleatoriedad y entropía del ruido digital.
+                        \item Método de procesamiento posterior aplicado (opcional).
+                        \item Tasa de bits de salida y su estabilidad.
+                    \end{itemize}
+                \item Parámetros relacionados con la seguridad
+                    \begin{itemize}[noitemsep]
+                        \item Existencia de un modelo matemático.
+                        \item Comprobabilidad interna.
+                        \item Seguridad (robustez, resistencia contra ataques).
+                    \end{itemize}
+                \item Parámetros relacionados con el diseño
+                    \begin{itemize}[noitemsep]
+                        \item El uso de recursos.
+                        \item El consumo de energía.
+                        \item Viabilidad en dispositivos lógicos y FPGAs.
+                        \item Automatización del diseño.
+                    \end{itemize}
+            \end{itemize}
+
+            Es fundamental tener en cuenta que no todas las características de los TRNG tienen la misma relevancia en su evaluación. En particular, los parámetros relacionados con la seguridad, tales como la robustez, la disponibilidad de un modelo estocástico y la capacidad de prueba, adquieren una importancia crucial en un sistema de seguridad de datos. Su peso en la evaluación de un TRNG es significativamente mayor que el de otros parámetros, como el consumo de energía o la tasa de bits. \cite{Badrignans2011}.
+
+        \subsection{Parámetros de evaluación de los TRNG}
 			
-		\item Cifrado de la señal de ruido digital
-		
-		Este tipo de post-procesamiento del ruido digital utiliza las propiedades de difusión y confusión de las funciones criptográficas. Las características estadísticas perfectas de la mayoría de los algoritmos de cifrado pueden utilizarse para enmascarar las imperfecciones del generador. Una de las ventajas de este enfoque es que la clave de cifrado puede utilizarse como variable criptográfica para modificar dinámicamente el comportamiento del generador. Aunque este tipo de bloque de posprocesamiento, el cifrador, es bastante complejo y caro, el TRNG puede reutilizar (compartir) el cifrador que se utiliza para la codificación de los datos.	
-		
-		
-		\item Hashing de la señal de ruido digital
-		
-		Uno de los métodos que más tiempo consume, pero también uno de los más seguros, es el post-procesamiento criptográfico basado en funciones hash como MD5, SHA-1 u otras. Utiliza las propiedades de difusión y unidireccionalidad, a diferencia de la codificación de la señal binaria sin procesar, de las funciones hash para garantizar la no previsibilidad de los bits generados por el TRNG si se produce una ruptura total de la fuente de ruido. En este caso, debido a la propiedad de no linealidad de las funciones hash, el TRNG se comportará como un PRNG.
-	\end{itemize}
-	
-	El post-procesamiento puede mejorar la tasa de entropía a la salida del generador a costa de reducir la tasa de bits de salida, sin embargo nunca puede generar entropía.
-	El objetivo es producir números aleatorios en sin procesar de alta calidad para que no sea necesario el post-procesamiento. Este enfoque es especialmente útil en aplicaciones de alta seguridad.
-		
-	\subsection{Tasa de bits de salida}
-	
-	La velocidad es un parámetro secundario considerando la seguridad en muchas aplicaciones criptográficas. Las velocidades de bits de salida van desde 100kbps  hasta 1Mbps. Sin embargo, hay algunas aplicaciones de seguridad de datos de velocidad crítica para las que se requieren generadores de alta velocidad. Los servidores de telecomunicaciones de alta velocidad son un segundo ejemplo. Necesitan generar claves de sesión de forma regular a alta velocidad, decenas de megabits por segundo. Un servidor Ethernet de 10 Gbit necesitaría alrededor de 20 Mbps de bits aleatorios para generar una clave de sesión de 128 bits para cada bloque de datos de 64 kB para poder resistir los ataques de canal lateral. 
-					
-	Otro aspecto de la tasa de bits de salida que debe tenerse en cuenta es su variabilidad. Algunos generadores dan números aleatorios periódicamente, otros generan resultados en intervalos de tiempo irregulares. En el segundo caso, se requiere un registro para acumular los números generados. Otra solución es estimar la tasa de bits más pequeña disponible en la salida y muestrear la salida a esta tasa. La desventaja de la primera solución es que, según la tasa de bits de salida media y la necesidad de números aleatorios, los registros a veces deben ser muy grandes. La desventaja de la segunda solución es que si la tasa de bits estimada es incorrecta, los números aleatorios a veces pueden no estar disponibles en la salida.	
-	
-	
-	\section{Parámetros relacionados con la seguridad}
-	
-	\subsection{Modelado matemático de TRNG}
-	
-	La parte principal de un proceso de certificación de seguridad se ocupa de la evaluación del diseño y la implementación del generador. El objetivo de la evaluación es cuantificar la entropía por bit aleatorio. Sin embargo, la entropía es una propiedad de variables aleatorias y no de realizaciones observadas. Para cuantificar la entropía, necesitamos analizar la distribución de las variables aleatorias, por ejemplo mediante el uso de un modelo estocástico. El modelo estocástico especifica una familia de distribuciones de probabilidad de variables aleatorias que permite verificar un límite de entropía inferior para la señal binaria sin procesar. El valor dado por el modelo se puede utilizar para probar la entropía de los números generados en tiempo real
-				
-	\subsection{Comprobabilidad}
-	
-	
-	La comprobabilidad interna significa que la estructura del generador permite evaluar la entropía de la señal sin procesar, esta debe estar disponible. Esta funcionalidad es necesaria en los procedimientos de evaluación recientes de TRNG. Sin embargo, cuando la extracción de la aleatoriedad y el post-procesamiento se fusionan en el mismo proceso, la señal aleatoria sin procesar no está disponible. Incluso cuando esta señal está disponible, a veces está compuesta por un patrón pseudoaleatorio combinado con un flujo de bits verdaderamente aleatorio. El patrón pseudoaleatorio dificulta la evaluación estadística de la señal.
-				
+            \subsubsection{Parámetros relacionados con la calidad}	
 
-				
-	\subsection{Evaluación de seguridad}
-				
-	A menudo es muy difícil y a veces imposible construir un modelo estocástico para un generador en particular. En ese caso, se puede utilizar otro enfoque para validar el uso del generador en aplicaciones criptográficas. Este enfoque se basa en el análisis del impacto del entorno cambiante o un ataque al generador. Hay tres posibilidades: 
-	
-	\begin{enumerate}[noitemsep, label=(\roman*)]
-		\item Existe prueba de que el generador no puede funcionar mal como resultado de un ataque o de un entorno cambiante.
-		\item No existe prueba de seguridad ni ataque.
-		\item Se ha informado de algún ataque a un generador en particular.
-	\end{enumerate}		
+                \paragraph{Fuentes de aleatoriedad en dispositivos lógicos:\\} 
 
-	\section{Parámetros relacionados con el diseño}	
+                Los TRNG pueden utilizar fuentes de ruido físicas o no físicas. Sin embardo, en el caso de los dispositivos lógicos, las fuentes de ruido físico son bastante limitadas, ya que estos dispositivos se diseñan para ser deterministas y estar en un estado bien definido en todo momento. Por lo tanto, para generar números verdaderamente aleatorios, es necesario contar con un fenómeno aleatorio incontrolable que pueda utilizarse como fuente de aleatoriedad. Los fenómenos físicos más utilizados para generar números aleatorios en los dispositivos lógicos son:
+	
+                \begin{itemize}[noitemsep]
+                    \item Señales analógicas: como el ruido de disparo de un diodo, el ruido térmico, etc.		
+
+                    \item Metaestabilidad: es la capacidad de un circuito de persistir en un estado indefinido durante un periodo de tiempo indefinido.
+                    
+                    \item Jitter del reloj: es una variación del flanco del reloj desde su posición ideal.
+                    
+                    \item Caos: es un comportamiento imprevisible de un sistema determinista, muy sensible a sus condiciones iniciales, lo que significa que incluso el más mínimo cambio en el estado inicial produce resultados muy diferentes.
+                    
+                \end{itemize}		
+	
+                La presencia de comportamientos impredecibles en un dispositivo lógico puede tener consecuencias graves en el comportamiento del sistema global. A pesar de que estos eventos son inevitables debido a la naturaleza física de la tecnología, los vendedores de dispositivos lógicos sueles minimizarlos. Por ello, es fundamental examinar de forma crítica los métodos de extracción de aleatoriedad utilizados en el diseño de los TRNG para mantenernos al día con la evolución de la tecnología.
+                La mayoría de los dispositivos lógicos, y concretamente los FPGA, no contienen bloques analógicos y de tenerlos seria necesario un convertidor analógico digital (ADC) para poder utilizar una señal analógica, lo cual agrega otra capa de complejidad. Por esta razón las fuentes de aleatoriedad más utilizadas en dispositivos lógicos están relacionadas con el funcionamiento de las puertas lógicas. Se pueden utilizar varios fenómenos y sus combinaciones como la variación del retardo de las puertas lógicas, el comportamiento analógico de las puertas lógicas entre dos niveles lógicos (metaestabilidad), la violación del tiempo de preparación y retención y el ruido térmico generado dentro del dispositivo.	
+					
+	            La inestabilidad de los retardos de las puertas lógicas provoca variaciones en la propagación de la señal a lo largo del tiempo. Estas variaciones pueden verse como una inestabilidad  en el período del reloj (jitter) en los generadores de reloj que contienen elementos de retardo ensamblados en un circuito cerrado (osciladores en anillo). Asimismo, la variación del tiempo de propagación se utiliza también en generadores con elementos de retardo ensamblados en una cadena abierta. La cadena se utiliza para aumentar o ajustar el retardo total.
+
+                La tecnología digital permite implementar fácilmente resistencias y condensadores, cuyo ruido térmico generado en las resistencias puede utilizarse para modular la frecuencia de un oscilador de funcionamiento libre, también conocido como oscilador RC. De esta manera, el ruido térmico se convierte al dominio temporal, lo que facilita su extracción. No obstante, este principio no es aplicable en FPGAs, ya que carecen de estructuras adecuadas para ello.
+
+                Algunos generadores utilizan el jitter de seguimiento introducido por los bucles de fase bloqueada, phase locked loops (PLL), para generar números aleatorios. Estos generadores, llamados PLL analógicos, pueden implementarse fácilmente en dispositivos digitales, incluidos los FPGA, debido a que el filtro RC presente en dichos PLL es el único bloque ``analógico'' y puede implementarse utilizando la misma tecnología. Por lo tanto, es posible considerar un TRNG basado en PLL como un generador que se puede implementar en dispositivos lógicos en general
+					
+	            \paragraph{Métodos de extracción de aleatoriedad:\\}	
+	
+                En los dispositivos lógicos que carecen de bloques analógicos, a menudo se extrae la aleatoriedad mediante el muestreo de una señal (reloj) en los flancos ascendentes o descendentes de una señal (reloj) de referencia utilizando flip-flops síncronos o asíncronos (latches). El flujo de bits aleatorio se puede obtener de dos maneras: muestreando señales aleatorias a intervalos regulares o muestreando señales regulares a intervalos de tiempo aleatorios. En los sistemas síncronos, se prefiere el primer método para garantizar una tasa constante de bits a la salida.
+
+                La elección entre flip-flops síncronos y asíncronos resulta crítica en las FPGA. Esto se debe a que los flip-flops síncronos se encuentran cableados en celdas lógicas optimizadas, reduciendo así su comportamiento metaestable. En cambio, los latches suelen implementarse en tablas de consulta (LUT) y, por tanto, están más expuestos a sufrir comportamiento metaestable. Sin embargo, aún no se ha evaluado adecuadamente la influencia del uso de flip-flops síncronos y asíncronos en la extracción de aleatoriedad en las FPGA.
+					
+                El método de extracción de la aleatoriedad está estrechamente vinculado al principio básico del generador y a la fuente de aleatoriedad utilizada. En algunos casos, el proceso de extracción de la aleatoriedad y el postprocesamiento se fusionan en el mismo bloque y no pueden ser separados. En tales casos, la entropía de la fuente de aleatoriedad se modifica por el postprocesamiento, lo que dificulta su medición y evaluación precisa.
+					
+                En la evaluación de un generador de números aleatorios, la fuente de aleatoriedad y el método de extracción están estrechamente relacionados y no pueden evaluarse por separado. Por tanto, lo más adecuado es evaluar ambos parámetros conjuntamente, tomando en cuenta la entropía contenida en el ruido digital.
 		
-	\subsection{Uso de recursos}
-				
-	Para evaluar varios principios de TRNG, es importante analizar los recursos necesarios para la implementación del hardware del generador. En términos generales, todo tipo de recursos disponibles en FPGA se pueden utilizar para generar números aleatorios: celdas lógicas basadas en LUT o basadas en multiplexor, bloques de memoria integrados, bloques de reloj con PLL y DLL, osciladores RC integrados, multiplicadores cableados, interconexiones programables, etc.
+                \paragraph{Técnicas de postprocesamiento\\}
 					
-	Los FPGA tienen muchas celdas lógicas, por lo que el uso de celdas lógicas  no suele ser un problema. La topología y los parámetros eléctricos de las interconexiones programables dependen en gran medida de la tecnología. Muchos diseños de TRNG requieren la intervención manual del diseñador durante la colocación y el enrutamiento. Algunos diseños pueden implementarse fácilmente en una familia de FPGA, pero son difíciles o imposibles de implementar en otras. La elección y el número de bloques cableados integrados suele ser mucho más limitado y varía según el proveedor y la tecnología. Por lo tanto, el uso de bloques cableados puede ser un factor limitante para la reutilización del principio TRNG.
-				
-	\subsection{Consumo de energía}
+		        La evaluación de los TRNG se basa principalmente en pruebas estadísticas que se aplican a las secuencias aleatorias producidas por el generador. Sin embargo, en ocasiones la fuente de entropía puede presentar ciertas debilidades que se traducen en la generación de números no aleatorios, como largas secuencias de ceros o unos. Por esta razón, puede ser necesario aplicar postprocesamiento para mejorar las propiedades estadísticas de los números aleatorios, como aumentar la entropía por bit, reducir el sesgo y la correlación, entre otros.
 					
-	El consumo de energía del generador está vinculado a su fuente de aleatoriedad, a la frecuencia de reloj utilizada y a la agilidad del algoritmo. En aplicaciones de energía crítica, el generador se puede detener cuando no está en uso. Sin embargo, la posibilidad de controlar la generación de flujo de bits se puede utilizar para atacar al generador.
-					
-	\subsection{Viabilidad en FPGAs}
-				
-	En comparación con la implementación de TRNG en ASIC, su implementación en FPGA es mucho más restrictiva. Muchos TRNG implementados en ASIC utilizan componentes analógicos para generar aleatoriedad y para procesar la aleatoriedad, como amplificadores operacionales o comparadores. La mayoría de estos bloques generalmente no están disponibles en FPGA, aunque algunos de ellos pueden estar disponibles en familias seleccionadas, como PLL analógicos en la mayoría de las familias Altera, pero no en todas las familias de Xilinx. Algunos generadores no son viables o son difíciles de implementar, algunos otros son viables en FPGAs seleccionados pero los principios más generales son factibles en todas las FPGAs.
-				
-	\subsection{Automatización del diseño}
-				
-	El hecho de que el generador utilice recursos que están disponibles en FPGAs no significa automáticamente que pueda ser implementado en este tipo de dispositivos. El rango de tolerancia de algunos parámetros tecnológicos puede ser tal que impida la implementación confiable del generador. El parámetro que más suele limitar la implementación del generador en FPGA es la disponibilidad de los recursos de enrutamiento y sus características. Algunos generadores requieren un enrutamiento perfectamente equilibrado. Esto requiere un control perfecto de la ubicación del módulo, por ejemplo, ubicación simétrica de dos módulos en relación con otro módulo y enrutamiento. Si bien la mayoría de las herramientas de diseño de FPGA permiten un control preciso de la ubicación, el proceso de enrutamiento es difícil o imposible de controlar. Incluso cuando el enrutamiento se puede controlar parcial o totalmente en las familias Altera y Xilinx, los retrasos en la red de enrutamiento configurable varían tanto de un dispositivo a otro que es imposible equilibrar las interconexiones de los módulos de manera general y el diseño dependerá del dispositivo, es decir, debe equilibrarse manualmente para cada dispositivo. Tal intervención manual no es aceptable desde el punto de vista de la implementación práctica del generador. Los mejores generadores se pueden mapear automáticamente, sin intervención manual en todas las familias de FPGA. Desde el punto de vista práctico, sigue siendo aceptable si la implementación del generador requiere intervención manual para cada familia o tipo de dispositivo. Sin embargo, los generadores que requieren optimización manual por dispositivo no son aceptables para aplicaciones industriales.
-	
-	
-	\section{Evaluación de los TRNG}
-	
-		\subsection{Condiciones de funcionamiento y calidad de la salida del TRNG}
-	
-	La salida de un buen TRNG debe ser indistinguible de la salida de un TRNG ideal, independientemente de las condiciones de funcionamiento y del tiempo. La calidad del flujo de bits de salida del generador y sus parámetros de seguridad, incluyendo la robustez frente al envejecimiento, los cambios ambientales, los ataques, la existencia de autopruebas y las pruebas en línea, son muy importantes en el diseño del TRNG. Los buenos TRNGs dan un flujo de ceros y unos uniformemente distribuido a su salida. La calidad de la salida del generador está estrechamente ligada a la calidad de la fuente de aleatoriedad y al método de extracción de aleatoriedad utilizado. Las características de la fuente de aleatoriedad y de la extracción de aleatoriedad determinan los principales parámetros del flujo de bits generado: el sesgo del flujo de bits de salida, la correlación entre los bits posteriores, los patrones visibles, etc. Aunque algunos de estos fallos pueden corregirse mediante un post-procesamiento eficaz, es mejor que el generador produzca intrínsecamente un flujo de bits sin procesar de buena calidad.
-	
-	Si el extractor muestrea la fuente de aleatoriedad demasiado rápido, los bits adyacentes podrían estar correlacionados. Por esta razón, es una buena práctica comprobar el flujo de bits generado para detectar una autocorrelación a corto plazo. También es posible que el ruido digital presente otras dependencias a corto plazo, que deben ser detectadas por algunas pruebas específicas del generador. El comportamiento del generador suele estar influenciado por interferencias eléctricas externas e internas. El efecto más evidente serán las frecuencias discretas procedentes de la fuente de alimentación y de diversas señales internas que aparecen en el espectro de ruido. El espectro de la señal de ruido generada puede estar significativamente influenciado por un ruido de baja frecuencia causado por los semiconductores. Además, las frecuencias altas del espectro de ruido pueden ser filtradas involuntariamente por algunas capacidades internas.
+                La calidad de la señal de ruido digital obtenida en el bloque de extracción de aleatoriedad puede verse afectada por diversas razones:
 
-	Algunos generadores pueden presentar los llamados puntos malos. Los puntos malos son períodos cortos en los que el generador deja de funcionar, posiblemente debido a interferencias eléctricas o externas de la parte sobrecargada del circuito del generador. Otra característica peligrosa del generador puede ser una puerta trasera, que se refiere a las desviaciones de la aleatoriedad uniforme introducidas deliberadamente por el fabricante. Por ejemplo, supongamos que en lugar de utilizar algún proceso físico, el generador generara una secuencia pseudoaleatoria de alta calidad con una semilla de 40 bits. Sería imposible detectar este comportamiento aplicando pruebas estadísticas estándar en el flujo de bits de salida, pero sería computacionalmente factible para alguien que conozca la puerta trasera adivinar las claves sucesivas.
+                \begin{enumerate}[noitemsep, label=(\alph*)]
+                    \item La entropía de la fuente no es lo suficientemente alta, lo cual suele ocurrir cuando se utiliza la metaestabilidad como fuente de aleatoriedad.
+                    \item La entropía, que es alta en la señal original, no se extrae adecuadamente.
+                    \item Las muestras extraídas están correlacionadas entre sí. 
+                \end{enumerate}		
+
+                    \textcolor{red}{La entropía por bit en la salida del generador se incrementa principalmente a expensas de la disminución de la tasa de bits de salida, sin embargo nunca puede generar entropía.}
+	
+	            El objetivo del bloque de postprocesamiento es mejorar la calidad de la secuencia de salida, de manera que no se distinga de una secuencia aleatoria ideal que esté libre de correlaciones y se distribuya uniformemente. En general, existen dos tipos principales de postprocesamiento:
+
+                \begin{enumerate}
+                    \item Postprocesamiento algorítmico
+
+                        Consiste en la aplicación de un algoritmo de procesamiento de datos con el objetivo de mejorar los parámetros estadísticos de los números generados. Entra las técnicas más utilizadas se encuentra la operación XOR de varios bits de salida, la corrección de Von Neumann y varios tipos de algoritmos de compresión, entre otros.
+                    \item Posprocesamiento criptográfico 
+
+                        Emplea algoritmos criptográficamente seguros para asegurar la imprevisibilidad de los números generados en dirección de avance y/o retroceso en caso de fallo en la fuente física de aleatoriedad. La implementación de un postprocesamiento criptográfico refuerza la robustez del TRNG frente a posibles ataques.
+                \end{enumerate}
+		
+	            Las técnicas más utilizadas para el postprocesamiento de la señal obtenida en el bloque de extracción de aleatoriedad son: 
+	
+                \begin{itemize}
+                    \item Corrector XOR 
+                    
+                        Es una función lineal simple que aplica una operación XOR en bloques no superpuestos de $n$ bits para generar un bit de salida. Puede reducir drásticamente el sesgo de la salida del generador a costa de reducir su tasa de bits $n$ veces. Sin embargo, el sesgo del flujo de bits de salida sólo se reduce si los bits originales son independientes. Las principales ventajas del corrector XOR son su simplicidad y la posibilidad de mantener una tasa de bits de salida constante.
+
+                    \item Corrector de Von Neumann
+                    
+                        Es una función no lineal sencilla que toma pares sucesivos de bits y, si los bits no son iguales, utiliza el primer bit del par y descarta los pares idénticos. Por tanto, la tasa de bits de salida depende de los datos.
+
+                        Aunque la secuencia de entrada sea estacionaria y pueda estar sesgada, la salida no tendrá sesgo. Sin embargo, si la secuencia original está autocorrelacionada, la salida también puede estar autocorrelacionada. También es importante resaltar que el corrector de Von Neumann producirá una salida sesgada si la secuencia de entrada presenta un ciclo con periodo 2. Si se implementa el corrector en hardware, puede interferir con el generador y resultar en este tipo de ocurrencia.
+
+                    \item Linear Feedback Shift Registers (LFSRs)
+                    
+                        Los LFSR son ampliamente utilizados en generadores de secuencias de bits aleatorias por varias razones. En primer lugar, son fáciles de implementar en hardware. En segundo lugar, pueden generar secuencias con periodos largos. En tercer lugar, pueden producir secuencias con buenas propiedades estadísticas. Y en cuarto lugar, debido a su estructura, son fáciles de analizar utilizando técnicas algebraicas.
+
+                        Un LFSR de longitud $L$ consta de $L$ elementos de retardo que pueden almacenar un bit cada uno y tiene una entrada, una salida y un reloj que controla el movimiento de los datos. En cada unidad de tiempo, se llevan a cabo las siguientes operaciones:
+
+                    \begin{enumerate}[noitemsep, label=(\roman*)]
+                         \item El contenido del primer elemento de retardo sale y forma parte de la secuencia de salida.
+                         \item El contenido del elemento $i$ se mueve a la etapa $i - 1$ para cada $i$, $1 \leq i \leq L - 1$.
+                         \item El nuevo contenido del último elemento de retardo es el bit de retroalimentación que se calcula sumando módulo 2 los contenidos anteriores de un subconjunto fijo de elementos, dependiendo del polinomio subyacente.
+                     \end{enumerate}	
+                    
+                    \item Funciones resilientes
+                    
+                        Son funciones booleanas especiales que se utilizan en criptografía y teoría de la codificación. Su estudio es fundamental en el diseño de algoritmos de clave simétrica. Para analizar estas funciones, es importante considerar su grado, su forma algebraica normal, la transformada Möbius, la transformada de Walsh-Hadamard entre otros conceptos relacionados.
+
+                        En palabras simples, las funciones resilientes resultan apropiadas para el postprocesamiento debido a que el conocimiento de el conocimiento de cualquier conjunto de $m$ valores de entrada no permite adivinar la salida con una precisión mayor a la del azar. Estas funciones se fundamentan en el mismo principio que los códigos de corrección de errores. Mientras que dichos códigos se emplean para eliminar errores aleatorios, las funciones resilientes se usan para extraer los bits aleatorios presentes.
+
+                        La señal binaria sin procesar (RBS), también conocida como ruido digital, puede ser interpretada como un flujo de bits que contiene redundancia, y la función resiliente disminuye la tasa de bits al mismo tiempo que extrae los bits aleatorios. De esta manera, la función resiliente incrementa la entropía por bit en la salida del generador. 
+
+                    \item Cifrado de la señal de ruido digital
+                    
+                        Este tipo de postprocesamiento del ruido digital emplea las propiedades de difusión y confusión inherentes a las funciones criptográficas. Las características estadísticas óptimas de la mayoría de los algoritmos de cifrado pueden ser aprovechadas para enmascarar las imperfecciones del generador. Una ventaja de este enfoque radica en que la clave de cifrado puede ser utilizada como variable criptográfica para alterar dinámicamente el comportamiento del generador. A pesar de que este tipo de bloque de postprocesamiento (el cifrador) resulta bastante complejo y costoso, el TRNG puede reutilizar (compartir) el cifrador que se emplea para cifrar los datos.
+                    
+                    
+                    \item Hashing de la señal de ruido digital
+
+                        Uno de los métodos más seguros, aunque también de los más tiempo consume, es el postprocesamiento criptográfico basado en funciones hash, como MD5, SHA-1, entre otras. Este enfoque aprovecha las propiedades de difusión y unidireccionalidad (a diferencia del cifrado de la señal binaria sin procesar) de las funciones hash para garantizar la imprevisibilidad de los bits generados por el TRNG en caso de un fallo completo en la fuente de ruido. En esta situación, debido a la propiedad de no linealidad de las funciones hash, el TRNG se comportará como un PRNG.
+                    
+                \end{itemize}
+	
+                El postprocesamiento puede incrementar la tasa de entropía a la salida del generador, aunque ello implique reducir la tasa de bits de salida, no obstante, nunca puede generar entropía por si mismo. Idealmente, se busca producir números aleatorios sin procesar de alta calidad, de manera que el postprocesamiento no sea necesario. Este enfoque es especialmente beneficioso en aplicaciones de alta seguridad.
+
+	            \paragraph{Tasa de bits de salida\\}
+
+                En muchas aplicaciones criptográficas, la velocidad de generación de números aleatorios es un parámetro critico a considerar, después de la seguridad. Por lo general, velocidades de salida de entre 100 kilobits por segundo hasta 1 megabit por segundo son suficientes. Sin embargo, hay ciertas aplicaciones que requieres una generación de números aleatorios a alta velocidad, como los servidores de telecomunicaciones de alta velocidad. Estos servidores necesitan generar claves de sesión a velocidades que pueden alcanzas decena de megabits por segundo. Por ejemplo, un servidor de 10 GBit necesitaría unos 20 Mbits/s de datos aleatorios para generar una clave de sesión de 128 bits por cada bloque de datos de 64 kB, con el fin de resistir los ataques de canal lateral.
+
+                Otro aspecto crucial a tener en cuenta en los generadores de números aleatorios es la variabilidad de su tasa de bits de salida. Algunos generadores producen números aleatorios periódicamente, mientras que otros generan la salida en intervalos de tiempo irregulares, lo que requiere una memoria intermedia FIFO para almacenar los números generados. Una solución alternativa consiste en estimar la tasa de bits más baja disponible en la salida y muestrear la salida a esa tasa. No obstante, la desventaja de la primera solución es que las memorias intermedias FIFO pueden ser bastante grandes, dependiendo de la velocidad de bits promedio de salida y la demanda de números aleatorios. Por otro lado, la desventaja de la segunda solución radica en que si la tasa de bits estimada resulta ser incorrecta, puede haber momentos en los que los números aleatorios no estén accesibles en la salida.
+	
+            \subsubsection{Parámetros relacionados con la seguridad}
+	
+	            \paragraph{Modelado matemático de TRNG\\}
+                
+                En un proceso de certificación de seguridad, la evaluación del diseño y la implementación del generador es fundamental. El objetivo principal es cuantificar la entropía por bit aleatorio, la cual es una propiedad de las variables aleatorios y no de las observaciones realizadas (números aleatorios). Para realizar una cuantificación precisa de la entropía, es necesario analizar la distribución de las variables aleatorias a través de un modelo estocástico. Dicho modelo especifica una familia de distribuciones de probabilidad de variables aleatorias, permitiendo verificar un límite inferior de entropía para la señal binaria en bruto. En diversos estudios, se han utilizado modelos que proporcionan límites inferiores para la entropía condicional media por número aleatorio interno. Estos modelos permiten comprobar la entropía de los números generados en tiempo real y son utilizados por varios autores en la evaluación de la calidad de los generadores de números aleatorios.
+
+	            \paragraph{Comprobabilidad\\}
+
+                La comprobabilidad o verificación interna se refiere a la capacidad del generador de evaluar la entropía de la señal binaria sin procesar la cual debe estar disponible para su evaluación. Esta funcionalidad es necesaria en los procedimientos de evaluación más recientes de TRNG. Sin embargo, en los casos en que la extracción de aleatoriedad y el postprocesamiento se fusionan en un solo proceso, la señal aleatoria sin procesar no siempre está disponible. Incluso cuando esta señal está disponible, a veces se compone de un patrón pseudoaleatorio combinado con un flujo de bits verdaderamente aleatorio, lo que dificulta la evaluación estadística de la señal. 
+
+	            \paragraph{Evaluación de seguridad\\}
+
+                En ocasiones resulta muy complicado, e incluso imposible, construir un modelo estocástico para un generador específico. En tales situaciones, se puede utilizar un enfoque alternativo para validar el uso del generador en aplicaciones criptográficas. Este enfoque se basa en el análisis del impacto de un entorno cambiante o de un ataque al generador, lo que se conoce como evaluación de seguridad. Hay tres posibilidades: 
+				
+                \begin{enumerate}[noitemsep, label=(\roman*)]
+                    \item Se puede probar que el generador no puede fallar como resultado de un ataque o un entorno cambiante.
+                    \item No existen pruebas de seguridad ni ataques.
+                    \item Se ha informado de algún ataque a un generador en particular.
+                \end{enumerate}		
+
+	        \subsubsection{Parámetros relacionados con el diseño}	
+		
+	            \paragraph{Uso de recursos\\}
+				
+                Para evaluar la viabilidad de diferentes principios de TRNG, es crucial examinar los recursos necesarios para la implementación del generador en hardware. En general, todos los tipos de recursos disponibles en las FPGA pueden utilizarse para generar números aleatorios, incluyendo células lógicas basadas en LUT o multiplexores, bloques de memoria integrados, bloques de reloj con PLLs y DLLs, osciladores RC integrados, multiplicadores cableados, interconexiones programables entre otros.
+					
+                Los FPGA tienen una gran cantidad de celdas lógicas, lo que hace que su uso no suponga normalmente un problema en cuanto al área lógica. Sin embargo, la topología y los parámetros eléctricos de las interconexiones programables están fuertemente condicionados por la tecnología utilizada. En el caso de los diseños de TRNG, a menudo se requiere la intervención manual del diseñador durante la colocación y el enrutamiento (Placement and Routing). En cuanto a este último, algunos diseños pueden implementarse sin dificultad en una familia de FPGA, pero resultan complicados o incluso imposibles de implementar en otras. Asimismo, la elección y el número de bloques cableados integrados suelen ser mucho más limitados (PLL, osciladores RC, multiplicadores, bloques de memoria), y varían según el proveedor y la tecnología. La utilización de estos bloques puede ser un factor limitante para la reutilización del principio TRNG en diferentes plataformas FPGA.
+
+	            \paragraph{Consumo de energía\\}
+					
+                El consumo de energía del generador está estrechamente relacionado con su fuente de aleatoriedad, la frecuencia de reloj utilizada y la complejidad del algoritmo. En algunas aplicaciones donde la eficiencia energética es crítica, el generador puede detenerse cuando no se está utilizando. No obstante, es importante tener en cuenta que la capacidad de controlar la generación del flujo de bits puede ser utilizada como una vía de ataque al generador.
+					
+	            \paragraph{Viabilidad en FPGAs\\}
+
+                La implementación de TRNGs en FPGAs es mucho más limitada en comparación con su implementación en ASICs. La mayoría de los TRNG implementados en ASIC utilizan componentes analógicos para generar aleatoriedad, como TRNG basados en caos que utilizan convertidores analógico-digitales, generadores basados en osciladores de funcionamiento libre que utilizan ruido térmico de diodos y resistencias, y para procesar la aleatoriedad se utilizan amplificadores operacionales y comparadores. Sin embargo, la mayoría de estos bloques funcionales no están disponibles en FPGAs, aunque algunos de ellos pueden estar disponibles en familias seleccionadas, por ejemplo, osciladores RC en FPGAs de Actel Fusion y PLLs analógicos en la mayoría de las familias de Altera y Actel, estos no se encuentran en las antiguas familias de Xilinx. Algunos generadores son difíciles de implementar o no son viables en FPGAs, mientras que otros son viables solo en FPGAs seleccionadas. Sin embargo, los principios más generales son viables en todas las FPGAs.
+				
+	            \paragraph{Automatización del diseño\\}
+				
+                La disponibilidad de recursos en las FPGA no garantiza la implementación exitosa de un generador, ya que (el rango de tolerancias de) ciertos parámetros tecnológicos pueden limitar su viabilidad. El enrutamiento y sus características son los principales factores que restringen la implementación de los generadores en FPGAs. Algunos generadores requieren un enrutamiento equilibrado, lo que implica una colocación precisa de los módulos y un enrutamiento óptimo, por ejemplo la colocación simétrica de dos módulos en relación con otro módulo. Mientras que la mayoría de las herramientas de diseño FPGA permiten un control preciso de la colocación, el proceso de enrutamiento puede ser difícil o imposible de controlar en algunas familias, como Actel. 
+
+                Incluso cuando el enrutamiento puede ser controlado como en las familias Altera y Xilinx, los retardos en la red de enrutamiento configurable varían entre dispositivos, lo que dificulta la equilibración de las interconexiones de los módulos de forma general. Por lo tanto, el diseño dependerá del dispositivo y requerirá equilibrio manual para cada uno. Esta intervención manual no es aceptable desde el punto de vista de una implementación práctica del generador. Aunque los mejores generadores (muy raros) pueden mapearse automáticamente en todas las familias de FPGA, la intervención manual es aceptable para la implementación del generador en cada familia y tipo de dispositivo. Sin embargo, los generadores que requieren una optimización manual por dispositivo no son viables para aplicaciones industriales.
+
+	
+        \subsection{Evaluación y pruebas de los TRNG}
+	
+		    \subsubsection{Condiciones de funcionamiento y calidad de la salida del TRNG}
+	
+	            La salida de un buen TRNG debe ser indistinguible de la salida de un TRNG ideal, independientemente de las condiciones de funcionamiento y del tiempo. La calidad del flujo de bits de salida del generador y sus parámetros de seguridad, incluyendo la robustez frente al envejecimiento, los cambios ambientales, los ataques, la existencia de autopruebas y las pruebas en línea, son muy importantes en el diseño del TRNG. Los buenos TRNGs dan un flujo de ceros y unos uniformemente distribuido a su salida. La calidad de la salida del generador está estrechamente ligada a la calidad de la fuente de aleatoriedad y al método de extracción de aleatoriedad utilizado. Las características de la fuente de aleatoriedad y de la extracción de aleatoriedad determinan los principales parámetros del flujo de bits generado: el sesgo del flujo de bits de salida, la correlación entre los bits posteriores, los patrones visibles, etc. Aunque algunos de estos fallos pueden corregirse mediante un post-procesamiento eficaz, es mejor que el generador produzca intrínsecamente un flujo de bits sin procesar de buena calidad.
+	
+	            Si el extractor muestrea la fuente de aleatoriedad demasiado rápido, los bits adyacentes podrían estar correlacionados. Por esta razón, es una buena práctica comprobar el flujo de bits generado para detectar una autocorrelación a corto plazo. También es posible que el ruido digital presente otras dependencias a corto plazo, que deben ser detectadas por algunas pruebas específicas del generador. El comportamiento del generador suele estar influenciado por interferencias eléctricas externas e internas. El efecto más evidente serán las frecuencias discretas procedentes de la fuente de alimentación y de diversas señales internas que aparecen en el espectro de ruido. El espectro de la señal de ruido generada puede estar significativamente influenciado por un ruido de baja frecuencia causado por los semiconductores. Además, las frecuencias altas del espectro de ruido pueden ser filtradas involuntariamente por algunas capacidades internas.
+
+	            Algunos generadores pueden presentar los llamados puntos malos. Los puntos malos son períodos cortos en los que el generador deja de funcionar, posiblemente debido a interferencias eléctricas o externas de la parte sobrecargada del circuito del generador. Otra característica peligrosa del generador puede ser una puerta trasera, que se refiere a las desviaciones de la aleatoriedad uniforme introducidas deliberadamente por el fabricante. Por ejemplo, supongamos que en lugar de utilizar algún proceso físico, el generador generara una secuencia pseudoaleatoria de alta calidad con una semilla de 40 bits. Sería imposible detectar este comportamiento aplicando pruebas estadísticas estándar en el flujo de bits de salida, pero sería computacionalmente factible para alguien que conozca la puerta trasera adivinar las claves sucesivas.
 	
 	
-		\subsection{Estándares para el diseño y certificación de TRNG}
+		    \subsubsection{Estándares para el diseño y certificación de TRNG}
 	
-	Diferentes aplicaciones criptográficas requieren distintos niveles de seguridad, por lo que es necesario estandarizar el uso de la criptografía para aplicaciones específicas. Ya existen muchos estándares que proporcionan algoritmos estándar para el cifrado como el AES, RSA o funciones hash como la SHA-3. Pero debido a la naturaleza de los TRNG, que son específicos de la tecnología y de la plataforma, no hay forma de proporcionar un diseño estandarizado. Por ello, varias autoridades de certificación han desarrollado diferentes enfoques estándar para la certificación de TRNG.
+	            Diferentes aplicaciones criptográficas requieren distintos niveles de seguridad, por lo que es necesario estandarizar el uso de la criptografía para aplicaciones específicas. Ya existen muchos estándares que proporcionan algoritmos estándar para el cifrado como el AES, RSA o funciones hash como la SHA-3. Pero debido a la naturaleza de los TRNG, que son específicos de la tecnología y de la plataforma, no hay forma de proporcionar un diseño estandarizado. Por ello, varias autoridades de certificación han desarrollado diferentes enfoques estándar para la certificación de TRNG.
 	
-	El primer intento de certificación del diseño del TRNG requería únicamente probar las propiedades estadísticas de los números generados. Se propusieron muchos conjuntos de pruebas para conseguirlo, como FIPS 140-1 [Agragar ref], DIEHARD [Agregar ref], NIST 800-22 [Agregar ref], entre otras. La idea de las pruebas estadísticas de los TRNG es que un TRNG debe producir una secuencia de salida que no se distinga de la ideal. Una secuencia aleatoria ideal es estacionaria, se distribuye uniformemente y sus muestras son independientes. De hecho, las propiedades estadísticas de los números generados pueden comprobarse fácilmente mediante pruebas estadísticas adecuadas, pero no su independencia. El problema con este tipo de pruebas de TRNG es que trata a un TRNG como una caja negra y sólo considera su salida. Ahora bien, si colocamos un buen generador de números pseudoaleatorios en lugar de un TRNG, su salida pasará todo tipo de pruebas estadísticas. Esto se debe a que los buenos generadores de números pseudoaleatorios están hechos de algoritmos que producen secuencias con propiedades estadísticas perfectas. Sin embargo, su resultado no es realmente aleatorio, sólo parece serlo. Al final son algoritmos y como tales, su comportamiento está claramente definido y es predecible.
+	            El primer intento de certificación del diseño del TRNG requería únicamente probar las propiedades estadísticas de los números generados. Se propusieron muchos conjuntos de pruebas para conseguirlo, como FIPS 140-1 [Agragar ref], DIEHARD [Agregar ref], NIST 800-22 [Agregar ref], entre otras. La idea de las pruebas estadísticas de los TRNG es que un TRNG debe producir una secuencia de salida que no se distinga de la ideal. Una secuencia aleatoria ideal es estacionaria, se distribuye uniformemente y sus muestras son independientes. De hecho, las propiedades estadísticas de los números generados pueden comprobarse fácilmente mediante pruebas estadísticas adecuadas, pero no su independencia. El problema con este tipo de pruebas de TRNG es que trata a un TRNG como una caja negra y sólo considera su salida. Ahora bien, si colocamos un buen generador de números pseudoaleatorios en lugar de un TRNG, su salida pasará todo tipo de pruebas estadísticas. Esto se debe a que los buenos generadores de números pseudoaleatorios están hechos de algoritmos que producen secuencias con propiedades estadísticas perfectas. Sin embargo, su resultado no es realmente aleatorio, sólo parece serlo. Al final son algoritmos y como tales, su comportamiento está claramente definido y es predecible.
 	
-	La evaluación de las propiedades estadísticas de un TRNG es necesaria, pero claramente no es suficiente. Por ello, existen normas más recientes que exigen la caracterización de la fuente de ruido además de las pruebas estadísticas. Estas normas son la AIS-20/31, elaborada por la Oficina Federal de Seguridad de la Información de Alemania, (BSI) por sus siglas en Alemán [Agregar ref], y la NIST 800-90B, del Instituto Nacional de Normas y Tecnología de Estados Unidos [Agregar ref]. Aunque las dos normas utilizan una metodología de evaluación ligeramente diferente, ambas comparten la misma idea básica de una arquitectura TRNG. La Figura \ref{fig:A1_TRNG_estructura} muestra el diagrama de bloques de un TRNG tal y como lo especifican tanto AIS-20/31 como NIST 800-90B.
+	            La evaluación de las propiedades estadísticas de un TRNG es necesaria, pero claramente no es suficiente. Por ello, existen normas más recientes que exigen la caracterización de la fuente de ruido además de las pruebas estadísticas. Estas normas son la AIS-20/31, elaborada por la Oficina Federal de Seguridad de la Información de Alemania, (BSI) por sus siglas en Alemán [Agregar ref], y la NIST 800-90B, del Instituto Nacional de Normas y Tecnología de Estados Unidos [Agregar ref]. Aunque las dos normas utilizan una metodología de evaluación ligeramente diferente, ambas comparten la misma idea básica de una arquitectura TRNG. La Figura \ref{fig:A1_TRNG_estructura} muestra el diagrama de bloques de un TRNG tal y como lo especifican tanto AIS-20/31 como NIST 800-90B.
 	
-	La fuente de ruido digital está compuesta por una fuente de ruido analógica y un digitalizador. Este bloque produce el ruido digital, al que nos referimos como señal binaria sin procesar. También es el único bloque que extrae la verdadera aleatoriedad del proceso subyacente, por lo que es el único que genera la entropía. Su salida debe estar disponible para su evaluación, con el fin de comprobar la calidad de la señal sin procesar y estimar la tasa de entropía en la salida. El bloque de post-procesamiento es un proceso algorítmico y, por lo tanto, podemos calcular fácilmente la tasa de entropía a su salida, que también es la salida del generador, a partir de la tasa de entropía a su entrada, que se conoce a partir del modelo y que puede verificarse probando los datos de la señal sin procesar. Según la norma AIS-20/31, el post-procesamiento no debe reducir la entropía. Ambas normas consideran el post-procesamiento, como una opción. Lo ideal sería que un buen TRNG no requiriera ningún tipo de post-procesamiento algorítmico.
+	            La fuente de ruido digital está compuesta por una fuente de ruido analógica y un digitalizador. Este bloque produce el ruido digital, al que nos referimos como señal binaria sin procesar. También es el único bloque que extrae la verdadera aleatoriedad del proceso subyacente, por lo que es el único que genera la entropía. Su salida debe estar disponible para su evaluación, con el fin de comprobar la calidad de la señal sin procesar y estimar la tasa de entropía en la salida. El bloque de post-procesamiento es un proceso algorítmico y, por lo tanto, podemos calcular fácilmente la tasa de entropía a su salida, que también es la salida del generador, a partir de la tasa de entropía a su entrada, que se conoce a partir del modelo y que puede verificarse probando los datos de la señal sin procesar. Según la norma AIS-20/31, el post-procesamiento no debe reducir la entropía. Ambas normas consideran el post-procesamiento, como una opción. Lo ideal sería que un buen TRNG no requiriera ningún tipo de post-procesamiento algorítmico.
 	
-	Las pruebas integradas son la tercera parte necesaria del diseño del TRNG. Según la AIS- 20/31, estas pruebas contienen al menos dos tipos de pruebas: la prueba de fallo total y las pruebas en línea. La prueba de fallo total debe informar muy rápidamente de la pérdida completa de entropía en la fuente con una baja probabilidad de falsas alarmas. Dicha pérdida total de la fuente de entropía podría ser un cambio rápido o la pérdida total de la conexión física con la fuente. Las pruebas en línea, por otro lado, deben ser capaces de detectar defectos irreparables intolerables en la secuencia de salida. El defecto irreparable es un fallo estadístico que no puede ser corregido por el post-procesamiento. Este defecto puede producirse cuando el dispositivo funciona fuera de su rango de parámetros de funcionamiento, por ejemplo, por una sobre o baja tensión, temperaturas extremas, o algún otro fenómeno inesperado. Las pruebas en línea pueden ejecutarse de forma continua, a petición, o activarse por un evento interno específico. Sin embargo, las pruebas tienen que pasar con éxito cada vez que el TRNG se inicie o reinicie, funcionando efectivamente también como pruebas de encendido.
+	            Las pruebas integradas son la tercera parte necesaria del diseño del TRNG. Según la AIS- 20/31, estas pruebas contienen al menos dos tipos de pruebas: la prueba de fallo total y las pruebas en línea. La prueba de fallo total debe informar muy rápidamente de la pérdida completa de entropía en la fuente con una baja probabilidad de falsas alarmas. Dicha pérdida total de la fuente de entropía podría ser un cambio rápido o la pérdida total de la conexión física con la fuente. Las pruebas en línea, por otro lado, deben ser capaces de detectar defectos irreparables intolerables en la secuencia de salida. El defecto irreparable es un fallo estadístico que no puede ser corregido por el post-procesamiento. Este defecto puede producirse cuando el dispositivo funciona fuera de su rango de parámetros de funcionamiento, por ejemplo, por una sobre o baja tensión, temperaturas extremas, o algún otro fenómeno inesperado. Las pruebas en línea pueden ejecutarse de forma continua, a petición, o activarse por un evento interno específico. Sin embargo, las pruebas tienen que pasar con éxito cada vez que el TRNG se inicie o reinicie, funcionando efectivamente también como pruebas de encendido.
 
 		\subsection{Resumen de los requisitos del AIS-20/31 sobre los TRNG}
 	
@@ -655,5 +571,110 @@ Speed Grade: -1
   \label{tab:addlabel}%
 
 \end{table}%
+
+
+
+    \section{Jitter}
+    \section{Pruebas estadísticas}
+    \section{Mapas caóticos}
+
+    \cite{Sprott2003}
+
+    \cite{Strogatz1994}
+
+    \cite{Gleick1987}
+
+
+
+
+    \section{Teoría de FPGAs en Xilinx}
+        Para poder realizar la implementación del núcleo ERO es necesario utilizar las primitivas y macros propias del fabricante de FPGA que para este trabajo es Xilinx. Las primitivas son componentes de Xilinx que son nativos de la arquitectura a la que se dirige y los macros son elementos que se encuentran en las bibliotecas UniMacro y Xilinx Parameterized Macros, las cuales se utilizan para instanciar elementos que son complejos de instanciar simplemente usando las primitivas, después las herramientas de síntesis expanden automáticamente estas macros a sus primitivas subyacentes. Los métodos de diseño disponibles son la instanciación, la inferencia, el catalogo IP y el soporte de macros, no obstante para este diseño solo se utilizan la instanciación, la cual permite instanciar un componente directamente en el diseño y es útil si se desea controlar el uso, la implementación y la ubicación exactos de los bloques individuales y el soporte de macros, el cual, utilizando las librerías antes mencionadas permiten abstraer la complejidad de utilizar unicamente primitivas simples.
+
+        Toda la información referente a los macros y primitivas se encuentran en la documentación oficial en el archivo llamado ``Vivado Design Suite 7 Series FPGA Libraries Guide''. Para poder utilizar las primitivas y las macros es necesario agregar la librería UniMacro en la cabecera del archivo VHDL de la siguiente manera: 
+
+        \vspace{0.4cm}
+        \lstinputlisting[style = VHDL_TEXT, caption = Librería para primitivas de Xilix., label = cod:library]{codigos/vhdl_codes/primitivas/library.vhd}
+        % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/library.vhd}
+
+	    \subsection{Primitivas}
+
+		    \subsubsection{LUT1: 1-Bit Look-Up Table with General Output}
+	
+                \begin{figure}[hbtp]
+                    \caption{Esquemático de LUT1.}
+                    \centering
+                    \includegraphics[width=0.3\linewidth]{D2_lut1}
+                    \label{fig:D2_lut1}
+                \end{figure}	
+	
+                Este elemento proporciona una versión de look-up table de un búfer o inversor. Estos elementos son los bloques de construcción básicos. El parámetro INIT le da a la LUT su valor lógico. De forma predeterminada, este valor es cero, lo que lleva la salida a cero independientemente de los valores de entrada (actuando como tierra).Sin embargo, en la mayoría de los casos hay que determinar un nuevo valor INIT para especificar la función lógica de la primitiva LUT. Existen al menos dos métodos mediante los cuales se puede determinar el valor LUT. El método de la tabla lógica y el método de ecuación. En la Tabla \ref{tab:lut1} se muestran las entradas y salidas y la forma de configurar INIT y en el Código \ref{cod:lut1} se muestra su implementación en VHDL.
+
+                \begin{table}[htbp]
+                    \centering
+                    \caption{Tabla lógica de LUT1.}
+                    \begin{tabular}{|cc|}
+                        \hline
+                        \multicolumn{1}{|c|}{\textbf{Inputs}} & \textbf{Outputs} \\ 
+                        \multicolumn{1}{|c|}{\textbf{I0}} & \textbf{O} \\ 
+                        \hline 
+                        \multicolumn{1}{|c|}{0} & INIT[0] \\ \hline
+                        \multicolumn{1}{|c|}{1} & INIT[1] \\ \hline
+                        \multicolumn{2}{|c|}{INIT = Binary number assigned to the INIT attribute} \\ 
+                        \hline
+                    \end{tabular}
+                    \label{tab:lut1}
+                \end{table}	
+	
+                \vspace{0.4cm}
+                \lstinputlisting[style = VHDL_TEXT, caption = Primitava de LUT1., label = cod:lut1]{codigos/vhdl_codes/primitivas/lut1.vhd}
+                % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/lut1.vhd}
+
+            \subsubsection{OBUFDS: Differential Signaling Output Buffer}
+
+                \begin{figure}[hbtp]
+                    \caption{Esquemático de OBUFDS.}
+                    \centering
+                    \includegraphics[width=0.3\linewidth]{D3_obufds}
+                    \label{fig:D3_obufds}
+                \end{figure}	
+
+                Este elemento de diseño es un búfer de salida única que admite señalización diferencial de bajo voltaje. OBUFDS aísla el circuito interno y proporciona corriente de accionamiento para las señales que salen del chip. Su salida se representa como dos puertos distintos (O y OB), uno considerado el ``maestro'' y el otro el ``esclavo''. El maestro y el esclavo son fases opuestas de la misma señal lógica.  En la Tabla \ref{tab:obufds} se muestran las entradas y salidas y en el Código \ref{cod:obufds} se muestra su implementación en VHDL.
+                
+                \begin{table}[htbp]
+                    \centering
+                    \caption{Tabla lógica de OBUFDS.}
+                    \begin{tabular}{|c|cc|}
+                        \hline
+                        \textbf{Inputs} & \multicolumn{2}{c|}{\textbf{Outputs}} \\ 
+                        \textbf{I}      & \multicolumn{1}{c}{\textbf{O}}  & \textbf{OB} \\ 
+                        \hline
+                        0      & \multicolumn{1}{c|}{0}  & 1  \\ \hline
+                        1      & \multicolumn{1}{c|}{1}  & 0  \\ \hline
+                    \end{tabular}
+                    \label{tab:obufds}
+                \end{table}
+
+                \vspace{0.4cm}
+                \lstinputlisting[style = VHDL_TEXT, caption = Primitava de OBUFDS., label = cod:obufds]{codigos/vhdl_codes/primitivas/obufds.vhd}
+                % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/obufds.vhd}
+\begin{comment}
+
+Datos para programar la tarjeta
+
+Default Board: Basys3
+Default Part: xc7a35tcpg236-1
+Product: Artix-7
+Family: Artix-7
+Package: cpg236
+Speed Grade: -1
+
+\end{comment}
+
+    
+    %\section{Selección y evaluación de núcleos TRNGs}
+
+%-----------------------------------------------------------------
+
+	
 
 
