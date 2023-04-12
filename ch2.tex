@@ -237,61 +237,68 @@
                 Incluso cuando el enrutamiento puede ser controlado como en las familias Altera y Xilinx, los retardos en la red de enrutamiento configurable varían entre dispositivos, lo que dificulta la equilibración de las interconexiones de los módulos de forma general. Por lo tanto, el diseño dependerá del dispositivo y requerirá equilibrio manual para cada uno. Esta intervención manual no es aceptable desde el punto de vista de una implementación práctica del generador. Aunque los mejores generadores (muy raros) pueden mapearse automáticamente en todas las familias de FPGA, la intervención manual es aceptable para la implementación del generador en cada familia y tipo de dispositivo. Sin embargo, los generadores que requieren una optimización manual por dispositivo no son viables para aplicaciones industriales.
 
 	
-        \subsection{Evaluación y pruebas de los TRNG}
-	
-		    \subsubsection{Condiciones de funcionamiento y calidad de la salida del TRNG}
-	
-	            La salida de un buen TRNG debe ser indistinguible de la salida de un TRNG ideal, independientemente de las condiciones de funcionamiento y del tiempo. La calidad del flujo de bits de salida del generador y sus parámetros de seguridad, incluyendo la robustez frente al envejecimiento, los cambios ambientales, los ataques, la existencia de autopruebas y las pruebas en línea, son muy importantes en el diseño del TRNG. Los buenos TRNGs dan un flujo de ceros y unos uniformemente distribuido a su salida. La calidad de la salida del generador está estrechamente ligada a la calidad de la fuente de aleatoriedad y al método de extracción de aleatoriedad utilizado. Las características de la fuente de aleatoriedad y de la extracción de aleatoriedad determinan los principales parámetros del flujo de bits generado: el sesgo del flujo de bits de salida, la correlación entre los bits posteriores, los patrones visibles, etc. Aunque algunos de estos fallos pueden corregirse mediante un post-procesamiento eficaz, es mejor que el generador produzca intrínsecamente un flujo de bits sin procesar de buena calidad.
-	
-	            Si el extractor muestrea la fuente de aleatoriedad demasiado rápido, los bits adyacentes podrían estar correlacionados. Por esta razón, es una buena práctica comprobar el flujo de bits generado para detectar una autocorrelación a corto plazo. También es posible que el ruido digital presente otras dependencias a corto plazo, que deben ser detectadas por algunas pruebas específicas del generador. El comportamiento del generador suele estar influenciado por interferencias eléctricas externas e internas. El efecto más evidente serán las frecuencias discretas procedentes de la fuente de alimentación y de diversas señales internas que aparecen en el espectro de ruido. El espectro de la señal de ruido generada puede estar significativamente influenciado por un ruido de baja frecuencia causado por los semiconductores. Además, las frecuencias altas del espectro de ruido pueden ser filtradas involuntariamente por algunas capacidades internas.
-
-	            Algunos generadores pueden presentar los llamados puntos malos. Los puntos malos son períodos cortos en los que el generador deja de funcionar, posiblemente debido a interferencias eléctricas o externas de la parte sobrecargada del circuito del generador. Otra característica peligrosa del generador puede ser una puerta trasera, que se refiere a las desviaciones de la aleatoriedad uniforme introducidas deliberadamente por el fabricante. Por ejemplo, supongamos que en lugar de utilizar algún proceso físico, el generador generara una secuencia pseudoaleatoria de alta calidad con una semilla de 40 bits. Sería imposible detectar este comportamiento aplicando pruebas estadísticas estándar en el flujo de bits de salida, pero sería computacionalmente factible para alguien que conozca la puerta trasera adivinar las claves sucesivas.
-	
+        \subsection{Estándares de diseño y certificación de TRNG}
 	
 		    \subsubsection{Estándares para el diseño y certificación de TRNG}
 	
-	            Diferentes aplicaciones criptográficas requieren distintos niveles de seguridad, por lo que es necesario estandarizar el uso de la criptografía para aplicaciones específicas. Ya existen muchos estándares que proporcionan algoritmos estándar para el cifrado como el AES, RSA o funciones hash como la SHA-3. Pero debido a la naturaleza de los TRNG, que son específicos de la tecnología y de la plataforma, no hay forma de proporcionar un diseño estandarizado. Por ello, varias autoridades de certificación han desarrollado diferentes enfoques estándar para la certificación de TRNG.
-	
-	            El primer intento de certificación del diseño del TRNG requería únicamente probar las propiedades estadísticas de los números generados. Se propusieron muchos conjuntos de pruebas para conseguirlo, como FIPS 140-1 [Agragar ref], DIEHARD [Agregar ref], NIST 800-22 [Agregar ref], entre otras. La idea de las pruebas estadísticas de los TRNG es que un TRNG debe producir una secuencia de salida que no se distinga de la ideal. Una secuencia aleatoria ideal es estacionaria, se distribuye uniformemente y sus muestras son independientes. De hecho, las propiedades estadísticas de los números generados pueden comprobarse fácilmente mediante pruebas estadísticas adecuadas, pero no su independencia. El problema con este tipo de pruebas de TRNG es que trata a un TRNG como una caja negra y sólo considera su salida. Ahora bien, si colocamos un buen generador de números pseudoaleatorios en lugar de un TRNG, su salida pasará todo tipo de pruebas estadísticas. Esto se debe a que los buenos generadores de números pseudoaleatorios están hechos de algoritmos que producen secuencias con propiedades estadísticas perfectas. Sin embargo, su resultado no es realmente aleatorio, sólo parece serlo. Al final son algoritmos y como tales, su comportamiento está claramente definido y es predecible.
-	
-	            La evaluación de las propiedades estadísticas de un TRNG es necesaria, pero claramente no es suficiente. Por ello, existen normas más recientes que exigen la caracterización de la fuente de ruido además de las pruebas estadísticas. Estas normas son la AIS-20/31, elaborada por la Oficina Federal de Seguridad de la Información de Alemania, (BSI) por sus siglas en Alemán [Agregar ref], y la NIST 800-90B, del Instituto Nacional de Normas y Tecnología de Estados Unidos [Agregar ref]. Aunque las dos normas utilizan una metodología de evaluación ligeramente diferente, ambas comparten la misma idea básica de una arquitectura TRNG. La Figura \ref{fig:A1_TRNG_estructura} muestra el diagrama de bloques de un TRNG tal y como lo especifican tanto AIS-20/31 como NIST 800-90B.
-	
-	            La fuente de ruido digital está compuesta por una fuente de ruido analógica y un digitalizador. Este bloque produce el ruido digital, al que nos referimos como señal binaria sin procesar. También es el único bloque que extrae la verdadera aleatoriedad del proceso subyacente, por lo que es el único que genera la entropía. Su salida debe estar disponible para su evaluación, con el fin de comprobar la calidad de la señal sin procesar y estimar la tasa de entropía en la salida. El bloque de post-procesamiento es un proceso algorítmico y, por lo tanto, podemos calcular fácilmente la tasa de entropía a su salida, que también es la salida del generador, a partir de la tasa de entropía a su entrada, que se conoce a partir del modelo y que puede verificarse probando los datos de la señal sin procesar. Según la norma AIS-20/31, el post-procesamiento no debe reducir la entropía. Ambas normas consideran el post-procesamiento, como una opción. Lo ideal sería que un buen TRNG no requiriera ningún tipo de post-procesamiento algorítmico.
-	
-	            Las pruebas integradas son la tercera parte necesaria del diseño del TRNG. Según la AIS- 20/31, estas pruebas contienen al menos dos tipos de pruebas: la prueba de fallo total y las pruebas en línea. La prueba de fallo total debe informar muy rápidamente de la pérdida completa de entropía en la fuente con una baja probabilidad de falsas alarmas. Dicha pérdida total de la fuente de entropía podría ser un cambio rápido o la pérdida total de la conexión física con la fuente. Las pruebas en línea, por otro lado, deben ser capaces de detectar defectos irreparables intolerables en la secuencia de salida. El defecto irreparable es un fallo estadístico que no puede ser corregido por el post-procesamiento. Este defecto puede producirse cuando el dispositivo funciona fuera de su rango de parámetros de funcionamiento, por ejemplo, por una sobre o baja tensión, temperaturas extremas, o algún otro fenómeno inesperado. Las pruebas en línea pueden ejecutarse de forma continua, a petición, o activarse por un evento interno específico. Sin embargo, las pruebas tienen que pasar con éxito cada vez que el TRNG se inicie o reinicie, funcionando efectivamente también como pruebas de encendido.
+                Diferentes aplicaciones criptográficas requieren distintos niveles de seguridad, lo que ha llevado a la necesidad de estandarizar el uso de la criptografía para aplicaciones específicas. Ya existen muchos estándares que proporcionan algoritmos estándar para el cifrado como el AES \cite{Dworkin2001}  o funciones hash como el SHA-3 \cite{Dang2015}. Sin embargo, debido a que los TRNG son específicos de cada tecnología y plataforma, no es posible proporcionar un diseño estandarizado. Por esta razón, varias autoridades de certificación han desarrollado enfoques estándar para la certificación de TRNG.
 
-		\subsection{Resumen de los requisitos del AIS-20/31 sobre los TRNG}
+                El primer intento de certificación del diseño de TRNG se centró únicamente en comprobar las propiedades estadísticas de los números generados. Para ello se propusieron muchos conjuntos de pruebas, como FIPS 140-1, DIEHARD, NIST 800-22 \cite{Nist2010}, TestU01 entre otros. La idea detrás de las pruebas estadísticas de los TRNG es que deben producir una secuencia de salida que no se distinga de la secuencia ideal, la cual es estacionaria, uniformemente distribuida y con muestras independientes. Aunque las propiedades estadísticas pueden comprobarse fácilmente mediante pruebas estadísticas adecuadas, su independencia no puede ser verificada. El problema con este tipo de pruebas para TRNG es que consideran al generador como una caja negra y solo se tiene en cuenta su salida. Si se utiliza un buen generador de números pseudoaleatorios en lugar de un TRNG, su resultado superará todas las pruebas estadísticas que se le realicen debido a que están hechos de algoritmos que producen secuencias con propiedades estadísticas perfectas, aunque su resultado no es realmente aleatorio, solo parece serlo, ya que su comportamiento está definido y es predecible como resultado de los algoritmos utilizados.
+
+                La evaluación de las propiedades estadísticas de un TRNG es necesaria, pero claramente no suficiente. Es por esto que existen normas más recientes que exigen la caracterización de la fuente de ruido, además de las pruebas estadísticas. Estas normas son la AIS-20/31 \cite{AIS2011} de la Oficina Federal Alemana de Seguridad de la Información (BSI) y la NIST 800-90B \cite{Turan2018} del Instituto Nacional de Estándares y Tecnología de Estados Unidos. Aunque las dos normas utilizan una metodología de evaluación ligeramente diferente, comparten la misma idea básica de la arquitectura de un TRNG. La Figura \ref{fig:A1_TRNG_estructura} muestra un diagrama de bloques de un TRNG de acuerdo con las especificaciones de AIS-20/31 y NIST 800-90B.
+
+                La fuente de ruido digital está compuesta por una fuente de ruido analógica y un digitalizador (extractor de aleatoriedad). Este bloque es el único que extrae la verdadera aleatoriedad del proceso subyacente, y proporciona la salida de señal binaria en bruto. Su salida debe estar disponible para su evaluación con el fin de comprobar la calidad de la señal en bruto y estimar la tasa de entropía a la salida. Es importante destacar que el postprocesamiento es un proceso algorítmico y, por lo tanto, es posible calcular fácilmente la tasa de entropía a la salida del generador a partir de la tasa de entropía a su entrada, que se conoce a partir del modelo y que puede ser verificada probando los datos de la señal en bruto. Es importante señalar que según la norma AIS-20/31, el postprocesamiento no debe reducir la entropía. Ambas normas, AIS-20/31 y NIST 800-90B, consideran el postprocesamiento como una opción. No obstante lo ideal sería que un buen TRNG no necesitara ningún postprocesamiento algorítmico.
+
+                Las pruebas integradas son una parte obligatoria del diseño de un TRNG. Según AIS-20/31, estas pruebas incluyen al menos dos tipos: la prueba de fallo total y las pruebas en línea. La prueba de fallo total debe ser capaz de detectar rápidamente la pérdida completa de entropía en la fuente, con una baja probabilidad de falsas alarmas. Esta pérdida total de entropía podría deberse a un cambio rápido o a la pérdida completa de la conexión física con la fuente. Por otro lado, las pruebas en línea deben ser capaces de detectar defectos irreparables en la secuencia de salida. Estos defectos irreparables son fallos estadísticos que no pueden corregirse con el postprocesamiento, y pueden ocurrir cuando el dispositivo funciona fuera de su rango de parámetros de funcionamiento, como en situaciones de sobretensión, subtensión o temperaturas extremas. Las pruebas en línea pueden ser ejecutadas de manera continua, bajo demanda o activadas por un evento interno específico. Es importante destacar que estas pruebas deben ser superadas con éxito cada vez que se enciende o reinicia el TRNG, por lo que también funcionan como pruebas de encendido.
+
+            \subsubsection{Condiciones de funcionamiento y calidad de la salida del TRNG}
 	
-	La norma AIS-20/31 reconoce varias clases diferentes de TRNGs en función de su principio de funcionamiento:
+                Para que un TRNG sea considerado de buena calidad, su salida debe ser prácticamente indistinguible de la salida de un TRNG ideal en todas las condiciones de funcionamiento y a lo largo del tiempo. En el diseño de un TRNG, es fundamental prestar atención tanto a la calidad del flujo de bits generado como a sus parámetros de seguridad, incluyendo la robustez ante el envejecimiento, cambios ambientales, posibles ataques y la existencia de pruebas de autodiagnóstico y en línea.
+                Un buen TRNG debe proporcionar un flujo de 0s y 1s distribuido uniformemente en su salida. La calidad del flujo de bits generado está estrechamente relacionada con la calidad de la fuente de aleatoriedad y el método utilizado para extraer la aleatoriedad. Las características espectrales de la fuente y el método de extracción determinan los principales parámetros del flujo de bits generado, como el sesgo de los bits de salida, la correlación entre bits sucesivos y patrones visibles. Aunque algunos de estos problemas pueden corregirse mediante un postprocesamiento efectivo, es preferible que el generador produzca intrínsecamente un flujo de bits en bruto de alta calidad.
+
+                Si el extractor muestrea la fuente de aleatoriedad demasiado rápido, los bits adyacentes pueden estar correlacionados. Por esta razón, es una buena práctica comprobar si el flujo de bits generado presenta autocorrelación a corto plazo. Además, pueden existir otras dependencias a corto plazo en el ruido digital, que deben detectarse mediante pruebas específicas del generador.
+
+                El comportamiento del generador puede verse afectado por interferencias eléctricas externas e internas. Un efecto evidente de estas interferencias son las frecuencias discretas que se originan en la fuente de alimentación y en diversas señales internas que aparecen en el espectro de ruido.
+
+                La señal de ruido generada puede verse significativamente afectada por el ruido de baja frecuencia causado por los semiconductores. Además, las capacidades internas pueden involuntariamente filtrar las frecuencias altas del espectro de ruido.
+
+                Algunos generadores pueden presentar lo que se conoce como puntos malos, que son breves períodos en los que el generador deja de funcionar debido a interferencias eléctricas o sobrecargas en la parte sobrecargada del circuito.
+
+                Una característica peligrosa del generador es la existencia de una puerta trasera, que se refiere a las desviaciones de la aleatoriedad uniforme introducidas deliberadamente por el fabricante. Por ejemplo, supongamos que en lugar de utilizar un proceso físico, el generador genera una secuencia pseudoaleatoria de alta calidad con una semilla de 40 bits. Aunque sería imposible detectar este comportamiento aplicando pruebas estadísticas estándar al flujo de bits de salida, alguien que conozca la puerta trasera podría adivinar las claves sucesivas mediante un proceso computacionalmente factible \cite{Petura2019}. 
+
+            \subsubsection{Resumen de los requisitos del AIS-20/31}
 	
-	\begin{itemize}[noitemsep]
-		\item Tres clases PTG para los generadores de números aleatorios verdaderos físicos (PTRNG), clases PTG.1 a PTG.3.
-		\item Cuatro clases de DRG para los generadores aleatorios deterministas (DRNG), clases DRG.1 a DRG.4.
-		\item Una clase NTG para los generadores de números aleatorios verdaderos no físicos, (NPTRNG), clase NTG.1.
-	\end{itemize}
-	
-	Dado que nos estamos centrando en los TRNG físicos, vamos a echar un vistazo a las clases PTG.
-	
-	Todas las clases de TRNG deben superar las pruebas estadísticas de caja negra. Estas pruebas se dividen en dos procedimientos de prueba descritos en la norma AIS-20/31:
-	
-	\begin{itemize}[noitemsep]
-		\item El procedimiento de prueba A contiene las pruebas estadísticas T0 a T5. Estas pruebas verifican las propiedades estadísticas generales, como el sesgo, y están destinadas a comprobar los datos post-procesados.
-		
-		\item El procedimiento de prueba B contiene las pruebas T6 a T8. Las pruebas T6 y T7 detectan la dependencia entre los números generados. La prueba T8 compara la entropía de Shannon estimada por bit con un umbral de 0.997. El procedimiento de prueba B está destinado a comprobar los datos sin procesar.
-	\end{itemize}		
-	Tanto los identificadores como el nombre de la prueba son los siguientes:
-	\begin{itemize}[noitemsep]
-		\item T0: Prueba de disyunción
-		\item T1: Prueba de monobit 
-		\item T2: Prueba de póquer
-		\item T3: Prueba de corridas
-		\item T4: Prueba de corridas larga
-		\item T5: Prueba de auto-correlación
-		\item T6: Prueba de distribución uniforme
-		\item T7: Prueba de homogeneidad
-		\item T8: Estimación de la entropía
-	\end{itemize}
-	
+                La norma AIS-20/31 reconoce varias clases diferentes de TRNGs en función de su principio de funcionamiento:
+                
+                \begin{itemize}[noitemsep]
+                    \item Tres clases PTG para los generadores de números aleatorios verdaderos físicos (PTRNG), clases PTG.1 a PTG.3.
+                    \item Cuatro clases de DRG para los generadores aleatorios deterministas (DRNG), clases DRG.1 a DRG.4.
+                    \item Una clase NTG para los generadores de números aleatorios verdaderos no físicos, (NPTRNG), clase NTG.1.
+                \end{itemize}
+                
+                Dado que nos estamos centrando en los TRNG físicos, vamos a echar un vistazo a las clases PTG.
+                
+                Todas las clases de TRNG deben superar las pruebas estadísticas de caja negra. Estas pruebas se dividen en dos procedimientos de prueba descritos en la norma AIS-20/31:
+
+                \begin{itemize}[noitemsep]
+                    \item El procedimiento de prueba A contiene las pruebas estadísticas T0 a T5. Estas pruebas verifican las propiedades estadísticas generales, como el sesgo, y están destinadas a comprobar los datos post-procesados.
+                    \item El procedimiento de prueba B contiene las pruebas T6 a T8. Las pruebas T6 y T7 detectan la dependencia entre los números generados. La prueba T8 compara la entropía de Shannon estimada por bit con un umbral de 0.997. El procedimiento de prueba B está destinado a comprobar los datos sin procesar.
+                \end{itemize}		
+
+                Tanto los identificadores como el nombre de la prueba son los siguientes:
+
+                \begin{itemize}[noitemsep]
+                    \item T0: Prueba de disyunción
+                    \item T1: Prueba de monobit 
+                    \item T2: Prueba de póquer
+                    \item T3: Prueba de corridas
+                    \item T4: Prueba de corridas larga
+                    \item T5: Prueba de auto-correlación
+                    \item T6: Prueba de distribución uniforme
+                    \item T7: Prueba de homogeneidad
+                    \item T8: Estimación de la entropía
+                \end{itemize}
+        
 	\subsubsection{Clase PTG1 TRNG}
 		PTG.1 es una clase de TRNG físico de baja seguridad destinado a aplicaciones que no son críticas para la seguridad. La figura 1.18 muestra el diagrama de bloques de dicho generador y los puntos de prueba requeridos por la norma.
 		

@@ -210,51 +210,71 @@ LaTeX Warning: Citation `Badrignans2011' on page 8 undefined on input line 49.
 
 LaTeX Warning: Citation `Badrignans2011' on page 9 undefined on input line 80.
 
-[9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
+[9] [10] [11] [12] [13] [14] [15] [16]
 
-LaTeX Warning: Reference `fig:A1_TRNG_estructura' on page 19 undefined on input
- line 257.
-
-[19] [20] [21] [22] [23] [24] [25]
-
-LaTeX Warning: Reference `eq:periodic' on page 26 undefined on input line 423.
+LaTeX Warning: Citation `Dworkin2001' on page 17 undefined on input line 244.
 
 
-LaTeX Warning: Citation `Petura2016' on page 26 undefined on input line 436.
+LaTeX Warning: Citation `Dang2015' on page 17 undefined on input line 244.
+
+[17]
+
+LaTeX Warning: Citation `Nist2010' on page 18 undefined on input line 246.
+
+
+LaTeX Warning: Citation `AIS2011' on page 18 undefined on input line 248.
+
+
+LaTeX Warning: Citation `Turan2018' on page 18 undefined on input line 248.
+
+
+LaTeX Warning: Reference `fig:A1_TRNG_estructura' on page 18 undefined on input
+ line 248.
+
+[18] [19]
+
+LaTeX Warning: Citation `Petura2019' on page 20 undefined on input line 267.
+
+[20] [21] [22] [23] [24] [25]
+
+LaTeX Warning: Reference `eq:periodic' on page 26 undefined on input line 429.
+
+
+LaTeX Warning: Citation `Petura2016' on page 26 undefined on input line 442.
 
 [26] <imagenes//A1_ERO_TRNG.eps> <imagenes//A2_COSO_TRNG.eps>
 <imagenes//A3_MURO_TRNG.eps>
-Overfull \hbox (20.56589pt too wide) in paragraph at lines 495--495
+Overfull \hbox (20.56589pt too wide) in paragraph at lines 501--501
 []\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRNG
 ) 
 <imagenes//A4_TERO_TRNG.eps> <imagenes//A5_STR_TRNG.eps>
 <imagenes//A6_PLL_TRNG.eps>
 
-LaTeX Warning: Citation `Sprott2003' on page 27 undefined on input line 581.
+LaTeX Warning: Citation `Sprott2003' on page 27 undefined on input line 587.
 
 
-LaTeX Warning: Citation `Strogatz1994' on page 27 undefined on input line 583.
+LaTeX Warning: Citation `Strogatz1994' on page 27 undefined on input line 589.
 
 
-LaTeX Warning: Citation `Gleick1987' on page 27 undefined on input line 585.
+LaTeX Warning: Citation `Gleick1987' on page 27 undefined on input line 591.
 
 [27] [28] [29] (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
 (./codigos/vhdl_codes/primitivas/library.vhd) <imagenes//D2_lut1.eps>
 
-LaTeX Warning: Reference `tab:lut1' on page 30 undefined on input line 610.
+LaTeX Warning: Reference `tab:lut1' on page 30 undefined on input line 616.
 
 
-LaTeX Warning: Reference `cod:lut1' on page 30 undefined on input line 610.
+LaTeX Warning: Reference `cod:lut1' on page 30 undefined on input line 616.
 
 [30] (./codigos/vhdl_codes/primitivas/lut1.vhd
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
 <imagenes//D3_obufds.eps>
 
-LaTeX Warning: Reference `tab:obufds' on page 31 undefined on input line 641.
+LaTeX Warning: Reference `tab:obufds' on page 31 undefined on input line 647.
 
 
-LaTeX Warning: Reference `cod:obufds' on page 31 undefined on input line 641.
+LaTeX Warning: Reference `cod:obufds' on page 31 undefined on input line 647.
 
 (./codigos/vhdl_codes/primitivas/obufds.vhd [31]) Excluding 'comment' comment.)
 [32] (./ch3.tex
@@ -306,18 +326,21 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (64 pages, 654120 bytes).
+Output written on main.dvi (64 pages, 653768 bytes).
 Transcript written on main.log.
 This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: bibliografia.bib
+Warning--empty institution in Dworkin2001
+Warning--empty institution in Dang2015
+Warning--empty journal in AIS2011
+Warning--empty institution in Turan2018
 Warning--empty journal in Baudet2010
 Warning--empty booktitle in Varchola2010
 Warning--empty journal in Laban2016
-Warning--empty journal in AIS2011
 Warning--empty journal in AIS2022
-(There were 5 warnings)
+(There were 8 warnings)
 makeglossaries version 4.45 (2020-01-18)
 added glossary type 'main' (glg,gls,glo)
 makeindex  -s "main.ist" -t "main.glg" -o "main.gls" "main.glo"
@@ -496,7 +519,7 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 [1]) [2] (./agradecimientos.tex) [1] [2] (./main.toc
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)
-Overfull \hbox (36.41356pt too wide) in paragraph at lines 32--32
+Overfull \hbox (36.41356pt too wide) in paragraph at lines 33--33
  [][] [] [][]  
 [3]) [4] (./main.lof
 
@@ -554,26 +577,46 @@ LaTeX Warning: Citation `Badrignans2011' on page 8 undefined on input line 49.
 
 LaTeX Warning: Citation `Badrignans2011' on page 9 undefined on input line 80.
 
-[9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23]
-[24] [25]
+[9] [10] [11] [12] [13] [14] [15] [16]
 
-LaTeX Warning: Citation `Petura2016' on page 26 undefined on input line 436.
+LaTeX Warning: Citation `Dworkin2001' on page 17 undefined on input line 244.
+
+
+LaTeX Warning: Citation `Dang2015' on page 17 undefined on input line 244.
+
+[17]
+
+LaTeX Warning: Citation `Nist2010' on page 18 undefined on input line 246.
+
+
+LaTeX Warning: Citation `AIS2011' on page 18 undefined on input line 248.
+
+
+LaTeX Warning: Citation `Turan2018' on page 18 undefined on input line 248.
+
+[18] [19]
+
+LaTeX Warning: Citation `Petura2019' on page 20 undefined on input line 267.
+
+[20] [21] [22] [23] [24] [25]
+
+LaTeX Warning: Citation `Petura2016' on page 26 undefined on input line 442.
 
 [26] <imagenes//A1_ERO_TRNG.eps> <imagenes//A2_COSO_TRNG.eps>
 <imagenes//A3_MURO_TRNG.eps>
-Overfull \hbox (20.56589pt too wide) in paragraph at lines 495--495
+Overfull \hbox (20.56589pt too wide) in paragraph at lines 501--501
 []\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRNG
 ) 
 <imagenes//A4_TERO_TRNG.eps> <imagenes//A5_STR_TRNG.eps>
 <imagenes//A6_PLL_TRNG.eps>
 
-LaTeX Warning: Citation `Sprott2003' on page 27 undefined on input line 581.
+LaTeX Warning: Citation `Sprott2003' on page 27 undefined on input line 587.
 
 
-LaTeX Warning: Citation `Strogatz1994' on page 27 undefined on input line 583.
+LaTeX Warning: Citation `Strogatz1994' on page 27 undefined on input line 589.
 
 
-LaTeX Warning: Citation `Gleick1987' on page 27 undefined on input line 585.
+LaTeX Warning: Citation `Gleick1987' on page 27 undefined on input line 591.
 
 [27] [28] [29] (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
@@ -630,7 +673,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (71 pages, 732168 bytes).
+Output written on main.dvi (71 pages, 734208 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -808,7 +851,7 @@ Cap\'{\i }tulo 2.
 [5] [6] [7] [8 <./imagenes//A0_TRNG_estructura-eps-converted-to.pdf>] [9]
 [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
 [25] [26]
-Overfull \hbox (20.56589pt too wide) in paragraph at lines 495--495
+Overfull \hbox (20.56589pt too wide) in paragraph at lines 501--501
 []\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRNG
 ) 
 [27 <./imagenes//A1_ERO_TRNG-eps-converted-to.pdf> <./imagenes//A2_COSO_TRNG-ep
@@ -863,5 +906,5 @@ c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive
 f-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2021/texmf-dist/fon
 ts/type1/public/cm-super/sfxc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/u
 rw/courier/ucrr8a.pfb>
-Output written on main.pdf (71 pages, 948014 bytes).
+Output written on main.pdf (71 pages, 949846 bytes).
 Transcript written on main.log.
