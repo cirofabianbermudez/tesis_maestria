@@ -294,12 +294,12 @@
 
                 PTG.1 es una clase de TRNG físico de baja seguridad destinado a aplicaciones que no son críticas para la seguridad. La Figura \ref{fig:E1_PTG1} muestra el diagrama de bloques de dicho generador y los puntos de prueba requeridos por la norma.
 
-            \begin{figure}[hbtp]
-                \caption{Clase PTG.1 TRNG.}
-                \centering
-                \includegraphics[width=0.8\textwidth]{E1_PTG1}
-                \label{fig:E1_PTG1}
-            \end{figure}
+                \begin{figure}[hbtp]
+                    \caption{Clase PTG.1 TRNG.}
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{E1_PTG1}
+                    \label{fig:E1_PTG1}
+                \end{figure}
 
                 \paragraph{Requisitos de la fuente de aleatoriedad\\}
                 
@@ -313,56 +313,71 @@
                 
                 La clase PTG.1 no requiere que el TRNG utilice ningún tipo de posprocesamiento. Tampoco desaconseja el uso del posprocesamiento. Sin embargo, un TRNG PTG.1 debe superar las pruebas estadísticas del procedimiento de prueba A, por lo que el posprocesamiento puede ser necesario si la señal binaria sin procesar no puede superar dichas pruebas
 
-                
             \subsubsection{Clase PTG.2 TRNG}
             
                 PTG.2 es una clase de TRNG físico, que puede utilizarse para generar claves criptográficas, nonces, semillas para DRNGs, etc. En comparación con la clase PTG.1 de baja seguridad, el TRNG PTG.2 debe garantizar el secreto de los números aleatorios producidos (su imprevisibilidad). La Figura \ref{fig:E2_PTG2} muestra la estructura interna y las pruebas necesarias para el TRNG PTG.2.
 
-                
-            \begin{figure}[hbtp]
-                \caption{Clase PTG.2 TRNG.}
-                \centering
-                \includegraphics[width=0.9\textwidth]{E2_PTG2}
-                \label{fig:E2_PTG2}
-            \end{figure}
+                \begin{figure}[hbtp]
+                    \caption{Clase PTG.2 TRNG.}
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{E2_PTG2}
+                    \label{fig:E2_PTG2}
+                \end{figure}
             
                 \paragraph{Requisitos de la fuente de aleatoriedad\\}
                 
-                    Todos los requisitos de la clase PTG.1 se aplican también a la clase PTG.2. Además, se requiere un modelo estocástico para la fuente de aleatoriedad. El modelo estocástico debe tener en cuenta el comportamiento de la fuente de aleatoriedad. Basándose en los parámetros de la fuente, el modelo estima la entropía de la señal binaria sin procesar. La entropía de Shannon de la señal binaria sin procesar debe ser superior a 0.997 por bit según la norma AIS-20/31.
+                Todos los requisitos de la clase PTG.1 se aplican también a la clase PTG.2. Además, se requiere un modelo estocástico para la fuente de aleatoriedad. El modelo estocástico debe tener en cuenta el comportamiento de la fuente de aleatoriedad. Basándose en los parámetros de la fuente, el modelo estima la entropía de la señal binaria sin procesar. La entropía de Shannon de la señal binaria sin procesar debe ser superior a 0.997 por bit según la norma AIS-20/31.
                 
                 \paragraph{Pruebas integradas\\}
                 
-                    Para un TRNG PTG.2 es necesario implementar tanto las pruebas de fallo total como las pruebas en línea. La prueba de fallo total debe detectar un fallo de la fuente de aleatoriedad total.
+                Para un TRNG PTG.2 es necesario implementar tanto las pruebas de fallo total como las pruebas en línea. La prueba de fallo total debe detectar un fallo de la fuente de aleatoriedad total.
 
-                    Las pruebas en línea deben detectar las debilidades estadísticas intolerables de la señal binaria sin procesar. Deben funcionar con una señal binaria sin procesar porque el uso del posprocesamiento podría enmascarar algunos defectos potencialmente peligrosos. Las pruebas en línea deben adaptarse al modelo estocástico. De este modo, pueden detectar los defectos específicos de la fuente de aleatoriedad utilizada de forma muy eficaz.
+                Las pruebas en línea deben detectar las debilidades estadísticas intolerables de la señal binaria sin procesar. Deben funcionar con una señal binaria sin procesar porque el uso del posprocesamiento podría enmascarar algunos defectos potencialmente peligrosos. Las pruebas en línea deben adaptarse al modelo estocástico. De este modo, pueden detectar los defectos específicos de la fuente de aleatoriedad utilizada de forma muy eficaz.
 
                 \paragraph{Post-procesamiento\\}
                 
-                    De forma similar a la clase PTG.1, la clase PTG.2 no requiere el posprocesamiento cuando la señal binaria sin procesar proporciona números aleatorios de suficiente calidad. Si el postprocesamiento es necesario, la clase PTG.2 no pone ninguna restricción en el algoritmo utilizado, sin embargo, no debe reducir la entropía.
+                De forma similar a la clase PTG.1, la clase PTG.2 no requiere el posprocesamiento cuando la señal binaria sin procesar proporciona números aleatorios de suficiente calidad. Si el postprocesamiento es necesario, la clase PTG.2 no pone ninguna restricción en el algoritmo utilizado, sin embargo, no debe reducir la entropía.
 
-	
             \subsubsection{Clase PTG.3 TRNG}
             
                 PTG.3 es una clase TRNG híbrida para TRNGs de alta seguridad. Los TRNG de esta clase no se basan únicamente en la seguridad proporcionada por la fuente de aleatoriedad, sino que añaden una segunda ancla de seguridad en forma de postprocesamiento criptográficamente seguro. Un TRNG híbrido es un TRNG compuesto por un TRNG físico, que vuelve a alimentar continuamente al RNG determinista. En este caso, el RNG determinista sirve como postprocesamiento para el TRNG físico que genera entropía. La Figura \ref{fig:E3_PTG3} muestra el diagrama de bloques de un TRNG híbrido de este tipo.
 
-            \begin{figure}[hbtp]
-                \caption{Clase PTG.3 TRNG.}
-                \centering
-                \includegraphics[width=0.9\textwidth]{E3_PTG3}
-                \label{fig:E3_PTG3}
-            \end{figure}
+                \begin{figure}[hbtp]
+                    \caption{Clase PTG.3 TRNG.}
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{E3_PTG3}
+                    \label{fig:E3_PTG3}
+                \end{figure}
             
-            \paragraph{Requisitos de la fuente de aleatoriedad\\}
+                \paragraph{Requisitos de la fuente de aleatoriedad\\}
             
                 La fuente de aleatoriedad del TRNG PTG.3 debe cumplir todos los requisitos de la clase PTG.2. La entropía de Shannon de la señal binaria sin procesar debe ser superior a 0.997 por bit, lo que debe estar garantizado por el modelo estocástico de la fuente.
 
-            \paragraph{Pruebas integradas\\}
+                \paragraph{Pruebas integradas\\}
             
                 Además de las pruebas de fallo total y en línea que se exigen también para el TRNG PTG.2, la clase PTG.3 requiere también la prueba de respuesta conocida (KAT) para el posprocesamiento. Esta prueba debe pasar con éxito cada vez que se inicie o reinicie el TRNG para verificar el correcto funcionamiento del algoritmo de posprocesamiento.
                 
-            \paragraph{Post-procesamiento\\}
+                \paragraph{Post-procesamiento\\}
             
-            A diferencia de los requisitos de PTG.1 y PTG.2, la clase PTG.3 requiere el uso de un postprocesamiento criptográfico. Además, requiere el uso de un DRNG de la clase DRG.3, que proporciona secreto hacia delante y hacia atrás mejorado. Esto significa que el postprocesamiento para un TRNG de clase PTG.3 debe ser una función criptográfica.
+                A diferencia de los requisitos de PTG.1 y PTG.2, la clase PTG.3 requiere el uso de un postprocesamiento criptográfico. Además, requiere el uso de un DRNG de la clase DRG.3, que proporciona secreto hacia delante y hacia atrás mejorado. Esto significa que el postprocesamiento para un TRNG de clase PTG.3 debe ser una función criptográfica.
+
+            \subsubsection{Clase DRG.1 DRNG}
+
+                La clase DRG.1 establece los requisitos para los RNG deterministas. Los RNG que cumplen con esta norma deben generar una secuencia de números aleatorios que sea indistinguible de la secuencia generada por un RNG ideal a través de simples pruebas estadísticas de caja negra. Además, los DRNG conformes con DRG.1 proporcionan secreto hacia adelante, lo que significa que la seguridad de la secuencia generada no se ve comprometida aunque un atacante tenga acceso a una porción previa de la secuencia. La Figura \ref{fig:E4_DRG1} muestra el diagrama de bloques de este generador.
+
+                Los RNG que cumplen con la norma DRG.1 pueden ser útiles en aplicaciones que requieren datos frescos que difieran de las secuencias previamente generadas con una alta probabilidad. Por ejemplo, pueden ser utilizados para generar retos en protocolos criptográficos o vectores de inicialización en cifradores de bloques en modos especiales de funcionamiento, siempre que no sea necesario proteger la secuencia previa de números aleatorios. Los DRNG que cumplen con DRG.1 son también adecuados para pruebas de conocimiento cero. \cite{AIS2011}
+
+                Para generar la semilla del DRNG se puede utilizar el PTRNG PTG.2 o PRG.3. Si el estado interno es al menos un 25 \% mayor en bits que los límites de entropía mínima, no es necesario una evaluación explícita de la entropía mínima. Esto se justifica por el hecho de que los PTRNG PTG.2 y PTG.3 generan números aleatorios de alta entropía.
+
+                $\varphi$ es la función de transición de estado y $\psi$ es la función de salida
+
+                \begin{figure}[hbtp]
+                    \caption{Clase DRNG.1.}
+                    \centering
+                    \includegraphics[width=0.2\textwidth]{E4_DRG1}
+                    \label{fig:E4_DRG1}
+                \end{figure}
+
 
         \subsection{Resumen de los requisitos del NIST 800-90B}
 	
@@ -374,7 +389,6 @@
             \end{itemize}
 
             Además de superar las pruebas de caja negra, el NIST 800-90B también impone requisitos a los bloques individuales del TRNG.
-
             
             \paragraph{Fuente de ruido\\}
             
@@ -390,7 +404,6 @@
             
             Aunque la norma exige la declaración de estacionariedad de la salida y de entropía esperada, no requiere ninguna prueba matemática de estas afirmaciones. Sólo es necesaria la descripción técnica de por qué se cree que la fuente de ruido tiene el comportamiento afirmado.
             
-            
             \paragraph{Pruebas de salud\\}
             
             El NIST 800-90B exige tres tipos de pruebas de salud.
@@ -403,11 +416,11 @@
             
             \paragraph{Acondicionamiento\\}
             
-            El NIST 800-90B entiende por componente acondicionador una función determinista responsable de reducir el sesgo y/o aumentar la tasa de entropía de los bits de salida resultantes. El componente de acondicionamiento es completamente opcional, por lo que puede omitirse por completo.
+            El NIST 800-90B entiende por componente acondicionador una función determinista responsable de reducir el sesgo y/o aumentar la tasa de entropía de los bits de salida resultantes \cite{Turan2018}. El componente de acondicionamiento es completamente opcional, por lo que puede omitirse por completo.
             
-            La entropía de salida del TRNG se estima después del componente de condicionamiento. El estándar proporciona una lista de algoritmos de condicionamiento comprobados, para los que los desarrolladores pueden reclamar una entropía completa, aunque esta reclamación tiene que ser validada. Estos algoritmos son funciones hash combinadas con cifrado de bloques.
+            La entropía de salida del TRNG se estima después del componente de condicionamiento. El estándar proporciona una lista de algoritmos de condicionamiento comprobados, para los que los desarrolladores pueden reclamar una entropía completa, aunque esta reclamación tiene que ser validada. Estos algoritmos son funciones hash combinadas con cifrado de bloques, para ver la lista de componentes de acondicionamiento verificados ver \cite{Turan2018}.
             
-            Se permite el uso de componentes de acondicionamiento no validados, pero estos componentes son penalizados en términos de estimación de entropía. Cuando se utiliza un componente condicionante no validado, la entropía en la salida se multiplica por una constante de 0,999, lo que le impide alcanzar la entropía total.
+            Se permite el uso de componentes de acondicionamiento no validados, pero estos componentes son penalizados en términos de estimación de entropía. Cuando se utiliza un componente condicionante no validado, la entropía en la salida se multiplica por una constante de 0.999, lo que le impide alcanzar la entropía total.
 
             Los parámetros recomendados para configurar las pruebas NIST se muestran en la Tabla \ref{tab:NIST_parametros}:
 
@@ -415,32 +428,32 @@
                 \caption{Parámetros recomendados para el conjunto de pruebas del NIST.}
                 \begin{center}
                     \resizebox{0.8\linewidth}{!}{ 
-                    \begin{NiceTabular}{|c|c|c|}
+                    \begin{NiceTabular}{|l|l|l|}
                         \CodeBefore
                         \rowcolor{lightgray}{1}
                         \Body
                         \hline
-                        \textbf{Prueba}  & \textbf{Parámetro} & \textbf{Valor} \\
+                        \textbf{Test}  & \textbf{Configuration item} & \textbf{Setting} \\
                         \hline
-                        Todas las pruebas   & Bits por secuencia & 1000000  \\
+                        All tests   & Bits per sequence & 1000000  \\
                         \hline
-                        Todas las pruebas   & Número de secuencias (tamaño de la muestra) & 1073 \\
+                        All test   & Number of sequences (sample size) & 1073 \\
                         \hline
-                        Prueba de frecuencia dentro de un bloque  & Longitud del bloque & 20000  \\
+                        Frequency test within a block & Block length & 20000  \\
                         \hline
-                        Non-overlaping template test  & Longitud de plantilla & 10  \\
+                        Non-overlapping template test  & Template length & 10  \\
                         \hline
-                        Overlapping template & Longitud del bloque & 10 \\
+                        Overlapping template & Block length & 10 \\
                         \hline
-                        Prueba estadística universal Mauler  & Longitud de bloque de prueba L &  7 \\
+                        Mauler's Universal Statistical test  & Test block length L &  7 \\
                         \hline
-                        Prueba estadística universal Mauler  & Pasos de inicialización  &  1280 \\
+                        Mauler's Universal Statistical test  & Initialization steps  &  1280 \\
                         \hline
-                        Prueba de entropía aproximada & Longitud del bloque &  8 \\
+                        Approximate entropy test & Block length &  8 \\
                         \hline
-                        Prueba de complejidad lineal  & Longitud del bloque &  1000 \\
+                        Linear complexity test  & Block length &  1000 \\
                         \hline
-                        Prueba en serie &  Longitud del bloque &  16 \\
+                        Serial test & Block length &  16 \\
                         \hline
                     \end{NiceTabular}
                     }
@@ -457,7 +470,7 @@
                 \item NIST 800-90B utilizado en los Estados Unidos. \cite{Turan2018}
             \end{itemize}
         
-        Las dos normas existentes en la actualidad exigen que el diseño de un TRNG esté bien documentado y su funcionamiento interno bien descrito, además de las pruebas estadísticas. También exigen que se realicen pruebas integradas, de modo que un TRNG se supervise continuamente durante su funcionamiento.
+            Las dos normas existentes en la actualidad exigen que el diseño de un TRNG esté bien documentado y su funcionamiento interno bien descrito, además de las pruebas estadísticas. También exigen que se realicen pruebas integradas, de modo que un TRNG se supervise continuamente durante su funcionamiento.
         
-        Sin embargo, la norma AIS-20/31 profundiza en el problema de la descripción del TRNG y exige que se desarrolle también un modelo estocástico. Las pruebas integradas, según la AIS-20/31, también deben implementarse de acuerdo con el modelo estocástico. Este requisito no se aplica en la norma NIST 800-90B, que da más libertad en el diseño del TRNG, pero no en sus pruebas.
+            Sin embargo, la norma AIS-20/31 profundiza en el problema de la descripción del TRNG y exige que se desarrolle también un modelo estocástico. Las pruebas integradas, según la AIS-20/31, también deben implementarse de acuerdo con el modelo estocástico. Este requisito no se aplica en la norma NIST 800-90B, que da más libertad en el diseño del TRNG, pero no en sus pruebas.
 
