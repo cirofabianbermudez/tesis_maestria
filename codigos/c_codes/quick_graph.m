@@ -1,0 +1,14 @@
+clear; close all; clc;
+data = load("B1_logistic_curve.txt");
+x = data(:,1);
+y = data(:,2);
+figure(1);
+hold on;
+plot(x,y,'k');
+plot(x,x,'k');
+grid on; grid minor;
+axis("square");
+xlabel('$x_{n}$','Interpreter','latex'); 
+pos = get(gca, 'YLabel').Position;
+ylabel('$x_{n+1}$','Interpreter','latex','rotation',0,'Position', pos + [-0.05 0 0]);
+set(gca,'TickLabelInterpreter','latex', 'FontSize', 12);

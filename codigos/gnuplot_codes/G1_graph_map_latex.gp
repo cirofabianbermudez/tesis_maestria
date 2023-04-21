@@ -6,7 +6,7 @@
 
 unset key                                                  # Hide filename
 set terminal epslatex size 7.5, 5.25                       # size 5, 3.5 is the default
-set output "graph.tex"												
+set output "G1_graph_map_latex.tex"												
 filename = "../c_codes/output_chaotic.txt"							
 set xrange [-1:1]
 set yrange [-1:1]
@@ -17,10 +17,19 @@ set xlabel "$x_n$"
 set ylabel "$y_n$"
 set grid
 
+# Hide all except graph, add trasparent
+# set format x ""
+# set format y ""
+# unset border
+# unset xtics
+# unset ytics
+# set xlabel ""
+# set ylabel ""
+
 # Plot configurations 
 plot filename linetype 7 linecolor -1 pointsize 0.12
 
-# Stop to view result
+# Change terminal, replot and stop to view result
 # set term wxt size 1024,717
 # replot
 # pause -1 "Press enter to continue..."

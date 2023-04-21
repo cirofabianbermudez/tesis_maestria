@@ -7,7 +7,7 @@
 unset key                                                   # Hide filename			
 set term png size 1024,717                                  # transparent size 640,480
 # set term png size transparent 1024,717						
-set output "chaotic_map_fixed.png"								
+set output "G2_chaotic_map_fixed.png"								
 filename = "../c_codes/output_chaotic_fixed.txt"							
 set xrange [-1:1]
 set yrange [-1:1]
