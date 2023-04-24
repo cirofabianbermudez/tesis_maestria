@@ -43,7 +43,7 @@ No file main.aux.
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 <imagenes//Inaoe.eps> <imagenes//Inaoep.eps> [1] (./main.aux) )
-Output written on main.dvi (1 page, 1780 bytes).
+Output written on main.dvi (1 page, 1776 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -98,5 +98,5 @@ naoe-eps-converted-to.pdf> <./imagenes//Inaoep-eps-converted-to.pdf>]
 exlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/202
 1/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2021/texmf-di
 st/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (1 page, 105580 bytes).
+Output written on main.pdf (1 page, 105675 bytes).
 Transcript written on main.log.

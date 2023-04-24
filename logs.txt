@@ -343,94 +343,934 @@ LaTeX Warning: Citation `AIS2011' on page 27 undefined on input line 469.
 
 LaTeX Warning: Citation `Turan2018' on page 27 undefined on input line 470.
 
-) [27] (./ch3.tex [28]
+
+LaTeX Warning: Citation `Petura2016' on page 27 undefined on input line 486.
+
+[27] <imagenes//A1_ERO_TRNG.eps> <imagenes//A2_COSO_TRNG.eps> [28]
+<imagenes//A3_MURO_TRNG.eps>
+Overfull \hbox (20.56589pt too wide) in paragraph at lines 545--545
+[]\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRNG
+) 
+<imagenes//A4_TERO_TRNG.eps> [29] <imagenes//A5_STR_TRNG.eps>
+<imagenes//A6_PLL_TRNG.eps>) [30] [31] (./ch3.tex [32]
 Cap\'{\i }tulo 3.
 
-LaTeX Warning: Citation `Strogatz1994' on page 29 undefined on input line 3.
+LaTeX Warning: Citation `Strogatz1994' on page 33 undefined on input line 5.
 
 
-LaTeX Warning: Citation `Sprott2003' on page 29 undefined on input line 5.
-
-
-LaTeX Warning: Citation `Sprott2003' on page 29 undefined on input line 16.
-
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 29 undefined on i
-nput line 18.
-
-[29]
-
-LaTeX Warning: Reference `fig:F0_mapdiagram' on page 30 undefined on input line
- 25.
-
-<imagenes//F0_mapdiagram.eps>
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 30 undefined on i
-nput line 36.
-
-[30]
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 31 undefined on i
-nput line 38.
-
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 31 undefined on i
-nput line 40.
-
-
-LaTeX Warning: Reference `eq:ecuacion_logistica' on page 31 undefined on input 
-line 40.
-
-
-LaTeX Warning: Reference `fig:F1_logistic_curve' on page 31 undefined on input 
-line 47.
-
-
-LaTeX Warning: Reference `eq:ecuacion_logistica' on page 31 undefined on input 
-line 47.
-
-<imagenes//F1_logistic_curve.eps>
-
-LaTeX Warning: Reference `fig:F0_mapdiagram' on page 31 undefined on input line
- 57.
-
-[31] <imagenes//F2_cobwebs_simple.eps>
-
-LaTeX Warning: Reference `fig:F3_time_series' on page 32 undefined on input lin
-e 72.
-
-<imagenes//F3_time_series.eps>
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 32 undefined on i
-nput line 81.
-
-[32]
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 33 undefined on i
-nput line 87.
-
-
-LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 33 undefined on i
-nput line 87.
+LaTeX Warning: Citation `Sprott2003' on page 33 undefined on input line 7.
 
 [33]
 
+LaTeX Warning: Citation `Sprott2003' on page 34 undefined on input line 38.
+
+
 LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 34 undefined on i
-nput line 89.
+nput line 40.
 
 
-LaTeX Warning: Reference `fig:F5_cobwebs_bifurcation' on page 34 undefined on i
-nput line 89.
+LaTeX Warning: Reference `fig:F0_mapdiagram' on page 34 undefined on input line
+ 47.
 
-<imagenes//F5_cobwebs_bifurcation.eps>
-! Undefined control sequence.
-l.107 ...) = A - 2 A \left( 1 - \frac{1}{A} \rigth
-                                                  ) = 2 - A$. Entonces $x^{*...
+[34] <imagenes//F0_mapdiagram.eps>
 
-? 
-! Emergency stop.
-l.107 ...) = A - 2 A \left( 1 - \frac{1}{A} \rigth
-                                                  ) = 2 - A$. Entonces $x^{*...
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 35 undefined on i
+nput line 60.
 
-Output written on main.dvi (47 pages, 159876 bytes).
+
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 35 undefined on i
+nput line 62.
+
+
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 35 undefined on i
+nput line 64.
+
+
+LaTeX Warning: Reference `eq:ecuacion_logistica' on page 35 undefined on input 
+line 64.
+
+[35]
+
+LaTeX Warning: Reference `fig:F1_logistic_curve' on page 36 undefined on input 
+line 71.
+
+
+LaTeX Warning: Reference `eq:ecuacion_logistica' on page 36 undefined on input 
+line 71.
+
+<imagenes//F1_logistic_curve.eps>
+
+LaTeX Warning: Reference `fig:F0_mapdiagram' on page 36 undefined on input line
+ 80.
+
+[36] <imagenes//F2_cobwebs_simple.eps>
+
+LaTeX Warning: Reference `fig:F3_time_series' on page 37 undefined on input lin
+e 97.
+
+<imagenes//F3_time_series.eps>
+
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 37 undefined on i
+nput line 106.
+
+[37]
+
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 38 undefined on i
+nput line 112.
+
+
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 38 undefined on i
+nput line 112.
+
+[38]
+
+LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 39 undefined on i
+nput line 114.
+
+
+LaTeX Warning: Reference `fig:F5_cobwebs_bifurcation' on page 39 undefined on i
+nput line 114.
+
+<imagenes//F5_cobwebs_bifurcation.eps> <imagenes//F4_bifurcation.eps> [39]
+
+LaTeX Warning: Reference `fig:F6_many_logistic_curve' on page 40 undefined on i
+nput line 149.
+
+<imagenes//F6_many_logistic_curve.eps> [40] [41]
+
+LaTeX Warning: Citation `Gleick1987' on page 42 undefined on input line 185.
+
+) [42] (./ch4.tex
+Cap\'{\i }tulo 4.
+
+LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Fraga2021' on page 43 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+
+
+LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+
+<imagenes//B1_architecture.eps> <imagenes//B2_fsm_cm.eps>
+<imagenes//B0_chaotic_map.eps> <imagenes//C1_architecture_rs232.eps> [43]
+[44] [45] <imagenes//C0_fsm_rs232.eps> <imagenes//D0_system.eps>
+<imagenes//D1_fsm_system.eps> [46] [47]
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(./codigos/vhdl_codes/primitivas/library.vhd) <imagenes//D2_lut1.eps>
+
+LaTeX Warning: Reference `tab:lut1' on page 48 undefined on input line 173.
+
+
+LaTeX Warning: Reference `cod:lut1' on page 48 undefined on input line 173.
+
+[48] (./codigos/vhdl_codes/primitivas/lut1.vhd
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
+<imagenes//D3_obufds.eps>
+
+LaTeX Warning: Reference `tab:obufds' on page 49 undefined on input line 204.
+
+
+LaTeX Warning: Reference `cod:obufds' on page 49 undefined on input line 204.
+
+(./codigos/vhdl_codes/primitivas/obufds.vhd [49]) Excluding 'comment' comment.)
+[50] (./ch5.tex
+Cap\'{\i }tulo 5.
+) [51] [52] (./ch6.tex
+Cap\'{\i }tulo 6.
+) [53] (./test.tex) [54] (./Ap_A.tex
+Ap\'{e}ndice A.
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
+(./codigos/c_codes/A1_check_sys_bytes.c) [55]
+(./codigos/c_codes/A2_chaotic_map_float.c) [56]
+(./codigos/c_codes/A3_chaotic_map_fixed.c) [57]
+(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [58]
+(./codigos/c_codes/A5_fixed_point_converter.c) [59]
+(./codigos/c_codes/A6_chaotic_map_mod.c) [60]
+(./codigos/c_codes/A7_chaotic_map_mod_bin.c [61])) [62]
+No file main.bbl.
+(./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux) (./ch1.aux)
+ (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux)
+(./Ap_A.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+Output written on main.dvi (76 pages, 753952 bytes).
+Transcript written on main.log.
+This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: bibliografia.bib
+Warning--empty institution in Dworkin2001
+Warning--empty institution in Dang2015
+Warning--empty journal in AIS2011
+Warning--empty institution in Turan2018
+Warning--empty journal in Baudet2010
+Warning--empty booktitle in Varchola2010
+Warning--empty journal in Laban2016
+Warning--empty journal in AIS2022
+(There were 8 warnings)
+makeglossaries version 4.45 (2020-01-18)
+added glossary type 'main' (glg,gls,glo)
+makeindex  -s "main.ist" -t "main.glg" -o "main.gls" "main.glo"
+This is makeindex, version 2.15 [TeX Live 2021/W32TeX] (kpathsea + Thai support).
+Scanning style file ./main.ist.............................done (29 attributes redefined, 0 ignored).
+Scanning input file main.glo....done (10 entries accepted, 0 rejected).
+Sorting entries....done (34 comparisons).
+Generating output file main.gls....done (31 lines written, 0 warnings).
+Output written in main.gls.
+Transcript written in main.glg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(c:/texlive/2021/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+(c:/texlive/2021/texmf-dist/tex/latex/base/bk12.clo))
+(c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.sty
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.def
+(c:/texlive/2021/texmf-dist/tex/generic/babel/txtbabel.def))
+(c:/texlive/2021/texmf-dist/tex/generic/babel-spanish/spanish.ldf))
+(c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/base/makeidx.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-def/dvips.def)))
+(c:/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty))) (./librerias.tex
+(c:/texlive/2021/texmf-dist/tex/latex/amscls/amsthm.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/lipsum/lipsum.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-dvips.def))
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex)))
+(c:/texlive/2021/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(c:/texlive/2021/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment')
+(c:/texlive/2021/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(c:/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/tools/calc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(c:/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)))
+(c:/texlive/2021/texmf-dist/tex/latex/pdfpages/pppdftex.def
+(c:/texlive/2021/texmf-dist/tex/latex/pdfpages/ppnull.def
+
+Package pdfpages Warning: I will use a dummy \includepdf command
+(pdfpages)                which will insert empty pages instead of the actual
+(pdfpages)                PDF file because we are running in DVI mode or with
+(pdfpages)                dvips driver.
+
+))) (c:/texlive/2021/texmf-dist/tex/latex/setspace/setspace.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/makecell/makecell.sty
+(c:/texlive/2021/texmf-dist/tex/latex/tools/array.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/multirow/multirow.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/nicematrix/nicematrix.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)
+) (c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex)
+) (c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postscrip
+t.def)))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+)) (c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.te
+x)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric
+.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.t
+ex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.co
+de.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.te
+x)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
+etics.code.tex)))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
+e.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
+x)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
+.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
+ode.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
+
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.co
+de.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code
+.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+) (c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex)))
+ (c:/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/tools/multicol.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (c:/texlive/2021/texmf-dist/tex/latex/graphics/rotating.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/caption/subcaption.sty
+(c:/texlive/2021/texmf-dist/tex/latex/caption/caption.sty
+(c:/texlive/2021/texmf-dist/tex/latex/caption/caption3.sty)))
+(c:/texlive/2021/texmf-dist/tex/latex/steinmetz/steinmetz.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/p2e-dvips.def)))
+(c:/texlive/2021/texmf-dist/tex/latex/tools/bm.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
+(c:/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(c:/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(c:/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def)
+(c:/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def)
+(c:/texlive/2021/texmf-dist/tex/latex/url/url.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
+(c:/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/hdvips.def
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/pdfmark.def
+(c:/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(c:/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty))))
+(c:/texlive/2021/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/blindtext/blindtext.sty
+(c:/texlive/2021/texmf-dist/tex/latex/tools/xspace.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(c:/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(c:/texlive/2021/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+(c:/texlive/2021/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/textcase/textcase.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/xfor/xfor.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/datatool/datatool-base.sty
+(c:/texlive/2021/texmf-dist/tex/latex/substr/substr.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/datatool/datatool-fp.sty
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp.sty
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(c:/texlive/2021/texmf-dist/tex/latex/fp/defpattern.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-basic.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-addons.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-snap.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-exp.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-trigo.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-pas.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-random.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-eqn.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-upn.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-eval.sty))))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-307
+.sty) (c:/texlive/2021/texmf-dist/tex/latex/tracklang/tracklang.sty
+(c:/texlive/2021/texmf-dist/tex/generic/tracklang/tracklang.tex))
+(c:/texlive/2021/texmf-dist/tex/latex/translator/translator.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries-spanish/glossaries-spanish.ldf
+
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries-spanish/glossaries-spanish-utf
+8.ldf))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
+(c:/texlive/2021/texmf-dist/tex/latex/tools/longtable.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+(c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
+(./glossaries.tex)) (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
+(./ch6.aux) (./test.aux) (./Ap_A.aux))
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+(c:/texlive/2021/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/lscape.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/caption/ltcaption.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+(c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(./main.out) (./main.out) (./portada.tex
+
+Package pdfpages Warning: I cannot determine the number of pages of the
+(pdfpages)                included document, because we are running in
+(pdfpages)                DVI mode. 
+(pdfpages)                You can use the option `lastpage' to give me a hint.
+
+[1]) [2] (./agradecimientos.tex) [1] [2] (./main.toc
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd) [3] [4]) [5] [6]
+(./main.lof
+
+LaTeX Warning: Citation `Badrignans2011' on page \es@scroman {vii} undefined on
+ input line 6.
+
+) [7] [8] (./main.lot
+
+LaTeX Warning: Citation `Sprott1993' on page \es@scroman {ix} undefined on inpu
+t line 10.
+
+
+Overfull \hbox (71.16057pt too wide) in paragraph at lines 10--10
+ [][] [] [][]  
+
+Overfull \hbox (137.26256pt too wide) in paragraph at lines 11--11
+ [][] [] [][]  
+
+Overfull \hbox (141.01575pt too wide) in paragraph at lines 16--16
+ [][] [] [][]  
+
+Overfull \hbox (141.01575pt too wide) in paragraph at lines 17--17
+ [][] [] [][]  
+) [9] [10] (./main.lol
+Overfull \hbox (20.83951pt too wide) in paragraph at lines 10--10
+ [][] [] [][]  
+) (./main.gls [11] [12]) [13] (./resumen.tex [14]) [15] [16] (./ch1.tex
+Cap\'{\i }tulo 1.
+
+LaTeX Warning: Citation `Knuth2014' on page 1 undefined on input line 5.
+
+[1]
+
+LaTeX Warning: Citation `Petura2016' on page 2 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Badrignans2011' on page 2 undefined on input line 9.
+
+
+LaTeX Warning: Citation `Jun1999' on page 2 undefined on input line 13.
+
+[2]) [3] (./ch2.tex [4]
+Cap\'{\i }tulo 2.
+
+LaTeX Warning: Citation `Nist2010' on page 5 undefined on input line 12.
+
+
+LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 12.
+
+[5] [6]
+
+LaTeX Warning: Citation `Badrignans2011' on page 7 undefined on input line 44.
+
+[7]
+
+LaTeX Warning: Citation `Badrignans2011' on page 8 undefined on input line 47.
+
+
+LaTeX Warning: Citation `Badrignans2011' on page 8 undefined on input line 47.
+
+<imagenes//A0_TRNG_estructura.eps> [8]
+
+LaTeX Warning: Citation `Badrignans2011' on page 9 undefined on input line 78.
+
+[9] [10] [11] [12] [13] [14] [15] [16]
+
+LaTeX Warning: Citation `Dworkin2001' on page 17 undefined on input line 241.
+
+
+LaTeX Warning: Citation `Dang2015' on page 17 undefined on input line 241.
+
+[17]
+
+LaTeX Warning: Citation `Nist2010' on page 18 undefined on input line 243.
+
+
+LaTeX Warning: Citation `AIS2011' on page 18 undefined on input line 245.
+
+
+LaTeX Warning: Citation `Turan2018' on page 18 undefined on input line 245.
+
+
+LaTeX Warning: Citation `Petura2019' on page 18 undefined on input line 249.
+
+[18] [19] [20] <imagenes//E1_PTG1.eps> [21] <imagenes//E2_PTG2.eps> [22]
+<imagenes//E3_PTG3.eps> [23]
+
+LaTeX Warning: Citation `AIS2011' on page 24 undefined on input line 368.
+
+[24] <imagenes//E4_DRG1.eps> [25]
+
+LaTeX Warning: Citation `Turan2018' on page 26 undefined on input line 419.
+
+
+LaTeX Warning: Citation `Turan2018' on page 26 undefined on input line 421.
+
+[26]
+
+LaTeX Warning: Citation `AIS2011' on page 27 undefined on input line 469.
+
+
+LaTeX Warning: Citation `Turan2018' on page 27 undefined on input line 470.
+
+
+LaTeX Warning: Citation `Petura2016' on page 27 undefined on input line 486.
+
+[27] <imagenes//A1_ERO_TRNG.eps> <imagenes//A2_COSO_TRNG.eps> [28]
+<imagenes//A3_MURO_TRNG.eps>
+Overfull \hbox (20.56589pt too wide) in paragraph at lines 545--545
+[]\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRNG
+) 
+<imagenes//A4_TERO_TRNG.eps> [29] <imagenes//A5_STR_TRNG.eps>
+<imagenes//A6_PLL_TRNG.eps>) [30] [31] (./ch3.tex [32]
+Cap\'{\i }tulo 3.
+
+LaTeX Warning: Citation `Strogatz1994' on page 33 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Sprott2003' on page 33 undefined on input line 7.
+
+[33]
+
+LaTeX Warning: Citation `Sprott2003' on page 34 undefined on input line 38.
+
+[34] <imagenes//F0_mapdiagram.eps> [35] <imagenes//F1_logistic_curve.eps>
+[36] <imagenes//F2_cobwebs_simple.eps> <imagenes//F3_time_series.eps> [37]
+[38] <imagenes//F5_cobwebs_bifurcation.eps> <imagenes//F4_bifurcation.eps>
+[39] <imagenes//F6_many_logistic_curve.eps> [40] [41]
+
+LaTeX Warning: Citation `Gleick1987' on page 42 undefined on input line 185.
+
+) [42] (./ch4.tex
+Cap\'{\i }tulo 4.
+
+LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Fraga2021' on page 43 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+
+
+LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+
+<imagenes//B1_architecture.eps> <imagenes//B2_fsm_cm.eps>
+<imagenes//B0_chaotic_map.eps> <imagenes//C1_architecture_rs232.eps> [43]
+[44] [45] <imagenes//C0_fsm_rs232.eps> <imagenes//D0_system.eps>
+<imagenes//D1_fsm_system.eps> [46] [47]
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(./codigos/vhdl_codes/primitivas/library.vhd) <imagenes//D2_lut1.eps> [48]
+(./codigos/vhdl_codes/primitivas/lut1.vhd
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
+<imagenes//D3_obufds.eps> (./codigos/vhdl_codes/primitivas/obufds.vhd [49])
+Excluding 'comment' comment.) [50] (./ch5.tex
+Cap\'{\i }tulo 5.
+) [51] [52] (./ch6.tex
+Cap\'{\i }tulo 6.
+) [53] (./test.tex) [54] (./Ap_A.tex
+Ap\'{e}ndice A.
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
+(./codigos/c_codes/A1_check_sys_bytes.c) [55]
+(./codigos/c_codes/A2_chaotic_map_float.c) [56]
+(./codigos/c_codes/A3_chaotic_map_fixed.c) [57]
+(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [58]
+(./codigos/c_codes/A5_fixed_point_converter.c) [59]
+(./codigos/c_codes/A6_chaotic_map_mod.c) [60]
+(./codigos/c_codes/A7_chaotic_map_mod_bin.c [61])) [62] (./main.bbl [63]
+[64] [65] [66]) [67] (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
+(./ch6.aux) (./test.aux) (./Ap_A.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+Output written on main.dvi (85 pages, 860024 bytes).
+Transcript written on main.log.
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(c:/texlive/2021/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+(c:/texlive/2021/texmf-dist/tex/latex/base/bk12.clo))
+(c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.sty
+(c:/texlive/2021/texmf-dist/tex/generic/babel/babel.def
+(c:/texlive/2021/texmf-dist/tex/generic/babel/txtbabel.def))
+(c:/texlive/2021/texmf-dist/tex/generic/babel-spanish/spanish.ldf))
+(c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/base/makeidx.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(c:/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+(c:/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty))) (./librerias.tex
+(c:/texlive/2021/texmf-dist/tex/latex/amscls/amsthm.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/lipsum/lipsum.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex)))
+(c:/texlive/2021/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(c:/texlive/2021/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment')
+(c:/texlive/2021/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(c:/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/tools/calc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(c:/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)))
+(c:/texlive/2021/texmf-dist/tex/latex/pdfpages/pppdftex.def))
+(c:/texlive/2021/texmf-dist/tex/latex/setspace/setspace.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/makecell/makecell.sty
+(c:/texlive/2021/texmf-dist/tex/latex/tools/array.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/multirow/multirow.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/nicematrix/nicematrix.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)
+) (c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex)
+) (c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def))
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+)) (c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.te
+x)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric
+.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.t
+ex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.co
+de.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.te
+x)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
+etics.code.tex)))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
+e.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
+x)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
+.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
+ode.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
+
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.co
+de.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+))
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code
+.tex)
+(c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+) (c:/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex)))
+ (c:/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
+(c:/texlive/2021/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/tools/multicol.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (c:/texlive/2021/texmf-dist/tex/latex/graphics/rotating.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/caption/subcaption.sty
+(c:/texlive/2021/texmf-dist/tex/latex/caption/caption.sty
+(c:/texlive/2021/texmf-dist/tex/latex/caption/caption3.sty)))
+(c:/texlive/2021/texmf-dist/tex/latex/steinmetz/steinmetz.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.sty
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.cfg)
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/p2e-pdftex.def)))
+(c:/texlive/2021/texmf-dist/tex/latex/tools/bm.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
+(c:/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(c:/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(c:/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def)
+(c:/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def)
+(c:/texlive/2021/texmf-dist/tex/latex/url/url.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
+(c:/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/hpdftex.def
+(c:/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(c:/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(c:/texlive/2021/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/blindtext/blindtext.sty
+(c:/texlive/2021/texmf-dist/tex/latex/tools/xspace.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(c:/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(c:/texlive/2021/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+(c:/texlive/2021/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/textcase/textcase.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/xfor/xfor.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/datatool/datatool-base.sty
+(c:/texlive/2021/texmf-dist/tex/latex/substr/substr.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/datatool/datatool-fp.sty
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp.sty
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(c:/texlive/2021/texmf-dist/tex/latex/fp/defpattern.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-basic.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-addons.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-snap.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-exp.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-trigo.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-pas.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-random.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-eqn.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-upn.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/fp/fp-eval.sty))))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-307
+.sty) (c:/texlive/2021/texmf-dist/tex/latex/tracklang/tracklang.sty
+(c:/texlive/2021/texmf-dist/tex/generic/tracklang/tracklang.tex))
+(c:/texlive/2021/texmf-dist/tex/latex/translator/translator.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries-spanish/glossaries-spanish.ldf
+
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries-spanish/glossaries-spanish-utf
+8.ldf))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
+(c:/texlive/2021/texmf-dist/tex/latex/tools/longtable.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+(c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
+(./glossaries.tex)) (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
+(./ch6.aux) (./test.aux) (./Ap_A.aux))
+(c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(c:/texlive/2021/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/lscape.sty))
+(c:/texlive/2021/texmf-dist/tex/latex/caption/ltcaption.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+(c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
+(c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(./main.out) (./main.out) (./portada.tex [1 <./portada/main.pdf{c:/texlive/2021
+/texmf-var/fonts/map/pdftex/updmap/pdftex.map}>]) [2] (./agradecimientos.tex)
+[1] [2] (./main.toc (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd) [3] [4]) [5] [6]
+(./main.lof) [7] [8] (./main.lot) [9] [10] (./main.lol) (./main.gls [11]
+[12]) [13] (./resumen.tex [14]) [15] [16] (./ch1.tex
+Cap\'{\i }tulo 1.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 
+     [1]pdfTeX warning (ext4): destination with the same identifier (name{page.
+2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.28 			\end{itemize}
+                      [2]) [3] (./ch2.tex [4]
+Cap\'{\i }tulo 2.
+[5] [6] [7] [8 <./imagenes//A0_TRNG_estructura-eps-converted-to.pdf>] [9]
+[10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21 <./imagenes//E1_PTG1
+-eps-converted-to.pdf>] [22 <./imagenes//E2_PTG2-eps-converted-to.pdf>]
+[23] [24 <./imagenes//E3_PTG3-eps-converted-to.pdf>] [25 <./imagenes//E4_DRG1-e
+ps-converted-to.pdf>] [26] [27] [28 <./imagenes//A1_ERO_TRNG-eps-converted-to.p
+df> <./imagenes//A2_COSO_TRNG-eps-converted-to.pdf>]
+Overfull \hbox (20.56589pt too wide) in paragraph at lines 545--545
+[]\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRNG
+) 
+[29 <./imagenes//A3_MURO_TRNG-eps-converted-to.pdf> <./imagenes//A4_TERO_TRNG-e
+ps-converted-to.pdf>]) [30 <./imagenes//A5_STR_TRNG-eps-converted-to.pdf> <./im
+agenes//A6_PLL_TRNG-eps-converted-to.pdf>] [31] (./ch3.tex [32]
+Cap\'{\i }tulo 3.
+[33] [34] [35 <./imagenes//F0_mapdiagram-eps-converted-to.pdf>] [36 <./imagenes
+//F1_logistic_curve-eps-converted-to.pdf>] [37 <./imagenes//F2_cobwebs_simple-e
+ps-converted-to.pdf>] [38 <./imagenes//F3_time_series-eps-converted-to.pdf>]
+[39 <./imagenes//F5_cobwebs_bifurcation-eps-converted-to.pdf>] [40 <./imagenes/
+/F4_bifurcation-eps-converted-to.pdf>] [41 <./imagenes//F6_many_logistic_curve-
+eps-converted-to.pdf>]) [42] (./ch4.tex
+Cap\'{\i }tulo 4.
+[43] [44 <./imagenes//B1_architecture-eps-converted-to.pdf>] [45 <./imagenes//B
+2_fsm_cm-eps-converted-to.pdf> <./imagenes//B0_chaotic_map-eps-converted-to.pdf
+>] [46 <./imagenes//C1_architecture_rs232-eps-converted-to.pdf> <./imagenes//C0
+_fsm_rs232-eps-converted-to.pdf>] [47 <./imagenes//D0_system-eps-converted-to.p
+df> <./imagenes//D1_fsm_system-eps-converted-to.pdf>]
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(./codigos/vhdl_codes/primitivas/library.vhd) [48 <./imagenes//D2_lut1-eps-conv
+erted-to.pdf>] (./codigos/vhdl_codes/primitivas/lut1.vhd
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
+(./codigos/vhdl_codes/primitivas/obufds.vhd [49 <./imagenes//D3_obufds-eps-conv
+erted-to.pdf>]) Excluding 'comment' comment.) [50] (./ch5.tex
+Cap\'{\i }tulo 5.
+) [51] [52] (./ch6.tex
+Cap\'{\i }tulo 6.
+) [53] (./test.tex) [54] (./Ap_A.tex
+Ap\'{e}ndice A.
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
+(./codigos/c_codes/A1_check_sys_bytes.c) [55]
+(./codigos/c_codes/A2_chaotic_map_float.c) [56]
+(./codigos/c_codes/A3_chaotic_map_fixed.c) [57]
+(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [58]
+(./codigos/c_codes/A5_fixed_point_converter.c) [59]
+(./codigos/c_codes/A6_chaotic_map_mod.c) [60]
+(./codigos/c_codes/A7_chaotic_map_mod_bin.c [61])) [62] (./main.bbl [63]
+[64] [65] [66]) [67] (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
+(./ch6.aux) (./test.aux) (./Ap_A.aux)) )
+(see the transcript file for additional information){c:/texlive/2021/texmf-dist
+/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/texlive/2021/texmf-dist/fonts/en
+c/dvips/base/8r.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-sup
+er-t1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/la
+txfont/lcircle1.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfb
+x1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb>
+<c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texliv
+e/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2021/tex
+mf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2021/texmf-dist/fo
+nts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
+public/cm-super/sfti1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-
+super/sfxc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
+fb>
+Output written on main.pdf (85 pages, 1413485 bytes).
 Transcript written on main.log.

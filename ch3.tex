@@ -2,20 +2,40 @@
 
     \section{Definición de caos}
     
-    Una manera sencilla de definir el caos sin la necesidad de introducir conceptos muy complicados es como un comportamiento aperiódico, aparentemente impredecible, en sistemas deterministas los cuales presentan extrema sensibilidad a las condiciones iniciales, el más mínimo cambio en la condición inicial produce un resultado muy diferente. \cite{Strogatz1994}
+        Una manera sencilla de definir el caos sin la necesidad de introducir conceptos muy complicados es como un comportamiento aperiódico, aparentemente impredecible, en sistemas deterministas los cuales presentan extrema sensibilidad a las condiciones iniciales, el más mínimo cambio en la condición inicial produce un resultado muy diferente. \cite{Strogatz1994}
 
-    Según \cite{Sprott2003} los sistemas caóticos tienen las siguientes características:
+        Según \cite{Sprott2003} los sistemas caóticos tienen las siguientes características:
 
-    \begin{enumerate}
-        \item Son aperiódicos, nunca se repiten.
-        \item Presentan una dependencia sensible de las condiciones iniciales (y, por tanto, son imprevisibles a largo plazo).
-        \item Se rigen por uno o varios parámetros de control, una pequeña modificación de los cuales puede hacer aparecer o desaparecer el caos.
-        \item Sus ecuaciones son no lineales.
-    \end{enumerate}
+        \begin{enumerate}
+            \item Son aperiódicos, nunca se repiten.
+            \item Presentan una dependencia sensible de las condiciones iniciales (y, por tanto, son imprevisibles a largo plazo).
+            \item Se rigen por uno o varios parámetros de control, una pequeña modificación de los cuales puede hacer aparecer o desaparecer el caos.
+            \item Sus ecuaciones son no lineales.
+        \end{enumerate}
+
+        Los mapas caóticos, mapas iterados, ecuaciones de diferencias o simplemente mapas, son sistemas dinámicos en tiempo discreto que tienen la forma general $x_{n+1} = f(x_{n})$, los cuales requieren una condición inicial $x_{0}$ y se iteran continuamente para conocer su comportamiento. A la secuencia $x_{0}, x_{1}, x_{2} , \ldots $ se le conoce como la órbita del mapa comenzando desde $x_{0}$.
+
+    \section{Puntos fijos y estabilidad lineal}
+
+        Antes de comenzar a estudiar los mapas es necesario desarrollar algunas herramientas que nos sirvan para su análisis. Partimos de la ecuación general de los  $x_{n+1} = f(x_{n})$, supongamos que $x^{*}$ satisface que $f(x^{*}) = x^{*} $, entonces $x^{*}$ es un \emph{punto fijo}, si $x_{n} = x^{*} $ entonces $x_{n+1} = f(x_{n}) = x^{*} $, por lo tanto la órbita permanecerá en $x^{*} $ para todas las futuras iteraciones. 
+
+        Para determinar la estabilidad de $x^{*}$, consideramos una órbita cercana $x_{n} = x^{*} + \eta_{n} $ y nos preguntamos si la órbita es atraída o repelida desde $x^{*}$. Es decir, ¿crece o decrece la desviación $\eta_{n}$ a medida que aumenta $n$?. Sustituyendo da como resultado:
+
+        \begin{equation}
+            x^{*} + \eta_{n+1} = x_{n+1} = f(x^{*} + \eta_{n}) = f(x^{*}) + f'(x^{*}) \eta_{n} + O(\eta_{n}^{2})
+        \end{equation}
+
+        Pero como $f(x^{*}) = x^{*} $, entonces la ecuación se reduce a:
+
+        \begin{equation}
+            \eta_{n+1} = f'(x^{*}) \eta_{n} + O(\eta_{n}^{2})
+        \end{equation}
+
+        Supongamos que podemos despreciar con seguridad los términos $O(\eta_{n}^{2} )$. Entonces obtenemos el mapa linealizado $ \eta_{n+1} = f'(x^{*}) \eta_{n}$ con multiplicador $\lambda = f'(x^{*} )$. La solución de este mapa linearizado puede hallarse explícitamente escribiendo unos pocos términos: $\eta_{1} = \lambda \eta_{0}$, $\eta_{2} = \lambda \eta_{1} = \lambda^{2} \eta_{0} $ y así en general $\eta_{n} = \lambda^{n} \eta_{0} $. Si $|\lambda| = |f'(x^{*})| < 1$, entonces $\eta_{n} \to 0$ a medida que $n \to \infty$ y el punto fijo $x^{*}$ es linealmente estable. Por el contrario, si $|f'(x^{*})| > 1$ el punto fijo es inestable. Aunque estas conclusiones sobre la estabilidad local se basan en la linealización, puede demostrarse que se mantienen para el mapa no lineal original. Pero la linealización no nos dice nada sobre el caso marginal $|f'(x^{*})| = 1$, entonces los términos $O(\eta_{n}^{2} )$ despreciados determinan la estabilidad local.
 
     \section{Mapa logístico}
 
-        Cuando nos encontramos con un fenómeno complejo como el caos, que se manifiesta en diversas situaciones, es útil adoptar un enfoque que permita identificar y estudiar el sistema más simple que lo ejemplifica. En este sentido, el mapa logístico representa el sistema matemático caótico más sencillo, ya que utiliza únicamente una variable y un parámetro de control. Las soluciones exactas de este sistema pueden obtenerse mediante álgebra y su representación gráfica facilita su visualización. Este modelo presenta muchas similitudes con sistemas caóticos más complejos, lo que lo convierte en un candidato perfecto para su estudio. De hecho, ha sido utilizado para modelar fenómenos en diversos campos como la ecología, oncología y finanzas.\cite{Sprott2003}
+        Cuando nos encontramos con un fenómeno complejo como el caos, que se manifiesta en diversas situaciones, es útil adoptar un enfoque que permita identificar y estudiar el sistema más simple que lo ejemplifica. En este sentido, el \emph{mapa logístico} representa el sistema matemático caótico más sencillo, ya que utiliza únicamente una variable y un parámetro de control. Las soluciones exactas de este sistema pueden obtenerse mediante álgebra y su representación gráfica facilita su visualización. Este modelo presenta muchas similitudes con sistemas caóticos más complejos, lo que lo convierte en un candidato perfecto para su estudio. De hecho, ha sido utilizado para modelar fenómenos en diversos campos como la ecología, oncología y finanzas.\cite{Sprott2003}
 
         La ecuación que define al mapa logístico se puede formular partiendo del modelo de crecimiento exponencial en tiempo discreto que se muestra en la ecuación (\ref{eq:crecimiento_exponencial}), donde $A$ es la tasa de crecimiento.
 
@@ -24,7 +44,8 @@
             \label{eq:crecimiento_exponencial}
         \end{equation}
 
-        Esta ecuación es un ejemplo de un sistema dinámico deterministas, en el que el valor siguiente de $x$ depende únicamente del valor actual. Se trata de un sistema lineal, ya que su representación gráfica muestra una línea recta al graficar $x_{n+1}$ contra $x_{n}$. Se trata de una relación recursiva, ya que se aplica de forma repetida a valores sucesivos de $n$. Además es un ejemplo de mapa iterado, iterar significa retroalimentar la salida de la ecuación a la entrada en el siguiente paso temporal mientas que la iteración es el valor resultante. El término mapa deriva del proceso de transferir cada punto de la Tierra a su correspondiente punto en un mapa impreso. En este caso, estamos mapeando un punto a lo largo del eje $x$ en otro punto a lo largo del mismo eje como se muestra en la Figura \ref{fig:F0_mapdiagram}. Sin embargo para mapas más complicados el mapeo se puede extender a más de una dimensión. A la secuencia $x_{0}, x_{1}, x_{2} , \ldots $ es la órbita del mapa comenzando desde $x_{0}$.
+        Esta ecuación es un ejemplo de un sistema dinámico deterministas, en el que el valor siguiente de $x$ depende únicamente del valor actual. Se trata de un sistema lineal, ya que su representación gráfica muestra una línea recta al graficar $x_{n+1}$ contra $x_{n}$. Se trata de una relación recursiva, ya que se aplica de forma repetida a valores sucesivos de $n$. Además es un ejemplo de mapa iterado, iterar significa retroalimentar la salida de la ecuación a la entrada en el siguiente paso temporal mientas que la iteración es el valor resultante. El término mapa deriva del proceso de transferir cada punto de la Tierra a su correspondiente punto en un mapa impreso. En este caso, estamos mapeando un punto a lo largo del eje $x$ en otro punto a lo largo del mismo eje como se muestra en la Figura \ref{fig:F0_mapdiagram}. Sin embargo para mapas más complicados el mapeo se puede extender a más de una dimensión. 
+
 
         \begin{figure}[hbtp]
             \caption{Ejemplo de mapeo en una dimensión.}
@@ -33,11 +54,12 @@
             \label{fig:F0_mapdiagram}
         \end{figure}
 
-        Si el parámetro $A > 1$ el sistema presenta un crecimiento exponencial mientras que si $0 < A < 1$ presenta un decaimiento exponencial. Para toda condición inicial $x_{0}$ el sistema es atraído al punto $x = 0$ si $0 < A < 1$ y es atraído hacia el infinito si $A > 1$. Los sistemas cuya solución es atraída hacia el infinito son conocidos no acotado. El termino $A$ es un parámetro de control que rige la naturaleza de la dinámica. El valor $A = 1$ separa dos regiones en las que el comportamiento difiere y se denomina punto de bifurcación. Si $|A| < 1$ el sistema oscila alrededor de $x = 0$ y su amplitud decrece con el tiempo. Por lo tanto $x = 0$ es un atractor para toda $x_{0}$ cuando $|A| < 1$. Sin embargo cuando $A< -1$ crece exponencialmente hacia el infinito.
+
+        Si el parámetro $A > 1$ el sistema presenta un crecimiento exponencial mientras que si $0 < A < 1$ presenta un decaimiento exponencial. Para toda condición inicial $x_{0}$ el sistema es atraído al punto $x = 0$ si $0 < A < 1$ y es atraído hacia el infinito si $A > 1$. Los sistemas cuya solución es atraída hacia el infinito son conocidos como no acotado. El termino $A$ es un parámetro de control que rige la naturaleza de la dinámica. El valor $A = 1$ separa dos regiones en las que el comportamiento difiere y se denomina punto de bifurcación. Si $|A| < 1$ el sistema oscila alrededor de $x = 0$ y su amplitud decrece con el tiempo. Por lo tanto $x = 0$ es un atractor para toda $x_{0}$ cuando $|A| < 1$. Sin embargo cuando $A< -1$ crece exponencialmente hacia el infinito.
 
         Como el crecimiento exponencial no puede continuar para siempre, la ecuación (\ref{eq:crecimiento_exponencial}) es poco realista para cualquier proceso natural. Típicamente, alguna no linealidad detiene e incluso revierte el crecimiento. La no linealidad es despreciable en pequeños valores de $x$ pero empieza a dominar mientras más crece $x$. Una estrategia comúnmente utilizada es analizar primero el comportamiento lineal antes de introducir no linealidades. A pesar de que el sistema lineal pueda presentar deficiencias notorias, es importante comprender sus propiedades. 
 
-        Imaginemos un cultivo de bacterias que crece cada hora, con las condiciones ideales de crecimiento la población aumenta sin restricciones y podemos modelar este comportamiento con la ecuación (\ref{eq:crecimiento_exponencial}). No obstante, si el espacio o el alimento escasea la población de bacterias no puede continuar creciendo a este ritmo. A medida que aumenta la población, el alimento y algunas bacterias mueren antes de poder dividirse. 
+        Imaginemos un cultivo de bacterias que crece cada hora, con las condiciones ideales de crecimiento la población aumenta sin restricciones y podemos modelar este comportamiento con la ecuación (\ref{eq:crecimiento_exponencial}). No obstante, si el espacio o el alimento escasea la población de bacterias no puede continuar creciendo a este ritmo. A medida que aumenta la población, el alimento eventualmente se vuelve insuficiente y algunas bacterias mueren antes de poder dividirse. 
 
         Para incluir un término que reduzca el crecimiento a medida que $x$ aumenta es necesario modificar la ecuación (\ref{eq:crecimiento_exponencial}). La manera más sencilla es considerado que la tasa de crecimiento decrece linealmente, de manera que a la ecuación (\ref{eq:ecuacion_logistica}) se le conoce como ecuación logística.
             
@@ -48,15 +70,16 @@
 
        La no linealidad es cuadrática, debido a que el modelo se puede reescribir como $x_{n+1} = A x_{n} - A x_{n}^{2}$. El término cuadrático da una retroalimentación negativa no lineal y limita el crecimiento. La Figura \ref{fig:F1_logistic_curve} muestra la gráfica de la ecuación (\ref{eq:ecuacion_logistica}) con $A = 4$ llamada función logística o curva logística, la cual es una parábola.
 
-
         \begin{figure}[hbtp]
-            \caption{El mapa logístico con $A = 4$.}
+            \caption{Gráfica de mapa logístico con $A = 4$.}
             \centering
             \includegraphics[width=0.6\textwidth]{F1_logistic_curve}
             \label{fig:F1_logistic_curve}
         \end{figure}
 
         En la Figura \ref{fig:F0_mapdiagram} también se muestra una recta descrita por $x_{n+1} = x_{n}$, a $45^{\circ}$ cuyas intersecciones con la parábola dan los valores de $x$ que no cambian con el tiempo. Para un mapa cuadrático, hay dos intersecciones de este tipo, que corresponden a las soluciones de la ecuación cuadrática que resultan de establecer $x_{n+1} = x_{n} = x^{*}$. Las soluciones $x^{*} = 0$ y $x^{*} = 1 - 1/A$ son llamados puntos fijos del mapa.
+
+    \section{Diagrama de cobwebs}
 
         Es interesante examinar cómo $x$ se aproxima a un punto fijo partiendo de una condición inicial $x_{o} \neq x^{*}$, esto lo hacemos con un diagrama de cobwebs. Los diagramas de cobwebs son una herramienta valiosa que nos permiten observar el comportamiento global de un sistema de manera intuitiva, proporcionando información complementaria a la obtenida mediante el análisis lineal. Son especialmente útiles resultan cuando el análisis lineal no es suficiente.
 
@@ -71,7 +94,7 @@
             \label{fig:F2_cobwebs_simple}
         \end{figure}
 
-        Para el mapa logístico con $1 < A < 3,$ todos los puntos inicales en el intervalo $0 < x_{0} < 1$ se aproximan al punto fijo $x^{*} = 1 - 1/ A $, aunque la solución puede oscilar a su alrededor antes de llegar al valor final. El comportamiento recuerda al de un péndulo simple que oscila alrededor de la vertical antes de que la fricción lo lleve a reposar en su posición final. Otra manera de visualizar este comportamiento es gráficas la serie de tiempo, $x_{n}$ contra $n$, como se ve en la Figura \ref{fig:F3_time_series}. Es importante hacer la aclaración que se dibujaron lineas entre cada iteración para una mejor visualización, pero los datos son discretos. 
+        Para el mapa logístico con $1 < A < 3,$ todos los puntos inicales en el intervalo $0 < x_{0} < 1$ se aproximan al punto fijo $x^{*} = 1 - 1/ A $, aunque la solución puede oscilar a su alrededor antes de llegar al valor final. El comportamiento recuerda al de un péndulo simple que oscila alrededor de la vertical antes de que la fricción lo lleve a reposar en su posición final. Otra manera de visualizar este comportamiento es gráfica la serie de tiempo, $x_{n}$ contra $n$, como se ve en la Figura \ref{fig:F3_time_series}. Es importante hacer la aclaración que se dibujaron lineas entre cada iteración para una mejor visualización, pero los datos son discretos. 
 
         \begin{figure}[hbtp]
             \caption{Serie de tiempo de mapa logístico con $A = 2.8$.}
@@ -118,14 +141,48 @@
 
         \end{itemize}
 
-    \section{Análisis de mapa logístico}
+    \newpage
+    \section{Análisis teórico del mapa logístico}
 
-        Consideremos la ecuación $x_{n+1} = A x_{n} (1 - x_{n})$ para $0 \leq x_{n} \leq 1$ y $0 \leq A \leq 4$. Los puntos fijos satisfacen $x^{*} = f(x^{*}) = A x^{*}(1 - x^{*})$. Por lo tanto $x^{*} = 0$  o $x^{*} = 1 - 1/A$. El origen es un punto fijo para todas las $A$, mientras que $x^{*} = 1 - 1/A$ solo es valido para las $x \geq 1$. La estabilidad depende de $f'(x^{*}) = A - 2Ax^{*}$. Como $f'(0) = A $ el origen es estable para $A < 1$ e inestable para $A < 1$. En el otro punto fijo, $f'(x^{*}) = A - 2 A \left( 1 - \frac{1}{A} \right) = 2 - A$. Entonces $x^{*} 1 - \frac{1}{A} $ es estable para $1 < A < 3$.
+        Consideremos la ecuación $x_{n+1} = A x_{n} (1 - x_{n})$ para $0 \leq x_{n} \leq 1$ y $0 \leq A \leq 4$. Los puntos fijos satisfacen $x^{*} = f(x^{*}) = A x^{*}(1 - x^{*})$. Por lo tanto $x^{*} = 0$  o $x^{*} = 1 - 1/A$. El origen es un punto fijo para todas las $A$, mientras que $x^{*} = 1 - 1/A$ solo es valido para las $x \geq 1$. La estabilidad depende de $f'(x^{*}) = A - 2Ax^{*}$. Como $f'(0) = A $ el origen es estable para $A < 1$ e inestable para $A > 1$. En el otro punto fijo, $f'(x^{*}) = A - 2 A \left( 1 - 1/A \right) = 2 - A$. Entonces $x^{*} = 1 - 1/A$ es estable para $1 < A < 3$ e inestable para $A > 3$.
 
-    \section{Puntos fijos y estabilidad lineal}
+        En la Figura \ref{fig:F6_many_logistic_curve} se muestra un análisis gráfico de cómo se comporta el mapa logístico para distintos valores de $A$. Para $A < 1$ la parábola está por debajo de la diagonal, y el origen es el único punto fijo. A medida que $A$ aumenta, la parábola se hace más alta, haciéndose tangente a la diagonal en $A = 1$. Para $A > 1$ la parábola intersecta la diagonal en un segundo punto $x^{*} = 1 - 1/A$, mientras que el origen pierde estabilidad. Así vemos como $x^{*}$ se bifurca desde el origen en una bifurcación transcrítica en $A = 1$. 
+
+        \begin{figure}[hbtp]
+            \caption{Gráfica de mapa logístico para distintos valores de $A$.}
+            \centering
+            \includegraphics[width=0.6\textwidth]{F6_many_logistic_curve}
+            \label{fig:F6_many_logistic_curve}
+        \end{figure}
+        
+        Cuanto más crece $A$, más allá de 1, la pendiente en $x^{*}$ se vuelve cada vez más empinada, y $x^{*}$ pierde estabilidad. La pendiente crítica ocurre cuando $f'(x^{*}) = -1$, la cual se obtiene cuando $A = 3$. La bifurcación resultante se denomina bifurcación flip.
+
+        Las bifurcaciones flip se asocian a menudo con la duplicación del período. En el mapa logístico, la bifurcación en $A = 3$ da lugar a un ciclo 2. Un ciclo 2 existe si y sólo si hay dos puntos $p$ y $q$ tales que $f(p) = q$  y $f(q) = p$. Equivalentemente, $p$ debe satisfacer que $f(f(p)) = p$, donde $f(x) = Ax (1 - x)$. Por tanto, $p$ es un punto fijo del \emph{mapa de segunda iteración}. Como $f(x)$ es un polinomio de segundo grado, $f(f(x))$ es un polinomio de cuarto grado.
+
+        Para encontrar $p$ y $q$, necesitamos resolver los puntos en los que la gráfica intersecta la diagonal, es decir, necesitamos resolver la ecuación de cuarto grado $f(f(x)) = x$. Los puntos $x^{*} = 0$ y $x^{*} = 1 - 1/A$ son soluciones triviales de la ecuación. Si factorizamos estos puntos fijos, el problema se reduce a resolver una ecuación cuadrática. 
+
+        La expansión de la ecuación $f(f(x)) -x = 0$ da $A^{2}x(1-x) [1 - Ax(1-x)] -x = 0$. Después de factorizar $x$ y $x - (1-1/A)$ por división larga, y resolver la ecuación cuadrática resultante, obtenemos un par de raíces:
+
+        \begin{equation}
+            p,q = \frac{A + 1 \pm \sqrt{(A-3) (A+1)} }{2A} 
+        \end{equation}
+        que son reales para $A > 3$. Por lo tanto, existe un ciclo doble para todo $ A > 3 $. En $ A = 3 $, las raíces coinciden y son iguales a $x^{*} = 1 - 1/A = 2/3$, lo que demuestra que el ciclo 2 bifurca continuamente a partir de $x^{*}$. Para $A < 3$ las raíces son complejas, lo que significa que no existe un ciclo 2.
+
+         Para realizar el análisis de estabilidad es necesario seguir la siguiente estrategia. Para analizar la estabilidad de un ciclo, se reduce el problema a una pregunta sobre la estabilidad de un punto fijo de la siguiente manera. Tanto $p$ y $q$ son soluciones de $f(f(x)) = x$, por lo tanto $p$ y $q$ son puntos fijos del mapa de segunda iteración $f(f(x))$. El ciclo 2 original es estable precisamente si $p$ y $q$ son puntos fijos estables para $f(f(x))$.
+
+        Ahora que el problema se reduce a analizar la estabilidad de los puntos fijos de otro mapa. Para determinar si $p$ es un punto fijo estable de $f(f(x))$, calculamos el multiplicador:
+
+        \begin{equation}
+            \lambda = \frac{d}{dx} ( f( f(x) ) )_{x=p} = f'(f(p))f'(p) = f'(q)f'(p)
+        \end{equation}
+
+        Se obtiene la misma $\lambda$ para $x = q$ por simetría. Por lo tanto, cuando las ramas $p$ y $q$ se bifurcan, deben hacerlo simultáneamente. Después de realizar las derivadas y realizar las evaluaciones $p$ y $q$, obtenemos:
+
         
 
-            
 
-Libro para el publico general \cite{Gleick1987}
+
+
+
+Libro sobre el caos para agregar como cita despues \cite{Gleick1987}
  

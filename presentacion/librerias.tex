@@ -1,0 +1,22 @@
+\decimalpoint                                                    % Punto decimal en lugar de coma
+\usefonttheme[onlymath]{serif}                                   % Ecuaciones con tipografía Computer Modern
+%\usefonttheme{serif}
+\usepackage{ragged2e}                                            % Para poder justificar el texto         
+
+% Configuración de footer de presentación beamer
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}Ciro Fabián Bermúdez Marquez
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}INAOE
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}Tesis maestría\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}

@@ -1,0 +1,168 @@
+\documentclass[10pt]{beamer}
+\usetheme{Frankfurt}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{imagenes/}}
+\author{Ciro Fabián Bermúdez Márquez}
+\title{TRNGs para generación de secuencias muy largas}
+\institute{Instituto Nacional de Astrofísica, Óptica y Electrónica} 
+\date{\today} 
+
+%-------------------------------------------------------------------------------
+%                            Paquetes adicionales                              %
+%-------------------------------------------------------------------------------
+\input{librerias}
+
+
+\begin{document}
+
+% Slide 1 Hoja de presentación
+\begin{frame}[plain]
+    \fontfamily{cmr}\selectfont
+	\begin{center}
+		\textbf{Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)}
+	\end{center}
+	
+	\begin{figure}[hbtp]
+		\centering
+		\includegraphics[width = 2cm]{Inaoe} 
+	\end{figure}
+	
+	\begin{center}
+		Maestría en Ciencias en Electrónica
+	\end{center}
+					
+	\begin{center}
+		\begin{Large}
+		\textcolor{blue}{TRNGs para generación de secuencias muy largas}
+		\end{Large}
+	\end{center}
+	
+	\begin{center}
+		\textbf{Autor:} Ciro Fabián Bermúdez Márquez
+	\end{center}
+	
+	\begin{flushleft}
+		\textbf{Asesor:} Dr. Esteban Tlelo Cuautle (INAOE)\\
+	    \textbf{Coasesor:} Dr. Cuahutemoc Mancillas López (CINVESTAV IPN)
+	\end{flushleft}
+	
+	\begin{flushright}
+	    \today
+	\end{flushright}
+\end{frame}
+
+% Slide 1 Hoja de presentación
+%\begin{frame}
+%  \titlepage
+%\end{frame}
+
+% Slide 2 Tabla de contenidos
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+% Slide 3
+\section{Introducción}
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+	\end{block}
+\end{frame}
+
+% Slide 4
+\section{Objetivos}
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+	\end{block}
+\end{frame}
+
+% Slide 5
+\section{Random Number Generators}
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+	\end{block}
+\end{frame}
+
+% Slide 6
+\begin{frame}
+  \frametitle{Título de diapositiva}
+    \begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width = 5cm]{example-image}
+        \caption{Some Caption.}
+    \end{figure}
+\end{frame}
+
+% Slide 7
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+        
+        \begin{figure}[hbtp]
+	        \centering
+	        \includegraphics[width = 4cm]{example-image}
+            \caption{Some Caption.}
+        \end{figure}
+	\end{block}
+\end{frame}
+
+% Slide 8
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+	\end{block}
+\end{frame}
+
+% Slide 9
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+	\end{block}
+\end{frame}
+
+% Slide 10
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+	\end{block}
+\end{frame}
+
+% Slide 11
+\begin{frame}
+    \frametitle{Título de diapositiva}
+    \begin{block}{Título de bloque}
+        \justifying
+        \begin{equation}
+        \begin{array}{ccl}
+		    x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
+		    y_{n+1} & = &  a_{7} + a_{8}x_{n} + a_{9}x_{n}^{2} + a_{10}x_{n}y_{n} + a_{11}y_{n} + a_{12}y_{n}^{2}
+		\end{array}
+	    \end{equation}
+	\end{block}
+\end{frame}
+
+
+
+\end{document}
