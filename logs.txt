@@ -403,6 +403,10 @@ line 71.
 LaTeX Warning: Reference `fig:F0_mapdiagram' on page 36 undefined on input line
  80.
 
+
+LaTeX Warning: Reference `fig:F2_cobwebs_simple' on page 36 undefined on input 
+line 84.
+
 [36] <imagenes//F2_cobwebs_simple.eps>
 
 LaTeX Warning: Reference `fig:F3_time_series' on page 37 undefined on input lin
@@ -411,87 +415,121 @@ e 97.
 <imagenes//F3_time_series.eps>
 
 LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 37 undefined on i
-nput line 106.
+nput line 108.
 
 [37]
 
 LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 38 undefined on i
-nput line 112.
+nput line 117.
 
 
 LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 38 undefined on i
-nput line 112.
+nput line 117.
 
 [38]
 
 LaTeX Warning: Reference `eq:crecimiento_exponencial' on page 39 undefined on i
-nput line 114.
+nput line 121.
 
 
 LaTeX Warning: Reference `fig:F5_cobwebs_bifurcation' on page 39 undefined on i
-nput line 114.
+nput line 121.
 
-<imagenes//F5_cobwebs_bifurcation.eps> <imagenes//F4_bifurcation.eps> [39]
+<imagenes//F5_cobwebs_bifurcation.eps> [39]
 
-LaTeX Warning: Reference `fig:F6_many_logistic_curve' on page 40 undefined on i
-nput line 149.
+LaTeX Warning: Reference `eq:cuarto_orden' on page 40 undefined on input line 1
+37.
 
-<imagenes//F6_many_logistic_curve.eps> [40] [41]
 
-LaTeX Warning: Citation `Gleick1987' on page 42 undefined on input line 185.
+LaTeX Warning: Reference `eq:raices' on page 40 undefined on input line 150.
 
-) [42] (./ch4.tex
+
+LaTeX Warning: Reference `eq:cuarto_orden' on page 40 undefined on input line 1
+54.
+
+
+LaTeX Warning: Reference `tab:periodos' on page 40 undefined on input line 161.
+
+
+[40]
+
+LaTeX Warning: Reference `fig:F4_bifurcation' on page 41 undefined on input lin
+e 213.
+
+[41] <imagenes//F4_bifurcation.eps> [42]
+
+LaTeX Warning: Reference `fig:F7_cobwebs' on page 43 undefined on input line 23
+1.
+
+
+LaTeX Warning: Reference `fig:F8_time_series' on page 43 undefined on input lin
+e 231.
+
+<imagenes//F7_cobwebs.eps> <imagenes//F8_time_series.eps>
+
+LaTeX Warning: Command \textemdash invalid in math mode on input line 247.
+
+[43]
+
+LaTeX Warning: Reference `eq:raices' on page 44 undefined on input line 253.
+
+[44]
+
+LaTeX Warning: Reference `fig:F6_many_logistic_curve' on page 45 undefined on i
+nput line 262.
+
+<imagenes//F6_many_logistic_curve.eps> [45]) [46] (./ch4.tex
 Cap\'{\i }tulo 4.
 
-LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 5.
+LaTeX Warning: Citation `Sprott1993' on page 47 undefined on input line 5.
 
 
-LaTeX Warning: Citation `Fraga2021' on page 43 undefined on input line 5.
+LaTeX Warning: Citation `Fraga2021' on page 47 undefined on input line 5.
 
 
-LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+LaTeX Warning: Citation `Sprott1993' on page 47 undefined on input line 40.
 
 
-LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+LaTeX Warning: Citation `Sprott1993' on page 47 undefined on input line 40.
 
 <imagenes//B1_architecture.eps> <imagenes//B2_fsm_cm.eps>
-<imagenes//B0_chaotic_map.eps> <imagenes//C1_architecture_rs232.eps> [43]
-[44] [45] <imagenes//C0_fsm_rs232.eps> <imagenes//D0_system.eps>
-<imagenes//D1_fsm_system.eps> [46] [47]
+<imagenes//B0_chaotic_map.eps> <imagenes//C1_architecture_rs232.eps> [47]
+[48] [49] <imagenes//C0_fsm_rs232.eps> <imagenes//D0_system.eps>
+<imagenes//D1_fsm_system.eps> [50] [51]
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
 (./codigos/vhdl_codes/primitivas/library.vhd) <imagenes//D2_lut1.eps>
 
-LaTeX Warning: Reference `tab:lut1' on page 48 undefined on input line 173.
+LaTeX Warning: Reference `tab:lut1' on page 52 undefined on input line 173.
 
 
-LaTeX Warning: Reference `cod:lut1' on page 48 undefined on input line 173.
+LaTeX Warning: Reference `cod:lut1' on page 52 undefined on input line 173.
 
-[48] (./codigos/vhdl_codes/primitivas/lut1.vhd
+[52] (./codigos/vhdl_codes/primitivas/lut1.vhd
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
 <imagenes//D3_obufds.eps>
 
-LaTeX Warning: Reference `tab:obufds' on page 49 undefined on input line 204.
+LaTeX Warning: Reference `tab:obufds' on page 53 undefined on input line 204.
 
 
-LaTeX Warning: Reference `cod:obufds' on page 49 undefined on input line 204.
+LaTeX Warning: Reference `cod:obufds' on page 53 undefined on input line 204.
 
-(./codigos/vhdl_codes/primitivas/obufds.vhd [49]) Excluding 'comment' comment.)
-[50] (./ch5.tex
+(./codigos/vhdl_codes/primitivas/obufds.vhd [53]) Excluding 'comment' comment.)
+[54] (./ch5.tex
 Cap\'{\i }tulo 5.
-) [51] [52] (./ch6.tex
+) [55] [56] (./ch6.tex
 Cap\'{\i }tulo 6.
-) [53] (./test.tex) [54] (./Ap_A.tex
+) [57] (./test.tex) [58] (./Ap_A.tex
 Ap\'{e}ndice A.
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
-(./codigos/c_codes/A1_check_sys_bytes.c) [55]
-(./codigos/c_codes/A2_chaotic_map_float.c) [56]
-(./codigos/c_codes/A3_chaotic_map_fixed.c) [57]
-(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [58]
-(./codigos/c_codes/A5_fixed_point_converter.c) [59]
-(./codigos/c_codes/A6_chaotic_map_mod.c) [60]
-(./codigos/c_codes/A7_chaotic_map_mod_bin.c [61])) [62]
+(./codigos/c_codes/A1_check_sys_bytes.c) [59]
+(./codigos/c_codes/A2_chaotic_map_float.c) [60]
+(./codigos/c_codes/A3_chaotic_map_fixed.c) [61]
+(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [62]
+(./codigos/c_codes/A5_fixed_point_converter.c) [63]
+(./codigos/c_codes/A6_chaotic_map_mod.c) [64]
+(./codigos/c_codes/A7_chaotic_map_mod_bin.c [65])) [66]
 No file main.bbl.
 (./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux) (./ch1.aux)
  (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux)
@@ -509,7 +547,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (76 pages, 753952 bytes).
+Output written on main.dvi (80 pages, 785432 bytes).
 Transcript written on main.log.
 This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
 The top-level auxiliary file: main.aux
@@ -781,19 +819,19 @@ LaTeX Warning: Citation `Badrignans2011' on page \es@scroman {vii} undefined on
 ) [7] [8] (./main.lot
 
 LaTeX Warning: Citation `Sprott1993' on page \es@scroman {ix} undefined on inpu
-t line 10.
+t line 11.
 
 
-Overfull \hbox (71.16057pt too wide) in paragraph at lines 10--10
+Overfull \hbox (71.16057pt too wide) in paragraph at lines 11--11
  [][] [] [][]  
 
-Overfull \hbox (137.26256pt too wide) in paragraph at lines 11--11
- [][] [] [][]  
-
-Overfull \hbox (141.01575pt too wide) in paragraph at lines 16--16
+Overfull \hbox (137.26256pt too wide) in paragraph at lines 12--12
  [][] [] [][]  
 
 Overfull \hbox (141.01575pt too wide) in paragraph at lines 17--17
+ [][] [] [][]  
+
+Overfull \hbox (141.01575pt too wide) in paragraph at lines 18--18
  [][] [] [][]  
 ) [9] [10] (./main.lol
 Overfull \hbox (20.83951pt too wide) in paragraph at lines 10--10
@@ -898,51 +936,52 @@ LaTeX Warning: Citation `Sprott2003' on page 34 undefined on input line 38.
 
 [34] <imagenes//F0_mapdiagram.eps> [35] <imagenes//F1_logistic_curve.eps>
 [36] <imagenes//F2_cobwebs_simple.eps> <imagenes//F3_time_series.eps> [37]
-[38] <imagenes//F5_cobwebs_bifurcation.eps> <imagenes//F4_bifurcation.eps>
-[39] <imagenes//F6_many_logistic_curve.eps> [40] [41]
+[38] <imagenes//F5_cobwebs_bifurcation.eps> [39] [40] [41]
+<imagenes//F4_bifurcation.eps> [42] <imagenes//F7_cobwebs.eps>
+<imagenes//F8_time_series.eps>
 
-LaTeX Warning: Citation `Gleick1987' on page 42 undefined on input line 185.
+LaTeX Warning: Command \textemdash invalid in math mode on input line 247.
 
-) [42] (./ch4.tex
+[43] [44] <imagenes//F6_many_logistic_curve.eps> [45]) [46] (./ch4.tex
 Cap\'{\i }tulo 4.
 
-LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 5.
+LaTeX Warning: Citation `Sprott1993' on page 47 undefined on input line 5.
 
 
-LaTeX Warning: Citation `Fraga2021' on page 43 undefined on input line 5.
+LaTeX Warning: Citation `Fraga2021' on page 47 undefined on input line 5.
 
 
-LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+LaTeX Warning: Citation `Sprott1993' on page 47 undefined on input line 40.
 
 
-LaTeX Warning: Citation `Sprott1993' on page 43 undefined on input line 40.
+LaTeX Warning: Citation `Sprott1993' on page 47 undefined on input line 40.
 
 <imagenes//B1_architecture.eps> <imagenes//B2_fsm_cm.eps>
-<imagenes//B0_chaotic_map.eps> <imagenes//C1_architecture_rs232.eps> [43]
-[44] [45] <imagenes//C0_fsm_rs232.eps> <imagenes//D0_system.eps>
-<imagenes//D1_fsm_system.eps> [46] [47]
+<imagenes//B0_chaotic_map.eps> <imagenes//C1_architecture_rs232.eps> [47]
+[48] [49] <imagenes//C0_fsm_rs232.eps> <imagenes//D0_system.eps>
+<imagenes//D1_fsm_system.eps> [50] [51]
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-(./codigos/vhdl_codes/primitivas/library.vhd) <imagenes//D2_lut1.eps> [48]
+(./codigos/vhdl_codes/primitivas/library.vhd) <imagenes//D2_lut1.eps> [52]
 (./codigos/vhdl_codes/primitivas/lut1.vhd
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
-<imagenes//D3_obufds.eps> (./codigos/vhdl_codes/primitivas/obufds.vhd [49])
-Excluding 'comment' comment.) [50] (./ch5.tex
+<imagenes//D3_obufds.eps> (./codigos/vhdl_codes/primitivas/obufds.vhd [53])
+Excluding 'comment' comment.) [54] (./ch5.tex
 Cap\'{\i }tulo 5.
-) [51] [52] (./ch6.tex
+) [55] [56] (./ch6.tex
 Cap\'{\i }tulo 6.
-) [53] (./test.tex) [54] (./Ap_A.tex
+) [57] (./test.tex) [58] (./Ap_A.tex
 Ap\'{e}ndice A.
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
-(./codigos/c_codes/A1_check_sys_bytes.c) [55]
-(./codigos/c_codes/A2_chaotic_map_float.c) [56]
-(./codigos/c_codes/A3_chaotic_map_fixed.c) [57]
-(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [58]
-(./codigos/c_codes/A5_fixed_point_converter.c) [59]
-(./codigos/c_codes/A6_chaotic_map_mod.c) [60]
-(./codigos/c_codes/A7_chaotic_map_mod_bin.c [61])) [62] (./main.bbl [63]
-[64] [65] [66]) [67] (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./codigos/c_codes/A1_check_sys_bytes.c) [59]
+(./codigos/c_codes/A2_chaotic_map_float.c) [60]
+(./codigos/c_codes/A3_chaotic_map_fixed.c) [61]
+(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [62]
+(./codigos/c_codes/A5_fixed_point_converter.c) [63]
+(./codigos/c_codes/A6_chaotic_map_mod.c) [64]
+(./codigos/c_codes/A7_chaotic_map_mod_bin.c [65])) [66] (./main.bbl [67]
+[68] [69] [70] [71]) [72] (./main.aux (./portada.aux) (./agradecimientos.aux)
 (./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
 (./ch6.aux) (./test.aux) (./Ap_A.aux))
 
@@ -958,7 +997,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (85 pages, 860024 bytes).
+Output written on main.dvi (90 pages, 896580 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -1220,37 +1259,42 @@ Cap\'{\i }tulo 3.
 [33] [34] [35 <./imagenes//F0_mapdiagram-eps-converted-to.pdf>] [36 <./imagenes
 //F1_logistic_curve-eps-converted-to.pdf>] [37 <./imagenes//F2_cobwebs_simple-e
 ps-converted-to.pdf>] [38 <./imagenes//F3_time_series-eps-converted-to.pdf>]
-[39 <./imagenes//F5_cobwebs_bifurcation-eps-converted-to.pdf>] [40 <./imagenes/
-/F4_bifurcation-eps-converted-to.pdf>] [41 <./imagenes//F6_many_logistic_curve-
-eps-converted-to.pdf>]) [42] (./ch4.tex
+[39 <./imagenes//F5_cobwebs_bifurcation-eps-converted-to.pdf>] [40] [41]
+[42 <./imagenes//F4_bifurcation-eps-converted-to.pdf>]
+
+LaTeX Warning: Command \textemdash invalid in math mode on input line 247.
+
+[43 <./imagenes//F7_cobwebs-eps-converted-to.pdf>] [44 <./imagenes//F8_time_ser
+ies-eps-converted-to.pdf>] [45 <./imagenes//F6_many_logistic_curve-eps-converte
+d-to.pdf>]) [46] (./ch4.tex
 Cap\'{\i }tulo 4.
-[43] [44 <./imagenes//B1_architecture-eps-converted-to.pdf>] [45 <./imagenes//B
+[47] [48 <./imagenes//B1_architecture-eps-converted-to.pdf>] [49 <./imagenes//B
 2_fsm_cm-eps-converted-to.pdf> <./imagenes//B0_chaotic_map-eps-converted-to.pdf
->] [46 <./imagenes//C1_architecture_rs232-eps-converted-to.pdf> <./imagenes//C0
-_fsm_rs232-eps-converted-to.pdf>] [47 <./imagenes//D0_system-eps-converted-to.p
+>] [50 <./imagenes//C1_architecture_rs232-eps-converted-to.pdf> <./imagenes//C0
+_fsm_rs232-eps-converted-to.pdf>] [51 <./imagenes//D0_system-eps-converted-to.p
 df> <./imagenes//D1_fsm_system-eps-converted-to.pdf>]
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-(./codigos/vhdl_codes/primitivas/library.vhd) [48 <./imagenes//D2_lut1-eps-conv
+(./codigos/vhdl_codes/primitivas/library.vhd) [52 <./imagenes//D2_lut1-eps-conv
 erted-to.pdf>] (./codigos/vhdl_codes/primitivas/lut1.vhd
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
-(./codigos/vhdl_codes/primitivas/obufds.vhd [49 <./imagenes//D3_obufds-eps-conv
-erted-to.pdf>]) Excluding 'comment' comment.) [50] (./ch5.tex
+(./codigos/vhdl_codes/primitivas/obufds.vhd [53 <./imagenes//D3_obufds-eps-conv
+erted-to.pdf>]) Excluding 'comment' comment.) [54] (./ch5.tex
 Cap\'{\i }tulo 5.
-) [51] [52] (./ch6.tex
+) [55] [56] (./ch6.tex
 Cap\'{\i }tulo 6.
-) [53] (./test.tex) [54] (./Ap_A.tex
+) [57] (./test.tex) [58] (./Ap_A.tex
 Ap\'{e}ndice A.
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
-(./codigos/c_codes/A1_check_sys_bytes.c) [55]
-(./codigos/c_codes/A2_chaotic_map_float.c) [56]
-(./codigos/c_codes/A3_chaotic_map_fixed.c) [57]
-(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [58]
-(./codigos/c_codes/A5_fixed_point_converter.c) [59]
-(./codigos/c_codes/A6_chaotic_map_mod.c) [60]
-(./codigos/c_codes/A7_chaotic_map_mod_bin.c [61])) [62] (./main.bbl [63]
-[64] [65] [66]) [67] (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./codigos/c_codes/A1_check_sys_bytes.c) [59]
+(./codigos/c_codes/A2_chaotic_map_float.c) [60]
+(./codigos/c_codes/A3_chaotic_map_fixed.c) [61]
+(./codigos/c_codes/A4_rom_gen_chaotic_map.c) [62]
+(./codigos/c_codes/A5_fixed_point_converter.c) [63]
+(./codigos/c_codes/A6_chaotic_map_mod.c) [64]
+(./codigos/c_codes/A7_chaotic_map_mod_bin.c [65])) [66] (./main.bbl [67]
+[68] [69] [70] [71]) [72] (./main.aux (./portada.aux) (./agradecimientos.aux)
 (./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
 (./ch6.aux) (./test.aux) (./Ap_A.aux)) )
 (see the transcript file for additional information){c:/texlive/2021/texmf-dist
@@ -1272,5 +1316,5 @@ nts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
 public/cm-super/sfti1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-
 super/sfxc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
 fb>
-Output written on main.pdf (85 pages, 1413485 bytes).
+Output written on main.pdf (90 pages, 1461884 bytes).
 Transcript written on main.log.
