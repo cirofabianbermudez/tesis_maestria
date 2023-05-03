@@ -478,13 +478,13 @@
 
         \subsection{Jitter del reloj}
 
-            Como se mencionó anteriormente, el jitter de reloj es una fuente confiable de aleatoriedad en dispositivos lógicos. El término ``jitter'' se refiere a la incertidumbre en la oscilación del reloj en el dominio del tiempo. En otras palabras, se trata de la variación a corto plazo de un evento con respecto a su posición ideal. Por lo general, se mide como la variación en el tiempo del cruce por cero (flanco ascendente o descendente) de la señal de reloj. Aunque esta definición proporciona una comprensión básica del concepto, cuantificar el jitter puede ser confuso debido a la variedad de técnicas de medición utilizadas en diferentes aplicaciones y a la falta de consenso entre los autores en la definición precisa del término.
+            Como se mencionó anteriormente, el jitter del reloj es una fuente confiable de aleatoriedad en dispositivos lógicos. El término ``jitter'' se refiere a la incertidumbre en la oscilación del reloj en el dominio del tiempo. En otras palabras, se trata de la variación a corto plazo de un evento con respecto a su posición ideal. Por lo general, se mide como la variación en el tiempo del cruce por cero (flanco ascendente o descendente) de la señal de reloj. Aunque esta definición proporciona una comprensión básica del concepto, cuantificar el jitter puede ser confuso debido a la variedad de técnicas de medición utilizadas en diferentes aplicaciones y a la falta de consenso entre los autores en la definición precisa del término.
 
-            Se supone que una señal de reloj ideal en dispositivos lógicos digitales es una señal rectangular con un ciclo de trabajo del 50\% y un periodo estable. Pero debido a diversos ruidos que afectan a los dispositivos electrónicos, la señal de reloj nunca es absolutamente estable y sus bordes se mueven de su posición estable. En otras palabras, la fase de la señal de reloj fluctúa. Esta fluctuación puede verse como un jitter de reloj en el dominio del tiempo y como un ruido de fase en el dominio de la frecuencia. En los dispositivos lógicos, la fluctuación de reloj suele ser no deseada, pero inevitable. Dado que el jitter afecta negativamente a las comunicaciones de alta frecuencia y a los sistemas de alta velocidad, se ha estudiado y caracterizado en profundidad.
+            Se supone que una señal de reloj ideal en dispositivos lógicos digitales es una señal rectangular con un ciclo de trabajo del 50\% y un periodo estable. Pero debido a diversos ruidos que afectan a los dispositivos electrónicos, la señal de reloj nunca es absolutamente estable y sus bordes se mueven de su posición estable. En otras palabras, la fase de la señal de reloj fluctúa. Esta fluctuación puede verse como un jitter del reloj en el dominio del tiempo y como un ruido de fase en el dominio de la frecuencia. En los dispositivos lógicos, la fluctuación de reloj suele ser no deseada, pero inevitable. Dado que el jitter afecta negativamente a las comunicaciones de alta frecuencia y a los sistemas de alta velocidad, se ha estudiado y caracterizado en profundidad.
 
             En los sistemas analógicos, el jitter se caracteriza mejor en el dominio de la frecuencia. De este modo, los componentes de fase y amplitud pueden estudiarse y caracterizarse por separado. En cambio, en los sistemas digitales, las propiedades temporales del jitter son más importantes y, por tanto, el jitter se caracteriza en el dominio temporal.
 
-            El jitter de reloj en un sistema digital es una desviación del flanco de reloj real con respecto a un flanco de reloj ideal. Una señal de reloj ideal se define mediante la ecuación (\ref{eq:señal_periodica}), donde $t(n)$ representa el tiempo del periodo $n$-ésimo de una señal de reloj y $T$ es el periodo de una señal de reloj.
+            El jitter del reloj en un sistema digital es una desviación del flanco de reloj real con respecto a un flanco de reloj ideal. Una señal de reloj ideal se define mediante la ecuación (\ref{eq:señal_periodica}), donde $t(n)$ representa el tiempo del periodo $n$-ésimo de una señal de reloj y $T$ es el periodo de una señal de reloj.
 
             \begin{equation}
                 t(n) = n \cdot T 
@@ -494,13 +494,95 @@
             En la práctica, una señal de reloj real no alcanza siempre múltiplos enteros de su período ideal, sino que sus flancos fluctúan alrededor de este valor debido al jitter. Esta variación es causada por diversos fenómenos físicos, como el ruido térmico, el ruido de la fuente de alimentación y el ruido electromagnético ambiental, entre otros. La Figura \ref{fig:F9_jitter} muestra cómo se ve una señal de reloj afectada por el jitter.
 
             \begin{figure}[hbtp]
-                \caption{Jitter de reloj.}
+                \caption{Jitter del reloj.}
                 \centering
                 \includegraphics[width=0.8\textwidth]{F9_jitter}
                 \label{fig:F9_jitter}
             \end{figure}
                 
-            Los circuitos digitales utilizan un nivel de referencia, generalmente ubicado en el centro del rango de voltaje de funcionamiento, para detectar los flancos de reloj. Es importante que este nivel de referencia sea lo más estable posible, pero en la práctica sufre fluctuaciones debido a diversos tipos de ruido. Cuando el nivel de referencia se desplaza, los flancos del reloj se detectan antes o después de lo previsto, lo que resulta en una variación temporal conocida como jitter de reloj.
+            La Figura \ref{fig:F10_fluctuaciones} muestra la causa principal del jitter en los circuitos digitales. Los circuitos digitales utilizan un nivel de referencia, generalmente ubicado en el centro del rango de voltaje de funcionamiento, para detectar los flancos de reloj. Es importante que este nivel de referencia sea lo más estable posible, pero en la práctica sufre fluctuaciones debido a diversos tipos de ruido. Cuando el nivel de referencia se desplaza, los flancos del reloj se detectan antes o después de lo previsto, lo que resulta en una variación temporal conocida como jitter de reloj.
+
+            \begin{figure}[hbtp]
+                \caption{Fluctuaciones del nivel de referencia originadas por ruidos analógicos que provocan jitter del reloj en los circuitos digitales. \cite{Petura2019}}
+                \centering
+                \includegraphics[width=0.8\textwidth]{F10_fluctuaciones}
+                \label{fig:F10_fluctuaciones}
+            \end{figure}
+        
+            A continuación se explican las diferentes medidas de jitter que observamos en circuitos digitales y las relaciones entre ellas.
+
+            \subsection{Jitter de fase}
+
+                El jitter de fase es una diferencia entre el tiempo del $n$-ésimo flanco de reloj real $t_{r}(n)$ y el tiempo (fase) del $n$-ésimo flanco de reloj ideal. La ecuación (\ref{eq:jitter_fase}) define esta relación.
+
+                \begin{equation}
+                    \delta_{\varphi}(n) = t_{r}(n) - n \cdot T_{\text{ref}}
+                    \label{eq:jitter_fase}
+                \end{equation}
+                
+                La Figura \ref{fig:F11_jitter_fase} ilustra este jitter para $n = 3.$. Para mayor claridad, sólo se muestra la fluctuación de fase de los flancos ascendentes, pero hay que tener en cuenta que la fluctuación de fase afecta a todos los flancos del reloj.
+
+                \begin{figure}[hbtp]
+                    \caption{Ilustración de la jitter de fase del segundo flanco ascendente de la señal de reloj. \cite{Petura2019}}
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{F11_jitter_fase}
+                    \label{fig:F11_jitter_fase}
+                \end{figure}
+
+                En la Figura \ref{fig:F11_jitter_fase} se muestra que el jitter de fase $\delta_{\varphi}(2)$ no solo se ve afectada por la desviación de fase de $t_{r}(2)$, sino que también contiene contribuciones a la desviación de $t_{r}(1)$. Esto se conoce como acumulación de fluctuación de fase y provoca que la fluctuación de fase observada aumente con $n$.
+
+            \subsection{Jitter de periodo}
+
+                El jitter de periodo es la diferencia entre un periodo de reloj real y el de uno ideal. Se define como se muestra en la ecuación (\ref{eq:jitter_periodo}), una diferencia de primer orden de la fluctuación de fase.
+
+                \begin{eqnarray}
+                    \delta_{T}(n) & = & [t_{r} (n) - t_{r} (n-1)] - T_{\text{ref}}\\
+                                  & = & \delta_{\varphi}(n) - \delta_{\varphi}(n-1)
+                    \label{eq:jitter_periodo}
+                \end{eqnarray}
+
+                La Figura \ref{fig:F12_jitter_periodo} muestra la fluctuación de los periodos. Podemos ver que los periodos reales cambian con el tiempo, a diferencia de los periodos ideales, que permanecen constantes.
+
+                \begin{figure}[hbtp]
+                    \caption{Ilustración de jitter de periodo de una señal de reloj real comparada con el reloj ideal.}
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{F12_jitter_periodo}
+                    \label{fig:F12_jitter_periodo}
+                \end{figure}
+
+            \subsection{Jitter de ciclo a ciclo}
+
+                El jitter ciclo a ciclo es una diferencia de dos periodos de reloj reales consecutivos, tal y como se define en la ecuación (\ref{eq:jitter_ciclo}).
+                
+                \begin{eqnarray}
+                    \delta_{c}(n) & = & T_{r} (n) - T_{r} (n-1)\\
+                                  & = & [t_{r}(n) - t_{r}(n-1)] - [t_{r}(n-1) - t_{r}(n-2)] \\
+                                  & = & \delta_{T}(n) - \delta_{T}(n-1)
+                    \label{eq:jitter_ciclo}
+                \end{eqnarray}
+
+                Todas estas medidas de jitter están relacionadas entre sí, el jitter de periodo es la diferencia de primer orden del jitter de fase y el jitter ciclo a ciclo es la diferencia de primer orden del jitter de periodo. Por lo tanto, en general basta con medir sólo uno y calcular cualquier otro que pueda ser necesario. En la Figura \ref{fig:F13_jitter_ciclo} se muestra el jitter ciclo a ciclo.
+
+                \begin{figure}[hbtp]
+                    \caption{Ilustración de jitter de ciclo a ciclo.}
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{F13_jitter_ciclo}
+                    \label{fig:F13_jitter_ciclo}
+                \end{figure}
+
+            \subsection{Composición del jitter}
+
+                El jitter del reloj suele tener dos componentes, ver la Figura \ref{fig:F14_jitter_componentes}, jitter aleatorio, causada por un fenómeno no determinista como el ruido térmico y jitter determinista, causada por algunos procesos deterministas.
+
+                \begin{figure}[hbtp]
+                    \caption{Composición del jitter del reloj.}
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{F14_jitter_componentes}
+                    \label{fig:F14_jitter_componentes}
+                \end{figure}
+
+
+
 
 
         \subsection{Metaestabilidad}
