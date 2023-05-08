@@ -13,7 +13,15 @@
 - [ ] Agregar las demás gráficas del mapa caótico de Sprott.
 - [ ] Investigar que son los dominios de atracción y ver cómo graficarlos.
 - [ ] Hacer single constant multiplier a mano, hacer redacción de metodología.
-- [ ] Subir avances a github
+
+
+- [ ] Mejorar el capítulo 1
+- [ ] Redactar la parte de los núcleos
+- [ ] Redactar la parte de implementación
+- [ ] redactar los resultados
+- [ ] Redactar las conclusión
+- [ ] Agregar los códigos de VHDL
+
 
 22/02/2023
 

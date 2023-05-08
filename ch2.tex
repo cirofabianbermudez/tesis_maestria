@@ -511,7 +511,7 @@
         
             A continuación se explican las diferentes medidas de jitter que observamos en circuitos digitales y las relaciones entre ellas.
 
-            \subsection{Jitter de fase}
+            \subsubsection{Jitter de fase}
 
                 El jitter de fase es una diferencia entre el tiempo del $n$-ésimo flanco de reloj real $t_{r}(n)$ y el tiempo (fase) del $n$-ésimo flanco de reloj ideal. La ecuación (\ref{eq:jitter_fase}) define esta relación.
 
@@ -520,7 +520,7 @@
                     \label{eq:jitter_fase}
                 \end{equation}
                 
-                La Figura \ref{fig:F11_jitter_fase} ilustra este jitter para $n = 3.$. Para mayor claridad, sólo se muestra la fluctuación de fase de los flancos ascendentes, pero hay que tener en cuenta que la fluctuación de fase afecta a todos los flancos del reloj.
+                La Figura \ref{fig:F11_jitter_fase} ilustra este jitter para $n = 3.$. Para mayor claridad, sólo se muestra el jitter de fase de los flancos ascendentes, pero hay que tener en cuenta que el jitter de fase afecta a todos los flancos del reloj.
 
                 \begin{figure}[hbtp]
                     \caption{Ilustración de la jitter de fase del segundo flanco ascendente de la señal de reloj. \cite{Petura2019}}
@@ -529,11 +529,11 @@
                     \label{fig:F11_jitter_fase}
                 \end{figure}
 
-                En la Figura \ref{fig:F11_jitter_fase} se muestra que el jitter de fase $\delta_{\varphi}(2)$ no solo se ve afectada por la desviación de fase de $t_{r}(2)$, sino que también contiene contribuciones a la desviación de $t_{r}(1)$. Esto se conoce como acumulación de fluctuación de fase y provoca que la fluctuación de fase observada aumente con $n$.
+                En la Figura \ref{fig:F11_jitter_fase} se muestra que el jitter de fase $\delta_{\varphi}(2)$ no solo se ve afectada por la desviación de fase de $t_{r}(2)$, sino que también contiene contribuciones a la desviación de $t_{r}(1)$. Esto se conoce como acumulación de jitter de fase y provoca que el jitter de fase observado aumente cuanto mayor sea $n$.
 
-            \subsection{Jitter de periodo}
+            \subsubsection{Jitter de periodo}
 
-                El jitter de periodo es la diferencia entre un periodo de reloj real y el de uno ideal. Se define como se muestra en la ecuación (\ref{eq:jitter_periodo}), una diferencia de primer orden de la fluctuación de fase.
+                El jitter de periodo es la diferencia entre un periodo de reloj real y el de uno ideal. Se define como se muestra en la ecuación (\ref{eq:jitter_periodo}), una diferencia de primer orden del jitter de fase.
 
                 \begin{eqnarray}
                     \delta_{T}(n) & = & [t_{r} (n) - t_{r} (n-1)] - T_{\text{ref}}\\
@@ -541,7 +541,7 @@
                     \label{eq:jitter_periodo}
                 \end{eqnarray}
 
-                La Figura \ref{fig:F12_jitter_periodo} muestra la fluctuación de los periodos. Podemos ver que los periodos reales cambian con el tiempo, a diferencia de los periodos ideales, que permanecen constantes.
+                La Figura \ref{fig:F12_jitter_periodo} muestra el jitter de periodo. Podemos ver que los periodos reales cambian con el tiempo, a diferencia de los periodos ideales, que permanecen constantes.
 
                 \begin{figure}[hbtp]
                     \caption{Ilustración de jitter de periodo de una señal de reloj real comparada con el reloj ideal.}
@@ -550,7 +550,7 @@
                     \label{fig:F12_jitter_periodo}
                 \end{figure}
 
-            \subsection{Jitter de ciclo a ciclo}
+            \subsubsection{Jitter de ciclo a ciclo}
 
                 El jitter ciclo a ciclo es una diferencia de dos periodos de reloj reales consecutivos, tal y como se define en la ecuación (\ref{eq:jitter_ciclo}).
                 
@@ -570,7 +570,7 @@
                     \label{fig:F13_jitter_ciclo}
                 \end{figure}
 
-            \subsection{Composición del jitter}
+            \subsubsection{Composición del jitter}
 
                 El jitter del reloj suele tener dos componentes, ver la Figura \ref{fig:F14_jitter_componentes}, jitter aleatorio, causada por un fenómeno no determinista como el ruido térmico y jitter determinista, causada por algunos procesos deterministas.
 
@@ -581,14 +581,104 @@
                     \label{fig:F14_jitter_componentes}
                 \end{figure}
 
+                El jitter aleatorio sigue una distribución de probabilidad gaussiana y se rige por el teorema del límite central. Debido a su comportamiento aleatorio, se utilizan herramientas estadísticas, como la media y la desviación estandar, para medirlo. El jitter aleatorio surge de la suma de múltiples factores independientes inherentes a cualquier circuito eléctrico, como las vibraciones térmicas de las estructuras cristalinas de los semiconductores, las vibraciones térmicas de los átomos conductores y otros factores secundarios.
 
+                Los componentes deterministas del jitter no siguen ninguna ley probabilística debido a su naturaleza determinista, lo que los hace generalmente difíciles de caracterizar. El jitter determinista presenta otros dos componentes, el jitter periódico y el jitter dependiente de los datos. Estos componentes suelen ser causados por variaciones en la fuente de alimentación, diafonía (cross-talk), interferencias electromagnéticas (EMI), conmutaciones simultáneas de salidas y otras señales interferentes que ocurren de manera regular.
 
+                Cuando se trata de medir y cuantificar el jitter, una de las principales confusiones que surgen es que algunas métricas del jitter solo se aplican al jitter aleatorio y no al determinista, aunque este último está presente la mayor parte del tiempo.
 
+                En el contexto de los TRNG, los componentes deterministas del jitter no son deseables ya que no proporcionan ninguna fuente real de aleatoriedad. La aleatoriedad solo se puede extraer del jitter causado por ruidos aleatorios. Por lo tanto, es importante conocer las propiedades estadísticas del jitter antes de generar números aleatorios a partir de él.
+
+                Tanto el jitter aleatorio como el determinista pueden tener fuentes locales o globales. Las fuentes de jitter local afectan sólo a un área limitada del sistema electrónico, mientras que las fuentes de jitter global afectan a todo el sistema. Las fuentes locales de jitter suelen estar presentes en las proximidades de componentes de alta frecuencia y potencia, como osciladores y amplificadores. Las fuentes de jitter global son ruidos ambientales, ruidos procedentes de fuentes de alimentación, etc. 
+
+                Desde un punto de vista estadístico, podemos distinguir entre ruidos independientes y dependientes. Los ruidos independientes no son fácilmente manipulables y suelen ser fáciles de caracterizar. Por esta razón, la mayoría de los diseños de TRNG utilizan la suma de ruidos independientes, también conocida como ruido gaussiano, como fuente de aleatoriedad. El desafío al diseñar un TRNG con ruido gaussiano es la necesidad de estimar solo la contribución de los ruidos no correlacionados (gaussianos) a los números aleatorios generados, descartando así las contribuciones de los ruidos dependientes a la aleatoriedad resultante.
+
+            \subsubsection{Extracción de la aleatoriedad del jitter del reloj}
+
+                El jitter del reloj se considera una buena fuente de aleatoriedad en los dispositivos digitales debido a que siempre está presente y contiene elementos aleatorios intrínsecos. Para generar números aleatorios a partir del jitter, es necesario digitalizarlo de alguna manera para producir bits aleatorios. El método más utilizado para extraer la aleatoriedad del jitter del reloj se basa en el muestreo del flanco de reloj con jitter. En la Figura \ref{fig:F17_extraccion_jitter} se muestra este método de extracción de aleatoriedad.
+
+                \begin{figure}[hbtp]
+                    \caption{Extracción de aleatoriedad de la señal de reloj con jitter mediante su muestreo en el flanco ascendente de la señal de reloj de referencia.}
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{F17_extraccion_jitter}
+                    \label{fig:F17_extraccion_jitter}
+                \end{figure}
+
+                Para producir bits aleatorios, la señal de reloj debe llegar durante el flanco afectado por el jitter de la señal con jitter. Esto requiere de una gran precisión en la sincronización del reloj, yua que el jitter es muy pequeño, normalmente del orden de los picosegundos o $1/1000$ del periodo del reloj. Además, incluso la señal de reloj de muestreo está sujeta a jitter, lo que aumenta la dificultad de una sincronización precisa. Por último, los bits aleatorios generados mediante el método de muestreo son propensos a estar sesgados, dependiendo en gran medida del ciclo de trabajo (duty cycle) del reloj muestreado. Si el ciclo de trabajo es del 50\%, la probabilidad de que el bit de salida sea 1 es del 50\%. Sin embargo, cuando el ciclo de trabajo está desequilibrado, la probabilidad de obtener 1 no es igual a la probabilidad de obtener 0, sino que es proporcional al ciclo de trabajo. A pesar de los inconvenientes de este método, sigue siendo el más utilizado para extraer aleatoriedad del jitter del reloj \cite{Sunar2007,Baudet2010,Rozic2015,Cherkaoui2013, Zhang2018}.
+
+                Una de las formas de convertir el jitter aleatorio en bits aleatorios es acumular el jitter hasta que su tamaño sea mayor que el periodo de la señal muestreada \cite{Baudet2010}. En ese caso, cada muestreo de dicha señal produciría un resultado completamente impredecible.
+
+                Uno de los TRNG que utiliza la acumulación de jitter es el TRNG basado en oscilador de anillo elemental (ERO-TRNG), propuesto y modelado en \cite{Baudet2010}. Su estructura interna se representa en la Figura \ref{fig:G0_ERO_TRNG_simple}. Consta de dos osciladores en anillo, un divisor de frecuencia y un flip-flop D.
+
+                \begin{figure}[hbtp]
+                    \caption{Elementary ring oscillator (ERO-TRNG).}
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{G0_ERO_TRNG_simple}
+                    \label{fig:G0_ERO_TRNG_simple}
+                \end{figure}
+
+                Un divisor de frecuencia permite establecer un periodo más largo entre dos muestreos del Oscilador de anillo 1, lo que permite que se acumule su jitter de fase. Cuando el valor de $K$ es suficientemente grande, cada bit de salida es completamente impredecible debido a la acumulada del jitter.
+
+                En lugar de esperar más tiempo para acumular suficiente jitter, es posible reducir el tiempo de acumulación de jitter mediante el uso de múltiples relojes desfasados.  Existen dos principios comunes para producir múltiples relojes desfasados: el primero consiste en utilizar múltiples osciladores independientes tal y como propone \cite{Sunar2007}, mientras que el segundo se basa en utilizar múltiples salidas de un oscilador multifásico como propone \cite{Cherkaoui2013}.
 
         \subsection{Metaestabilidad}
+            
+            La metaestabilidad es la capacidad de un sistema para persistir en un estado ilegal durante un periodo de tiempo indefinido. Un ejemplo de metaestabilidad es el lanzamiento de una moneda, como se muestra en la Figura \ref{fig:F15_metaestabilidad}. Cuando se lanza una moneda, se espera que caiga sobre una de sus dos caras, las cuales representan estados legales. Sin embargo, cuando una moneda cae sobre su borde, el resultado del lanzamiento se vuelve incierto e ilegal, lo que se conoce como su estado metaestable. En contraste, cuando una moneda cae sobre alguna de sus caras, se encuentra en un estado estable. Para que una moneda permanezca en un estado metaestable, debe estar en un estado de equilibrio perfecto. La más mínima fuerza que se aplique hará que caiga sobre cualquiera de las dos caras.
+            
+            \begin{figure}[hbtp]
+                \caption{Metaestabilidad de un lanzamiento de moneda.}
+                \centering
+                \includegraphics[width=0.7\textwidth]{F15_metaestabilidad}
+                \label{fig:F15_metaestabilidad}
+            \end{figure}
 
+            \subsubsection{Metaestabilidad en dispositivos lógicos}
+                En los dispositivos lógicos, puede producirse metaestabilidad en los registros durante el funcionamiento normal del dispositivo, cuando se violan los tiempos de establecimiento y retención del registro. Los registros (flip-flops) requieren que una señal de entrada sea estable durante cierto tiempo antes del flanco de reloj (establecimiento) y también durante cierto tiempo después del flanco de reloj (retención). Sólo así se garantiza que el registro tenga un valor bien definido dentro de un retardo especificado a la salida. Si no se respetan los tiempos de establecimiento y retención, el registro puede caer en un estado metaestable, en el que permanece durante un periodo de tiempo indeterminado antes de volver a su valor anterior o al nuevo.
 
-    \section{Arquitectura de núcleos TRNGs en FPGA}
+                El hecho de que el registro acabe en el nuevo estado o en el anterior se determina por factores aleatorios, lo que hace que el resultado de la transición sea también aleatorio. Sin embargo, generar números aleatorios de esta forma es un gran desafío debido a la dificultad de lograr una sincronización suficientemente precisa entre las dos señales para que lleguen al registro al mismo tiempo. Esto se debe principalmente a los esfuerzos realizados por los fabricantes de dispositivos para reducir los tiempos de preparación y retención, evitando así los estados metaestables de los registros. En estos casos, los fabricantes de dispositivos realizan estudios exhaustivos de la vida útil de los dispositivos para determinar una tasa de fallos en el tiempo, failure in time (FIT) del dispositivo. La tasa de fallos en el tiempo esta en el rango de una cada $10^{9}$ horas. El FIT puede utilizarse para calcular el tiempo medio entre fallos, mean time between failures (MTBF), de un dispositivo y un diseño específicos. El MTBF sirve como estimación del tiempo entre dos fallos del sistema debidos a la metaestabilidad. Se calcula en función de las especificaciones del dispositivo y el diseño y su orden de magnitud típico es de decenas de años.
+
+                Teniendo en cuenta el MTBF típico, se tardaría mucho tiempo e incluso años en generar un bit aleatorio utilizando sólo la metaestabilidad de un circuito como fuente de aleatoriedad. Por se considera que la metaestabilidad en sí no puede utilizarse para generar grandes cantidades de datos aleatorios.
+
+            \subsubsection{Metaestabilidad oscilatoria}
+
+                  En los dispositivos electrónicos, también puede presentarse otro tipo de metaestabilidad conocida como metaestabilidad oscilatoria. A diferencia de la metaestabilidad en los registros, este comportamiento no conduce a un estado indefinido, sino que el sistema oscila entre estados bajos y altos durante un tiempo indeterminado. En un estudio realizado en \cite{Reyneri1990}, se demostró que es posible inducir metaestabilidad oscilatoria al introducir un retardo adicional en un circuito RS-latch. De esta forma, el circuito se inicializa en un estado ilegal para obtener su comportamiento metaestable.
+                        
+                En \cite{Varchola2010}, se introdujo el oscilador en anillo de efecto transitorio, transient effect ring oscillator (TERO), que utiliza la metaestabilidad oscilatoria para generar aleatoriedad. Consiste en un RS-latch modificado, que se establece periódicamente en un estado ilegal al establecerlo y reiniciarlo al mismo tiempo, violando de forma efectiva los tiempos de establecimiento y retención de dicho latch. La estructura interna de un TERO se muestra en la Figura \ref{fig:F16_internal_tero}.
+
+                \begin{figure}[hbtp]
+                    \caption{Estructura interna de un TERO}
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{F16_internal_tero}
+                    \label{fig:F16_internal_tero}
+                \end{figure}
+
+                Cuando se activa una señal Ctrl, el TERO pasa a un estado oscilatorio, en el que permanece durante un periodo de tiempo aleatorio. Después de la transición oscilatoria, se establece en uno de los niveles lógicos (alto o bajo). Este estado final también es aleatorio. Sin embargo el número de oscilaciones en la salida del TERO y su estado final no son constantes. A diferencia de la metaestabilidad analógica, aquí la salida oscila entre dos estados definidos.
+
+        \subsection{Modelos estocásticos y pruebas específicas}
+
+            El modelo estocástico de un TRNG especifica una familia de distribuciones de probabilidad que contiene todas las posibles distribuciones de los números aleatorios sin procesar. Sus principales objetivos son caracterizar la probabilidad de que un bit de salida sea igual a uno ($P(X = 1))$) y la probabilidad de un vector de bits de cierto valor a la salida ($P(X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n)$), y a partir de ellas estimar la tasa de entropía a la salida del generador.
+
+            El modelo sólo es práctico cuando las probabilidades que define se basan en algunos parámetros medibles. Examinaremos más de cerca los modelos estocásticos a través de un ejemplo de un TRNG elemental basado en osciladores de funcionamiento libre [14]. Los autores de [14] proponen un modelo basado en la fase de la señal de reloj generada por un oscilador de funcionamiento libre y definen la probabilidad de que un bit de salida sea uno mediante la ecuación (\ref{})
+
+            El uso de modelos estocásticos resulta práctico únicamente cuando las probabilidades que definen se basan en parámetros medibles. Para ilustrar esto, examinaremos más de cerca los modelos estocásticos mediante un ejemplo de un TRNG elemental basado en osciladores de funcionamiento libre, tal y como se describe en \ref{Baudet2010}. Los autores de este trabajo proponen un modelo basado en la fase de la señal de reloj generada por un oscilador de funcionamiento libre y definen la probabilidad de que un bit de salida sea uno mediante la ecuación (\ref{eq:probabilidad}).
+
+            \begin{equation}
+                P(X=1) = \frac{1}{2} - \frac{2}{\pi} \sin (2 \pi (\mu t + \varphi(0) ) ) e^{-2\pi^{2} \sigma^{2} t} + O(e^{-4\pi^{2} \sigma^{2} t})
+                \label{eq:probabilidad}
+            \end{equation}
+
+            A partir de esta probabilidad, el límite inferior de entropía por bit a la salida del generador puede denotarse mediante la ecuación (\ref{eq:entropia_min}).
+
+            \begin{equation}
+                H_{\text{min}} \approx 1 - \frac{4}{\pi^{2} \ln (2)} e^{-4 \pi ^{2} Q} = 1 - \frac{4}{\pi^{2} \ln (2)} e^{ \frac{-4\pi^{2} \sigma_{\text{jit}}^{2} T_{2} }{T_{1}^{3}} }
+                \label{eq:entropia_min}
+            \end{equation}
+            
+            Podemos ver que la entropía depende de tres parámetros medibles: los periodos del oscilador ($T_{1}$, $1_{2}$) y el jitter combinado ($\sigma_{\text{jit}}$). Así que midiendo estos parámetros podemos estimar la entropía a la salida de los generadores. Esto es importante por dos razones: el TRNG puede caracterizarse en la fase de diseño y la tasa de entropía en su salida puede controlarse durante el funcionamiento normal del generador. Los periodos de los dos osciladores son fáciles de medir incluso dentro del dispositivo. La principal dificultad en la estimación de la entropía en línea está relacionada con la medición de $\sigma_{\text{jit}}^{2}$ sabiendo que sólo la contribución del ruido térmico debe tenerse en cuenta en el cálculo de la tasa de entropía. En este sentido, en \cite{Fischer2014} se propone un método se propone un método de evaluación embebida de la aleatoriedad (tasa de entropía por bit) basado en la medida de la varianza del jitter.
+
+            Se puede concluir que si el tamaño de los tres parámetros del modelo antes mencionados puede obtenerse a partir del límite inferior de entropía requerido, puede utilizarse una medición en línea de estos parámetros para verificar que el generador no desciende por debajo de este valor. Esta medición y la comparación con los umbrales obtenidos a partir del modelo constituyen una base para las pruebas en línea específicas.
+
+    \section{Arquitecturas de núcleos TRNGs en FPGA}
 
         Con base en los criterios del AIS-20/31, y los núcleos  que usan estructuras oscilantes como se clasifican en \cite{Petura2016}:
 	
@@ -655,7 +745,7 @@
 				\begin{figure}[hbtp]
 					\caption{Arquitectura del núcleo TERO-TRNG.}
 					\centering
-					\includegraphics[width=0.8\linewidth]{A4_TERO_TRNG}
+					\includegraphics[width=0.7\linewidth]{A4_TERO_TRNG}
 					\label{fig:A4_TERO_TRNG}
 				\end{figure}
 				

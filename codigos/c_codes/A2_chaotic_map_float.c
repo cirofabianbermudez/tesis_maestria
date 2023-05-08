@@ -12,8 +12,7 @@
 int main(void){
 
     // Open file
-    FILE *fpointer = fopen("output_chaotic.txt","w");
-    
+    FILE *fpointer = fopen("output_chaotic.txt","w");}
     double ai[12] = {-0.6, -0.1, 1.1, 0.2, -0.8, 0.6, -0.7, 0.7, 0.7, 0.3, 0.6, 0.9};
     double x0 = 0.1;
     double y0 = 0.2;

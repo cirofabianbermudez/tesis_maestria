@@ -254,8 +254,9 @@
 
         \end{itemize}
 
-    \newpage
         \subsection{Análisis teórico del mapa logístico}
+
+            Todo el análisis anterior se realizó considerando que el lector es capaz de realizar con facilidad todos los cálculos y desarrollos teóricos, no obstante en esta sección se muestra con más detalle como realizar el desarrollo teórico.
 
             Consideremos la ecuación $x_{n+1} = A x_{n} (1 - x_{n})$ para $0 \leq x_{n} \leq 1$ y $0 \leq A \leq 4$. Los puntos fijos satisfacen $x^{*} = f(x^{*}) = A x^{*}(1 - x^{*})$. Por lo tanto $x^{*} = 0$  o $x^{*} = 1 - 1/A$. El origen es un punto fijo para todas las $A$, mientras que $x^{*} = 1 - 1/A$ solo es valido para las $x \geq 1$. La estabilidad depende de $f'(x^{*}) = A - 2Ax^{*}$. Como $f'(0) = A $ el origen es estable para $A < 1$ e inestable para $A > 1$. En el otro punto fijo, $f'(x^{*}) = A - 2 A \left( 1 - 1/A \right) = 2 - A$. Entonces $x^{*} = 1 - 1/A$ es estable para $1 < A < 3$ e inestable para $A > 3$.
 

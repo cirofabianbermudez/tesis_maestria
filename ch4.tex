@@ -1,75 +1,220 @@
 \chapter{Implementación}
 
-	\section{Mapa caótico}
+    \section{Aritmética de punto fijo}
+        
+        Cuando se necesita trabajar con números de punto decimal en dispositivos digitales se puede optar por utilizar aritmética de punto fijo o aritmética de punto flotante. La aritmética de punto fijo en comparación de la de punto flotante tiene la ventaja de ser más rápida y utilizar menos recursos, sin embargo, tiene la desventaja de tener un rango de uso específico el cual se tienen que establecer al principio del diseño y el cual no puede modificarse posteriormente. Por el contrario la aritmética de punto flotante tienen un mayor rango dinámico y resulta útil cuando los algoritmos tienen un complejidad alta. 
+
+        En el proceso de diseño de arquitecturas digitales de aplicación especifica se busca es utilizar la menor cantidad de recursos y reducir al máximo el tiempo de ejecución del algoritmo subyacente. Cuando se trabaja con los FPGA se cuenta con la libertad de poder analizar y estudiar el algoritmo antes de comenzar con el proceso de diseño. Por todo lo anterior, es preferible utiliza operaciones en punto fijo en lugar de punto flotante en los FPGA \cite{TleloCuautle2016}.
+
+        La representación de punto fijo de un número $X$ es $X(a,b)$ donde $a$ es la parte entera y $b$ es la parte fraccionario. De manera que el número de bits de la representación es $a+b+1$, es decir las suma de la parte entera, la parte fraccionaria y el bit de signo. El rango de valores que se puede representar es $[-2^{a}, 2^{a} - 2^{-b}]$ y por lo tanto el número más pequeño que puede representar o visto de otro modo la precisión es de $2^{-b}$. En la Tabla \ref{tab:ejemplos_puntofijo} se muestran ejemplos de diferentes formas de interpretar números binarios  utilizando 5 bits y diferentes formatos de punto fijo.
+        
+        Cuando se hace la suma de dos números de punto fijo $X(a,b)$, ambos números tienen un rango de $[-2^{a}, 2^{a} - 2^{-b}]$. El mayor número que se puede obtener sumando dos extremos, los dos más positivos o los dos más negativos. Sumando los dos más negativos se obtiene:
+
+        \begin{equation}
+            -2^{a} + (-2^{a}) = 2 (-2^{a}) = -2^{a+1}
+            \label{eq:}
+        \end{equation}
+        sumando los dos más positivos:
+
+        \begin{equation}
+            (2^{a} - 2^{-b}) + (2^{a} - 2^{-b}) = 2 (2^{a} - 2^{-b}) = 2^{a+1} - 2^{1-b}            
+            \label{eq:}
+        \end{equation}
+        y como $|-2^{a+1}| > |2^{a+1} - 2^{1-b}|$. Entonces hay que representar el mayor número negativo número $-2^{a+1}$.
+
+        Entonces el resultado de la suma de dos números de punto fijo $X(a,b)$ es un número $X(a+1,b)$. Por ejemplo, si sumamos dos números con el formato de punto fijo $X(3,0)$, el mayor número se genera sumando $-8-8 = -16$. Este resultado necesita una representación $X(4,0)$, que tiene un rango de $[-16,15]$.
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Ejemplos de formato, rango y conversión de números de 5 bits en formato de punto fijo.}
+            \begin{tabular}{|l|l|l|l|}
+                \hline
+                \rowcolor{lightgray}   Número & Conversión & Formato $X(a,b)$  & Rango $[-2^{a}, 2^{a} - 2^{-b}]$\\
+                01110 & 3.5 & $X(2,2)$ & $[-4,3.75]$ \\ 
+                \hline
+                10010 & -3.5 & $\cdots$ & $\cdots$\\ 
+                \hline
+                00011 & 0.75 & $\cdots$ & $\cdots$\\ 
+                \hline
+                01110 & 1.75 & $X(1,3)$ & $[-2,1.875]$ \\ 
+                \hline
+                10010 & -1.75 & $\cdots$ & $\cdots$\\ 
+                \hline
+                00011 & 0.375 & $\cdots$ & $\cdots$\\ 
+                \hline
+                01110 & 7.0 & $X(3,1)$ & $[-8,7.5]$ \\ 
+                \hline
+                10010 & -7.0 & $\cdots$ & $\cdots$\\ 
+                \hline
+                00011 & 1.5 & $\cdots$ & $\cdots$\\ 
+                \hline
+            \end{tabular}
+            \label{tab:ejemplos_puntofijo}
+        \end{table}
+
+        Para una multiplicación de dos números $X(a,b)$, analizamos cuantos bits se requieren para almacenar el resultado. Los números más grandes que se generan son el resultado más positivo generado al multiplicar ambos números negativos, y el más negativo, resultado de multiplicar el más positivo y el más negativo. Para los dos más negativos tenemos:
+        
+        \begin{equation}
+            (-2^{a})(-2^{a}) = 2^{2a}
+        \end{equation}
+        para el más positivo y el más negativo tenemos:
+        
+        \begin{equation}
+            (-2^{a})(2^{a}-2^{-b}) = -2^{2a} + 2^{a-b}
+        \end{equation}
+        y a multiplicación de los dos más positivos es:
+
+        \begin{equation}
+            (2^{a} - 2^{-b}) = 2^{2a} - 2^{-2b}
+        \end{equation}
+
+        El número positivo más grande que es necesario representar es $2^{2a}$. También es necesario representar $-2^{-2b}$, entonces se necesita el número $X(2a+1,2b)$ para representar la multiplicación de dos números $X(a,b)$. $X(2a+1,2b)$ tiene un rango de $[-2^{a+1}, 2^{2a+1} - 2^{-2b}]$.
+
+        
+	\section{Propuesta de mapa caótico}
     
-        En el artículo \cite{Sprott1993} y \cite{Fraga2021}
+        En el artículo \cite{Sprott1993} se analiza y estudia el mapa caótico cuadrático bidimensional más sencillo que esta dado por la ecuación (\ref{eq:mapa2d}). 
         \begin{equation}
             \begin{array}{ccl}
                 x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
                 y_{n+1} & = &  a_{7} + a_{8}x_{n} + a_{9}x_{n}^{2} + a_{10}x_{n}y_{n} + a_{11}y_{n} + a_{12}y_{n}^{2}
             \end{array}
+            \label{eq:mapa2d}
         \end{equation}
+        donde los parámetros $\{a_{1}, a_{2}, \ldots a_{12}\}$ y las condiciones iniciales $x_{0}$ y $y_{0}$ determinan las características de la solución. La iteraciones se representan como puntos en una superficie bidimensional. Después de un cierto número de iteraciones, la solución hará una de estas cuatro cosas: (a) convergerá a un único punto fijo; (b) tomará una sucesión de valores que acabarán repitiéndose, produciendo un ciclo límite; (c) será inestable y divergirá hasta el infinito; (d) mostrará caos y rellenará gradualmente alguna región a menudo complicada pero acotada del plano $x-y$.
         
-        donde los parámetros $\{a_{1}, a_{2}, \ldots a_{12}\}$ pueden tomar diferentes valores, sin embargo para este trabajo se usaron los siguientes:
+        Para saber qué valores de $\{a_{1}, a_{2}, \ldots a_{12}\}$ llevan al caos, \cite{Sprott1993} utilizó el siguiente procedimiento.
 
+        \begin{enumerate}
+            \item Elegir aleatoriamente los 12 coeficientes de $a_{1}$ hasta $a_{12}$ aleatoriamente sobre algún intervalo.
+            \item Elegir las condiciones iniciales $x_{0}$ y $y_{0}$.
+            \item Iterar las ecuaciones del mapa mientras se calcula el exponente de Lyapunov y se comprueba si no hay divergencia.
+            \item Mantener las soluciones que están acotadas y tienen un exponente de Lyapunov positivo.
+        \end{enumerate}
 
-        \begin{equation}
-            \begin{array}{ccl}
-                x_{n+1} & = &  a_{1} + ( a_{2} + a_{3}x_{n} )x_{n} + a_{4}x_{n}y_{n} + ( a_{5} + a_{6}y_{n} )y_{n} \\
-                y_{n+1} & = &  a_{7} + ( a_{8} + a_{9}x_{n} )x_{n} + a_{10}x_{n}y_{n} + ( a_{11} + a_{12}y_{n})y_{n}
-            \end{array}
-        \end{equation}
-
-        \begin{equation}
-             \begin{array}{lcl}
-                M_{1} & = & \{ -0.6, -0.1, 1.1, 0.2, -0.8, 0.6, -0.7, 0.7, 0.7, 0.3, 0.6, 0.9 \}\\
-                M_{2} & = & \{ -1.0, 0.9, 0.4, -0.2, -0.6, -0.5, 0.4, 0.7, 0.3, -0.5, 0.7, -0.8 \}\\
-                M_{3} & = &  \{0.8, 1.0, -1.2, -1.0, 1.1, -0.9, 0.4, -0.4, -0.6, -0.2, -0.5, -0.7 \}\\
-                M_{4} & = & \{-0.6, -0.4, -0.4, -0.8, 0.7, 0.3, -0.4, 0.4, 0.5, 0.5, 0.8, -0.1 \}
-            \end{array}
-        \end{equation}
-
-        \begin{equation}
-            \begin{array}{lcl}
-                s_{n+1} = \{ x_{n+1} \text{ mod } 256, y_{n+1} \text{ mod } 256 \}
-            \end{array}
-        \end{equation}
+        Los coeficientes los eligió en incrementos de 0.1 en el intervalo de $-1.2$ a $1.2$, es decir, 25 valores posibles. Coeficientes más pequeños hacen que se pierdan muchas soluciones caóticas y más grandes producen sobre todo soluciones inestables. El incremento se eligió para que cada atractor sea visiblemente diferente y los coeficientes puedan codificarse en letras del alfabeto desde la $A$ hasta la $Y$. De manera que $A = -1.2, B = -1.1, C = -1.0, \ldots, Y = 1.2$. La Tabla \ref{tab:conversion_mapas} puede utilizarse para realizar la conversión de esta representación de manera rápida. Esta representación hace que sea fácil su replicación. Así, cada atractor se identifica unívocamente con un nombre de 12 letras. El número de posibles casos es $25^{12}$ o aproximadamente $6\times 10^{12}$. De estos, aproximadamente 1.6\% son caóticos. Verlos todos a un ritmo de uno por segundo requeriría más de 30 millones de años. Por tanto, es muy poco probable que los patrones producidos por el programa se hayan visto antes y, al igual que los copos de nieve, casi todos son diferentes.
 
         \begin{table}[htbp]
             \centering
-            \caption{Exponentes de Lyapunov y dimensión fractal (tomados de \cite{Sprott1993}) de los mapas 2D usados.}
-            \begin{tabular}{|l|l|l|}
+            \caption{Conversiones para codificación de los atractores.}
+            \begin{tabular}{|l|l|l|l|}
                 \hline
-                \rowcolor{lightgray} Mapa  & Exponentes de Lyapunov & Dimensión fractal \\
+                \rowcolor{lightgray}   Letra & Codificación & Letra & Codificación\\
+                A & -1.2 & N & 0.1 \\ 
                 \hline
-                1     & 0.12                   & 1.77   \\
+                B & -1.1 & O & 0.2 \\ 
                 \hline
-                2     & 0.14                   & 1.79   \\
+                C & -1.0 & P & 0.3 \\ 
                 \hline
-                3     & 0.15                   & 1.69   \\
+                D & -0.9 & Q & 0.4 \\ 
                 \hline
-                4     & 0.13                   & 1.50   \\
+                E & -0.8 & R & 0.5 \\ 
+                \hline
+                F & -0.7 & S & 0.6 \\ 
+                \hline
+                G & -0.6 & T & 0.7 \\ 
+                \hline
+                H & -0.5 & U & 0.8 \\ 
+                \hline
+                I & -0.4 & V & 0.9 \\ 
+                \hline
+                J & -0.3 & W & 1.0 \\ 
+                \hline
+                K & -0.2 & X & 1.1 \\ 
+                \hline
+                L & -0.1 & Y & 1.2 \\ 
+                \hline
+                M & -0.0 &   &     \\ 
                 \hline
             \end{tabular}
+            \label{tab:conversion_mapas}
         \end{table}
+
+        Algunos de los atractores más llamativos se muestran en la Figura \ref{fig:multiples_atractores} y se pueden obtener decodificando la palabra de 12 letras de la Tabla \ref{tab:codificacion} del mapa deseado. En el artículo \cite{Sprott1993} no se tienen en cuenta las posibles variaciones que pueden ocurrir al modificar las condición iniciales. Estas se eligieron arbitrariamente a $x_{0} = y_{0} = 0.05$, además, no se especifica el rango que pueden tener las condiciones iniciales en el que se asegure que exista el caos.
 
         \begin{table}[htbp]
             \centering
-            \caption{Número de bits usados en la implementación de cada uno de los mapas con aritmética de punto fijo.}
-            \begin{tabular}{|l|l|l|}
+            \caption{Diversos identificadores, dimensión fractal y exponente de Lyapunov para atractores del mapa caótico bidimensional.}
+            \begin{tabular}{|l|l|l|l|}
                 \hline
-                \rowcolor{lightgray} Mapa  & Bits parte entera & Bits parte fraccionaria \\
+                \rowcolor{lightgray}  Mapa & Identificador & Dimensión fractal & Exponente de Lyapunov \\
                 \hline
-                1     & 3                   & 60   \\
+                1     & \verb|GLXOESFTTPSV| & 1.77  & 0.12   \\ %e
                 \hline
-                2     & 4                   & 59   \\
+                2     & \verb|CVQKGHQTPHTE| & 1.79  & 0.14   \\ %b
                 \hline
-                3     & 4                   & 59   \\
+                3     & \verb|UWACXDQIGKHF| & 1.42  & 0.10   \\ %n
                 \hline
-                3     & 3                   & 60   \\
+                4    &  \verb|GIIETPIQRRUL| & 1.50  & 0.13   \\ %d
+                \hline
+                5     & \verb|MCRBIPOPHTBN| & 1.39  & 0.05   \\ %j
+                \hline
+                6     & \verb|ODGQCNXODNYA| & 1.31  & 0.07   \\ %l
                 \hline
             \end{tabular}
+            \label{tab:codificacion}
         \end{table}
+
+       
+        \begin{figure}[hbtp]
+            \centering
+            \begin{subfigure}[b]{0.475\textwidth}
+                \centering
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G1_map1}
+                \caption{Mapa 1}    
+                \label{fig:mapa_1}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.475\textwidth}  
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G2_map2}
+                \caption{Mapa 2}    
+                \label{fig:mapa_2}
+            \end{subfigure}
+            \vskip\baselineskip
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G3_map3}
+                \caption{Mapa 3}    
+                \label{fig:mapa_3}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G4_map4}
+                \caption{Mapa 4}    
+                \label{fig:mapa_4}
+            \end{subfigure}
+            \vskip\baselineskip
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G5_map5}
+                \caption{Mapa 5}    
+                \label{fig:mapa_5}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=50 0 50 0,clip]{G6_map6}
+                \caption{Mapa 6}    
+                \label{fig:mapa_6}
+            \end{subfigure}
+            \caption{Diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
+            \label{fig:multiples_atractores}
+        \end{figure}
+
+        Para resolver este problema se puede analizar el dominio de atracción que tienen cada uno de los mapas. Podemos calcularlo numéricamente siguiendo los siguientes pasos:
+
+        \begin{enumerate}
+            \item Elegir un rango para $x_{0} \in [x_{\text{izq}}, x_{\text{der}}]$ y $y_{0} \in [y_{\text{izq}}, y_{\text{der}}]$ y un tamaño de paso $h$ donde se va a realizar el análisis.
+            \item Iterar el mapa unos cientos de veces para cada uno de los posibles valores de $x_{0}$ y $y_{0}$ dentro del rango y el tamaño de paso $h$ seleccionado. Para cada combinación almacenar todas las iteraciones en un vector.
+            \item Comprobar cada vector en busca de puntos fijos, divergencia y de ser posible ciclos límite.
+            \item En una matriz de tamaño, $m \times n$, donde $m$ es el número de elementos en el rango de $y_{0}$ y $n$ el número de elementos del rango de $x_{0}$, escribir 1 si esta dentro del rango que produce caos o $0$ si esta fuera.
+        \end{enumerate}
+
+       En la Figura \ref{fig:multiples_dominios} se muestran los dominios de atracción para cada uno de los mapas de la Tabla \ref{tab:codificacion} siguiendo el algoritmo anterior.
+
+       Si analizamos los dominios de atracción de la Figura \ref{fig:multiples_dominios} podemos seleccionar un rango en el que sin importar cual sea la condición inicial existirá caos. Por comodidad seleccionaremos una ventana de 1 unidad tanto para $x_{0}$ como para $y_{0}$ como se muestran en la Tabla \ref{tab:rangos_mapas}. 
 
         \begin{table}[htbp]
             \centering
@@ -78,17 +223,184 @@
                 \hline
                 \rowcolor{lightgray} Mapa  & Rango de valores para $x_{0}$ y $y_{0}$ \\
                 \hline
-                $M_{1}$  & $x_{0} \in [-0.5, \phantom{-} 0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
+                $1$  & $x_{0} \in [-0.5, \phantom{-} 0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
                 \hline
-                $M_{2}$  & $x_{0} \in [-1.0, \phantom{-} 0.0]$, $y_{0} \in [\phantom{-}0.0, \phantom{-}1.0]$ \\
+                $2$  & $x_{0} \in [-1.0, \phantom{-} 0.0]$, $y_{0} \in [\phantom{-}0.0, \phantom{-}1.0]$ \\
                 \hline
-                $M_{3}$  & $x_{0} \in [\phantom{-}0.0, \phantom{-} 1.0]$, $y_{0} \in [-0.6, \phantom{-}0.4]$ \\
+                $3$  & $x_{0} \in [\phantom{-}0.0, \phantom{-} 1.0]$, $y_{0} \in [-0.6, \phantom{-}0.4]$ \\
                 \hline
-                $M_{4}$  & $x_{0} \in [-1.5, -0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
+                $4$  & $x_{0} \in [-1.5, -0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
+                \hline
+                $5$  & $x_{0} \in [-0.4, \phantom{-}0.6]$, $y_{0} \in [-0.4, \phantom{-}0.6]$ \\
+                \hline
+                $6$  & $x_{0} \in [-1.0, \phantom{-}0.0]$, $y_{0} \in [\phantom{-}0.1, \phantom{-}1.1]$ \\
+                \hline
+            \end{tabular}
+            \label{tab:rangos_mapas}
+        \end{table}
+
+
+        \begin{figure}[hbtp]
+            \centering
+            \begin{subfigure}[b]{0.475\textwidth}
+                \centering
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H1_map1}
+                \caption{Mapa 1}    
+                \label{fig:mapa_1h}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.475\textwidth}  
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H2_map2}
+                \caption{Mapa 2}    
+                \label{fig:mapa_2h}
+            \end{subfigure}
+            \vskip\baselineskip
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H3_map3}
+                \caption{Mapa 3}    
+                \label{fig:mapa_3h}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H4_map4}
+                \caption{Mapa 4}    
+                \label{fig:mapa_4h}
+            \end{subfigure}
+            \vskip\baselineskip
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H5_map5}
+                \caption{Mapa 5}    
+                \label{fig:mapa_5h}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.475\textwidth}   
+                \centering 
+                \includegraphics[width=\textwidth,trim=50 0 50 0,clip]{H6_map6}
+                \caption{Mapa 6}    
+                \label{fig:mapa_6h}
+            \end{subfigure}
+            \caption{Dominio de atracción de diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
+            \label{fig:multiples_dominios}
+        \end{figure}
+
+
+        En \cite{Fraga2021} se utiliza el mapa caótico bidimensional propuesto en \cite{Sprott1993} y descrito en la ecuación (\ref{eq:mapa2d}) para diseñar un generador de números psedoaleatorios utilizando una arquitectura de punto fijo y extracción de bits haciendo uso de la operación mod 256 como se muestra en la ecuación (\ref{eq:extraccion}).
+
+        \begin{equation}
+            \begin{array}{lcl}
+                s_{n+1} = \{ x_{n+1} \text{ mod } 256, y_{n+1} \text{ mod } 256 \}
+            \end{array}
+            \label{eq:extraccion}
+        \end{equation}
+
+       Asimismo se enfoca en utilizar solo los primeros 4 mapas que tienen los siguientes valores decodificados de la Tabla \ref{tab:codificacion}.
+
+          \begin{equation*}
+             \begin{array}{lcl}
+                M_{1} & = & \{ -0.6, -0.1, \phantom{-}1.1, \phantom{-}0.2, -0.8, \phantom{-}0.6, -0.7, \phantom{-}0.7, \phantom{-}0.7, \phantom{-}0.3, \phantom{-}0.6, \phantom{-}0.9 \}\\
+                M_{2} & = & \{ -1.0, \phantom{-}0.9, \phantom{-}0.4, -0.2, -0.6, -0.5, \phantom{-}0.4, \phantom{-}0.7, \phantom{-}0.3, -0.5, \phantom{-}0.7, -0.8 \}\\
+                M_{3} & = &  \{\phantom{-}0.8, \phantom{-}1.0, -1.2, -1.0, \phantom{-}1.1, -0.9, \phantom{-}0.4, -0.4, -0.6, -0.2, -0.5, -0.7 \}\\
+                M_{4} & = & \{-0.6, -0.4, -0.4, -0.8, \phantom{-}0.7, \phantom{-}0.3, -0.4, \phantom{-}0.4, \phantom{-}0.5, \phantom{-}0.5, \phantom{-}0.8, -0.1 \}\\
+            \end{array}
+        \end{equation*}
+
+    \section{Análisis de punto fijo}
+
+        Una vez definido el sistema y los mapas a utilizar hay que seleccionar el formato de punto fijo óptimo para cada mapa. Como ejemplo utilizaremos el Mapa 1. Podemos notar que el atractor del Mapa 1 esta acotado en un rango de $x_{n} \in [-0.866, 0.8915]$ y $y_{n} \in [-0.933, 0.7896]$. Si echamos un vistazo a la ecuación (\ref{eq:mapa2d}), que por comodidad se vuelve a mostrar abajo, podemos notar que la operaciones que pueden generar los números con magnitud más grandes son la combinación de alguna de las sumas. En cuanto a las multiplicaciones, debido a que la mayoría de los coeficientes $|a_{n}| < 1$, con la excepción de $a_{3}$, después de realizar la multiplicación por cualquiera de ellos el número se vuelve más pequeño.
+
+        \begin{equation*}
+            \begin{array}{ccl}
+                x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
+                y_{n+1} & = &  a_{7} + a_{8}x_{n} + a_{9}x_{n}^{2} + a_{10}x_{n}y_{n} + a_{11}y_{n} + a_{12}y_{n}^{2}
+            \end{array}
+            %\label{eq:mapa2d}
+        \end{equation*}
+
+        Si tomamos los valores extremo de los rangos de $x_{n}$ y $y_{n}$ y analizamos las combinaciones de sumas que puedan generar el número más grande, o más pequeño en $x_{n+1}$ y $y_{n+1}$, al cual llamaremos $\beta$, podemos encontrar la cantidad de bits necesaria para la parte entera $a$ de la siguiente manera:
+
+        \begin{equation}
+a = \log_{2} ( \text{abs}( \beta ) )
+            \label{eq:}
+        \end{equation}
+
+       No obstante dependiendo el orden de las operaciones este análisis puede ser impreciso y solo nos da una aproximación del valor real de la parte entera. Consideremos lo siguiente, si se realizan primero todas las multiplicaciones y posteriormente se realizan las sumas, la acumulación de la suma puede ser mayor si se suman consecutivamente 3 números positivos a diferencia de intercalar números positivos con negativos.
+       
+       Otra cosa a considerar es la cantidad de bit fraccionarios $b$ que se requieren para que exista el caos. Si se tiene poca precisión en las operaciones la acumulación del error puede provocar que el caos solo exista por un corto periodo de tiempo. 
+
+       Debido a lo anterior muchos diseñadores optan por elegir el formato de punto fijo a prueba y error. 
+
+    \section{Simulador de arquitecturas digitales en C}
+
+        Para no tener que recurrir al método de prueba y error para elegir el formato de punto fijo, en este trabajo se diseño un simulador de punto fijo en lenguaje C para poder comprobar la factibilidad de la arquitectura antes de pasar al diseño en hardware en FPGA. 
+
+         La idea fundamental detrás de simular los diseños digitales en C antes de realizar su descripción en VHDL o Verilog es poder comprobar que las arquitecturas, ya sean de 16, 32 o 64 bits utilizando aritmética de punto fijo, funcionen correctamente desde el punto de vista de diseño, esto deja únicamente la posibilidad de cometer errores de sintaxis en el código en HDL los cuales se pueden analizar y solucionar por separado.
+
+        Se utilizó el compilador de GCC versión 11.2.0 en una plataforma x64 en Linux. El tipo de dato es el primer punto fundamental para el simulador. Existen diversos tipos de datos en lenguaje C sin embargo para arquitecturas con tamaños de bits definidos podemos reducirlo a cuatro: \verb|__int128|, \verb|long|, \verb|int|, \verb|short|. Cada uno de estos tipos dato tiene una cantidad definida de bytes asociados dependiendo de la computadora y el compilador, para revisar la cantidad de bytes podemos utilizar el Código \ref{cod:A1} del Apéndice A. La salida se muestra en la Tabla \ref{tab:tipos_de_datos}.
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Tamaños de tipos de datos en C, compilador de GCC versión 11.2.0 en una plataforma x64 en Linux.}
+            \begin{tabular}{|l|l|l|l|}
+                \hline
+                \rowcolor{lightgray} Tipo  & Bytes & Bits & Caracteres en hexadecimal\\
+                \hline
+                \verb|char|      & 1  & 8    & 2  \\
+                \hline
+                \verb|short|     & 2  & 16   & 4  \\
+                \hline
+                \verb|int|       & 4  & 32   & 8  \\
+                \hline
+                \verb|long|      & 8  & 64   & 16 \\
+                \hline
+                \verb|__int128|  & 16 & 128  & 32 \\
+                \hline
+            \end{tabular}
+            \label{tab:tipos_de_datos}
+        \end{table}
+       
+       Primero se simuló el mapa caótico de la ecuación (\ref{eq:mapa2d}) en punto flotante para tener una referencia de los posibles valores de salida, en el Código \ref{cod:A2} se muestra esta simulación. Posteriormente se simuló el mapa tomando como punto de partida una arquitectura de 64 bit. 
+        
+
+         \ref{cod:A3} \ref{cod:A6} \ref{cod:A7}
+
+
+
+
+         \begin{table}[htbp]
+            \centering
+            \caption{Número de bits usados en la implementación de cada uno de los mapas con aritmética de punto fijo.}
+            \begin{tabular}{|l|l|l|l|l|}
+                \hline
+                \rowcolor{lightgray} Mapa  & Bits parte entera & Bits parte fraccionaria & Rango $[-2^{a}, 2^{a} - 2^{-b}]$ & Precisión\\
+                \hline
+                1     & 3                   & 60   & $[-8.0, 8.0]$   & $8.6739 \times 10^{-19}$\\
+                \hline
+                2     & 4                   & 59   & $[-16.0, 16.0]$ & $1.7347 \times 10^{-18}$\\
+                \hline
+                3     & 4                   & 59   & $[-16.0, 16.0]$ & $1.7347 \times 10^{-18}$\\
+                \hline
+                4     & 3                   & 60   & $[-8.0, 8.0]$   & $8.6739 \times 10^{-19}$\\
                 \hline
             \end{tabular}
         \end{table}
 
+
+        
+    \section{Diseño de mapa caótico en VHDL}
+
+        \begin{equation}
+            \begin{array}{ccl}
+                x_{n+1} & = &  a_{1} + ( a_{2} + a_{3}x_{n} )x_{n} + a_{4}x_{n}y_{n} + ( a_{5} + a_{6}y_{n} )y_{n} \\
+                y_{n+1} & = &  a_{7} + ( a_{8} + a_{9}x_{n} )x_{n} + a_{10}x_{n}y_{n} + ( a_{11} + a_{12}y_{n})y_{n}
+            \end{array}
+        \end{equation}
+
+      \ref{}
+        
         \begin{figure}[hbtp]
             \caption{Diagrama de bloques del mapa caótico.}
             \centering
@@ -104,13 +416,14 @@
         \end{figure}
 
         \begin{figure}[hbtp]
-            \caption{Simulación del mapa caótico en punto flotante.}
+            \caption{Simulación del mapa caótico en punto fijo.}
             \centering
             \includegraphics[width=0.8\linewidth]{B0_chaotic_map}
             \label{fig:B0_chaotic_map}
         \end{figure}
 
-    \section{Single Constant Multiplier (SCM)}
+
+
 
 
     \section{Comunicación RS232}
@@ -129,6 +442,8 @@
             \label{fig:C0_fsm_rs232}
         \end{figure}	
 
+
+    \section{Single Constant Multiplier (SCM)}
     \section{Diseño de TRNG}
 
         \begin{figure}[hbtp]
