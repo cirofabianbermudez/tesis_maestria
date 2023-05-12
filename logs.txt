@@ -919,20 +919,41 @@ LaTeX Warning: Reference `fig:D1_fsm_system' on page 78 undefined on input line
 
 <imagenes//D0_system.eps> [78] <imagenes//D1_fsm_system.eps>
 
-LaTeX Warning: Citation `Nist2010' on page 79 undefined on input line 50.
+LaTeX Warning: Citation `Nist2010' on page 79 undefined on input line 49.
 
 
-LaTeX Warning: Citation `Turan2018' on page 79 undefined on input line 50.
+LaTeX Warning: Citation `Turan2018' on page 79 undefined on input line 49.
 
 
 LaTeX Warning: Reference `tab:resultados_NIST_100' on page 79 undefined on inpu
-t line 50.
+t line 49.
 
 
 LaTeX Warning: Reference `tab:resultados_NIST_1000' on page 79 undefined on inp
-ut line 50.
+ut line 49.
 
-) [79] [80] [81] (./ch6.tex [82]
+
+LaTeX Warning: Reference `fig:J3_distribucion' on page 79 undefined on input li
+ne 145.
+
+
+LaTeX Warning: Reference `fig:J4_distribucion' on page 79 undefined on input li
+ne 145.
+
+[79] [80] <imagenes//J3_distribucion.eps> <imagenes//J4_distribucion.eps>
+
+LaTeX Warning: Reference `tab:recursos' on page 81 undefined on input line 167.
+
+
+[81]
+
+LaTeX Warning: Reference `tab:recursos_op' on page 82 undefined on input line 1
+86.
+
+
+LaTeX Warning: Citation `Fraga2021' on page 82 undefined on input line 207.
+
+) [82] (./ch6.tex
 Cap\'{\i }tulo 6.
 ) [83] (./test.tex) [84] (./Ap_A.tex
 Ap\'{e}ndice A.
@@ -969,7 +990,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (110 pages, 1178832 bytes).
+Output written on main.dvi (110 pages, 1185196 bytes).
 Transcript written on main.log.
 This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
 The top-level auxiliary file: main.aux
@@ -982,8 +1003,7 @@ Warning--empty institution in Turan2018
 Warning--empty journal in Baudet2010
 Warning--empty booktitle in Varchola2010
 Warning--empty journal in Laban2016
-Warning--empty journal in AIS2022
-(There were 8 warnings)
+(There were 7 warnings)
 makeglossaries version 4.45 (2020-01-18)
 added glossary type 'main' (glg,gls,glo)
 makeindex  -s "main.ist" -t "main.glg" -o "main.gls" "main.glo"
@@ -1218,11 +1238,7 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 
 LaTeX Warning: Label `eq:' multiply defined.
 
-) (./ch5.aux
-
-LaTeX Warning: Label `tab:recursos' multiply defined.
-
-) (./ch6.aux) (./test.aux) (./Ap_A.aux))
+) (./ch5.aux) (./ch6.aux) (./test.aux) (./Ap_A.aux))
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 (c:/texlive/2021/texmf-dist/tex/latex/pdflscape/pdflscape.sty
@@ -1272,6 +1288,9 @@ Overfull \hbox (118.17558pt too wide) in paragraph at lines 38--38
 [7]
 Overfull \hbox (245.43613pt too wide) in paragraph at lines 39--39
  [][] [] [][]  
+
+Overfull \hbox (25.2079pt too wide) in paragraph at lines 54--54
+ [][] [] [][]  
 ) [8] (./main.lot
 
 LaTeX Warning: Citation `Petura2016' on page \es@scroman {ix} undefined on inpu
@@ -1290,13 +1309,13 @@ Overfull \hbox (142.66397pt too wide) in paragraph at lines 15--15
 Overfull \hbox (155.53587pt too wide) in paragraph at lines 16--16
  [][] [] [][]  
 
-Overfull \hbox (276.89084pt too wide) in paragraph at lines 20--20
+Overfull \hbox (317.8447pt too wide) in paragraph at lines 20--20
  [][] [] [][]  
 
-Overfull \hbox (282.7644pt too wide) in paragraph at lines 21--21
+Overfull \hbox (323.71826pt too wide) in paragraph at lines 21--21
  [][] [] [][]  
 
-Overfull \hbox (110.21828pt too wide) in paragraph at lines 23--23
+Overfull \hbox (113.5619pt too wide) in paragraph at lines 23--23
  [][] [] [][]  
 ) [9] [10] (./main.lol
 Overfull \hbox (20.83951pt too wide) in paragraph at lines 10--10
@@ -1555,12 +1574,17 @@ Cap\'{\i }tulo 5.
 <imagenes//C1_architecture_rs232.eps> [77] <imagenes//C0_fsm_rs232.eps>
 <imagenes//D0_system.eps> [78] <imagenes//D1_fsm_system.eps>
 
-LaTeX Warning: Citation `Nist2010' on page 79 undefined on input line 50.
+LaTeX Warning: Citation `Nist2010' on page 79 undefined on input line 49.
 
 
-LaTeX Warning: Citation `Turan2018' on page 79 undefined on input line 50.
+LaTeX Warning: Citation `Turan2018' on page 79 undefined on input line 49.
 
-) [79] [80] [81] (./ch6.tex [82]
+[79] [80] <imagenes//J3_distribucion.eps> <imagenes//J4_distribucion.eps>
+[81]
+
+LaTeX Warning: Citation `Fraga2021' on page 82 undefined on input line 207.
+
+) [82] (./ch6.tex
 Cap\'{\i }tulo 6.
 ) [83] (./test.tex) [84] (./Ap_A.tex
 Ap\'{e}ndice A.
@@ -1580,9 +1604,9 @@ Ap\'{e}ndice A.
 (./codigos/vhdl_codes/chaotic_map/ff_hab.vhd [93])
 (./codigos/vhdl_codes/chaotic_map/fsm_cm.vhd [94])
 (./codigos/vhdl_codes/chaotic_map/chaotic_map.vhd)) [95] [96] (./main.bbl
-[97] [98] [99] [100] [101] [102]) [103] (./main.aux (./portada.aux)
-(./agradecimientos.aux) (./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux)
-(./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux) (./Ap_A.aux))
+[97] [98]) [99] (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
+(./ch6.aux) (./test.aux) (./Ap_A.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -1596,7 +1620,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (121 pages, 1334648 bytes).
+Output written on main.dvi (117 pages, 1321632 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -1814,11 +1838,7 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 
 LaTeX Warning: Label `eq:' multiply defined.
 
-) (./ch5.aux
-
-LaTeX Warning: Label `tab:recursos' multiply defined.
-
-) (./ch6.aux) (./test.aux) (./Ap_A.aux))
+) (./ch5.aux) (./ch6.aux) (./test.aux) (./Ap_A.aux))
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -1917,8 +1937,9 @@ t1-eps-converted-to.pdf>] (./codigos/vhdl_codes/primitivas/obufds.vhd))
 Cap\'{\i }tulo 5.
 [77 <./imagenes//C1_architecture_rs232-eps-converted-to.pdf>] [78 <./imagenes//
 C0_fsm_rs232-eps-converted-to.pdf> <./imagenes//D0_system-eps-converted-to.pdf>
-]) [79 <./imagenes//D1_fsm_system-eps-converted-to.pdf>] [80] [81] (./ch6.tex
-[82]
+] [79 <./imagenes//D1_fsm_system-eps-converted-to.pdf>] [80] [81 <./imagenes//J
+3_distribucion-eps-converted-to.pdf> <./imagenes//J4_distribucion-eps-converted
+-to.pdf>]) [82] (./ch6.tex
 Cap\'{\i }tulo 6.
 ) [83] (./test.tex) [84] (./Ap_A.tex
 Ap\'{e}ndice A.
@@ -1938,17 +1959,17 @@ Ap\'{e}ndice A.
 (./codigos/vhdl_codes/chaotic_map/ff_hab.vhd [93])
 (./codigos/vhdl_codes/chaotic_map/fsm_cm.vhd [94])
 (./codigos/vhdl_codes/chaotic_map/chaotic_map.vhd)) [95] [96] (./main.bbl
-[97] [98] [99] [100] [101] [102]) [103] (./main.aux (./portada.aux)
-(./agradecimientos.aux) (./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux)
-(./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux) (./Ap_A.aux))
+[97] [98]) [99] (./main.aux (./portada.aux) (./agradecimientos.aux)
+(./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux)
+(./ch6.aux) (./test.aux) (./Ap_A.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  )
 (see the transcript file for additional information){c:/texlive/2021/texmf-dist
-/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/texlive/2021/texmf-dist/fonts/en
-c/dvips/base/8r.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-sup
-er-t1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+/fonts/enc/dvips/base/8r.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-sup
+er/cm-super-t1.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-supe
+r-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/
@@ -1971,5 +1992,5 @@ s/type1/public/cm-super/sfti1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sftt1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfxc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 >
-Output written on main.pdf (121 pages, 4357061 bytes).
+Output written on main.pdf (117 pages, 4429110 bytes).
 Transcript written on main.log.

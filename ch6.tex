@@ -1,6 +1,15 @@
 \chapter{Conclusiones}
 
+    \begin{itemize}
+        \item El núcleo ERO-TRNG a pesar de no ser el más rápido de los generadores que se pueden implementar dentro de las FPGA, tiene muy buena entropía, un modelo estocástico muy bien estudiado, una metodología de diseño bien estructurada y por lo mismo es fácil de implementarse no requiriendo intervención manual en la colocación de los componentes dentro del FPGA. Debido a lo anterior fue perfecto para generar semillas, una vez obtenida la semilla la velocidad del sistema ya no depende del ERO-TRNG lo que contrarresta su desventaja principal. Su repetibilidad en diferentes familias de FPGA, la seguridad que agrega al generador y la pequeña cantidad de recursos que requiere son las ventajas que presentó este núcleo.
 
-    \section{Trabajos futuros}
+        \item El mapa caótico bidimensional que se seleccionó para este trabajo es muy flexible, ya que se tiene 12 parámetros diferentes para configurarse, lo que se ve reflejado en diferentes atractores que pueden utilizarse para generar secuencias de bits aleatorias. Mientras las condiciones iniciales del atractor se encuentren dentro del dominio de atracción de este, podemos sembrar el mapa sin problemas. 
 
+        \item La implementación del mapa caótico bidimensional requiere forzosamente el uso de multiplicadores de una sola constante ya que de otro modo el uso de recursos es inviable. Sin embargo no puede considerar que este sistema sea pequeño en uso recursos debido a que utilizó el 80\% de DSP disponibles en la FPGA.
 
+        \item El TRNG híbrido que se diseño en este trabajo pasó todas las pruebas NIST y el análisis estadístico demostró distribuciones uniformes, además debido a que en su núcleo se encuentra en TRNG la seguridad del se ve garantizada mientras nadie tenga acceso a la semilla.
+
+        \item La velocidad obtenida por el TRNG híbrido fue de 533.33 Mbits/s.
+
+    \end{itemize}
+    

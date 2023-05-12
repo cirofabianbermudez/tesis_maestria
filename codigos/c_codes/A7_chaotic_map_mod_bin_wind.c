@@ -92,7 +92,7 @@ int main(void){
 	ai[11] = setNumber(  0.9 );
 	
     char *xp, *yp;
-	for(int i = 0; i<20; i++){
+	for(int i = 0; i<100000000; i++){
 	    xni = ai[0] + multTrunc( multTrunc( ai[2] , xi )  + ai[1] , xi) + multTrunc(multTrunc(xi,yi), ai[3]) + 
 	          multTrunc( multTrunc( ai[5] , yi )  + ai[4] , yi);
 	    
@@ -102,7 +102,8 @@ int main(void){
 		xi = xni;  yi = yni;
 		x = (unsigned char)xi;  y = (unsigned char)yi;
         xp = to_binary(x);  yp = to_binary(y);
-        fprintf(fpointer,"%s%s\n",xp, yp);
+        //fprintf(fpointer,"%s%s\n",xp, yp);
+        fprintf(fpointer,"%d %d\n",x, y);
         free(xp); xp = NULL;
         free(yp); yp = NULL;
 	}
