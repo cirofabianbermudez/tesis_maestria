@@ -1,8 +1,58 @@
 \chapter{Resultados experimentales}
 
-\begin{table*}[htbp]
+    \section{Comunicación RS232}
+
+    Una vez implementado el generador de semillas y el mapa caótico es necesario poder transmitir la información para su posterior análisis. Para esto se realizó la implementación de una comunicación RS232 con un baudrate a 15200 sin bit de paridad. Como solo es necesario transmitir datos del sistema a una computadora  solo se implemento la transmisión. En la Figura \ref{fig:C1_architecture_rs232} se muestra el diagrama a bloques de la transmisión y en la Figura \ref{fig:C0_fsm_rs232} el diagrama de la maquina de estados que controla la transmisión.
+
+        \begin{figure}[hbtp]
+            \caption{Diagrama de bloques de transmisión RS232.}
+            \centering
+            \includegraphics[width=0.6\linewidth]{C1_architecture_rs232}
+            \label{fig:C1_architecture_rs232}
+        \end{figure}
+
+        Se eligió no transmitir el bit de paridad para que los paquetes leídos sean fáciles de procesar, además esto aumenta un poco la velocidad de transmisión ya que se manda un bit menos, y para nuestro caso, en el que se requieren transmitir 100 millones de bits aleatorios es un ahorro significativo. 
+
+        \begin{figure}[hbtp]
+            \caption{Máquina de estados para la transmisión RS232.}
+            \centering
+            \includegraphics[width=0.8\linewidth]{C0_fsm_rs232}
+            \label{fig:C0_fsm_rs232}
+        \end{figure}	
+
+    \section{TRNG híbrido}
+
+        De manera que el sistema completo se muestra en la Figura \ref{fig:D0_system}. Este consiste en el generador de semillas aleatorios utilizando el ERO-TRNG como núcleo, el mapa caótico el cual calcula cada dos ciclos de reloj una iteración nueva, la operación mod 256 para extraer 16 bits aleatorios del mapa, la comunicación RS232 en conjunto un multiplexor para mandar paquetes de 8 bits y una maquina de estados cuyo diagrama se muestra en la Figura \ref{fig:D1_fsm_system}, que controla y sincroniza todo el sistema.
+
+
+         \begin{figure}[hbtp]
+            \caption{Diagrama de bloques de TRNG híbrido.}
+            \centering
+            \includegraphics[width=0.9\linewidth]{D0_system}
+            \label{fig:D0_system}
+        \end{figure}
+
+        El generador funciona de la siguiente manera. Cuando el sistema se enciende el generador de semillas comienza a generar bits aleatorios utilizando el ERO-TRNG interno, cuando este proceso termina la señal READY se activa avisando que hay una semilla valida en SEED y este proceso no vuelve a ocurrir a menos que la FPGA se reinicie.
+
+       El sistema espera que el usuario active la señal BUTTON para comenzar. Cuando el sistema se activa la maquina de estados calcula una iteración del mapa caótico, posteriormente se activa la transmisión que envía los primeros 8 bits aleatorios por medio del protocolo de comunicación RS232, una vez concluida, se envían los siguiente 8 bits aleatorios y el sistema regresa a esperar por la señal BUTTON. 
+
+       Si la señal BUTTON se queda activa este proceso se vuelve cíclico y se generan tantos bits aleatorios cómo el usuario desee.
+
+       \begin{figure}[hbtp]
+            \caption{Máquina de estados de TRNG híbrido.}
+            \centering
+            \includegraphics[width=0.7\linewidth]{D1_fsm_system}
+            \label{fig:D1_fsm_system}
+        \end{figure}
+
+        \section{Pruebas estadísticas NIST}
+
+        Utilizando una computadora con Windows 10 y el programa PuTTY como interfaz, se dejó el sistema corriendo por aproximadamente 20 minutos y se almacenaron alrededor 100 millones de bits aleatorios, lo que representan un archivo de aproximadamente 700,000 KB. Los datos se almacenaron como caracteres ASCII donde cada carácter contiene 8 bits aleatorios. Utilizando un programa de C se convirtieron los caracteres a números binarios para poder ingresarse con facilidad a la suite de pruebas estadísticas NIST \cite{Nist2010,Turan2018}. En la Figura \ref{tab:resultados_NIST_100} se muestran los resultados de las pruebas estadísticas NIST del sistema a 100 millones de bits aleatorios y en la \ref{tab:resultados_NIST_1000} se muestran los resultados de las pruebas estadísticas NIST del sistema a 100 millones de bits aleatorio.
+
+\begin{table}[htbp]
   \centering
   %\resizebox{\linewidth}{!}{ 
+  \caption{Resultados de la aplicación de las pruebas NIST al PRNG implementado en aritmética de punto fijo con 100 millones de datos.}
     \begin{NiceTabular}{|l|c|c|}
     \CodeBefore
     \rowcolor{lightgray}{1}
@@ -43,14 +93,14 @@
     \end{NiceTabular}%
     %}
   \label{tab:resultados_NIST_100}%
-  \caption{Resultados de la aplicación de las pruebas NIST al PRNG implementado en aritmética de punto fijo.}
-\end{table*}%
+\end{table}%
     
 
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
   \centering
   %\resizebox{\linewidth}{!}{ 
+  \caption{Resultados de la aplicación de las pruebas NIST al PRNG implementado en aritmética de punto fijo con 1000 millones de datos.}
     \begin{NiceTabular}{|l|c|c|}
     \CodeBefore
     \rowcolor{lightgray}{1}
@@ -91,6 +141,41 @@
     \end{NiceTabular}%
     %}
   \label{tab:resultados_NIST_1000}%
-  \caption{Resultados de la aplicación de las pruebas NIST al PRNG implementado en aritmética de punto fijo.}
-\end{table*}%
+\end{table}%
 
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Uso de recursos del TRNG híbrido con multiplicadores completos.}
+            \begin{tabular}{|l|l|l|l|}
+                \hline
+                \rowcolor{lightgray} Recursos  & Utilización & Disponibles & Utilización \% \\
+                \hline
+                LUTs      & 17767  & 20800    & 85.42  \\
+                \hline
+                FF     &  148 & 41600   & 0.36 \\
+                \hline
+                DSP       & 90  & 90   & 100.0 \\
+                \hline
+            \end{tabular}
+            \label{tab:recursos}
+        \end{table}
+
+
+
+        \begin{table}[htbp]
+            \centering
+            \caption{Uso de recursos del TRNg híbrido con multiplicadores de una sola constante en parámetros $a_{n}$.}
+            \begin{tabular}{|l|l|l|l|}
+                \hline
+                \rowcolor{lightgray} Recursos  & Utilización & Disponibles & Utilización \% \\
+                \hline
+                LUTs      & 1469  & 20800    & 7.06  \\
+                \hline
+                FF     & 146  & 41600   & 0.35  \\
+                \hline
+                DSP       & 80  & 90   & 88.89  \\
+                \hline
+            \end{tabular}
+            \label{tab:recursos}
+        \end{table}

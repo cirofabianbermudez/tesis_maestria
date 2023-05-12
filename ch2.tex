@@ -604,7 +604,7 @@
                     \label{fig:F17_extraccion_jitter}
                 \end{figure}
 
-                Para producir bits aleatorios, la señal de reloj debe llegar durante el flanco afectado por el jitter de la señal con jitter. Esto requiere de una gran precisión en la sincronización del reloj, yua que el jitter es muy pequeño, normalmente del orden de los picosegundos o $1/1000$ del periodo del reloj. Además, incluso la señal de reloj de muestreo está sujeta a jitter, lo que aumenta la dificultad de una sincronización precisa. Por último, los bits aleatorios generados mediante el método de muestreo son propensos a estar sesgados, dependiendo en gran medida del ciclo de trabajo (duty cycle) del reloj muestreado. Si el ciclo de trabajo es del 50\%, la probabilidad de que el bit de salida sea 1 es del 50\%. Sin embargo, cuando el ciclo de trabajo está desequilibrado, la probabilidad de obtener 1 no es igual a la probabilidad de obtener 0, sino que es proporcional al ciclo de trabajo. A pesar de los inconvenientes de este método, sigue siendo el más utilizado para extraer aleatoriedad del jitter del reloj \cite{Sunar2007,Baudet2010,Rozic2015,Cherkaoui2013, Zhang2018}.
+                Para producir bits aleatorios, la señal de reloj debe llegar durante el flanco afectado por el jitter de la señal con jitter. Esto requiere de una gran precisión en la sincronización del reloj, ya que el jitter es muy pequeño, normalmente del orden de los picosegundos o $1/1000$ del periodo del reloj. Además, incluso la señal de reloj de muestreo está sujeta a jitter, lo que aumenta la dificultad de una sincronización precisa. Por último, los bits aleatorios generados mediante el método de muestreo son propensos a estar sesgados, dependiendo en gran medida del ciclo de trabajo (duty cycle) del reloj muestreado. Si el ciclo de trabajo es del 50\%, la probabilidad de que el bit de salida sea 1 es del 50\%. Sin embargo, cuando el ciclo de trabajo está desequilibrado, la probabilidad de obtener 1 no es igual a la probabilidad de obtener 0, sino que es proporcional al ciclo de trabajo. A pesar de los inconvenientes de este método, sigue siendo el más utilizado para extraer aleatoriedad del jitter del reloj \cite{Sunar2007,Baudet2010,Rozic2015,Cherkaoui2013, Zhang2018}.
 
                 Una de las formas de convertir el jitter aleatorio en bits aleatorios es acumular el jitter hasta que su tamaño sea mayor que el periodo de la señal muestreada \cite{Baudet2010}. En ese caso, cada muestreo de dicha señal produciría un resultado completamente impredecible.
 
@@ -658,9 +658,7 @@
 
             El modelo estocástico de un TRNG especifica una familia de distribuciones de probabilidad que contiene todas las posibles distribuciones de los números aleatorios sin procesar. Sus principales objetivos son caracterizar la probabilidad de que un bit de salida sea igual a uno ($P(X = 1))$) y la probabilidad de un vector de bits de cierto valor a la salida ($P(X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n)$), y a partir de ellas estimar la tasa de entropía a la salida del generador.
 
-            El modelo sólo es práctico cuando las probabilidades que define se basan en algunos parámetros medibles. Examinaremos más de cerca los modelos estocásticos a través de un ejemplo de un TRNG elemental basado en osciladores de funcionamiento libre [14]. Los autores de [14] proponen un modelo basado en la fase de la señal de reloj generada por un oscilador de funcionamiento libre y definen la probabilidad de que un bit de salida sea uno mediante la ecuación (\ref{})
-
-            El uso de modelos estocásticos resulta práctico únicamente cuando las probabilidades que definen se basan en parámetros medibles. Para ilustrar esto, examinaremos más de cerca los modelos estocásticos mediante un ejemplo de un TRNG elemental basado en osciladores de funcionamiento libre, tal y como se describe en \ref{Baudet2010}. Los autores de este trabajo proponen un modelo basado en la fase de la señal de reloj generada por un oscilador de funcionamiento libre y definen la probabilidad de que un bit de salida sea uno mediante la ecuación (\ref{eq:probabilidad}).
+            El uso de modelos estocásticos resulta práctico únicamente cuando las probabilidades que definen se basan en parámetros medibles. Para ilustrar esto, examinaremos más de cerca los modelos estocásticos mediante un ejemplo de un TRNG elemental basado en osciladores de funcionamiento libre, tal y como se describe en \cite{Baudet2010}. Los autores de este trabajo proponen un modelo basado en la fase de la señal de reloj generada por un oscilador de funcionamiento libre y definen la probabilidad de que un bit de salida sea uno mediante la ecuación (\ref{eq:probabilidad}).
 
             \begin{equation}
                 P(X=1) = \frac{1}{2} - \frac{2}{\pi} \sin (2 \pi (\mu t + \varphi(0) ) ) e^{-2\pi^{2} \sigma^{2} t} + O(e^{-4\pi^{2} \sigma^{2} t})
@@ -674,13 +672,17 @@
                 \label{eq:entropia_min}
             \end{equation}
             
-            Podemos ver que la entropía depende de tres parámetros medibles: los periodos del oscilador ($T_{1}$, $1_{2}$) y el jitter combinado ($\sigma_{\text{jit}}$). Así que midiendo estos parámetros podemos estimar la entropía a la salida de los generadores. Esto es importante por dos razones: el TRNG puede caracterizarse en la fase de diseño y la tasa de entropía en su salida puede controlarse durante el funcionamiento normal del generador. Los periodos de los dos osciladores son fáciles de medir incluso dentro del dispositivo. La principal dificultad en la estimación de la entropía en línea está relacionada con la medición de $\sigma_{\text{jit}}^{2}$ sabiendo que sólo la contribución del ruido térmico debe tenerse en cuenta en el cálculo de la tasa de entropía. En este sentido, en \cite{Fischer2014} se propone un método se propone un método de evaluación embebida de la aleatoriedad (tasa de entropía por bit) basado en la medida de la varianza del jitter.
+            Podemos ver que la entropía depende de tres parámetros medibles: los periodos del oscilador ($T_{1}$, $T_{2}$) y el jitter combinado ($\sigma_{\text{jit}}$). Así que midiendo estos parámetros podemos estimar la entropía a la salida de los generadores. Esto es importante por dos razones: el TRNG puede caracterizarse en la fase de diseño y la tasa de entropía en su salida puede controlarse durante el funcionamiento normal del generador. Los periodos de los dos osciladores son fáciles de medir incluso dentro del dispositivo. La principal dificultad en la estimación de la entropía en línea está relacionada con la medición de $\sigma_{\text{jit}}^{2}$ sabiendo que sólo la contribución del ruido térmico debe tenerse en cuenta en el cálculo de la tasa de entropía. En este sentido, en \cite{Fischer2014} se propone un método se propone un método de evaluación embebida de la aleatoriedad (tasa de entropía por bit) basado en la medida de la varianza del jitter.
 
             Se puede concluir que si el tamaño de los tres parámetros del modelo antes mencionados puede obtenerse a partir del límite inferior de entropía requerido, puede utilizarse una medición en línea de estos parámetros para verificar que el generador no desciende por debajo de este valor. Esta medición y la comparación con los umbrales obtenidos a partir del modelo constituyen una base para las pruebas en línea específicas.
 
     \section{Arquitecturas de núcleos TRNGs en FPGA}
 
-        Con base en los criterios del AIS-20/31, y los núcleos  que usan estructuras oscilantes como se clasifican en \cite{Petura2016}:
+        El cumplimiento de la norma AIS-20/31 significa que los TRNG seleccionados deben tener una fuente de aleatoriedad claramente definida y bien descrita. El modelo estocástico debe ser factible y la salida de datos sin procesar debe estar disponible para las pruebas. La fuente de aleatoriedad también debe ser cuantificable, lo que permitiría su medición dentro del dispositivo. Una medición de este tipo puede constituir una base sólida para realizar pruebas integradas rápidas y eficaces.
+
+        Además del cumplimiento con la norma AIS-20/31, queremos diseños que sean factibles en cualquier dispositivo lógico. Dado que buscamos un diseño general, evitaremos características (por ejemplo, componentes analógicos) que sean específicas sólo para determinadas tecnologías. Dado que los diseños generales serían independientes de la tecnología, también deberían ser factibles en FPGAs.
+
+        Con base en los criterios del AIS-20/31, los núcleos TRNG adecuados para utilizarse en dispositivos lógicos programables (FPGA) que usan estructuras oscilantes son \cite{Petura2016}:
 	
         \begin{itemize}
             \item Single-event ring oscillators
@@ -702,9 +704,13 @@
                     \item PLL based TRNG 
                 \end{itemize}
         \end{itemize}
-	
+
+        Todos los TRNG preseleccionados deberían ser viables en todas las familias de FPGA recientes y futuras, ya que no utilizan ninguna característica específica de la familia.
+
+            	
 		\subsection{Elementary ring oscillator based TRNG (ERO-TRNG)}
 		
+                El ERO-TRNG se propuso y modeló en \cite{Baudet2010}. Dos osciladores en anillo idénticos forman la base del generador. Uno de ellos se utiliza para generar una señal de muestreo, que luego se utiliza para muestrear la salida del otro oscilador en anillo utilizando un flip-flop D (DFF). La frecuencia del oscilador de anillo de muestreo se divide por $K$ para obtener una frecuencia más baja de la señal de muestreo, lo que permitiría acumular el jitter del oscilador de anillo muestreado. La Figura \ref{fig:A1_ERO_TRNG} muestra una arquitectura del ERO-TRNG tal y como se implementa en FPGAs.
 					
 				\begin{figure}[hbtp]
 					\caption{Arquitectura del núcleo ERO-TRNG.}
@@ -712,23 +718,71 @@
 					\includegraphics[width=0.8\linewidth]{A1_ERO_TRNG}
 					\label{fig:A1_ERO_TRNG}
 				\end{figure}
-			
-			
-			
+                
+            Se utilizan osciladores en anillo compuestos por una puerta NAND y $N - 1$ búferes no inversores para construir un anillo de $N$ elementos. La compuerta NAND puede utilizarse para encender o apagar el oscilador. En FPGA de Xilinx Spartan-6, con 3 elementos, (una compuerta NAND y 2 buffers), se obtienen frecuencias oscilantes en torno a 300 MHz, además el jitter de periodo se mantiene en torno a 4 ps para periodos entre 3 y 8 ns. 
+
+            Los dos parámetros de diseño fundamentales del ERO-TRNG son la frecuencia de los osciladores de anillo y el factor de división $K$ del reloj de referencia. El segundo parámetro de diseño, el divisor $K$, determina el periodo de acumulación de jitter. El periodo de acumulación necesario depende del tamaño del jitter  de fase y del límite inferior de entropía. El límite inferior de entropía viene definido por el modelo estocástico y, para el ERO-TRNG, puede calcularse mediante la ecuación (\ref{eq:entropia_minima}).
+
+            \begin{equation}
+                H_{\text{min}}  = 1 - \frac{4}{\pi ^{4} \ln (2) } e^{ \frac{-\pi^{2} \sigma_{th}^{2} K T_{2}}{T_{1}^{3}} } 
+                \label{eq:entropia_minima}
+            \end{equation}
+            donde $\sigma_{th}^{2}$ es la varianza del jitter debida al ruido térmico, $K$ es el factor de división de la frecuencia de referencia y $T_{1}$, $T_{2}$ son los periodos de oscilación de los dos osciladores en anillo. Además se tiene la relación:
+
+            \begin{equation}
+                \sigma_{\text{jit}} = \sqrt{ \frac{K \sigma_{th}^{2} }{4} }
+                \label{eq:relacion}
+            \end{equation}
+
+            Para un periodo de oscilación de 3 ns, sólo es necesario encontrar el tamaño de jitter de periodo de los osciladores en anillo. Mediciones del jitter de periodo para FPGAs de Xilinx Spartan-6 correspondientes a un periodo de 3 ns arrojan un $\sigma_{T} \approx 4ps$. Realizando los calculamos, el factor de división $K$ según la ecuación (\ref{eq:entropia_minima}) es $K = 80 000$.
+
+            La implementación del ERO-TRNG es sencilla y los resultados son repetibles sin ninguna intervención manual. La colocación manual de los osciladores de anillo proporciona un mejor control de la frecuencia oscilatoria resultante, pero no es necesaria para el diseño adecuado del TRNG. La colocación de los osciladores de anillo ayuda a conservar las mismas propiedades de los osciladores a lo largo de diferentes proyectos o diferentes iteraciones de un proyecto.
+
+            El ERO-TRNG proporciona una tasa de bits de salida relativamente baja, porque $K$ tiene que ser relativamente alto para garantizar una entropía suficiente. Sin embargo, una vez configurado correctamente, este TRNG ofrece una gran seguridad gracias a su sólido modelo estocástico. Las pruebas integradas sólo tienen que comprobar que los osciladores de anillo oscilan y que no están bloqueados \cite{Bochard2010}.
+
+            El consumo de energía del oscilador en anillo no depende de su tamaño (número de elementos), porque sólo se propaga un evento por el anillo. Por lo tanto, sólo un elemento del oscilador en anillo está activo (cambia de estado) a la vez, independientemente de la frecuencia del oscilador. El consumo de energía de todo el TRNG depende de las frecuencias de los osciladores en anillo utilizados.
+
 		\subsection{Coherent sampling ring oscillator based TRNG (COSO-TRNG)}
-	
-				
+
+                El COSO-TRNG se propuso por primera vez en \cite{Kohlbrenner2004}. Utiliza dos osciladores de anillo implementados idénticamente como fuente de aleatoriedad. La Figura \ref{fig:A2_COSO_TRNG} muestra la estructura interna del COSO-TRNG.
 				\begin{figure}[hbtp]
 					\caption{Arquitectura del núcleo COSO-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A2_COSO_TRNG}
 					\label{fig:A2_COSO_TRNG}
 				\end{figure}
-				
-				
-		\newpage		
-		\subsection{Multi-ring oscillator based TRNG (MURO-TRNG)}
+
+                Aunque los dos osciladores en anillo tengan exactamente la misma estructura interna, sus frecuencias varían un poco. Esta pequeña variación provoca una diferencia de fase en las salidas de los osciladores de anillo. Al muestrear la salida de uno de los osciladores mediante un flip-flop D (DFF) sincronizado con la salida del otro oscilador, obtenemos una señal con un periodo variable, que corresponde al desfase relativo de los dos osciladores.
+
+                El segundo flip flop es un flip-flop T (TFF), que corresponde a un contador de un bit que cuenta el número de flancos ascendentes de la señal del DFF durante un semiperiodo de la señal. Este último bit del contador se registra en el último DFF y se envía a la salida del TRNG como un bit aleatorio.
+
+                COSO-TRNG extrae aleatoriedad del jitter sólo si se cumple la condición de la ecuación (\ref{eq:condicion_coso}).
+
+                \begin{equation}
+                    \Delta_{T} < \Delta_{T_{\text{max}}}  = \sqrt[3]{\sigma_{T}^{2} \cdot T}
+                    \label{eq:condicion_coso}
+                \end{equation}
 	
+                Desgraciadamente, esta condición es muy difícil de cumplir, ya que los dos osciladores de anillo deben oscilar a frecuencias muy cercanas evitando el bloqueo entre ellos. En una FPGA, satisfacer esta condición es muy difícil ya que no tenemos un control preciso sobre la colocación y el enrutamiento de los anillos, es muy difícil, si no imposible, implementar dos anillos oscilando a frecuencias suficientemente cercanas pero no idénticas.
+
+                Debido a la extrema sensibilidad a $\Delta_{T}$, el diseño que funciona en una FPGA no es directamente transferible a otra FPGA incluso de la misma familia porque incluso el más mínimo cambio causado por la variación del proceso de fabricación puede hacer que la diferencia de período oscile por encima de $\Delta_{T_{\text{max}}} $.  Así que el diseño debe colocarse y encaminarse manualmente para cada FPGA individual, lo que lo hace muy poco práctico. 
+
+                Sin embargo, COSO-TRNG puede proporcionar una tasa de bits de salida relativamente alta con una huella de área baja.
+
+                El consumo de energía del COSO-TRNG es muy reducido, ya que la energía consumida por los osciladores en anillo es independiente de su tamaño y el COSO-TRNG sólo presenta tres flip flops que aumentan su consumo de energía.
+
+		\subsection{Multi-ring oscillator based TRNG (MURO-TRNG)}
+
+            El MURO-TRNG utiliza múltiples osciladores en anillo, que se supone que son independientes, tienen la misma frecuencia media y fases uniformemente distribuidas. Para extraer de forma fiable la aleatoriedad de un grupo de osciladores en anillo, el número de osciladores en anillo debe satisfacer la condición de la ecuación (\ref{eq:muro_condicion}), que especifica la relación entre el periodo medio de oscilación de todos los osciladores, su jitter y el número de osciladores utilizados. La Figura \ref{fig:A3_MURO_TRNG} muestra la estructura interna del MURO-TRNG.
+
+			    \begin{equation}
+			     m > \frac{T}{\sigma} 
+			     \label{eq:muro_condicion}
+			    \end{equation}	
+
+            El principio TRNG sólo funcionará si las fases de los osciladores de anillo están uniformemente distribuidas. Sin embargo, los osciladores en anillo pueden bloquearse entre sí, en cuyo caso la distribución de las fases no será uniforme. Es más, la probabilidad de bloqueo es alta dado el elevado número de anillos necesarios para obtener una entropía alta en el MURO-TRNG.
+
+            El MURO-TRNG no requiere ninguna colocación o encaminamiento manual y su tasa de bits de salida, así como la tasa de entropía, son muy altas cuando se utiliza un número suficiente de osciladores de anillo. El consumo de energía de este TRNG es considerable debido al elevado número de osciladores.
 				
 				\begin{figure}[hbtp]
 					\caption{Arquitectura del núcleo MURO-TRNG.}
@@ -736,35 +790,52 @@
 					\includegraphics[width=0.8\linewidth]{A3_MURO_TRNG}
 					\label{fig:A3_MURO_TRNG}
 				\end{figure}
-				
-				
-				
+
+
 		\subsection{Transient effect ring oscillator based TRNG (TERO-TRNG)}
+
+            El TERO-TRNG genera bits aleatorios utilizando metaestabilidad oscilatoria, la Figura \ref{fig:A4_TERO_TRNG} muestra la implementación del TERO-TRNG.
+
+            El el flip-flop TFF representa el último bit del contador, que cuenta el número de oscilaciones de la celda TERO. Debido a la metaestabilidad oscilatoria del TERO, el número de oscilaciones es aleatorio. Para producir un flujo de bits aleatorios, el TERO debe reiniciarse periódicamente.
 	
+            \begin{figure}[hbtp]
+                \caption{Arquitectura del núcleo TERO-TRNG.}
+                \centering
+                \includegraphics[width=0.7\linewidth]{A4_TERO_TRNG}
+                \label{fig:A4_TERO_TRNG}
+            \end{figure}
+
+            Para conseguir suficiente entropía en la salida del TERO-TRNG, el número de oscilaciones del TERO debe estar dentro de los límites especificados por la ecuación (\ref{eq:limites_tero}).
+
+            \begin{equation}
+                100 < M < \frac{T_{\text{meas}}}{T_{\text{osc}}} 
+                \label{eq:limites_tero}
+            \end{equation}
+            donde $M$ es el número de oscilaciones, $T_{\text{meas}}$ es el tiempo de medida y $T_{\text{osc}}$ es el periodo de la señal de salida del TERO.
+
+            El límite inferior para el número de oscilaciones garantiza que habrá suficientes oscilaciones de las que extraer la aleatoriedad. El límite superior, en cambio, evita los casos en los que las oscilaciones no se detienen antes de reiniciar la medición. Cumplir esta condición de forma fiable para varios dispositivos es difícil porque la célula TERO se comporta de forma diferente en cada dispositivo (incluso dentro de una misma familia) aunque se utilice la misma configuración.
+
+                La celda TERO en sí no requiere una gran superficie y sólo se necesitan unos pocos flip flops para los contadores y el núcleo TRNG, por lo que la superficie total ocupada es relativamente pequeña. La energía consumida por el TERO no depende del número de elementos del TERO, pero el consumo de energía de los flip flops puede aumentar con el incremento de la frecuencia de reloj. El TERO-TRNG requiere una colocación y enrutamiento manuales y el diseño no es repetible ni siquiera en dispositivos de la misma familia.
 				
-				\begin{figure}[hbtp]
-					\caption{Arquitectura del núcleo TERO-TRNG.}
-					\centering
-					\includegraphics[width=0.7\linewidth]{A4_TERO_TRNG}
-					\label{fig:A4_TERO_TRNG}
-				\end{figure}
-				
-				
-		\newpage	
 		\subsection{Self-timed ring based TRNG (STR-TRNG)}
+
+                Un anillo autotemporizado es un oscilador multievento sin colisiones de señales. La Figura \ref{fig:A5_STR_TRNG} muestra la implementación del SRT-TRNG.
 	
-				
 				\begin{figure}[hbtp]
 					\caption{Arquitectura del núcleo STR-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A5_STR_TRNG}
 					\label{fig:A5_STR_TRNG}
 				\end{figure}
-				
+
+                Un STR se compone de celdas L Muller (elementos C). Múltiples eventos pueden propagarse a través de un STR sin colisiones. Debido a las propiedades temporales de las STR, los eventos pueden propagarse en los dos modos: modo ráfaga y modo uniforme.
+
+                El principio de extracción de aleatoriedad de un STR-TRNG es el mismo que el de MURO-TRNG: el uso de un conjunto de señales de reloj con fases distribuidas uniformemente. Pero mientras que en muchos osciladores de anillo las fases se distribuyen estadísticamente, en STR la uniformidad de la distribución está garantizada por el principio. 
+
+                El STR-TRNG consume mucha energía debido a que hay muchos eventos propagándose por el anillo. En el modo uniformemente espaciado, un STR oscila a su frecuencia máxima. La tasa de bits de salida del STR-TRNG es muy alta, lo que también contribuye a su elevado consumo de energía. El STR-TRNG requiere una gran superficie y, para garantizar que funciona en modo uniformemente espaciado, es necesario colocar manualmente los elementos STR.
 				
 				
 		\subsection{PLL based TRNG (PLL-TRNG)}
-	
 				
 				\begin{figure}[hbtp]
 					\caption{Arquitectura del núcleo PLL-TRNG.}
@@ -772,10 +843,22 @@
 					\includegraphics[width=0.8\linewidth]{A6_PLL_TRNG}
 					\label{fig:A6_PLL_TRNG}
 				\end{figure}
+
+                El PLL-TRNG no requiere ninguna colocación o encaminamiento manual. Proporciona alta seguridad y no se ve afectado por el ruido determinista global (es decir, dependiente de los datos), ya que los PLL están físicamente aislados del resto de la FPGA. La tasa de bits de salida del PLL-TRNG también es considerable.
+
+                El diseño del PLL-TRNG es sencillo, repetible y puede automatizarse. Sin embargo, la elección de los parámetros del PLL no es trivial. Hay que respetar muchas restricciones, incluidas las físicas del fabricante del PLL  y las de seguridad del TRNG. 
+
+                La huella de área del PLL-TRNG es relativamente pequeña si excluimos los PLL, que no ocupan lógica FPGA. Los PLL en sí no son baratos de implementar, ya que requieren un área de silicio considerable. En las FPGA, por el contrario, los PLL ya están incluidos, por lo que su uso no supone ningún coste. Es más, la mayoría de las familias de FPGAs proporcionan varios PLLs, lo que reduce aún más el coste de la implementación del PLL-TRNG.
+
+                El consumo de energía del PLL-TRNG depende de los PLLs proporcionados en la FPGA concreta. Algunas familias tienen todos los PLL activados por defecto, aunque no se utilicen (por ejemplo, las FPGA de Intel). En una familia así, PLL-TRNG no consume mucha más energía que una FPGA vacía, porque en ambos casos los PLL están funcionando. El consumo de energía es considerable en otras familias, que tienen los PLL apagados por defecto. Un PLL-TRNG implementado en una familia de este tipo consumirá mucha más energía que una FPGA vacía.
 				
+            \subsection{Comparación entre nucleos TRNG}
+
+            En la Tabla \ref{tab:resumen_de_trng_cores} extraída de \cite{Petura2016} se muestra un resumen de las cualidades de cada uno de los núcleos TRNG que implemento el autor en diferentes familias de FPGA.
+
                 \begin{table}[htbp]
                   \centering
-                  \caption{Resumen de los resultados núcleos TRNGs}
+                    \caption{Resumen de los resultados núcleos TRNGs \cite{Petura2016}.}
                     \resizebox{0.8\linewidth}{!}{ 
                         \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
                             \hline
@@ -810,4 +893,6 @@
                     }
                   \label{tab:resumen_de_trng_cores}
                 \end{table}%
+
+                El mensaje más importante que transmite la Tabla \ref{tab:resumen_de_trng_cores} es que no hay ningún TRNG que destaque en todos los parámetros evaluados ni tampoco hay ningún generador que sea el peor en todos los aspectos. Estos resultados confirman que ningún TRNG puede satisfacer las necesidades de todas las aplicaciones. Muchos parámetros de diseño dependen unos de otros, lo que crea compensaciones en un diseño y hay que llegar a un compromiso en favor de los parámetros preferidos.
 

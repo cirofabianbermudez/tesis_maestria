@@ -102,7 +102,7 @@ int main(void){
 		xi = xni;  yi = yni;
 		x = (unsigned char)xi;  y = (unsigned char)yi;
         xp = to_binary(x);  yp = to_binary(y);
-        fprintf(fpointer,"%s %s\n",xp, yp);
+        fprintf(fpointer,"%s%s\n",xp, yp);
         free(xp); xp = NULL;
         free(yp); yp = NULL;
 	}

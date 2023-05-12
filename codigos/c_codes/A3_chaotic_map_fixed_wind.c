@@ -77,7 +77,8 @@ int main(void){
 	ai[10] = setNumber(  0.6 );
 	ai[11] = setNumber(  0.9 );
 	
-	fprintf(fpointer,"%32.29lf\t%32.29lf\t\t%16.16llx\t\t%16.16llx\n",getNumber( xi ), getNumber( yi ),xi,yi);
+	//fprintf(fpointer,"%32.29lf\t%32.29lf\t\t%16.16llx\t\t%16.16llx\n",getNumber( xi ), getNumber( yi ),xi,yi);
+	fprintf(fpointer,"%32.29lf\t%32.29lf\n",getNumber( xi ), getNumber( yi ));
 	for(int i = 0; i<100000; i++){
 	    xni = ai[0] + multTrunc( multTrunc( ai[2] , xi )  + ai[1] , xi) + multTrunc(multTrunc(xi,yi), ai[3]) + 
 	          multTrunc( multTrunc( ai[5] , yi )  + ai[4] , yi);
@@ -87,7 +88,8 @@ int main(void){
 		
 		xi = xni;			 
 		yi = yni;
-		fprintf(fpointer,"%32.29lf\t%32.29lf\t\t%16.16llx\t\t%16.16llx\n",getNumber( xi ), getNumber( yi ),xi,yi);
+		//fprintf(fpointer,"%32.29lf\t%32.29lf\t\t%16.16llx\t\t%16.16llx\n",getNumber( xi ), getNumber( yi ),xi,yi);
+		fprintf(fpointer,"%32.29lf\t%32.29lf\n",getNumber( xi ), getNumber( yi ));
 	}
 	
 	fclose(fpointer);

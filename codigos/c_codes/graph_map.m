@@ -1,9 +1,9 @@
 clear; close all; clc;
-data = load("output_chaotic_map1.txt");
+data = load("output_chaotic_fixed.txt");
 x = data(:,1);
 y = data(:,2);
 
-factor = 120
+factor = 120;
 figure('Position', [50 50 8*factor 6*factor]);
 plot(x,y,'.k',"MarkerSize",0.1);
 grid on; 
@@ -19,8 +19,8 @@ ylabel('$y_{n}$','Interpreter','latex');
 % ylabel('$y_{n}$','Interpreter','latex','rotation',0,'Position', pos + [-0.05 0 0]);
 set(gca,'TickLabelInterpreter','latex', 'FontSize', 12);
 
-min(x) 
-max(x)
-
-min(y) 
-max(y)
+% min(x) 
+% max(x)
+% 
+% min(y) 
+% max(y)

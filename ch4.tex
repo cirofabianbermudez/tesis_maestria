@@ -2,9 +2,9 @@
 
     \section{Aritmética de punto fijo}
         
-        Cuando se necesita trabajar con números de punto decimal en dispositivos digitales se puede optar por utilizar aritmética de punto fijo o aritmética de punto flotante. La aritmética de punto fijo en comparación de la de punto flotante tiene la ventaja de ser más rápida y utilizar menos recursos, sin embargo, tiene la desventaja de tener un rango de uso específico el cual se tienen que establecer al principio del diseño y el cual no puede modificarse posteriormente. Por el contrario la aritmética de punto flotante tienen un mayor rango dinámico y resulta útil cuando los algoritmos tienen un complejidad alta. 
+        Cuando se necesita trabajar con números de punto decimal en dispositivos digitales se puede optar por utilizar aritmética de punto fijo o aritmética de punto flotante. La aritmética de punto fijo en comparación de la de punto flotante tiene la ventaja de ser más rápida y utilizar menos recursos, sin embargo, tiene la desventaja de tener un rango de uso específico el cual se tienen que establecer al principio del diseño y el cual no puede modificarse posteriormente. Por el contrario la aritmética de punto flotante tienen un mayor rango dinámico y resulta útil cuando los algoritmos tienen una complejidad alta. 
 
-        En el proceso de diseño de arquitecturas digitales de aplicación especifica se busca es utilizar la menor cantidad de recursos y reducir al máximo el tiempo de ejecución del algoritmo subyacente. Cuando se trabaja con los FPGA se cuenta con la libertad de poder analizar y estudiar el algoritmo antes de comenzar con el proceso de diseño. Por todo lo anterior, es preferible utiliza operaciones en punto fijo en lugar de punto flotante en los FPGA \cite{TleloCuautle2016}.
+        En el proceso de diseño de arquitecturas digitales de aplicación especifica se busca utilizar la menor cantidad de recursos y reducir al máximo el tiempo de ejecución del algoritmo subyacente. Cuando se trabaja con los FPGA se cuenta con la libertad de poder analizar y estudiar el algoritmo antes de comenzar con el proceso de diseño. Por todo lo anterior, es preferible utiliza operaciones en punto fijo en lugar de punto flotante en los FPGA \cite{TleloCuautle2016}.
 
         La representación de punto fijo de un número $X$ es $X(a,b)$ donde $a$ es la parte entera y $b$ es la parte fraccionario. De manera que el número de bits de la representación es $a+b+1$, es decir las suma de la parte entera, la parte fraccionaria y el bit de signo. El rango de valores que se puede representar es $[-2^{a}, 2^{a} - 2^{-b}]$ y por lo tanto el número más pequeño que puede representar o visto de otro modo la precisión es de $2^{-b}$. En la Tabla \ref{tab:ejemplos_puntofijo} se muestran ejemplos de diferentes formas de interpretar números binarios  utilizando 5 bits y diferentes formatos de punto fijo.
         
@@ -71,7 +71,7 @@
         El número positivo más grande que es necesario representar es $2^{2a}$. También es necesario representar $-2^{-2b}$, entonces se necesita el número $X(2a+1,2b)$ para representar la multiplicación de dos números $X(a,b)$. $X(2a+1,2b)$ tiene un rango de $[-2^{a+1}, 2^{2a+1} - 2^{-2b}]$.
 
         
-	\section{Propuesta de mapa caótico}
+	\section{Mapa caótico}
     
         En el artículo \cite{Sprott1993} se analiza y estudia el mapa caótico cuadrático bidimensional más sencillo que esta dado por la ecuación (\ref{eq:mapa2d}). 
         \begin{equation}
@@ -92,7 +92,7 @@
             \item Mantener las soluciones que están acotadas y tienen un exponente de Lyapunov positivo.
         \end{enumerate}
 
-        Los coeficientes los eligió en incrementos de 0.1 en el intervalo de $-1.2$ a $1.2$, es decir, 25 valores posibles. Coeficientes más pequeños hacen que se pierdan muchas soluciones caóticas y más grandes producen sobre todo soluciones inestables. El incremento se eligió para que cada atractor sea visiblemente diferente y los coeficientes puedan codificarse en letras del alfabeto desde la $A$ hasta la $Y$. De manera que $A = -1.2, B = -1.1, C = -1.0, \ldots, Y = 1.2$. La Tabla \ref{tab:conversion_mapas} puede utilizarse para realizar la conversión de esta representación de manera rápida. Esta representación hace que sea fácil su replicación. Así, cada atractor se identifica unívocamente con un nombre de 12 letras. El número de posibles casos es $25^{12}$ o aproximadamente $6\times 10^{12}$. De estos, aproximadamente 1.6\% son caóticos. Verlos todos a un ritmo de uno por segundo requeriría más de 30 millones de años. Por tanto, es muy poco probable que los patrones producidos por el programa se hayan visto antes y, al igual que los copos de nieve, casi todos son diferentes.
+        Los coeficientes los eligió en incrementos de 0.1 en el intervalo de $-1.2$ a $1.2$, es decir, 25 valores posibles. Coeficientes más pequeños hacen que se pierdan muchas soluciones caóticas y más grandes producen sobre todo soluciones inestables. El incremento se eligió para que cada atractor sea visiblemente diferente y los coeficientes puedan codificarse en letras del alfabeto desde la $A$ hasta la $Y$. De manera que $A = -1.2, B = -1.1, C = -1.0, \ldots, Y = 1.2$. La Tabla \ref{tab:conversion_mapas} puede utilizarse para realizar la conversión de esta representación de manera rápida. Esta representación hace que sea fácil su replicación. Así, cada atractor se identifica unívocamente con un nombre de 12 letras. El número de posibles casos es $25^{12}$ o aproximadamente $6\times 10^{12}$. De estos, aproximadamente 1.6\% son caóticos. Verlos todos a un ritmo de uno por segundo requeriría más de 30 millones de años. Por tanto, es muy poco probable que los patrones producidos se hayan visto antes y, al igual que los copos de nieve, casi todos son diferentes.
 
         \begin{table}[htbp]
             \centering
@@ -130,14 +130,14 @@
             \label{tab:conversion_mapas}
         \end{table}
 
-        Algunos de los atractores más llamativos se muestran en la Figura \ref{fig:multiples_atractores} y se pueden obtener decodificando la palabra de 12 letras de la Tabla \ref{tab:codificacion} del mapa deseado. En el artículo \cite{Sprott1993} no se tienen en cuenta las posibles variaciones que pueden ocurrir al modificar las condición iniciales. Estas se eligieron arbitrariamente a $x_{0} = y_{0} = 0.05$, además, no se especifica el rango que pueden tener las condiciones iniciales en el que se asegure que exista el caos.
+        Algunos de los atractores más llamativos se muestran en la Figura \ref{fig:multiples_atractores} y se pueden obtener decodificando la palabra de 12 letras de la Tabla \ref{tab:codificacion} del atractor deseado. En el artículo \cite{Sprott1993} no se tienen en cuenta las posibles variaciones que pueden ocurrir al modificar las condición iniciales. Estas se eligieron arbitrariamente a $x_{0} = y_{0} = 0.05$, además, no se especifica el rango que pueden tener las condiciones iniciales en el que se asegure que exista el caos.
 
         \begin{table}[htbp]
             \centering
             \caption{Diversos identificadores, dimensión fractal y exponente de Lyapunov para atractores del mapa caótico bidimensional.}
             \begin{tabular}{|l|l|l|l|}
                 \hline
-                \rowcolor{lightgray}  Mapa & Identificador & Dimensión fractal & Exponente de Lyapunov \\
+                \rowcolor{lightgray}  Atractor & Identificador & Dimensión fractal & Exponente de Lyapunov \\
                 \hline
                 1     & \verb|GLXOESFTTPSV| & 1.77  & 0.12   \\ %e
                 \hline
@@ -155,48 +155,47 @@
             \label{tab:codificacion}
         \end{table}
 
-       
         \begin{figure}[hbtp]
             \centering
             \begin{subfigure}[b]{0.475\textwidth}
                 \centering
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G1_map1}
-                \caption{Mapa 1}    
+                \caption{Atractor 1}    
                 \label{fig:mapa_1}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}  
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G2_map2}
-                \caption{Mapa 2}    
+                \caption{Atractor 2}    
                 \label{fig:mapa_2}
             \end{subfigure}
             \vskip\baselineskip
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G3_map3}
-                \caption{Mapa 3}    
+                \caption{Atractor 3}    
                 \label{fig:mapa_3}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G4_map4}
-                \caption{Mapa 4}    
+                \caption{Atractor 4}    
                 \label{fig:mapa_4}
             \end{subfigure}
             \vskip\baselineskip
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G5_map5}
-                \caption{Mapa 5}    
+                \caption{Atractor 5}    
                 \label{fig:mapa_5}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=50 0 50 0,clip]{G6_map6}
-                \caption{Mapa 6}    
+                \caption{Atractor 6}    
                 \label{fig:mapa_6}
             \end{subfigure}
             \caption{Diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
@@ -218,10 +217,10 @@
 
         \begin{table}[htbp]
             \centering
-            \caption{Rangos usados para la condición inicial para cada uno de los mapas.}
+            \caption{Rangos usados para la condición inicial para cada uno de los atractores.}
             \begin{tabular}{|l|l|}
                 \hline
-                \rowcolor{lightgray} Mapa  & Rango de valores para $x_{0}$ y $y_{0}$ \\
+                \rowcolor{lightgray} Atractor  & Rango de valores para $x_{0}$ y $y_{0}$ \\
                 \hline
                 $1$  & $x_{0} \in [-0.5, \phantom{-} 0.5]$, $y_{0} \in [-0.5, \phantom{-}0.5]$ \\
                 \hline
@@ -245,42 +244,42 @@
             \begin{subfigure}[b]{0.475\textwidth}
                 \centering
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H1_map1}
-                \caption{Mapa 1}    
+                \caption{Atractor 1}    
                 \label{fig:mapa_1h}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}  
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H2_map2}
-                \caption{Mapa 2}    
+                \caption{Atractor 2}    
                 \label{fig:mapa_2h}
             \end{subfigure}
             \vskip\baselineskip
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H3_map3}
-                \caption{Mapa 3}    
+                \caption{Atractor 3}    
                 \label{fig:mapa_3h}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H4_map4}
-                \caption{Mapa 4}    
+                \caption{Atractor 4}    
                 \label{fig:mapa_4h}
             \end{subfigure}
             \vskip\baselineskip
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H5_map5}
-                \caption{Mapa 5}    
+                \caption{Atractor 5}    
                 \label{fig:mapa_5h}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=50 0 50 0,clip]{H6_map6}
-                \caption{Mapa 6}    
+                \caption{Atractor 6}    
                 \label{fig:mapa_6h}
             \end{subfigure}
             \caption{Dominio de atracción de diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
@@ -297,20 +296,22 @@
             \label{eq:extraccion}
         \end{equation}
 
-       Asimismo se enfoca en utilizar solo los primeros 4 mapas que tienen los siguientes valores decodificados de la Tabla \ref{tab:codificacion}.
+       Asimismo se enfoca en utilizar solo los primeros 4 atractores que tienen los siguientes valores decodificados de la Tabla \ref{tab:codificacion}.
 
           \begin{equation*}
              \begin{array}{lcl}
-                M_{1} & = & \{ -0.6, -0.1, \phantom{-}1.1, \phantom{-}0.2, -0.8, \phantom{-}0.6, -0.7, \phantom{-}0.7, \phantom{-}0.7, \phantom{-}0.3, \phantom{-}0.6, \phantom{-}0.9 \}\\
-                M_{2} & = & \{ -1.0, \phantom{-}0.9, \phantom{-}0.4, -0.2, -0.6, -0.5, \phantom{-}0.4, \phantom{-}0.7, \phantom{-}0.3, -0.5, \phantom{-}0.7, -0.8 \}\\
-                M_{3} & = &  \{\phantom{-}0.8, \phantom{-}1.0, -1.2, -1.0, \phantom{-}1.1, -0.9, \phantom{-}0.4, -0.4, -0.6, -0.2, -0.5, -0.7 \}\\
-                M_{4} & = & \{-0.6, -0.4, -0.4, -0.8, \phantom{-}0.7, \phantom{-}0.3, -0.4, \phantom{-}0.4, \phantom{-}0.5, \phantom{-}0.5, \phantom{-}0.8, -0.1 \}\\
+                A_{1} & = & \{ -0.6, -0.1, \phantom{-}1.1, \phantom{-}0.2, -0.8, \phantom{-}0.6, -0.7, \phantom{-}0.7, \phantom{-}0.7, \phantom{-}0.3, \phantom{-}0.6, \phantom{-}0.9 \}\\
+                A_{2} & = & \{ -1.0, \phantom{-}0.9, \phantom{-}0.4, -0.2, -0.6, -0.5, \phantom{-}0.4, \phantom{-}0.7, \phantom{-}0.3, -0.5, \phantom{-}0.7, -0.8 \}\\
+                A_{3} & = &  \{\phantom{-}0.8, \phantom{-}1.0, -1.2, -1.0, \phantom{-}1.1, -0.9, \phantom{-}0.4, -0.4, -0.6, -0.2, -0.5, -0.7 \}\\
+                A_{4} & = & \{-0.6, -0.4, -0.4, -0.8, \phantom{-}0.7, \phantom{-}0.3, -0.4, \phantom{-}0.4, \phantom{-}0.5, \phantom{-}0.5, \phantom{-}0.8, -0.1 \}\\
             \end{array}
         \end{equation*}
 
+        En este trabajo utilizaremos un enfoque similar para crear un generador de números aleatorios híbrido.
+
     \section{Análisis de punto fijo}
 
-        Una vez definido el sistema y los mapas a utilizar hay que seleccionar el formato de punto fijo óptimo para cada mapa. Como ejemplo utilizaremos el Mapa 1. Podemos notar que el atractor del Mapa 1 esta acotado en un rango de $x_{n} \in [-0.866, 0.8915]$ y $y_{n} \in [-0.933, 0.7896]$. Si echamos un vistazo a la ecuación (\ref{eq:mapa2d}), que por comodidad se vuelve a mostrar abajo, podemos notar que la operaciones que pueden generar los números con magnitud más grandes son la combinación de alguna de las sumas. En cuanto a las multiplicaciones, debido a que la mayoría de los coeficientes $|a_{n}| < 1$, con la excepción de $a_{3}$, después de realizar la multiplicación por cualquiera de ellos el número se vuelve más pequeño.
+        Una vez definido el sistema y los atractores a utilizar hay que seleccionar el formato de punto fijo óptimo para cada atractor. Como ejemplo utilizaremos el Atractor 1. Podemos notar que el Atractor 1 esta acotado en un rango de $x_{n} \in [-0.866, 0.8915]$ y $y_{n} \in [-0.933, 0.7896]$. Si echamos un vistazo a la ecuación (\ref{eq:mapa2d}), que por comodidad se vuelve a mostrar abajo, podemos notar que la operaciones que pueden generar los números con magnitud más grandes son la combinación de alguna de las sumas. En cuanto a las multiplicaciones, debido a que la mayoría de los coeficientes $|a_{n}| < 1$, con la excepción de $a_{3}$, después de realizar la multiplicación por cualquiera de ellos el número se vuelve más pequeño.
 
         \begin{equation*}
             \begin{array}{ccl}
@@ -323,13 +324,13 @@
         Si tomamos los valores extremo de los rangos de $x_{n}$ y $y_{n}$ y analizamos las combinaciones de sumas que puedan generar el número más grande, o más pequeño en $x_{n+1}$ y $y_{n+1}$, al cual llamaremos $\beta$, podemos encontrar la cantidad de bits necesaria para la parte entera $a$ de la siguiente manera:
 
         \begin{equation}
-a = \log_{2} ( \text{abs}( \beta ) )
-            \label{eq:}
+                a = \log_{2} ( \text{abs}( \beta ) )
+            \label{eq:bits_enteros}
         \end{equation}
 
        No obstante dependiendo el orden de las operaciones este análisis puede ser impreciso y solo nos da una aproximación del valor real de la parte entera. Consideremos lo siguiente, si se realizan primero todas las multiplicaciones y posteriormente se realizan las sumas, la acumulación de la suma puede ser mayor si se suman consecutivamente 3 números positivos a diferencia de intercalar números positivos con negativos.
        
-       Otra cosa a considerar es la cantidad de bit fraccionarios $b$ que se requieren para que exista el caos. Si se tiene poca precisión en las operaciones la acumulación del error puede provocar que el caos solo exista por un corto periodo de tiempo. 
+       Otra cosa a considerar es la cantidad de bits fraccionarios $b$ que se requieren para que exista el caos. Si se tiene poca precisión en las operaciones la acumulación del error puede provocar que el caos solo exista por un corto periodo de tiempo. 
 
        Debido a lo anterior muchos diseñadores optan por elegir el formato de punto fijo a prueba y error. 
 
@@ -339,7 +340,7 @@ a = \log_{2} ( \text{abs}( \beta ) )
 
          La idea fundamental detrás de simular los diseños digitales en C antes de realizar su descripción en VHDL o Verilog es poder comprobar que las arquitecturas, ya sean de 16, 32 o 64 bits utilizando aritmética de punto fijo, funcionen correctamente desde el punto de vista de diseño, esto deja únicamente la posibilidad de cometer errores de sintaxis en el código en HDL los cuales se pueden analizar y solucionar por separado.
 
-        Se utilizó el compilador de GCC versión 11.2.0 en una plataforma x64 en Linux. El tipo de dato es el primer punto fundamental para el simulador. Existen diversos tipos de datos en lenguaje C sin embargo para arquitecturas con tamaños de bits definidos podemos reducirlo a cuatro: \verb|__int128|, \verb|long|, \verb|int|, \verb|short|. Cada uno de estos tipos dato tiene una cantidad definida de bytes asociados dependiendo de la computadora y el compilador, para revisar la cantidad de bytes podemos utilizar el Código \ref{cod:A1} del Apéndice A. La salida se muestra en la Tabla \ref{tab:tipos_de_datos}.
+        Se utilizó el compilador de GCC versión 11.2.0 en una plataforma x64 en Linux. El tipo de dato es el primer punto fundamental para el simulador. Existen diversos tipos de datos en lenguaje C sin embargo para arquitecturas con tamaños de bits definidos podemos reducirlo a cuatro: \verb|__int128|, \verb|long|, \verb|int|, \verb|short|. Cada uno de estos tipos dato tiene una cantidad definida de bytes asociados dependiendo de la computadora y el compilador, para revisar la cantidad de bytes podemos utilizar el Código \ref{cod:A1} del Apéndice A. La salida del código se muestra en la Tabla \ref{tab:tipos_de_datos}.
 
         \begin{table}[htbp]
             \centering
@@ -362,20 +363,14 @@ a = \log_{2} ( \text{abs}( \beta ) )
             \label{tab:tipos_de_datos}
         \end{table}
        
-       Primero se simuló el mapa caótico de la ecuación (\ref{eq:mapa2d}) en punto flotante para tener una referencia de los posibles valores de salida, en el Código \ref{cod:A2} se muestra esta simulación. Posteriormente se simuló el mapa tomando como punto de partida una arquitectura de 64 bit. 
-        
-
-         \ref{cod:A3} \ref{cod:A6} \ref{cod:A7}
-
-
-
-
+       Primero se simuló el Atractor 1 de la ecuación (\ref{eq:mapa2d}) en punto flotante para tener una referencia de los posibles valores de salida, en el Código \ref{cod:A2} se muestra esta simulación. Posteriormente se simuló el mapa tomando como punto de partida una arquitectura de 64 bits para tener suficiente precisión. El análisis de punto fijo arrojó una parte entera aproximada $a = 1$, con esta parte entera el sistema funciona sin problemas, sin embargo para los otros atractores es necesario utilizar una mayor cantidad de bits para la parte entera. En la Tabla \ref{tab:bits_atractores} se muestran los formatos seleccionados para cada atractor.
+  
          \begin{table}[htbp]
             \centering
-            \caption{Número de bits usados en la implementación de cada uno de los mapas con aritmética de punto fijo.}
+            \caption{Número de bits usados en la implementación de cada uno de los atractores con aritmética de punto fijo.}
             \begin{tabular}{|l|l|l|l|l|}
                 \hline
-                \rowcolor{lightgray} Mapa  & Bits parte entera & Bits parte fraccionaria & Rango $[-2^{a}, 2^{a} - 2^{-b}]$ & Precisión\\
+                \rowcolor{lightgray} Atractor  & Bits parte entera & Bits parte fraccionaria & Rango  & Precisión\\
                 \hline
                 1     & 3                   & 60   & $[-8.0, 8.0]$   & $8.6739 \times 10^{-19}$\\
                 \hline
@@ -386,20 +381,57 @@ a = \log_{2} ( \text{abs}( \beta ) )
                 4     & 3                   & 60   & $[-8.0, 8.0]$   & $8.6739 \times 10^{-19}$\\
                 \hline
             \end{tabular}
+            \label{tab:bits_atractores}
         \end{table}
 
+     En el Código \ref{cod:A3} se muestra el diseño del simulador. Este cuenta con funciones para realizar la conversión de punto flotante a punto fijo, multiplicación en punto fijo con truncamiento y finalmente conversión de punto fijo a punto flotante. En la Figura \ref{fig:B0_chaotic_map} se muestra el resultado de la simulación en punto fijo del atractor. Ya sea con 1, 2 o 3 bits para la parte entera, el Atractor 1 se simuló para 1000 millones de iteraciones y este no se salió de la órbita caótica.
 
+        \begin{figure}[h!]
+            \caption{Simulación del mapa caótico en punto fijo, Atractor 1.}
+            \centering
+            \includegraphics[width=0.8\linewidth]{B0_chaotic_map}
+            \label{fig:B0_chaotic_map}
+        \end{figure}
+
+        Para simular la extracción de bits de la ecuación (\ref{eq:extraccion}) se pueden truncar los 8 bits menos significativos tanto para $x_{n}$ como para $y_{n}$ utilizando un casting del tipo \verb|unsigned char| como se muestra en el Código \ref{cod:A6} y para poder convertir la salida a binario se utilizó el Código \ref{cod:A7}.
         
+        Simulando 100 millones iteraciones y generando palabras de 16 bits podemos ver la distribución de probabilidades de unos y ceros de cada palabra, en la Figura \ref{fig:J0_distribucion_exp} se muestra que la distribución es muy parecida a la ideal. Esto es lo esperado ya que los PRNG tienen por lo general buenas propiedades estadísticas.
+
+        \begin{figure}[hbtp]
+            \caption{Distribución de 100 millones de palabras de 16 bits.}
+            \centering
+            \includegraphics[width=0.8\linewidth]{J0_distribucion_exp}
+            \label{fig:J0_distribucion_exp}
+        \end{figure}
+
+        Una vez comprobado el diseño con el simulador en C, visualizando tanto su atractor como su distribución de probabilidades normal podemos pasar con seguridad a la fase de descripción del sistema en hardware. En este trabajo se utilizó VDHL.
+
     \section{Diseño de mapa caótico en VHDL}
+
+        Si analizamos la ecuación (\ref{eq:mapa2d}) podemos notar que su representación no es la más óptima para programarse en hardware, ya que se requieren 10 sumas y 16 multiplicaciones. No obstante si se reutilizan las multiplicaciones de $x_{n}^{2}$, $x_{n}y_{n}$ y $y_{n}^{2}$ solo se requieren 13 multiplicadores.
+
+        Si reescribimos la ecuación (\ref{eq:mapa2d}) como se muestra en la ecuación (\ref{eq:mapaop}) se pueden eliminar dos multiplicadores más. Es decir la mínima cantidad de operaciones que se requieren para implementar el mapa son 10 sumadores y 11 multiplicadores.
 
         \begin{equation}
             \begin{array}{ccl}
                 x_{n+1} & = &  a_{1} + ( a_{2} + a_{3}x_{n} )x_{n} + a_{4}x_{n}y_{n} + ( a_{5} + a_{6}y_{n} )y_{n} \\
                 y_{n+1} & = &  a_{7} + ( a_{8} + a_{9}x_{n} )x_{n} + a_{10}x_{n}y_{n} + ( a_{11} + a_{12}y_{n})y_{n}
             \end{array}
+            \label{eq:mapaop}
         \end{equation}
 
-      \ref{}
+        Los bloques básicos para realizar la implementación serían: 
+            
+        \begin{enumerate}
+            \item Un sumador de 64 bits con signo, Código \ref{cod:adder}.
+            \item Un multiplicador de 64 bits con signo y truncamiento al formato de punto fijo especificado, Código \ref{cod:mult}.
+            \item Una memoria ROM que almacene los valores en el formato de punto fijo de las constantes $a_{n}$, Código \ref{cod:rom_cm}.
+            \item Un multiplexor para poder seleccionar entre la condición inicial y la retroalimentación del sistema, Código \ref{cod:mux_ic}.
+            \item Un registro que almacene la iteración actual, Código \ref{cod:ff_hab}.
+            \item Una máquina de estado para controlar todo el sistema, Código \ref{cod:fsm_cm}.            
+        \end{enumerate}
+    
+        Visto como diagrama de bloques la implementación el sistema completo se muestra en la Figura \ref{fig:B1_architecture} y el Código de la implementación en \ref{cod:chaotic_map}.
         
         \begin{figure}[hbtp]
             \caption{Diagrama de bloques del mapa caótico.}
@@ -408,6 +440,8 @@ a = \log_{2} ( \text{abs}( \beta ) )
             \label{fig:B1_architecture}
         \end{figure}
 
+        En la Figura \ref{fig:B2_fsm_cm} se muestra la máquina de estados que controla al sistema. El estado $S_{0}$ tiene la función de seleccionar la condición inicial direccionando el multiplexor a partir de la señal EN y esperar a que la señal de inicio START ocurra. El estado $S_{1}$ mantienen el direccionamiento del multiplexor y habilita el registro de salida que almacena la iteración actual atreves de la señal EN. El estado $S_{2}$ es similar en funcionamiento el estado $S_{0}$ con la única diferencia que direcciona el multiplexor al registro de salida para formar un lazo de retroalimentación para las futuras iteraciones. Finalmente el estado $S_{3}$ mantiene el multiplexor direccionando la retroalimentación y habilita el registro de salida para almacenar la iteración actual. 
+
         \begin{figure}[hbtp]
             \caption{Máquina de estados de mapa caótico.}
             \centering
@@ -415,55 +449,50 @@ a = \log_{2} ( \text{abs}( \beta ) )
             \label{fig:B2_fsm_cm}
         \end{figure}
 
+
+    \section{Multiplicador de una sola constante (SCM)}
+
+        Es bien sabido que los multiplicadores son estructuras que consumen una gran cantidad de recursos en dispositivos digitales, por esto esta razón, es muy común que los diseñadores realicen optimizaciones creando multiplicadores de una sola constante para reducirlos.
+
+        Al multiplicar por una constante conocida, podemos explotar las propiedades de la multiplicación binaria para obtener un circuito de hardware funcionalmente equivalente con menos recursos lógicos en comparación con conectar la constante en una entrada de un multiplicador genérico. La multiplicación constante puede implementarse como un conjunto de sumas, restas y desplazamientos binarios.
+
+            En los términos sencillos, el problema de la multiplicación constante puede describirse del siguiente modo: Dado un conjunto de constantes $T$, encontrar una realización suma-resta-desplazamiento de $t \cdot x$ para cada $t \in T$ donde $x$ es una variable. El objetivo es minimizar el número de sumadores.
+            
+            Por ejemplo supongamos que $T = \{29 \}$, lo que significa que queremos implementar $29 \cdot x$. Una solución sería $29x = 32x - 4x +x = 2^{5} - 2^{2}x + x = (x \ll 5) - (x \ll 2) + x$ donde $ \ll n $ denota un desplazamiento a la izquierda de $n$ bits. Ver Figura \ref{fig:J1_scm}.
+
         \begin{figure}[hbtp]
-            \caption{Simulación del mapa caótico en punto fijo.}
+            \caption{Ejemplo de multiplicación de una sola constante.}
             \centering
-            \includegraphics[width=0.8\linewidth]{B0_chaotic_map}
-            \label{fig:B0_chaotic_map}
+            \includegraphics[width=0.6\linewidth]{J1_scm}
+            \label{fig:J1_scm}
+        \end{figure}
+        
+        En \cite{Thong2011} se propone un algoritmo óptimo y bastante práctico para poder crear multiplicadores de una constaste de manera sencilla. Se requieren solo la constante y el número de bits fraccionarios, no obstante esta restringido a arquitecturas de máximo 32 bits y máximo 25 bits para la parte fraccionaria.
+
+        Se pueden crear a mano estos multiplicadores de una constante, no obstante encontrar una solución óptima para estos problemas es NP completo. NP es el conjunto de problemas en los que podemos comprobar en un tiempo razonable si una respuesta al problema es correcta o no y los problemas NP completos son los problemas más difíciles de todo NP. A grandes rasgos se buscan algoritmos que puedan resolver el problema de encontrar la solución de descomponer una multiplicación por una constante en sumas, restas y desplazamientos con la menor cantidad de recursos.
+
+    Si se tienen más de un multiplicador otro tipo de optimización que se puede realizar es analizar cuales corrimientos se comparten entre multiplicadores de una constante y reutilizar los corrimientos.
+
+    En este trabajo se diseñaron a mano multiplicadores de una constante para los parámetros $a_{n}$.
+
+    \section{Diseño de generador de semillas}
+
+        Hasta este punto, tenemos un mapa caótico implementado en FPGA capaz de generar números pseudoaleatorios en palabras de 16 bits cada dos ciclos de reloj. El problema es que las condiciones iniciales $x_{0}$ y $y_{0}$ son fijas, es decir, si algún atacante tuviera el conocimiento de las condiciones iniciales y conociera el mapa, este sería capaz de reproducir el sistema ya que el mapa por si mismo es determinista. Por esta razón se utiliza un TRNG para sembrar el generador de números pseudoaleatorios. Esto convierte al sistema en un generador de números aleatorios híbrido, aumenta la seguridad agregando una capa de complejidad y debido a que los TRNG extraen la aleatoriedad de elementos físicos, es muy difícil que alguien pueda adivinar las condiciones iniciales. 
+
+        De todos los TRNG presentados en este trabajo el ERO-TRNG fue el candidato seleccionado para servir como generador de semillas. Este TRNG tiene una metodología bien estructurada, un modelo estocástico bien estudiado y sus propiedades tanto de entropía, uso de área y consumo de potencia son buenas. Además tiene la ventaja de ser el TRNG con mayor compatibilidad y su repetibilidad entre familias de FPGA. El diseño no requiere ninguna intervención manual para obtener resultados satisfactorios. 
+
+        En la Figura \ref{fig:J2_trng} se muestra nuestra propuesta para extraer 64 bits aleatorios para generar la semilla del PRNG. Consiste en utilizar un registro de corrimiento a la derecha (RSR) que muestrear el ERO-TNG y comparar si los 64 bits extraídos se encuentran dentro del rango del dominio de atracción del mapa caótico utilizando los parametros del Atractor 1. Un contador de 5 bits de una sola vuelta asegura que se hayan generado 64 bits y no pasé una semilla incompleta.
+
+        \begin{figure}[hbtp]
+            \caption{Generador de semilla.}
+            \centering
+            \includegraphics[width=0.8\linewidth]{J2_trng}
+            \label{fig:J2_trng}
         \end{figure}
 
+        Cuando ambas condiciones se cumplen el registro de corrimiento se deshabilita, la semilla pasa a un registro de salida y la señal READY se habilita para avisar que hay una semilla disponible.
 
-
-
-
-    \section{Comunicación RS232}
-
-        \begin{figure}[hbtp]
-            \caption{Diagrama de bloques de transmisión RS232.}
-            \centering
-            \includegraphics[width=0.6\linewidth]{C1_architecture_rs232}
-            \label{fig:C1_architecture_rs232}
-        \end{figure}
-
-        \begin{figure}[hbtp]
-            \caption{Máquina de estados para la transmisión RS232.}
-            \centering
-            \includegraphics[width=0.8\linewidth]{C0_fsm_rs232}
-            \label{fig:C0_fsm_rs232}
-        \end{figure}	
-
-
-    \section{Single Constant Multiplier (SCM)}
-    \section{Diseño de TRNG}
-
-        \begin{figure}[hbtp]
-            \caption{Diagrama de bloques de TRNG.}
-            \centering
-            \includegraphics[width=0.9\linewidth]{D0_system}
-            \label{fig:D0_system}
-        \end{figure}
-
-        \begin{figure}[hbtp]
-            \caption{Máquina de estados de TRNG.}
-            \centering
-            \includegraphics[width=0.7\linewidth]{D1_fsm_system}
-            \label{fig:D1_fsm_system}
-        \end{figure}
-
-
-
-
-
+        La semilla se utiliza como condición inicial tanto $x_{0}$ como para $y_{0}$. Se utilizó la librería proporcionada por el \url{https://labh-curien.univ-st-etienne.fr/cryptarchi/HECTOR_TRNG_designs} que fue desarrollada durante el desarrollo del proyecto HECTOR (Hardware Enabled Crypto and Randomness \cite{Laban2016}.
 
     \section{Teoría de FPGAs en Xilinx}
         Para poder realizar la implementación del núcleo ERO es necesario utilizar las primitivas y macros propias del fabricante de FPGA que para este trabajo es Xilinx. Las primitivas son componentes de Xilinx que son nativos de la arquitectura a la que se dirige y los macros son elementos que se encuentran en las bibliotecas UniMacro y Xilinx Parameterized Macros, las cuales se utilizan para instanciar elementos que son complejos de instanciar simplemente usando las primitivas, después las herramientas de síntesis expanden automáticamente estas macros a sus primitivas subyacentes. Los métodos de diseño disponibles son la instanciación, la inferencia, el catalogo IP y el soporte de macros, no obstante para este diseño solo se utilizan la instanciación, la cual permite instanciar un componente directamente en el diseño y es útil si se desea controlar el uso, la implementación y la ubicación exactos de los bloques individuales y el soporte de macros, el cual, utilizando las librerías antes mencionadas permiten abstraer la complejidad de utilizar unicamente primitivas simples.
@@ -471,7 +500,7 @@ a = \log_{2} ( \text{abs}( \beta ) )
         Toda la información referente a los macros y primitivas se encuentran en la documentación oficial en el archivo llamado ``Vivado Design Suite 7 Series FPGA Libraries Guide''. Para poder utilizar las primitivas y las macros es necesario agregar la librería UniMacro en la cabecera del archivo VHDL de la siguiente manera: 
 
         \vspace{0.4cm}
-        \lstinputlisting[style = VHDL_TEXT, caption = Librería para primitivas de Xilix., label = cod:library]{codigos/vhdl_codes/primitivas/library.vhd}
+        \lstinputlisting[style = VHDL_TEXT, caption = Librería para primitivas de Xilinx., label = cod:library]{codigos/vhdl_codes/primitivas/library.vhd}
         % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/library.vhd}
 
 	    \subsection{Primitivas}
@@ -536,42 +565,5 @@ a = \log_{2} ( \text{abs}( \beta ) )
                 \lstinputlisting[style = VHDL_TEXT, caption = Primitava de OBUFDS., label = cod:obufds]{codigos/vhdl_codes/primitivas/obufds.vhd}
                 % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/obufds.vhd}
 
-	\begin{comment}
-
-	
-\begin{table}[htbp]
-  \centering
-  \caption{Resumen de los resultados de implementación de las TRNGs}
-\resizebox{0.5\linewidth}{!}{ 
-    \begin{tabular}{lll}
-   & Test name                 & Prop. \\
-   \hline
-1  & Frequency                 & 0.99  \\
-2  & Block frequency           & 0.99  \\
-3  & Runs                      & 1.00     \\
-4  & Longest run               & 1.0     \\
-5  & Rank                      & 0.98  \\
-6  & DFT                       & 0.99  \\
-7  & Non-overlapping templates & 1.00     \\
-8  & Overlapping templates     & 0.99  \\
-9  & Universal                 & 0.99  \\
-10 & Linear complexity         & 0.99  \\
-11 & Serial                    & 0.99  \\
-12 & Approximate Entropy       & 0.99  \\
-13 & Cumulative Sums           & 0.99  \\
-14 & Random excursions         & 0.99  \\
-15 & Random excursions variant & 1.00    
-    \end{tabular}
-}
-  \label{tab:asdasd}
-\end{table}
-
-
-\newpage
-	
-
-
-
-
-	\end{comment}
+                La libreria del proyecto HECTOR \cite{Laban2016} hace uso de estas libreria para describir el ERO-TRNG y parametríza el número de buffers para fácil modificación de los retardos.
 
