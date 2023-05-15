@@ -46,12 +46,12 @@
 
         \section{Pruebas estadísticas}
 
-        Utilizando una computadora con Windows 10 y el programa PuTTY como interfaz, el sistema corriendo se ejecutó por aproximadamente 20 minutos y se almacenaron alrededor 100 millones de bits aleatorios, lo que representan un archivo de aproximadamente 700,000 KB. Los datos se almacenaron como caracteres ASCII donde cada carácter contiene 8 bits aleatorios. Utilizando un programa de C se convirtieron los caracteres a números binarios para poder ingresarse con facilidad a la suite de pruebas estadísticas NIST \cite{Nist2010,Turan2018}. En la Tabla \ref{tab:resultados_NIST_100} se muestran los resultados de las pruebas estadísticas NIST del sistema a 100 millones de bits aleatorios y en la Tabla \ref{tab:resultados_NIST_1000} se muestran los resultados de las pruebas estadísticas NIST del sistema a 1000 millones de bits aleatorio.
+        Utilizando una computadora con Windows 10 y el programa PuTTY como interfaz, el sistema corriendo se ejecutó por aproximadamente 20 minutos y se almacenaron alrededor 100 millones de bits aleatorios, lo que representan un archivo de aproximadamente 700,000 KB. Los datos se almacenaron como caracteres ASCII donde cada carácter contiene 8 bits aleatorios. Utilizando un programa de C se convirtieron los caracteres a números binarios para poder ingresarse con facilidad a la suite de pruebas estadísticas NIST \cite{Nist2010,Turan2018}. En la Tabla \ref{tab:resultados_NIST_100} se muestran los resultados de las pruebas estadísticas NIST del sistema a 100 secuencias de un millón datos y en la Tabla \ref{tab:resultados_NIST_1000} se muestran los resultados de las pruebas estadísticas NIST a 1000 secuencias de un millón de bits aleatorio.
 
 \begin{table}[htbp]
   \centering
   %\resizebox{\linewidth}{!}{ 
-  \caption{Resultados de la aplicación de las pruebas NIST al TRNG híbrido implementado en aritmética de punto fijo con 100 millones de datos.}
+  \caption{Resultados de la aplicación de las pruebas NIST al TRNG híbrido implementado en aritmética de punto fijo con 100 secuencias de un millón de datos.}
     \begin{NiceTabular}{|l|c|c|}
     \CodeBefore
     \rowcolor{lightgray}{1}
@@ -97,7 +97,7 @@
 \begin{table}[htbp]
   \centering
   %\resizebox{\linewidth}{!}{ 
-  \caption{Resultados de la aplicación de las pruebas NIST al TRNG híbrido implementado en aritmética de punto fijo con 1000 millones de datos.}
+  \caption{Resultados de la aplicación de las pruebas NIST al TRNG híbrido implementado en aritmética de punto fijo con 1000 secuencias de un millón de datos.}
     \begin{NiceTabular}{|l|c|c|}
     \CodeBefore
     \rowcolor{lightgray}{1}
@@ -156,7 +156,7 @@
         \begin{figure}[hbtp]
             \caption{Histograma de resultados experimentales primeros 100 mil secuencias binarias.}
             \centering
-            \includegraphics[width=0.9\linewidth]{J4_distribucion}
+            \includegraphics[width=0.9\linewidth]{Z4_distribucion_normal}
             \label{fig:J4_distribucion}
         \end{figure}
 

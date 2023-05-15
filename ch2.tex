@@ -238,7 +238,7 @@
 	
 	    %\subsection{Estándares para el diseño y certificación de TRNG}
 	
-            Diferentes aplicaciones criptográficas requieren distintos niveles de seguridad, lo que ha llevado a la necesidad de estandarizar el uso de la criptografía para aplicaciones específicas. Ya existen muchos estándares que proporcionan algoritmos estándar para el cifrado como el AES \cite{Dworkin2001}  o funciones hash como el SHA-3 \cite{Dang2015}. Sin embargo, debido a que los TRNG son específicos de cada tecnología y plataforma, no es posible proporcionar un diseño estandarizado. Por esta razón, varias autoridades de certificación han desarrollado enfoques estándar para la certificación de TRNG.
+            Diferentes aplicaciones criptográficas requieren distintos niveles de seguridad, lo que ha llevado a la necesidad de estandarizar el uso de la criptografía para aplicaciones específicas. Ya existen muchos estándares que proporcionan algoritmos estándar para el cifrado como el AES \cite{Dworkin2001, JoanDaemen2020} o funciones hash como el SHA-3 \cite{Dang2015}. Sin embargo, debido a que los TRNG son específicos de cada tecnología y plataforma, no es posible proporcionar un diseño estandarizado. Por esta razón, varias autoridades de certificación han desarrollado enfoques estándar para la certificación de TRNG.
 
             El primer intento de certificación del diseño de TRNG se centró únicamente en comprobar las propiedades estadísticas de los números generados. Para ello se propusieron muchos conjuntos de pruebas, como FIPS 140-1, DIEHARD, NIST 800-22 \cite{Nist2010}, TestU01 entre otros. La idea detrás de las pruebas estadísticas de los TRNG es que deben producir una secuencia de salida que no se distinga de la secuencia ideal, la cual es estacionaria, uniformemente distribuida y con muestras independientes. Aunque las propiedades estadísticas pueden comprobarse fácilmente mediante pruebas estadísticas adecuadas, su independencia no puede ser verificada. El problema con este tipo de pruebas para TRNG es que consideran al generador como una caja negra y solo se tiene en cuenta su salida. Si se utiliza un buen generador de números pseudoaleatorios en lugar de un TRNG, su resultado superará todas las pruebas estadísticas que se le realicen debido a que están hechos de algoritmos que producen secuencias con propiedades estadísticas perfectas, aunque su resultado no es realmente aleatorio, solo parece serlo, ya que su comportamiento está definido y es predecible como resultado de los algoritmos utilizados.
 
@@ -478,11 +478,11 @@
 
         \subsection{Jitter del reloj}
 
-            Como se mencionó anteriormente, el jitter del reloj es una fuente confiable de aleatoriedad en dispositivos lógicos. El término ``jitter'' se refiere a la incertidumbre en la oscilación del reloj en el dominio del tiempo. En otras palabras, se trata de la variación a corto plazo de un evento con respecto a su posición ideal. Por lo general, se mide como la variación en el tiempo del cruce por cero (flanco ascendente o descendente) de la señal de reloj. Aunque esta definición proporciona una comprensión básica del concepto, cuantificar el jitter puede ser confuso debido a la variedad de técnicas de medición utilizadas en diferentes aplicaciones y a la falta de consenso entre los autores en la definición precisa del término.
+            Como se mencionó anteriormente, el jitter del reloj es una fuente confiable de aleatoriedad en dispositivos lógicos. El término ``jitter'' se refiere a la incertidumbre en la oscilación del reloj en el dominio del tiempo. En otras palabras, se trata de la variación a corto plazo de un evento con respecto a su posición ideal. Por lo general, se mide como la variación en el tiempo del cruce por cero (flanco ascendente o descendente) de la señal de reloj. Aunque esta definición proporciona una comprensión básica del concepto, cuantificar el jitter puede ser confuso debido a la variedad de técnicas de medición utilizadas en diferentes aplicaciones y a la falta de consenso entre los autores en la definición precisa del término \cite{Valtchanov2008}.
 
             Se supone que una señal de reloj ideal en dispositivos lógicos digitales es una señal rectangular con un ciclo de trabajo del 50\% y un periodo estable. Pero debido a diversos ruidos que afectan a los dispositivos electrónicos, la señal de reloj nunca es absolutamente estable y sus bordes se mueven de su posición estable. En otras palabras, la fase de la señal de reloj fluctúa. Esta fluctuación puede verse como un jitter del reloj en el dominio del tiempo y como un ruido de fase en el dominio de la frecuencia. En los dispositivos lógicos, la fluctuación de reloj suele ser no deseada, pero inevitable. Dado que el jitter afecta negativamente a las comunicaciones de alta frecuencia y a los sistemas de alta velocidad, se ha estudiado y caracterizado en profundidad.
 
-            En los sistemas analógicos, el jitter se caracteriza mejor en el dominio de la frecuencia. De este modo, los componentes de fase y amplitud pueden estudiarse y caracterizarse por separado. En cambio, en los sistemas digitales, las propiedades temporales del jitter son más importantes y, por tanto, el jitter se caracteriza en el dominio temporal.
+            En los sistemas analógicos, el jitter se caracteriza mejor en el dominio de la frecuencia. De este modo, los componentes de fase y amplitud pueden estudiarse y caracterizarse por separado. En cambio, en los sistemas digitales, las propiedades temporales del jitter son más importantes y, por tanto, el jitter se caracteriza en el dominio temporal \cite{Fischer2003}.
 
             El jitter del reloj en un sistema digital es una desviación del flanco de reloj real con respecto a un flanco de reloj ideal. Una señal de reloj ideal se define mediante la ecuación (\ref{eq:señal_periodica}), donde $t(n)$ representa el tiempo del periodo $n$-ésimo de una señal de reloj y $T$ es el periodo de una señal de reloj.
 
@@ -736,9 +736,9 @@
 
             Para un periodo de oscilación de 3 ns, sólo es necesario encontrar el tamaño de jitter de periodo de los osciladores en anillo. Mediciones del jitter de periodo para FPGAs de Xilinx Spartan-6 correspondientes a un periodo de 3 ns arrojan un $\sigma_{T} \approx 4ps$. Realizando los calculamos, el factor de división $K$ según la ecuación (\ref{eq:entropia_minima}) es $K = 80 000$.
 
-            La implementación del ERO-TRNG es sencilla y los resultados son repetibles sin ninguna intervención manual. La colocación manual de los osciladores de anillo proporciona un mejor control de la frecuencia oscilatoria resultante, pero no es necesaria para el diseño adecuado del TRNG. La colocación de los osciladores de anillo ayuda a conservar las mismas propiedades de los osciladores a lo largo de diferentes proyectos o diferentes iteraciones de un proyecto.
+            La implementación del ERO-TRNG es sencilla y los resultados son repetibles sin ninguna intervención manual. La colocación manual de los osciladores de anillo proporciona un mejor control de la frecuencia oscilatoria resultante, pero no es necesaria para el diseño adecuado del TRNG. La colocación de los osciladores de anillo ayuda a conservar las mismas propiedades de los osciladores a lo largo de diferentes proyectos o diferentes iteraciones de un proyecto \cite{Choi2021}.
 
-            El ERO-TRNG proporciona una tasa de bits de salida relativamente baja, porque $K$ tiene que ser relativamente alto para garantizar una entropía suficiente. Sin embargo, una vez configurado correctamente, este TRNG ofrece una gran seguridad gracias a su sólido modelo estocástico. Las pruebas integradas sólo tienen que comprobar que los osciladores de anillo oscilan y que no están bloqueados \cite{Bochard2010}.
+            El ERO-TRNG proporciona una tasa de bits de salida relativamente baja, porque $K$ tiene que ser relativamente alto para garantizar una entropía suficiente. Sin embargo, una vez configurado correctamente, este TRNG ofrece una gran seguridad gracias a su sólido modelo estocástico. Las pruebas integradas sólo tienen que comprobar que los osciladores de anillo oscilan y que no están bloqueados \cite{Bochard2010,Wold2008}.
 
             El consumo de energía del oscilador en anillo no depende de su tamaño (número de elementos), porque sólo se propaga un evento por el anillo. Por lo tanto, sólo un elemento del oscilador en anillo está activo (cambia de estado) a la vez, independientemente de la frecuencia del oscilador. El consumo de energía de todo el TRNG depende de las frecuencias de los osciladores en anillo utilizados.
 
@@ -796,7 +796,7 @@
 
             El TERO-TRNG genera bits aleatorios utilizando metaestabilidad oscilatoria, la Figura \ref{fig:A4_TERO_TRNG} muestra la implementación del TERO-TRNG.
 
-            El el flip-flop TFF representa el último bit del contador, que cuenta el número de oscilaciones de la celda TERO. Debido a la metaestabilidad oscilatoria del TERO, el número de oscilaciones es aleatorio. Para producir un flujo de bits aleatorios, el TERO debe reiniciarse periódicamente.
+            El el flip-flop TFF representa el último bit del contador, que cuenta el número de oscilaciones de la celda TERO. Debido a la metaestabilidad oscilatoria del TERO, el número de oscilaciones es aleatorio. Para producir un flujo de bits aleatorios, el TERO debe reiniciarse periódicamente \cite{Haddad2015}.
 	
             \begin{figure}[hbtp]
                 \caption{Arquitectura del núcleo TERO-TRNG.}
@@ -815,7 +815,7 @@
 
             El límite inferior para el número de oscilaciones garantiza que habrá suficientes oscilaciones de las que extraer la aleatoriedad. El límite superior, en cambio, evita los casos en los que las oscilaciones no se detienen antes de reiniciar la medición. Cumplir esta condición de forma fiable para varios dispositivos es difícil porque la célula TERO se comporta de forma diferente en cada dispositivo (incluso dentro de una misma familia) aunque se utilice la misma configuración.
 
-                La celda TERO en sí no requiere una gran superficie y sólo se necesitan unos pocos flip flops para los contadores y el núcleo TRNG, por lo que la superficie total ocupada es relativamente pequeña. La energía consumida por el TERO no depende del número de elementos del TERO, pero el consumo de energía de los flip flops puede aumentar con el incremento de la frecuencia de reloj. El TERO-TRNG requiere una colocación y enrutamiento manuales y el diseño no es repetible ni siquiera en dispositivos de la misma familia.
+                La celda TERO en sí no requiere una gran superficie y sólo se necesitan unos pocos flip flops para los contadores y el núcleo TRNG \cite{Bernard2018}, por lo que la superficie total ocupada es relativamente pequeña. La energía consumida por el TERO no depende del número de elementos del TERO, pero el consumo de energía de los flip flops puede aumentar con el incremento de la frecuencia de reloj. El TERO-TRNG requiere una colocación y enrutamiento manuales y el diseño no es repetible ni siquiera en dispositivos de la misma familia.
 				
 		\subsection{Self-timed ring based TRNG (STR-TRNG)}
 
@@ -844,7 +844,7 @@
 					\label{fig:A6_PLL_TRNG}
 				\end{figure}
 
-                El PLL-TRNG no requiere ninguna colocación o encaminamiento manual. Proporciona alta seguridad y no se ve afectado por el ruido determinista global (es decir, dependiente de los datos), ya que los PLL están físicamente aislados del resto de la FPGA. La tasa de bits de salida del PLL-TRNG también es considerable.
+                El PLL-TRNG no requiere ninguna colocación o encaminamiento manual. Proporciona alta seguridad y no se ve afectado por el ruido determinista global (es decir, dependiente de los datos), ya que los PLL están físicamente aislados del resto de la FPGA. La tasa de bits de salida del PLL-TRNG también es considerable \cite{Fischer2019}.
 
                 El diseño del PLL-TRNG es sencillo, repetible y puede automatizarse. Sin embargo, la elección de los parámetros del PLL no es trivial. Hay que respetar muchas restricciones, incluidas las físicas del fabricante del PLL  y las de seguridad del TRNG. 
 

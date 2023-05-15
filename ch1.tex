@@ -1,22 +1,90 @@
 \chapter{Introducción}
 
-     Los números aleatorios se utilizan en muchos ámbitos de nuestra vida. Los utilizamos para elegir quién gana la lotería, para determinar quién atacará primero en un partido de fútbol, para garantizar una partida justa en juegos de mesa y desempeñan un papel fundamental en la criptografía y la seguridad de la información. Para seleccionar al equipo atacante en un partido de fútbol, basta con lanzar una moneda. Sin embargo, para jugar a un juego de mesa se requieren más de dos valores aleatorios, por lo que utilizamos un dado. En cambio, la criptografía requiere algo más que tirar un dado para asegurar la protección  de nuestros datos en comunicaciones digitales o en transacciones bancarias. La seguridad de las comunicaciones es una parte fundamental de la vida moderna, en la que las personas envían correos electrónicos, realizan llamadas o envían mensajes a sus amigos y realiza transacciones en línea millones de veces al día. La sociedad confía que cada uno de estos procesos cotidianos sean seguros y confidenciales. La seguridad de las comunicaciones dependen de la capacidad de estos procesos para verificar la identidad de las personas que se comunican. La única forma de garantizar la seguridad es mediante la distribución de identidades privadas conocidas solo por el usuario, denominadas claves. Las claves privadas son números aleatorios únicos generados para cada usuario, que aseguran que personas malintencionadas no puedan suplantar a nadie y causar daño. La aleatoriedad de los números de las claves privadas es crucial para garantizar la seguridad de las conexiones. La capacidad de generar números aleatorios es, por tanto, una parte muy importante de la seguridad de los sistemas de comunicación.
+    Los números aleatorios se utilizan en muchos ámbitos de nuestra vida. Los utilizamos para elegir quién gana la lotería, para determinar quién atacará primero en un partido de fútbol, para garantizar una partida justa en juegos de mesa y desempeñan un papel fundamental en la criptografía y la seguridad de la información. Para seleccionar al equipo atacante en un partido de fútbol, basta con lanzar una moneda. Sin embargo, para jugar a un juego de mesa se requieren más de dos valores aleatorios, por lo que utilizamos un dado. En cambio, la criptografía requiere algo más que tirar un dado para asegurar la protección de nuestros datos en comunicaciones digitales o en transacciones bancarias. La seguridad de las comunicaciones es una parte fundamental de la vida moderna, en la que las personas envían correos electrónicos, realizan llamadas o envían mensajes a sus amigos y realiza transacciones en línea millones de veces al día. La sociedad confía que cada uno de estos procesos cotidianos sean seguros y confidenciales. La seguridad de las comunicaciones dependen de la capacidad de estos procesos para verificar la identidad de las personas que se comunican. La única forma de garantizar la seguridad es mediante la distribución de identidades privadas conocidas solo por el usuario, denominadas claves. Las claves privadas son números aleatorios únicos generados para cada usuario, que aseguran que personas malintencionadas no puedan suplantar a nadie y causar daño. La aleatoriedad de los números de las claves privadas es crucial para garantizar la seguridad de las conexiones. La capacidad de generar números aleatorios es, por tanto, una parte muy importante de la seguridad de los sistemas de comunicación.
 
-    Los números aleatorios tienen una amplia variedad de aplicaciones. Se utilizan en simulaciones a computadora de fenómenos naturales, como en el modelado de la colisión de partículas en física nuclear y en el análisis logístico de pasajeros en aeropuertos en investigación operativa. También son útiles en el muestreo estadístico cuando no es práctico analizar todos los casos posibles. Los números aleatorios son una buena fuente de datos para probar la efectividad de los algoritmos de computadora y son cruciales para el funcionamiento de los algoritmos aleatorios. Además, se utilizan en análisis numérico y en la estética, donde agregar un poco de aleatoriedad hace que los gráficos generados por computadora y la música parezcan más vivos. En algunos casos, es importante tomar decisiones completamente imparciales y la aleatoriedad es esencial en las estrategias óptimas de la teoría de juegos. Ejecutivos y profesores universitarios recurren a estas estrategias con frecuencia, tirando una moneda o lanzando dardos. \cite{Knuth2014}. 
+    Los números aleatorios tienen una amplia variedad de aplicaciones. Se utilizan en simulaciones a computadora de fenómenos naturales, como en el modelado de la colisión de partículas en física nuclear y en el análisis logístico de pasajeros en aeropuertos en investigación operativa. También son útiles en el muestreo estadístico cuando no es práctico analizar todos los casos posibles. Los números aleatorios son una buena fuente de datos para probar la efectividad de los algoritmos de computadora y son cruciales para el funcionamiento de los algoritmos aleatorios. Además, se utilizan en análisis numérico y en la estética, donde agregar un poco de aleatoriedad hace que los gráficos generados por computadora y la música parezcan más vivos. En algunos casos, es importante tomar decisiones completamente imparciales y la aleatoriedad es esencial en las estrategias óptimas de la teoría de juegos. Ejecutivos y profesores universitarios recurren a estas estrategias con frecuencia, tirando una moneda o lanzando dardos \cite{Knuth2014}. 
 
     En un sistema criptográfico, se utilizan generadores de números aleatorios o Random Number Generators (RNG), no sólo para generar claves criptográficas, sino también para generar números de un solo uso (nonces), valores de relleno, vectores de inicialización, desafíos y máscaras aleatorias para la protección contra ataques de canal lateral \cite{Petura2016}.
 
-    A pesar de que hay muchas aplicaciones diferentes de los números aleatorios, todos comparten dos requisitos básicos: buenas propiedades estadísticas, concretamente una distribución de probabilidad uniforme donde cada valor de cualquier número aleatorio tenga la misma probabilidad de aparecer, e imprevisibilidad de los números aleatorios. Los números aleatorios, especialmente los utilizados para parámetros secretos como las claves, deben ser impredecibles para evitar que un atacante pueda calcular valores futuros o anteriores a partir de los datos ya generados y capturados. En los diseños modernos, se requieren algunas características adicionales: el generador debe ser intrínsecamente seguro, robusto y resistente a los ataques y probado en línea mediante pruebas específicas del generador \cite{Badrignans2011}. 
+    A pesar de que hay muchas aplicaciones diferentes de los números aleatorios, todos comparten dos requisitos básicos: buenas propiedades estadísticas, concretamente una distribución de probabilidad uniforme donde cada valor de cualquier número aleatorio tenga la misma probabilidad de aparecer, e imprevisibilidad de los números aleatorios. Los números aleatorios, especialmente los utilizados para parámetros secretos como las claves, deben ser impredecibles para evitar que un atacante pueda calcular valores futuros o anteriores a partir de los datos ya generados y capturados. En los diseños modernos, se requieren algunas características adicionales: el generador debe ser intrínsecamente seguro, robusto y resistente a los ataques y probado en línea mediante pruebas específicas del generador \cite{Badrignans2011}. Los números aleatorios son una herramienta valiosa y versátil que se utiliza en prácticamente todos los ámbitos de la ciencia y la tecnología y su importancia en la seguridad criptografía no puede ser subestimada.
 
-    En resumen, los números aleatorios son una herramienta valiosa y versátil que se utiliza en prácticamente todos los ámbitos de la ciencia y la tecnología y su importancia en la seguridad criptografía no puede ser subestimada.		
-	
-\cite{Jun1999}
+    En 1999, Intel introdujo el generador de números aleatorios basado en silicio \cite{Jun1999}, ese RNG fue el primero de la familia de primitivos de Intel, lanzado para la protección de datos y comunicaciones dentro del hardware del PC. Desde ese entonces muchos científicos han buscado la manera de crear mejores sistemas integrados que generen números aleatorios para proteger los datos de los usuarios. En este esfuerzo se ha desarrollado toda una metodología para analizar, categorizar y evaluar los RNGs. Agencias de estandarización como la NIST (National Institute of Standards and Technology) \cite{Turan2018} en Estados Unidos o la BSI (Federal Office for Information Security) \cite{AIS2011} en Alemania han creado una serie documentaciones, recomendaciones y pruebas estadísticas para evaluar los generadores de números aleatorios.
+
+
+
+    En este trabajo nos enfocaremos en los generadores que pueden implementarse en sistemas digitales y en específico en FPGAs. 
+
+    En \cite{Badrignans2011} se presenta toda la teoría necesaria para comprender las características principales que se tienen que considerar cuando se habla de generadores de números aleatorios. Cosas como el uso de recursos, la velocidad de salida y la automaticen del diseño son 
+
+ Este generador estaba basado en la extracción de aleatoriedad del ruido térmico y utilizaba un postprocesamiento digital basado en un corrector de Von Newmann.
+
+
+    Algoritmo de cifrado basado de mapas caóticos 2D acoplados \cite{Liu2020}
+
+    Para evaluar los TRNG \cite{Schindler2003}
+
+    Simulación de cosas caóticas \cite{Parker2012}
+
+   Algoritmo de cifrado de imágenes utilizando el mapa caótico de Lorenz \cite{AlHazaimeh2017}.
+
+   Cifrado de imagen a color utilizando los mapas caóticos 2d de Hénon y Chebyshev para generar la llave dinámica del algoritmo AES. \cite{Li2013}
+
+    Los TRNG se utilizan para cifrar imágenes, utilizando osciladores de anillo y como núcleo y una FPGA se cifraron diversas imágenes. \cite{Sivaraman2020}
+
+    Cifrado de una imagen utilizando el mapa logístico \cite{Pareek2006}
+
+    Se utilizaron diversos mapas caótico implementados en un microcontrolador PIC y la función mod 256 para extraer números pseudoaleatorios y cifrar imágenes. \cite{GarciaGuerrero2020}
+
+   Esquema para cifrar imágenes utilizando un mapa caótico de dos dimensiones \cite{Kadir2010}.
+
+    Algoritmo de cifrado de imágenes basado en un mapa caótico \cite{Liu2016}
+
+    Esquema de cifrado de imágenes basado en un mapa caótico \cite{Wong2008}
+
+    TRNG basado en caos implementado en FPGA, LUTs 12383, registros 134883, DSP 145  con el método de sincronización. Pasa todas las pruebas NIST  \cite{Liao2022}.
+
+    
+
+    Co-diseño para la generación de secuencias muy largas utilizando el TRNG-TERO y los SOC internos de una Zynq FPGA, pasa todas las pruebas NIST \cite{HernandezMorales2022}.
+
+    
+    Sistema caótico de 4D, pasa las pruebas NIST y se utiliza para cifrar una imagen \cite{Vaidyanathan2018}
+
+   
+
+
+
+   Se están estudiando nuevos mapas caóticos sin puntos fijos \cite{GarciaGrimaldo2021}
+
+   
+
+
+   Utiliza varios mapa caóticos para hacer generadores de números pseudo aletorios y los implementa en FPGA, pasan las pruebas NIST y analiza cual utiliza menos recursos y tienen la mejor velocidad de salida, el cual fue el Bernoullu shift map, utiliza 575 LUTs, 108 registros y tiene una velocidad de salida de 7.389 Mbit/s   \cite{Fraga2017}
+
+   
+
+   Utiliza un sistema hipercaótico de 5 dimensiones y el método numérico de forward Euler, trapezoidal, y Runge-Kutta de cuarto orden para discretizar y resolver el sistema, tiene una velocidad de salida de 416 Mbit/s y utiliza 1112 registros, 1648 LUTs  \cite{Vaidyanathan2021}.
+   
+
+   TRNG en FPGA utilizando retardos en osciladores de anillo, utiliza un postprocesamiento corrector Von Neumann, pasa todas las pruebas NIST, utiliza 528 slices de una Xilinx Spartan 3-A y tiene una velocidad de salida de 6 Mbit/s \cite{Anandakumar2020}.
+
+   
+
+   TRNG en FPGA utilizando basado en PLLs y osciladores de anillo pero tiene portabilidad y le comprobaron su funcionamiento a variaciones de temperatura y de voltaje, utiliza 56 LUTs y 19 Registros y tiene una velocidad de salida de 100 Mbit/s \cite{Wang2021}.
+
+    
+
+    TRNG en FPGA COSO, utilizo una Xilinx Spartan 7, paso las pruebas estadísticas AIS-31, las NIST y tuvo una velocidad de salida de 1.47 Mbit/s. \cite{Peetermans2021}
+
+
+
+
 
 	\section{Objetivos}
 	
 		\subsection{Objetivo general}
 			\begin{itemize}
-				\item Diseño e implementación en FPGA de un TRNG híbrido para la generación de secuencias muy largas.
+				\item Diseñar e implementar en FPGA un TRNG híbrido para la generación de secuencias muy largas.
 			\end{itemize}
 		
 		\subsection{Objetivos específicos}
@@ -24,5 +92,5 @@
                 \item Investigar el estado del arte de diferentes generadores de números aleatorios.
                 \item Estudiar los diferentes tipos de generadores de números aleatorios y analizar sus características principales.
                 \item Estudiar la teoría de los mapas caóticos y su utilidad en generadores de números aleatorios.
-                \item Diseñar un generador de números aleatorios híbrido utilizando un TRNG como generador de semillas y un mapa caótico para el postprocesamiento.
+                \item Diseñar un generador de números aleatorios híbrido utilizando un TRNG como generador de semillas y un mapa caótico para realizar un postprocesamiento que mejore sus características estadísticas.
 			\end{itemize}

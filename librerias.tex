@@ -61,6 +61,15 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}					% Capitulos y secciones en minusculas
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 
+% Define the chapter format
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\chaptertitlename\ \thechapter}
+  {0ex}
+  {\titlerule\vspace{1.5ex}\filleft}
+  [\vspace{1ex}\titlerule] % Espacio después del título del capítulo
+
 \fancypagestyle{normalstyle}{%
   \fancyhf{}													% Reinicial estilos de header y footer
 	\fancyhead[LE,RO]{\thepage}
