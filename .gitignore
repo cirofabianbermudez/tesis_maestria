@@ -6,6 +6,9 @@ excalidraw/
 ## C executables
 *.exe
 
+## No ignorar archivo pdf final
+!main.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
