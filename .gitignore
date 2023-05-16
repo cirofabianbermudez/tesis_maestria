@@ -2,6 +2,7 @@
 .obsidian/
 bibliografia/
 excalidraw/
+documentos_examen_grado/
 
 ## C executables
 *.exe
@@ -30,7 +31,6 @@ excalidraw/
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
-*.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
 .pdf
