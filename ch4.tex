@@ -1,5 +1,7 @@
 \chapter{Implementación}
 
+    En este capítulo se describen los pasos para diseñar un mapa caótico y un ERO-TRNG en FPGA para generar bits aleatorios que servirán como semilla a las condiciones del mapa. Se analiza cómo seleccionar el tamaño de palabra de punto fijo utilizando un simulador en C, cómo mejorar el uso de recursos con multiplicadores de una constante y cómo seleccionar el rango valido de la semilla utilizando el domino de atracción del mapa caótico.
+
     \section{Aritmética de punto fijo}
         
         Cuando se necesita trabajar con números de punto decimal en dispositivos digitales se puede optar por utilizar aritmética de punto fijo o aritmética de punto flotante. La aritmética de punto fijo en comparación de la de punto flotante tiene la ventaja de ser más rápida y utilizar menos recursos, sin embargo, tiene la desventaja de tener un rango de uso específico el cual se tienen que establecer al principio del diseño y el cual no puede modificarse posteriormente. Por el contrario la aritmética de punto flotante tienen un mayor rango dinámico y resulta útil cuando los algoritmos tienen una complejidad alta. 

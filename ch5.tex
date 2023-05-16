@@ -1,5 +1,7 @@
 \chapter{Resultados experimentales}
 
+    En este capítulo se presentan los resultados obtenidos de la implementación del TRNG híbrido, uso de recursos, velocidad de salida y pruebas estadísticas.
+
     \section{Comunicación RS232}
 
     Una vez implementado el generador de semillas y el mapa caótico es necesario poder transmitir la información para su posterior análisis. Para esto se realizó la implementación de una comunicación RS232 con un baudrate a 15200 sin bit de paridad. Como solo es necesario transmitir datos del sistema a una computadora  solo se implementó la transmisión. En la Figura \ref{fig:C1_architecture_rs232} se muestra el diagrama a bloques de la transmisión y en la Figura \ref{fig:C0_fsm_rs232} el diagrama de la maquina de estados que controla la transmisión.

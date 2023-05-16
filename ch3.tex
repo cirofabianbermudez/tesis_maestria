@@ -1,8 +1,10 @@
 \chapter{Mapas caóticos}
+    
+    En este capítulo se estudiarán los mapas caóticos utilizando como ejemplo el mapa logístico para entender cómo produce el caos y las diferentes técnicas para ver de manera cualitativa este fenómeno.
 
     \section{Definición de caos}
     
-        Una manera sencilla de definir el caos sin la necesidad de introducir conceptos muy complicados es como un comportamiento aperiódico, aparentemente impredecible, en sistemas deterministas los cuales presentan extrema sensibilidad a las condiciones iniciales, el más mínimo cambio en la condición inicial produce un resultado muy diferente. \cite{Strogatz1994}
+        Una manera sencilla de definir el caos sin la necesidad de introducir conceptos muy complicados es como un comportamiento aperiódico, aparentemente impredecible, en sistemas deterministas los cuales presentan extrema sensibilidad a las condiciones iniciales, el más mínimo cambio en la condición inicial produce un resultado muy diferente \cite{Strogatz1994}.
 
         Según \cite{Sprott2003} los sistemas caóticos tienen las siguientes características:
 
@@ -35,7 +37,7 @@
 
     \section{Mapa logístico}
 
-        Cuando nos encontramos con un fenómeno complejo como el caos, que se manifiesta en diversas situaciones, es útil adoptar un enfoque que permita identificar y estudiar el sistema más simple que lo ejemplifica. En este sentido, el \emph{mapa logístico} representa el sistema matemático caótico más sencillo, ya que utiliza únicamente una variable y un parámetro de control. Las soluciones exactas de este sistema pueden obtenerse mediante álgebra y su representación gráfica facilita su visualización. Este modelo presenta muchas similitudes con sistemas caóticos más complejos, lo que lo convierte en un candidato perfecto para su estudio. De hecho, ha sido utilizado para modelar fenómenos en diversos campos como la ecología, oncología y finanzas.\cite{Sprott2003}
+        Cuando nos encontramos con un fenómeno complejo como el caos, que se manifiesta en diversas situaciones, es útil adoptar un enfoque que permita identificar y estudiar el sistema más simple que lo ejemplifica. En este sentido, el \emph{mapa logístico} representa el sistema matemático caótico más sencillo, ya que utiliza únicamente una variable y un parámetro de control. Las soluciones exactas de este sistema pueden obtenerse mediante álgebra y su representación gráfica facilita su visualización. Este modelo presenta muchas similitudes con sistemas caóticos más complejos, lo que lo convierte en un candidato perfecto para su estudio. De hecho, ha sido utilizado para modelar fenómenos en diversos campos como la ecología, oncología y finanzas \cite{Sprott2003}.
 
         La ecuación que define al mapa logístico se puede formular partiendo del modelo de crecimiento exponencial en tiempo discreto que se muestra en la ecuación (\ref{eq:crecimiento_exponencial}), donde $A$ es la tasa de crecimiento.
 
@@ -213,7 +215,7 @@
                     Cuando $A$ aumenta más allá del punto de acumulación, se desencadena el caos. El período es infinitamente largo y regiones finitas del intervalo unitario son visitadas por la órbita. Sin embargo, existen infinitas ventanas (rangos de $A$) de periodicidad. Todos los periodos están representados, pero la anchura de la ventana disminuye a medida que aumenta el periodo. Cada ventana de periodicidad aparece abruptamente a medida que $A$ aumenta y contiene su propia ruta de duplicación de periodos de vuelta al caos con el mismo número de Feigenbaum. Por ejemplo, la ventana prominente de período 3 comienza en $A = 1 + = 3.82842712\ldots$, aunque la demostración es difícil. La órbita de período 3 es especial, porque Sarkovskii y más tarde Li y Yorke (1975) demostraron independientemente que un mapa continuo unidimensional con una órbita de período 3 para un valor de parámetro particular tiene órbitas de todos los períodos (incluido el infinito) para ese parámetro y, por lo tanto, será caótico si todas esas órbitas son inestables. Lo contrario no es cierto, los sistemas caóticos no necesitan tener una órbita de período 3. Cada período superior a 3 ocurre más de una vez. Por ejemplo, hay dos ventanas de período 4, tres ventanas de período 5, cinco ventanas de período 6, etc. Todo el comportamiento puede resumirse en un diagrama de bifurcación como el de la Figura \ref{fig:F4_bifurcation}. Este diagrama representa todos los valores posibles de $x$ en el estado final después de que los transitorios iniciales hayan desaparecido en función del parámetro de control $A$. Los puntos de bifurcación, son evidentes.
 
                     \begin{figure}[hbtp]
-                        \caption{Diagrama de bifurcación de mapa logístico.}
+                        \caption{Diagrama de bifurcación de mapa logístico \cite{Parker2012}.}
                         \centering
                         \includegraphics[width=0.6\textwidth]{F4_bifurcation}
                         \label{fig:F4_bifurcation}
