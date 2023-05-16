@@ -7,18 +7,18 @@
     Una vez implementado el generador de semillas y el mapa caótico es necesario poder transmitir la información para su posterior análisis. Para esto se realizó la implementación de una comunicación RS232 con un baudrate a 15200 sin bit de paridad. Como solo es necesario transmitir datos del sistema a una computadora  solo se implementó la transmisión. En la Figura \ref{fig:C1_architecture_rs232} se muestra el diagrama a bloques de la transmisión y en la Figura \ref{fig:C0_fsm_rs232} el diagrama de la maquina de estados que controla la transmisión.
 
         \begin{figure}[hbtp]
-            \caption{Diagrama de bloques de transmisión RS232.}
             \centering
             \includegraphics[width=0.6\linewidth]{C1_architecture_rs232}
+            \caption{Diagrama de bloques de transmisión RS232.}
             \label{fig:C1_architecture_rs232}
         \end{figure}
 
         Se eligió no transmitir el bit de paridad para que los paquetes enviados sean fáciles de procesar, además esto aumenta un poco la velocidad de transmisión ya que se manda un bit menos, y para nuestro caso, en el que se requieren transmitir 100 millones de bits aleatorios es un ahorro significativo. 
 
         \begin{figure}[hbtp]
-            \caption{Máquina de estados para la transmisión RS232.}
             \centering
             \includegraphics[width=0.8\linewidth]{C0_fsm_rs232}
+            \caption{Máquina de estados para la transmisión RS232.}
             \label{fig:C0_fsm_rs232}
         \end{figure}	
 
@@ -27,9 +27,9 @@
         De manera que el sistema completo se muestra en la Figura \ref{fig:D0_system}. Este consiste en el generador de semillas aleatorios utilizando el ERO-TRNG como núcleo, el mapa caótico el cual calcula cada dos ciclos de reloj una iteración nueva, la operación mod 256 para extraer 16 bits aleatorios del mapa, la comunicación RS232 en conjunto un multiplexor para mandar paquetes de 8 bits y una maquina de estados cuyo diagrama se muestra en la Figura \ref{fig:D1_fsm_system}, que controla y sincroniza todo el sistema.
 
          \begin{figure}[hbtp]
-            \caption{Diagrama de bloques de TRNG híbrido.}
             \centering
             \includegraphics[width=0.9\linewidth]{D0_system}
+            \caption{Diagrama de bloques de TRNG híbrido.}
             \label{fig:D0_system}
         \end{figure}
 
@@ -40,9 +40,9 @@
        Si la señal BUTTON se queda activa este proceso se vuelve cíclico y se generan tantos bits aleatorios cómo el usuario desee.
 
        \begin{figure}[hbtp]
-            \caption{Máquina de estados de TRNG híbrido.}
             \centering
             \includegraphics[width=0.7\linewidth]{D1_fsm_system}
+            \caption{Máquina de estados de TRNG híbrido.}
             \label{fig:D1_fsm_system}
         \end{figure}
 
@@ -148,17 +148,17 @@
  
 
         \begin{figure}[hbtp]
-            \caption{Distribución de 100 millones de palabras de 16 bits experimentales.}
             \centering
             \includegraphics[width=0.8\linewidth]{J3_distribucion}
+            \caption{Distribución de 100 millones de palabras de 16 bits experimentales.}
             \label{fig:J3_distribucion}
         \end{figure}
 
 
         \begin{figure}[hbtp]
-            \caption{Histograma de resultados experimentales primeros 100 mil secuencias binarias.}
             \centering
             \includegraphics[width=0.9\linewidth]{Z4_distribucion_normal}
+            \caption{Histograma de resultados experimentales primeros 100 mil secuencias binarias.}
             \label{fig:J4_distribucion}
         \end{figure}
 

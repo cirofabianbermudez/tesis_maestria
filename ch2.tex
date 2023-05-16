@@ -1,6 +1,6 @@
-\chapter{Random Number Generators (RNGs)}
+\chapter{Generadores de números aleatorios (RNGs)}
 
-    En este capitulo se presentan los conceptos necesarios para comprender cómo funcionan las diferentes clases de generadores de números aleatorios, sus fuentes de aleatoriedad, sus principales características y cuales son factibles para su uso en FPGA.
+    En este capitulo se presentan los conceptos necesarios para comprender cómo funcionan las diferentes clases de generadores de números aleatorios, sus fuentes de aleatoriedad, sus principales características y cuales son factibles para implementación en FPGA.
 
    
     \section{Parámetros de evaluación de los TRNG}
@@ -181,18 +181,18 @@
             En la práctica, una señal de reloj real no alcanza siempre múltiplos enteros de su período ideal, sino que sus flancos fluctúan alrededor de este valor debido al jitter. Esta variación es causada por diversos fenómenos físicos, como el ruido térmico, el ruido de la fuente de alimentación y el ruido electromagnético ambiental, entre otros. La Figura \ref{fig:F9_jitter} muestra cómo se ve una señal de reloj afectada por el jitter.
 
             \begin{figure}[hbtp]
-                \caption{Jitter del reloj.}
                 \centering
                 \includegraphics[width=0.8\textwidth]{F9_jitter}
+                \caption{Jitter del reloj.}
                 \label{fig:F9_jitter}
             \end{figure}
                 
             La Figura \ref{fig:F10_fluctuaciones} muestra la causa principal del jitter en los circuitos digitales. Los circuitos digitales utilizan un nivel de referencia, generalmente ubicado en el centro del rango de voltaje de funcionamiento, para detectar los flancos de reloj. Es importante que este nivel de referencia sea lo más estable posible, pero en la práctica sufre fluctuaciones debido a diversos tipos de ruido. Cuando el nivel de referencia se desplaza, los flancos del reloj se detectan antes o después de lo previsto, lo que resulta en una variación temporal conocida como jitter de reloj.
 
             \begin{figure}[hbtp]
-                \caption{Fluctuaciones del nivel de referencia originadas por ruidos analógicos que provocan jitter del reloj en los circuitos digitales. \cite{Petura2019}}
                 \centering
                 \includegraphics[width=0.8\textwidth]{F10_fluctuaciones}
+                \caption{Fluctuaciones del nivel de referencia originadas por ruidos analógicos que provocan jitter del reloj en los circuitos digitales. \cite{Petura2019}}
                 \label{fig:F10_fluctuaciones}
             \end{figure}
         
@@ -210,9 +210,9 @@
                 La Figura \ref{fig:F11_jitter_fase} ilustra este jitter para $n = 3.$. Para mayor claridad, sólo se muestra el jitter de fase de los flancos ascendentes, pero hay que tener en cuenta que el jitter de fase afecta a todos los flancos del reloj.
 
                 \begin{figure}[hbtp]
-                    \caption{Ilustración de la jitter de fase del segundo flanco ascendente de la señal de reloj. \cite{Petura2019}}
                     \centering
                     \includegraphics[width=0.8\textwidth]{F11_jitter_fase}
+                    \caption{Ilustración de la jitter de fase del segundo flanco ascendente de la señal de reloj. \cite{Petura2019}}
                     \label{fig:F11_jitter_fase}
                 \end{figure}
 
@@ -231,9 +231,9 @@
                 La Figura \ref{fig:F12_jitter_periodo} muestra el jitter de periodo. Podemos ver que los periodos reales cambian con el tiempo, a diferencia de los periodos ideales, que permanecen constantes.
 
                 \begin{figure}[hbtp]
-                    \caption{Ilustración de jitter de periodo de una señal de reloj real comparada con el reloj ideal.}
                     \centering
                     \includegraphics[width=0.8\textwidth]{F12_jitter_periodo}
+                    \caption{Ilustración de jitter de periodo de una señal de reloj real comparada con el reloj ideal.}
                     \label{fig:F12_jitter_periodo}
                 \end{figure}
 
@@ -251,9 +251,9 @@
                 Todas estas medidas de jitter están relacionadas entre sí, el jitter de periodo es la diferencia de primer orden del jitter de fase y el jitter ciclo a ciclo es la diferencia de primer orden del jitter de periodo. Por lo tanto, en general basta con medir sólo uno y calcular cualquier otro que pueda ser necesario. En la Figura \ref{fig:F13_jitter_ciclo} se muestra el jitter ciclo a ciclo.
 
                 \begin{figure}[hbtp]
-                    \caption{Ilustración de jitter de ciclo a ciclo.}
                     \centering
                     \includegraphics[width=0.8\textwidth]{F13_jitter_ciclo}
+                    \caption{Ilustración de jitter de ciclo a ciclo.}
                     \label{fig:F13_jitter_ciclo}
                 \end{figure}
 
@@ -262,9 +262,9 @@
                 El jitter del reloj suele tener dos componentes, ver la Figura \ref{fig:F14_jitter_componentes}, jitter aleatorio, causada por un fenómeno no determinista como el ruido térmico y jitter determinista, causada por algunos procesos deterministas.
 
                 \begin{figure}[hbtp]
-                    \caption{Composición del jitter del reloj.}
                     \centering
                     \includegraphics[width=0.6\textwidth]{F14_jitter_componentes}
+                    \caption{Composición del jitter del reloj.}
                     \label{fig:F14_jitter_componentes}
                 \end{figure}
 
@@ -285,9 +285,9 @@
                 El jitter del reloj se considera una buena fuente de aleatoriedad en los dispositivos digitales debido a que siempre está presente y contiene elementos aleatorios intrínsecos. Para generar números aleatorios a partir del jitter, es necesario digitalizarlo de alguna manera para producir bits aleatorios. El método más utilizado para extraer la aleatoriedad del jitter del reloj se basa en el muestreo del flanco de reloj con jitter. En la Figura \ref{fig:F17_extraccion_jitter} se muestra este método de extracción de aleatoriedad.
 
                 \begin{figure}[hbtp]
-                    \caption{Extracción de aleatoriedad de la señal de reloj con jitter mediante su muestreo en el flanco ascendente de la señal de reloj de referencia.}
                     \centering
                     \includegraphics[width=0.8\textwidth]{F17_extraccion_jitter}
+                    \caption{Extracción de aleatoriedad de la señal de reloj con jitter mediante su muestreo en el flanco ascendente de la señal de reloj de referencia.}
                     \label{fig:F17_extraccion_jitter}
                 \end{figure}
 
@@ -298,9 +298,9 @@
                 Uno de los TRNG que utiliza la acumulación de jitter es el TRNG basado en oscilador de anillo elemental (ERO-TRNG), propuesto y modelado en \cite{Baudet2010}. Su estructura interna se representa en la Figura \ref{fig:G0_ERO_TRNG_simple}. Consta de dos osciladores en anillo, un divisor de frecuencia y un flip-flop D.
 
                 \begin{figure}[hbtp]
-                    \caption{Elementary ring oscillator (ERO-TRNG).}
                     \centering
                     \includegraphics[width=0.8\textwidth]{G0_ERO_TRNG_simple}
+                    \caption{Elementary ring oscillator (ERO-TRNG).}
                     \label{fig:G0_ERO_TRNG_simple}
                 \end{figure}
 
@@ -313,9 +313,9 @@
             La metaestabilidad es la capacidad de un sistema para persistir en un estado ilegal durante un periodo de tiempo indefinido. Un ejemplo de metaestabilidad es el lanzamiento de una moneda, como se muestra en la Figura \ref{fig:F15_metaestabilidad}. Cuando se lanza una moneda, se espera que caiga sobre una de sus dos caras, las cuales representan estados legales. Sin embargo, cuando una moneda cae sobre su borde, el resultado del lanzamiento se vuelve incierto e ilegal, lo que se conoce como su estado metaestable. En contraste, cuando una moneda cae sobre alguna de sus caras, se encuentra en un estado estable. Para que una moneda permanezca en un estado metaestable, debe estar en un estado de equilibrio perfecto. La más mínima fuerza que se aplique hará que caiga sobre cualquiera de las dos caras.
             
             \begin{figure}[hbtp]
-                \caption{Metaestabilidad de un lanzamiento de moneda.}
                 \centering
                 \includegraphics[width=0.7\textwidth]{F15_metaestabilidad}
+                \caption{Metaestabilidad de un lanzamiento de moneda.}
                 \label{fig:F15_metaestabilidad}
             \end{figure}
 
@@ -333,9 +333,9 @@
                 En \cite{Varchola2010}, se introdujo el oscilador en anillo de efecto transitorio, transient effect ring oscillator (TERO), que utiliza la metaestabilidad oscilatoria para generar aleatoriedad. Consiste en un RS-latch modificado, que se establece periódicamente en un estado ilegal al establecerlo y reiniciarlo al mismo tiempo, violando de forma efectiva los tiempos de establecimiento y retención de dicho latch. La estructura interna de un TERO se muestra en la Figura \ref{fig:F16_internal_tero}.
 
                 \begin{figure}[hbtp]
-                    \caption{Estructura interna de un TERO}
                     \centering
                     \includegraphics[width=0.6\textwidth]{F16_internal_tero}
+                    \caption{Estructura interna de un TERO}
                     \label{fig:F16_internal_tero}
                 \end{figure}
 
@@ -416,9 +416,9 @@
                 PTG.1 es una clase de TRNG físico de baja seguridad destinado a aplicaciones que no son críticas para la seguridad. La Figura \ref{fig:E1_PTG1} muestra el diagrama de bloques de dicho generador y los puntos de prueba requeridos por la norma.
 
                 \begin{figure}[hbtp]
-                    \caption{Clase PTG.1 TRNG.}
                     \centering
                     \includegraphics[width=0.8\textwidth]{E1_PTG1}
+                    \caption{Clase PTG.1 TRNG.}
                     \label{fig:E1_PTG1}
                 \end{figure}
 
@@ -439,9 +439,9 @@
                 PTG.2 es una clase de TRNG físico, que puede utilizarse para generar claves criptográficas, nonces, semillas para DRNGs, etc. En comparación con la clase PTG.1 de baja seguridad, el TRNG PTG.2 debe garantizar el secreto de los números aleatorios producidos (su imprevisibilidad). La Figura \ref{fig:E2_PTG2} muestra la estructura interna y las pruebas necesarias para el TRNG PTG.2.
 
                 \begin{figure}[hbtp]
-                    \caption{Clase PTG.2 TRNG.}
                     \centering
                     \includegraphics[width=0.9\textwidth]{E2_PTG2}
+                    \caption{Clase PTG.2 TRNG.}
                     \label{fig:E2_PTG2}
                 \end{figure}
             
@@ -464,9 +464,9 @@
                 PTG.3 es una clase TRNG híbrida para TRNGs de alta seguridad. Los TRNG de esta clase no se basan únicamente en la seguridad proporcionada por la fuente de aleatoriedad, sino que añaden una segunda ancla de seguridad en forma de postprocesamiento criptográficamente seguro. Un TRNG híbrido es un TRNG compuesto por un TRNG físico, que vuelve a alimentar continuamente al RNG determinista. En este caso, el RNG determinista sirve como postprocesamiento para el TRNG físico que genera entropía. La Figura \ref{fig:E3_PTG3} muestra el diagrama de bloques de un TRNG híbrido de este tipo.
 
                 \begin{figure}[hbtp]
-                    \caption{Clase PTG.3 TRNG.}
                     \centering
                     \includegraphics[width=0.9\textwidth]{E3_PTG3}
+                    \caption{Clase PTG.3 TRNG.}
                     \label{fig:E3_PTG3}
                 \end{figure}
             
@@ -493,9 +493,9 @@
                 $\varphi$ es la función de transición de estado y $\psi$ es la función de salida
 
                 \begin{figure}[hbtp]
-                    \caption{Clase DRNG.1.}
                     \centering
                     \includegraphics[width=0.2\textwidth]{E4_DRG1}
+                    \caption{Clase DRNG.1.}
                     \label{fig:E4_DRG1}
                 \end{figure}
 
@@ -633,9 +633,9 @@
                 El ERO-TRNG se propuso y modeló en \cite{Baudet2010}. Dos osciladores en anillo idénticos forman la base del generador. Uno de ellos se utiliza para generar una señal de muestreo, que luego se utiliza para muestrear la salida del otro oscilador en anillo utilizando un flip-flop D (DFF). La frecuencia del oscilador de anillo de muestreo se divide por $K$ para obtener una frecuencia más baja de la señal de muestreo, lo que permitiría acumular el jitter del oscilador de anillo muestreado. La Figura \ref{fig:A1_ERO_TRNG} muestra una arquitectura del ERO-TRNG tal y como se implementa en FPGAs.
 					
 				\begin{figure}[hbtp]
-					\caption{Arquitectura del núcleo ERO-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A1_ERO_TRNG}
+					\caption{Arquitectura del núcleo ERO-TRNG.}
 					\label{fig:A1_ERO_TRNG}
 				\end{figure}
                 
@@ -666,9 +666,9 @@
 
                 El COSO-TRNG se propuso por primera vez en \cite{Kohlbrenner2004}. Utiliza dos osciladores de anillo implementados idénticamente como fuente de aleatoriedad. La Figura \ref{fig:A2_COSO_TRNG} muestra la estructura interna del COSO-TRNG.
 				\begin{figure}[hbtp]
-					\caption{Arquitectura del núcleo COSO-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A2_COSO_TRNG}
+					\caption{Arquitectura del núcleo COSO-TRNG.}
 					\label{fig:A2_COSO_TRNG}
 				\end{figure}
 
@@ -705,9 +705,9 @@
             El MURO-TRNG no requiere ninguna colocación o encaminamiento manual y su tasa de bits de salida, así como la tasa de entropía, son muy altas cuando se utiliza un número suficiente de osciladores de anillo. El consumo de energía de este TRNG es considerable debido al elevado número de osciladores.
 				
 				\begin{figure}[hbtp]
-					\caption{Arquitectura del núcleo MURO-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A3_MURO_TRNG}
+					\caption{Arquitectura del núcleo MURO-TRNG.}
 					\label{fig:A3_MURO_TRNG}
 				\end{figure}
 
@@ -719,9 +719,9 @@
             El el flip-flop TFF representa el último bit del contador, que cuenta el número de oscilaciones de la celda TERO. Debido a la metaestabilidad oscilatoria del TERO, el número de oscilaciones es aleatorio. Para producir un flujo de bits aleatorios, el TERO debe reiniciarse periódicamente \cite{Haddad2015}.
 	
             \begin{figure}[hbtp]
-                \caption{Arquitectura del núcleo TERO-TRNG.}
                 \centering
                 \includegraphics[width=0.7\linewidth]{A4_TERO_TRNG}
+                \caption{Arquitectura del núcleo TERO-TRNG.}
                 \label{fig:A4_TERO_TRNG}
             \end{figure}
 
@@ -742,9 +742,9 @@
                 Un anillo autotemporizado es un oscilador multievento sin colisiones de señales. La Figura \ref{fig:A5_STR_TRNG} muestra la implementación del SRT-TRNG.
 	
 				\begin{figure}[hbtp]
-					\caption{Arquitectura del núcleo STR-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A5_STR_TRNG}
+					\caption{Arquitectura del núcleo STR-TRNG.}
 					\label{fig:A5_STR_TRNG}
 				\end{figure}
 
@@ -758,9 +758,9 @@
 		\subsection{PLL based TRNG (PLL-TRNG)}
 				
 				\begin{figure}[hbtp]
-					\caption{Arquitectura del núcleo PLL-TRNG.}
 					\centering
 					\includegraphics[width=0.8\linewidth]{A6_PLL_TRNG}
+					\caption{Arquitectura del núcleo PLL-TRNG.}
 					\label{fig:A6_PLL_TRNG}
 				\end{figure}
 

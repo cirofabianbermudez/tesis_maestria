@@ -39,7 +39,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 (c:/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty)))
 (c:/texlive/2021/texmf-dist/tex/latex/tools/layout.sty)
 (c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
-No file main.aux.
+(./main.aux)
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 <imagenes//Inaoe.eps> <imagenes//Inaoep.eps> [1] (./main.aux) )

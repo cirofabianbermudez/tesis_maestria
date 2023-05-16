@@ -1,4 +1,4 @@
-\chapter{Implementación}
+\chapter{Implementación de TRNG híbrido}
 
     En este capítulo se describen los pasos para diseñar un mapa caótico y un ERO-TRNG en FPGA para generar bits aleatorios que servirán como semilla a las condiciones del mapa. Se analiza cómo seleccionar el tamaño de palabra de punto fijo utilizando un simulador en C, cómo mejorar el uso de recursos con multiplicadores de una constante y cómo seleccionar el rango valido de la semilla utilizando el domino de atracción del mapa caótico.
 
@@ -159,6 +159,7 @@
 
         \begin{figure}[hbtp]
             \centering
+            \caption{Diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
             \begin{subfigure}[b]{0.475\textwidth}
                 \centering
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G1_map1}
@@ -200,7 +201,6 @@
                 \caption{Atractor 6}    
                 \label{fig:mapa_6}
             \end{subfigure}
-            \caption{Diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
             \label{fig:multiples_atractores}
         \end{figure}
 
@@ -243,6 +243,7 @@
 
         \begin{figure}[hbtp]
             \centering
+            \caption{Dominio de atracción de diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
             \begin{subfigure}[b]{0.475\textwidth}
                 \centering
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H1_map1}
@@ -284,7 +285,6 @@
                 \caption{Atractor 6}    
                 \label{fig:mapa_6h}
             \end{subfigure}
-            \caption{Dominio de atracción de diferentes atractores caóticos del mapa bidimensional generados en aritmética de punto flotante.} 
             \label{fig:multiples_dominios}
         \end{figure}
 
@@ -389,9 +389,9 @@
      En el Código \ref{cod:A3} se muestra el diseño del simulador. Este cuenta con funciones para realizar la conversión de punto flotante a punto fijo, multiplicación en punto fijo con truncamiento y finalmente conversión de punto fijo a punto flotante. En la Figura \ref{fig:B0_chaotic_map} se muestra el resultado de la simulación en punto fijo del atractor. Ya sea con 1, 2 o 3 bits para la parte entera, el Atractor 1 se simuló para 1000 millones de iteraciones y este no se salió de la órbita caótica.
 
         \begin{figure}[h!]
-            \caption{Simulación del mapa caótico en punto fijo, Atractor 1.}
             \centering
             \includegraphics[width=0.8\linewidth]{B0_chaotic_map}
+            \caption{Simulación del mapa caótico en punto fijo, Atractor 1.}
             \label{fig:B0_chaotic_map}
         \end{figure}
 
@@ -400,9 +400,9 @@
         Simulando 100 millones iteraciones y generando palabras de 16 bits podemos ver la distribución de probabilidades de unos y ceros de cada palabra, en la Figura \ref{fig:J0_distribucion_exp} se muestra que la distribución es muy parecida a la ideal. Esto es lo esperado ya que los PRNG tienen por lo general buenas propiedades estadísticas.
 
         \begin{figure}[hbtp]
-            \caption{Distribución de 100 millones de palabras de 16 bits.}
             \centering
             \includegraphics[width=0.8\linewidth]{J0_distribucion_exp}
+            \caption{Distribución de 100 millones de palabras de 16 bits.}
             \label{fig:J0_distribucion_exp}
         \end{figure}
 
@@ -436,18 +436,18 @@
         Visto como diagrama de bloques la implementación el sistema completo se muestra en la Figura \ref{fig:B1_architecture} y el Código de la implementación en \ref{cod:chaotic_map}.
         
         \begin{figure}[hbtp]
-            \caption{Diagrama de bloques del mapa caótico.}
             \centering
             \includegraphics[width=0.9\linewidth]{B1_architecture}
+            \caption{Diagrama de bloques del mapa caótico.}
             \label{fig:B1_architecture}
         \end{figure}
 
         En la Figura \ref{fig:B2_fsm_cm} se muestra la máquina de estados que controla al sistema. El estado $S_{0}$ tiene la función de seleccionar la condición inicial direccionando el multiplexor a partir de la señal EN y esperar a que la señal de inicio START ocurra. El estado $S_{1}$ mantienen el direccionamiento del multiplexor y habilita el registro de salida que almacena la iteración actual atreves de la señal EN. El estado $S_{2}$ es similar en funcionamiento el estado $S_{0}$ con la única diferencia que direcciona el multiplexor al registro de salida para formar un lazo de retroalimentación para las futuras iteraciones. Finalmente el estado $S_{3}$ mantiene el multiplexor direccionando la retroalimentación y habilita el registro de salida para almacenar la iteración actual. 
 
         \begin{figure}[hbtp]
-            \caption{Máquina de estados de mapa caótico.}
             \centering
             \includegraphics[width=0.6\linewidth]{B2_fsm_cm}
+            \caption{Máquina de estados de mapa caótico.}
             \label{fig:B2_fsm_cm}
         \end{figure}
 
@@ -463,9 +463,9 @@
             Por ejemplo supongamos que $T = \{29 \}$, lo que significa que queremos implementar $29 \cdot x$. Una solución sería $29x = 32x - 4x +x = 2^{5} - 2^{2}x + x = (x \ll 5) - (x \ll 2) + x$ donde $ \ll n $ denota un desplazamiento a la izquierda de $n$ bits. Ver Figura \ref{fig:J1_scm}.
 
         \begin{figure}[hbtp]
-            \caption{Ejemplo de multiplicación de una sola constante.}
             \centering
             \includegraphics[width=0.6\linewidth]{J1_scm}
+            \caption{Ejemplo de multiplicación de una sola constante.}
             \label{fig:J1_scm}
         \end{figure}
         
@@ -486,9 +486,9 @@
         En la Figura \ref{fig:J2_trng} se muestra nuestra propuesta para extraer 64 bits aleatorios para generar la semilla del PRNG. Consiste en utilizar un registro de corrimiento a la derecha (RSR) que muestrear el ERO-TNG y comparar si los 64 bits extraídos se encuentran dentro del rango del dominio de atracción del mapa caótico utilizando los parametros del Atractor 1. Un contador de 5 bits de una sola vuelta asegura que se hayan generado 64 bits y no pasé una semilla incompleta.
 
         \begin{figure}[hbtp]
-            \caption{Generador de semilla.}
             \centering
             \includegraphics[width=0.8\linewidth]{J2_trng}
+            \caption{Generador de semilla.}
             \label{fig:J2_trng}
         \end{figure}
 
@@ -510,9 +510,9 @@
 		    \subsubsection{LUT1: 1-Bit Look-Up Table with General Output}
 	
                 \begin{figure}[hbtp]
-                    \caption{Esquemático de LUT1.}
                     \centering
                     \includegraphics[width=0.3\linewidth]{D2_lut1}
+                    \caption{Esquemático de LUT1.}
                     \label{fig:D2_lut1}
                 \end{figure}	
 	
@@ -541,9 +541,9 @@
             \subsubsection{OBUFDS: Differential Signaling Output Buffer}
 
                 \begin{figure}[hbtp]
-                    \caption{Esquemático de OBUFDS.}
                     \centering
                     \includegraphics[width=0.3\linewidth]{D3_obufds}
+                    \caption{Esquemático de OBUFDS.}
                     \label{fig:D3_obufds}
                 \end{figure}	
 

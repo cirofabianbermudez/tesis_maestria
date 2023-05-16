@@ -50,9 +50,9 @@
 
 
         \begin{figure}[hbtp]
-            \caption{Ejemplo de mapeo en una dimensión.}
             \centering
             \includegraphics[width=0.7\textwidth]{F0_mapdiagram}
+            \caption{Ejemplo de mapeo en una dimensión.}
             \label{fig:F0_mapdiagram}
         \end{figure}
 
@@ -73,9 +73,9 @@
        La no linealidad es cuadrática, debido a que el modelo se puede reescribir como $x_{n+1} = A x_{n} - A x_{n}^{2}$. El término cuadrático da una retroalimentación negativa no lineal y limita el crecimiento. La Figura \ref{fig:F1_logistic_curve} muestra la gráfica de la ecuación (\ref{eq:ecuacion_logistica}) con $A = 4$ llamada función logística o curva logística, la cual es una parábola.
 
         \begin{figure}[hbtp]
-            \caption{Gráfica de mapa logístico con $A = 4$.}
             \centering
             \includegraphics[width=0.6\textwidth]{F1_logistic_curve}
+            \caption{Gráfica de mapa logístico con $A = 4$.}
             \label{fig:F1_logistic_curve}
         \end{figure}
 
@@ -90,18 +90,18 @@
             Dado $x_{n+1} = f(x_{n})$ y una condición inicial $x_{0}$, trazar una línea vertical hasta que intersecte la gráfica $f$, esa altura es la salida $x_{1}$, en otras palabras dibujar una línea vertical desde $(x_{0}, 0) $ hasta $(x_{0}, x_{1})$. Después trazar una horizontal hasta intersectar con la linea diagonal $x_{n+1} = x_{n}$, es decir, dibujar una línea desde  $(x_{0}, x_{1}) $ hasta $(x_{1}, x_{1})$. Después trazar otra línea vertical hasta que intersecte la gráfica $f$ otra vez, una línea desde $(x_{1}, x_{1}) $ hasta $(x_{1}, x_{2})$. Repetir este proceso $n$ veces para generar los primeros $n$ puntos en la órbita.
 
             \begin{figure}[hbtp]
-                \caption{Diagrama de cobwebs de mapa logístico con $A = 2.8$ y $x_{0} = 0.2$.}
                 \centering
                 \includegraphics[width=0.6\textwidth]{F2_cobwebs_simple}
+                \caption{Diagrama de cobwebs de mapa logístico con $A = 2.8$ y $x_{0} = 0.2$.}
                 \label{fig:F2_cobwebs_simple}
             \end{figure}
 
             Para el mapa logístico con $1 < A < 3,$ todos los puntos inicales en el intervalo $0 < x_{0} < 1$ se aproximan al punto fijo $x^{*} = 1 - 1/ A $, aunque la solución puede oscilar a su alrededor antes de llegar al valor final. El comportamiento recuerda al de un péndulo simple que oscila alrededor de la vertical antes de que la fricción lo lleve a reposar en su posición final. Otra manera de visualizar este comportamiento es gráfica la serie de tiempo, $x_{n}$ contra $n$, como se ve en la Figura \ref{fig:F3_time_series}. Es importante hacer la aclaración que se dibujaron lineas entre cada iteración para una mejor visualización, pero los datos son discretos. 
 
             \begin{figure}[hbtp]
-                \caption{Serie de tiempo de mapa logístico con $A = 2.8$.}
                 \centering
                 \includegraphics[width=0.6\textwidth]{F3_time_series}
+                \caption{Serie de tiempo de mapa logístico con $A = 2.8$.}
                 \label{fig:F3_time_series}
             \end{figure}
 
@@ -123,9 +123,9 @@
                     Para $A = 3$, el punto fijo en $x^{*} = 1 - 1/A$ sigue existiendo, pero cambia de estable a inestable, convirtiéndose en un repulsor. Esta bifurcación se produce cuando la pendiente de la parábola en el punto fijo es igual a $-1$. Para $A > 3$ tenemos un crecimiento exponencial alejándonos del punto, en lugar de una caída exponencial hacia él. Como la pendiente es negativa, la solución oscila a ambos lados del punto fijo mientras se aleja, igual que en la ecuación (\ref{eq:crecimiento_exponencial}) con $ A < -1$. De ahí que la bifurcación en $A = 3$ se denomine flip. Sin embargo, el crecimiento no continúa para siempre. En su lugar, se acerca a una condición en la que cada iteración es la misma $x_{n} = x_{n+2} = x_{n+4}$ como se muestra en el diagrama de cobwebs de la Figura \ref{fig:F5_cobwebs_bifurcation}. 
 
                     \begin{figure}[hbtp]
-                        \caption{Diagrama de cobwebs de mapa logístico con $A = 3.2$ y $x_{0} = 0.1$.}
                         \centering
                         \includegraphics[width=0.6\textwidth]{F5_cobwebs_bifurcation}
+                        \caption{Diagrama de cobwebs de mapa logístico con $A = 3.2$ y $x_{0} = 0.1$.}
                         \label{fig:F5_cobwebs_bifurcation}
                     \end{figure}
 
@@ -215,9 +215,9 @@
                     Cuando $A$ aumenta más allá del punto de acumulación, se desencadena el caos. El período es infinitamente largo y regiones finitas del intervalo unitario son visitadas por la órbita. Sin embargo, existen infinitas ventanas (rangos de $A$) de periodicidad. Todos los periodos están representados, pero la anchura de la ventana disminuye a medida que aumenta el periodo. Cada ventana de periodicidad aparece abruptamente a medida que $A$ aumenta y contiene su propia ruta de duplicación de periodos de vuelta al caos con el mismo número de Feigenbaum. Por ejemplo, la ventana prominente de período 3 comienza en $A = 1 + = 3.82842712\ldots$, aunque la demostración es difícil. La órbita de período 3 es especial, porque Sarkovskii y más tarde Li y Yorke (1975) demostraron independientemente que un mapa continuo unidimensional con una órbita de período 3 para un valor de parámetro particular tiene órbitas de todos los períodos (incluido el infinito) para ese parámetro y, por lo tanto, será caótico si todas esas órbitas son inestables. Lo contrario no es cierto, los sistemas caóticos no necesitan tener una órbita de período 3. Cada período superior a 3 ocurre más de una vez. Por ejemplo, hay dos ventanas de período 4, tres ventanas de período 5, cinco ventanas de período 6, etc. Todo el comportamiento puede resumirse en un diagrama de bifurcación como el de la Figura \ref{fig:F4_bifurcation}. Este diagrama representa todos los valores posibles de $x$ en el estado final después de que los transitorios iniciales hayan desaparecido en función del parámetro de control $A$. Los puntos de bifurcación, son evidentes.
 
                     \begin{figure}[hbtp]
-                        \caption{Diagrama de bifurcación de mapa logístico \cite{Parker2012}.}
                         \centering
                         \includegraphics[width=0.6\textwidth]{F4_bifurcation}
+                        \caption{Diagrama de bifurcación de mapa logístico \cite{Parker2012}.}
                         \label{fig:F4_bifurcation}
                     \end{figure}
 
@@ -233,16 +233,16 @@
                     que no suelen coincidir. En consecuencia, en cada iteración se pierde un bit de información (un factor de 2) ya que no hay forma de saber de qué preimagen procede cada valor (decimos que el mapa es no invertible, siendo en este caso de dos a uno), en contraste con un mapa invertible (de uno a uno) en el que existe una preimagen única. Esta pérdida exponencial de información equivale al crecimiento exponencial de los errores en la condición inicial que caracteriza al caos. La no invertibilidad es necesaria para el caos en los mapas unidimensionales, pero no para los mapas en dimensiones superiores. El caos se puede mostrar en un diagrama de cobwebs, como en la Figura \ref{fig:F7_cobwebs}, o directamente en un gráfico de iteraciones sucesivas o serie de tiempo, como en la Figura \ref{fig:F8_time_series}.
 
                     \begin{figure}[hbtp]
-                        \caption{Diagrama de cobwebs de mapa logístico con $A = 4.0$ y $x_{0} = 0.1$.}
                         \centering
                         \includegraphics[width=0.6\textwidth]{F7_cobwebs}
+                        \caption{Diagrama de cobwebs de mapa logístico con $A = 4.0$ y $x_{0} = 0.1$.}
                         \label{fig:F7_cobwebs}
                     \end{figure}
 
                     \begin{figure}[hbtp]
-                        \caption{Serie de tiempo de mapa logístico con $A = 4.0$.}
                         \centering
                         \includegraphics[width=0.6\textwidth]{F8_time_series}
+                        \caption{Serie de tiempo de mapa logístico con $A = 4.0$.}
                         \label{fig:F8_time_series}
                     \end{figure}
 
@@ -265,9 +265,9 @@
             En la Figura \ref{fig:F6_many_logistic_curve} se muestra un análisis gráfico de cómo se comporta el mapa logístico para distintos valores de $A$. Para $A < 1$ la parábola está por debajo de la diagonal, y el origen es el único punto fijo. A medida que $A$ aumenta, la parábola se hace más alta, haciéndose tangente a la diagonal en $A = 1$. Para $A > 1$ la parábola intersecta la diagonal en un segundo punto $x^{*} = 1 - 1/A$, mientras que el origen pierde estabilidad. Así vemos como $x^{*}$ se bifurca desde el origen en una bifurcación transcrítica en $A = 1$. 
 
             \begin{figure}[hbtp]
-                \caption{Gráfica de mapa logístico para distintos valores de $A$.}
                 \centering
                 \includegraphics[width=0.6\textwidth]{F6_many_logistic_curve}
+                \caption{Gráfica de mapa logístico para distintos valores de $A$.}
                 \label{fig:F6_many_logistic_curve}
             \end{figure}
             
