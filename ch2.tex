@@ -21,11 +21,11 @@
                 \item Caos: es un comportamiento imprevisible de un sistema determinista, muy sensible a sus condiciones iniciales, lo que significa que incluso el más mínimo cambio en el estado inicial produce resultados muy diferentes.
             \end{itemize}		
 	
-            La presencia de comportamientos impredecibles en un dispositivo lógico puede tener consecuencias graves en el comportamiento del sistema global. A pesar de que estos eventos son inevitables debido a la naturaleza física de la tecnología, los vendedores de dispositivos lógicos sueles minimizarlos. Por ello, es fundamental examinar de forma crítica los métodos de extracción de aleatoriedad utilizados en el diseño de los TRNG para mantenernos al día con la evolución de la tecnología.
+            La presencia de comportamientos impredecibles en un dispositivo lógico puede tener consecuencias graves en el comportamiento del sistema global. A pesar de que estos eventos son inevitables debido a la naturaleza física de la tecnología, los vendedores de dispositivos lógicos suelen minimizarlos. Por ello, es fundamental examinar de forma crítica los métodos de extracción de aleatoriedad utilizados en el diseño de los TRNG para mantenernos al día con la evolución de la tecnología.
 
             La mayoría de los dispositivos lógicos, y concretamente los FPGA, no contienen bloques analógicos y de tenerlos seria necesario un convertidor analógico digital (ADC) para poder utilizar una señal analógica, lo cual agrega otra capa de complejidad. Por esta razón las fuentes de aleatoriedad más utilizadas en dispositivos lógicos están relacionadas con el funcionamiento de las puertas lógicas. Se pueden utilizar varios fenómenos y sus combinaciones como la variación del retardo de las puertas lógicas, el comportamiento analógico de las puertas lógicas entre dos niveles lógicos (metaestabilidad), la violación del tiempo de preparación y retención y el ruido térmico generado dentro del dispositivo.	
 					
-	        La inestabilidad de los retardos de las puertas lógicas provoca variaciones en la propagación de la señal a lo largo del tiempo. Estas variaciones pueden verse como una inestabilidad  en el período del reloj (jitter) en los generadores de reloj que contienen elementos de retardo ensamblados en un circuito cerrado (osciladores en anillo). Asimismo, la variación del tiempo de propagación se utiliza también en generadores con elementos de retardo ensamblados en una cadena abierta. La cadena se utiliza para aumentar o ajustar el retardo total.
+	        La inestabilidad de los retardos de las puertas lógicas provoca variaciones en la propagación de la señal a lo largo del tiempo. Estas variaciones pueden verse como una inestabilidad  en el periodo del reloj (jitter) en los generadores de reloj que contienen elementos de retardo ensamblados en un circuito cerrado (osciladores en anillo). Asimismo, la variación del tiempo de propagación se utiliza también en generadores con elementos de retardo ensamblados en una cadena abierta. La cadena se utiliza para aumentar o ajustar el retardo total.
 
             La tecnología digital permite implementar fácilmente resistencias y condensadores, cuyo ruido térmico generado en las resistencias puede utilizarse para modular la frecuencia de un oscilador de funcionamiento libre, también conocido como oscilador RC. De esta manera, el ruido térmico se convierte al dominio temporal, lo que facilita su extracción. No obstante, este principio no es aplicable en FPGAs, ya que carecen de estructuras adecuadas para ello.
 
@@ -60,8 +60,8 @@
             \begin{enumerate}
                 \item Postprocesamiento algorítmico
 
-                    Consiste en la aplicación de un algoritmo de procesamiento de datos con el objetivo de mejorar los parámetros estadísticos de los números generados. Entra las técnicas más utilizadas se encuentra la operación XOR de varios bits de salida, la corrección de Von Neumann y varios tipos de algoritmos de compresión, entre otros.
-                \item Posprocesamiento criptográfico 
+                    Consiste en la aplicación de un algoritmo de procesamiento de datos con el objetivo de mejorar los parámetros estadísticos de los números generados. Entre las técnicas más utilizadas se encuentra la operación XOR de varios bits de salida, la corrección de Von Neumann y varios tipos de algoritmos de compresión, entre otros.
+                \item Postprocesamiento criptográfico 
 
                     Emplea algoritmos criptográficamente seguros para asegurar la imprevisibilidad de los números generados en dirección de avance y/o retroceso en caso de fallo en la fuente física de aleatoriedad. La implementación de un postprocesamiento criptográfico refuerza la robustez del TRNG frente a posibles ataques.
             \end{enumerate}
@@ -95,7 +95,7 @@
                 
                     Son funciones booleanas especiales que se utilizan en criptografía y teoría de la codificación. Su estudio es fundamental en el diseño de algoritmos de clave simétrica. Para analizar estas funciones, es importante considerar su grado, su forma algebraica normal, la transformada Möbius, la transformada de Walsh-Hadamard entre otros conceptos relacionados.
 
-                    En palabras simples, las funciones resilientes resultan apropiadas para el postprocesamiento debido a que el conocimiento de el conocimiento de cualquier conjunto de $m$ valores de entrada no permite adivinar la salida con una precisión mayor a la del azar. Estas funciones se fundamentan en el mismo principio que los códigos de corrección de errores. Mientras que dichos códigos se emplean para eliminar errores aleatorios, las funciones resilientes se usan para extraer los bits aleatorios presentes.
+                    En palabras simples, las funciones resilientes resultan apropiadas para el postprocesamiento debido a que el conocimiento de cualquier conjunto de $m$ valores de entrada no permite adivinar la salida con una precisión mayor a la del azar. Estas funciones se fundamentan en el mismo principio que los códigos de corrección de errores. Mientras que dichos códigos se emplean para eliminar errores aleatorios, las funciones resilientes se usan para extraer los bits aleatorios presentes.
 
                     La señal binaria sin procesar (RBS), también conocida como ruido digital, puede ser interpretada como un flujo de bits que contiene redundancia, y la función resiliente disminuye la tasa de bits al mismo tiempo que extrae los bits aleatorios. De esta manera, la función resiliente incrementa la entropía por bit en la salida del generador. 
 
@@ -114,7 +114,7 @@
 
             \subsubsection{Tasa de bits de salida}
 
-            En muchas aplicaciones criptográficas, la velocidad de generación de números aleatorios es un parámetro critico a considerar, después de la seguridad. Por lo general, velocidades de salida de entre 100 kilobits por segundo hasta 1 megabit por segundo son suficientes. Sin embargo, hay ciertas aplicaciones que requieres una generación de números aleatorios a alta velocidad, como los servidores de telecomunicaciones de alta velocidad. Estos servidores necesitan generar claves de sesión a velocidades que pueden alcanzas decena de megabits por segundo. Por ejemplo, un servidor de 10 GBit necesitaría unos 20 Mbits/s de datos aleatorios para generar una clave de sesión de 128 bits por cada bloque de datos de 64 kB, con el fin de resistir los ataques de canal lateral.
+            En muchas aplicaciones criptográficas, la velocidad de generación de números aleatorios es un parámetro crítico a considerar, después de la seguridad. Por lo general, velocidades de salida de entre 100 kilobits por segundo hasta 1 megabit por segundo son suficientes. Sin embargo, hay ciertas aplicaciones que requieren una generación de números aleatorios a alta velocidad, como los servidores de telecomunicaciones de alta velocidad. Estos servidores necesitan generar claves de sesión a velocidades que pueden alcanzan decena de megabits por segundo. Por ejemplo, un servidor de 10 GBit necesitaría unos 20 Mbits/s de datos aleatorios para generar una clave de sesión de 128 bits por cada bloque de datos de 64 kB, con el fin de resistir los ataques de canal lateral.
 
             Otro aspecto crucial a tener en cuenta en los generadores de números aleatorios es la variabilidad de su tasa de bits de salida. Algunos generadores producen números aleatorios periódicamente, mientras que otros generan la salida en intervalos de tiempo irregulares, lo que requiere una memoria intermedia FIFO para almacenar los números generados. Una solución alternativa consiste en estimar la tasa de bits más baja disponible en la salida y muestrear la salida a esa tasa. No obstante, la desventaja de la primera solución es que las memorias intermedias FIFO pueden ser bastante grandes, dependiendo de la velocidad de bits promedio de salida y la demanda de números aleatorios. Por otro lado, la desventaja de la segunda solución radica en que si la tasa de bits estimada resulta ser incorrecta, puede haber momentos en los que los números aleatorios no estén accesibles en la salida.
 	
@@ -122,7 +122,7 @@
 
             \subsubsection{Modelado matemático de TRNG}
             
-            En un proceso de certificación de seguridad, la evaluación del diseño y la implementación del generador es fundamental. El objetivo principal es cuantificar la entropía por bit aleatorio, la cual es una propiedad de las variables aleatorios y no de las observaciones realizadas (números aleatorios). Para realizar una cuantificación precisa de la entropía, es necesario analizar la distribución de las variables aleatorias a través de un modelo estocástico. Dicho modelo especifica una familia de distribuciones de probabilidad de variables aleatorias, permitiendo verificar un límite inferior de entropía para la señal binaria en bruto. En diversos estudios, se han utilizado modelos que proporcionan límites inferiores para la entropía condicional media por número aleatorio interno. Estos modelos permiten comprobar la entropía de los números generados en tiempo real y son utilizados por varios autores en la evaluación de la calidad de los generadores de números aleatorios.
+            En un proceso de certificación de seguridad, la evaluación del diseño y la implementación del generador es fundamental. El objetivo principal es cuantificar la entropía por bit aleatorio, la cual es una propiedad de las variables aleatorias y no de las observaciones realizadas (números aleatorios). Para realizar una cuantificación precisa de la entropía, es necesario analizar la distribución de las variables aleatorias a través de un modelo estocástico. Dicho modelo especifica una familia de distribuciones de probabilidad de variables aleatorias, permitiendo verificar un límite inferior de entropía para la señal binaria en bruto. En diversos estudios, se han utilizado modelos que proporcionan límites inferiores para la entropía condicional media por número aleatorio interno. Estos modelos permiten comprobar la entropía de los números generados en tiempo real y son utilizados por varios autores en la evaluación de la calidad de los generadores de números aleatorios.
 
             \subsubsection{Comprobabilidad}
 
@@ -142,7 +142,7 @@
     
             \subsubsection{Uso de recursos}
             
-            Para evaluar la viabilidad de diferentes principios de TRNG, es crucial examinar los recursos necesarios para la implementación del generador en hardware. En general, todos los tipos de recursos disponibles en las FPGA pueden utilizarse para generar números aleatorios, incluyendo células lógicas basadas en LUT o multiplexores, bloques de memoria integrados, bloques de reloj con PLLs y DLLs, osciladores RC integrados, multiplicadores cableados, interconexiones programables entre otros.
+            Para evaluar la viabilidad de diferentes principios de TRNG, es crucial examinar los recursos necesarios para la implementación del generador en hardware. En general, todos los tipos de recursos disponibles en las FPGA pueden utilizarse para generar números aleatorios, incluyendo células lógicas basadas en LUTs o multiplexores, bloques de memoria integrados, bloques de reloj con PLLs y DLLs, osciladores RC integrados, multiplicadores cableados, interconexiones programables entre otros.
                 
             Los FPGA tienen una gran cantidad de celdas lógicas, lo que hace que su uso no suponga normalmente un problema en cuanto al área lógica. Sin embargo, la topología y los parámetros eléctricos de las interconexiones programables están fuertemente condicionados por la tecnología utilizada. En el caso de los diseños de TRNG, a menudo se requiere la intervención manual del diseñador durante la colocación y el enrutamiento (Placement and Routing). En cuanto a este último, algunos diseños pueden implementarse sin dificultad en una familia de FPGA, pero resultan complicados o incluso imposibles de implementar en otras. Asimismo, la elección y el número de bloques cableados integrados suelen ser mucho más limitados (PLL, osciladores RC, multiplicadores, bloques de memoria), y varían según el proveedor y la tecnología. La utilización de estos bloques puede ser un factor limitante para la reutilización del principio TRNG en diferentes plataformas FPGA.
 
@@ -178,7 +178,7 @@
                 \label{eq:señal_periodica}
             \end{equation}
 
-            En la práctica, una señal de reloj real no alcanza siempre múltiplos enteros de su período ideal, sino que sus flancos fluctúan alrededor de este valor debido al jitter. Esta variación es causada por diversos fenómenos físicos, como el ruido térmico, el ruido de la fuente de alimentación y el ruido electromagnético ambiental, entre otros. La Figura \ref{fig:F9_jitter} muestra cómo se ve una señal de reloj afectada por el jitter.
+            En la práctica, una señal de reloj real no alcanza siempre múltiplos enteros de su periodo ideal, sino que sus flancos fluctúan alrededor de este valor debido al jitter. Esta variación es causada por diversos fenómenos físicos, como el ruido térmico, el ruido de la fuente de alimentación y el ruido electromagnético ambiental, entre otros. La Figura \ref{fig:F9_jitter} muestra cómo se ve una señal de reloj afectada por el jitter.
 
             \begin{figure}[hbtp]
                 \centering
@@ -207,7 +207,7 @@
                     \label{eq:jitter_fase}
                 \end{equation}
                 
-                La Figura \ref{fig:F11_jitter_fase} ilustra este jitter para $n = 3.$. Para mayor claridad, sólo se muestra el jitter de fase de los flancos ascendentes, pero hay que tener en cuenta que el jitter de fase afecta a todos los flancos del reloj.
+                La Figura \ref{fig:F11_jitter_fase} ilustra este jitter para $n = 3$. Para mayor claridad, sólo se muestra el jitter de fase de los flancos ascendentes, pero hay que tener en cuenta que el jitter de fase afecta a todos los flancos del reloj.
 
                 \begin{figure}[hbtp]
                     \centering
@@ -304,7 +304,7 @@
                     \label{fig:G0_ERO_TRNG_simple}
                 \end{figure}
 
-                Un divisor de frecuencia permite establecer un periodo más largo entre dos muestreos del Oscilador de anillo 1, lo que permite que se acumule su jitter de fase. Cuando el valor de $K$ es suficientemente grande, cada bit de salida es completamente impredecible debido a la acumulada del jitter.
+                Un divisor de frecuencia permite establecer un periodo más largo entre dos muestreos del Oscilador de anillo 1, lo que permite que se acumule su jitter de fase. Cuando el valor de $K$ es suficientemente grande, cada bit de salida es completamente impredecible debido a la acumulación del jitter.
 
                 En lugar de esperar más tiempo para acumular suficiente jitter, es posible reducir el tiempo de acumulación de jitter mediante el uso de múltiples relojes desfasados.  Existen dos principios comunes para producir múltiples relojes desfasados: el primero consiste en utilizar múltiples osciladores independientes tal y como propone \cite{Sunar2007}, mientras que el segundo se basa en utilizar múltiples salidas de un oscilador multifásico como propone \cite{Cherkaoui2013}.
 
@@ -324,7 +324,7 @@
 
                 El hecho de que el registro acabe en el nuevo estado o en el anterior se determina por factores aleatorios, lo que hace que el resultado de la transición sea también aleatorio. Sin embargo, generar números aleatorios de esta forma es un gran desafío debido a la dificultad de lograr una sincronización suficientemente precisa entre las dos señales para que lleguen al registro al mismo tiempo. Esto se debe principalmente a los esfuerzos realizados por los fabricantes de dispositivos para reducir los tiempos de preparación y retención, evitando así los estados metaestables de los registros. En estos casos, los fabricantes de dispositivos realizan estudios exhaustivos de la vida útil de los dispositivos para determinar una tasa de fallos en el tiempo, failure in time (FIT) del dispositivo. La tasa de fallos en el tiempo esta en el rango de una cada $10^{9}$ horas. El FIT puede utilizarse para calcular el tiempo medio entre fallos, mean time between failures (MTBF), de un dispositivo y un diseño específicos. El MTBF sirve como estimación del tiempo entre dos fallos del sistema debidos a la metaestabilidad. Se calcula en función de las especificaciones del dispositivo y el diseño y su orden de magnitud típico es de decenas de años.
 
-                Teniendo en cuenta el MTBF típico, se tardaría mucho tiempo e incluso años en generar un bit aleatorio utilizando sólo la metaestabilidad de un circuito como fuente de aleatoriedad. Por se considera que la metaestabilidad en sí no puede utilizarse para generar grandes cantidades de datos aleatorios.
+                Teniendo en cuenta el MTBF típico, se tardaría mucho tiempo e incluso años en generar un bit aleatorio utilizando sólo la metaestabilidad de un circuito como fuente de aleatoriedad. Porque se considera que la metaestabilidad en sí no puede utilizarse para generar grandes cantidades de datos aleatorios.
 
             \subsubsection{Metaestabilidad oscilatoria}
 
@@ -339,7 +339,7 @@
                     \label{fig:F16_internal_tero}
                 \end{figure}
 
-                Cuando se activa una señal Ctrl, el TERO pasa a un estado oscilatorio, en el que permanece durante un periodo de tiempo aleatorio. Después de la transición oscilatoria, se establece en uno de los niveles lógicos (alto o bajo). Este estado final también es aleatorio. Sin embargo el número de oscilaciones en la salida del TERO y su estado final no son constantes. A diferencia de la metaestabilidad analógica, aquí la salida oscila entre dos estados definidos.
+                Cuando se activa una señal Ctrl, ver la Figura \ref{fig:F16_internal_tero}, el TERO pasa a un estado oscilatorio, en el que permanece durante un periodo de tiempo aleatorio. Después de la transición oscilatoria, se establece en uno de los niveles lógicos (alto o bajo). Este estado final también es aleatorio. Sin embargo el número de oscilaciones en la salida del TERO y su estado final no son constantes. A diferencia de la metaestabilidad analógica, aquí la salida oscila entre dos estados definidos.
 
         \subsection{Modelos estocásticos y pruebas específicas}
 
@@ -430,9 +430,9 @@
                 
                 La clase PTG.1 requiere la implementación de pruebas de fallo total y en línea. La prueba de fallo total debe detectar un fallo completo de la fuente de aleatoriedad. Las pruebas en línea deben supervisar continuamente y garantizar la calidad estadística de los números aleatorios producidos. La clase PTG.1 requiere que las pruebas en línea supervisen la calidad de los números aleatorios internos (es decir, a la salida del generador).
                 
-                \paragraph{Post-procesamiento\\}
+                \paragraph{Postprocesamiento\\}
                 
-                La clase PTG.1 no requiere que el TRNG utilice ningún tipo de posprocesamiento. Tampoco desaconseja el uso del posprocesamiento. Sin embargo, un TRNG PTG.1 debe superar las pruebas estadísticas del procedimiento de prueba A, por lo que el posprocesamiento puede ser necesario si la señal binaria sin procesar no puede superar dichas pruebas
+                La clase PTG.1 no requiere que el TRNG utilice ningún tipo de postprocesamiento. Tampoco desaconseja el uso del postprocesamiento. Sin embargo, un TRNG PTG.1 debe superar las pruebas estadísticas del procedimiento de prueba A, por lo que el postprocesamiento puede ser necesario si la señal binaria sin procesar no puede superar dichas pruebas
 
             \subsubsection{Clase PTG.2 TRNG}
             
@@ -453,11 +453,11 @@
                 
                 Para un TRNG PTG.2 es necesario implementar tanto las pruebas de fallo total como las pruebas en línea. La prueba de fallo total debe detectar un fallo de la fuente de aleatoriedad total.
 
-                Las pruebas en línea deben detectar las debilidades estadísticas intolerables de la señal binaria sin procesar. Deben funcionar con una señal binaria sin procesar porque el uso del posprocesamiento podría enmascarar algunos defectos potencialmente peligrosos. Las pruebas en línea deben adaptarse al modelo estocástico. De este modo, pueden detectar los defectos específicos de la fuente de aleatoriedad utilizada de forma muy eficaz.
+                Las pruebas en línea deben detectar las debilidades estadísticas intolerables de la señal binaria sin procesar. Deben funcionar con una señal binaria sin procesar porque el uso del postprocesamiento podría enmascarar algunos defectos potencialmente peligrosos. Las pruebas en línea deben adaptarse al modelo estocástico. De este modo, pueden detectar los defectos específicos de la fuente de aleatoriedad utilizada de forma muy eficaz.
 
-                \paragraph{Post-procesamiento\\}
+                \paragraph{Postprocesamiento\\}
                 
-                De forma similar a la clase PTG.1, la clase PTG.2 no requiere el posprocesamiento cuando la señal binaria sin procesar proporciona números aleatorios de suficiente calidad. Si el postprocesamiento es necesario, la clase PTG.2 no pone ninguna restricción en el algoritmo utilizado, sin embargo, no debe reducir la entropía.
+                De forma similar a la clase PTG.1, la clase PTG.2 no requiere el postprocesamiento cuando la señal binaria sin procesar proporciona números aleatorios de suficiente calidad. Si el postprocesamiento es necesario, la clase PTG.2 no pone ninguna restricción en el algoritmo utilizado, sin embargo, no debe reducir la entropía.
 
             \subsubsection{Clase PTG.3 TRNG}
             
@@ -476,9 +476,9 @@
 
                 \paragraph{Pruebas integradas\\}
             
-                Además de las pruebas de fallo total y en línea que se exigen también para el TRNG PTG.2, la clase PTG.3 requiere también la prueba de respuesta conocida (KAT) para el posprocesamiento. Esta prueba debe pasar con éxito cada vez que se inicie o reinicie el TRNG para verificar el correcto funcionamiento del algoritmo de posprocesamiento.
+                Además de las pruebas de fallo total y en línea que se exigen también para el TRNG PTG.2, la clase PTG.3 requiere también la prueba de respuesta conocida (KAT) para el postprocesamiento. Esta prueba debe pasar con éxito cada vez que se inicie o reinicie el TRNG para verificar el correcto funcionamiento del algoritmo de postprocesamiento.
                 
-                \paragraph{Post-procesamiento\\}
+                \paragraph{Postprocesamiento\\}
             
                 A diferencia de los requisitos de PTG.1 y PTG.2, la clase PTG.3 requiere el uso de un postprocesamiento criptográfico. Además, requiere el uso de un DRNG de la clase DRG.3, que proporciona secreto hacia delante y hacia atrás mejorado. Esto significa que el postprocesamiento para un TRNG de clase PTG.3 debe ser una función criptográfica.
 
@@ -685,7 +685,7 @@
 	
                 Desgraciadamente, esta condición es muy difícil de cumplir, ya que los dos osciladores de anillo deben oscilar a frecuencias muy cercanas evitando el bloqueo entre ellos. En una FPGA, satisfacer esta condición es muy difícil ya que no tenemos un control preciso sobre la colocación y el enrutamiento de los anillos, es muy difícil, si no imposible, implementar dos anillos oscilando a frecuencias suficientemente cercanas pero no idénticas.
 
-                Debido a la extrema sensibilidad a $\Delta_{T}$, el diseño que funciona en una FPGA no es directamente transferible a otra FPGA incluso de la misma familia porque incluso el más mínimo cambio causado por la variación del proceso de fabricación puede hacer que la diferencia de período oscile por encima de $\Delta_{T_{\text{max}}} $.  Así que el diseño debe colocarse y encaminarse manualmente para cada FPGA individual, lo que lo hace muy poco práctico. 
+                Debido a la extrema sensibilidad a $\Delta_{T}$, el diseño que funciona en una FPGA no es directamente transferible a otra FPGA incluso de la misma familia porque incluso el más mínimo cambio causado por la variación del proceso de fabricación puede hacer que la diferencia de periodo oscile por encima de $\Delta_{T_{\text{max}}} $.  Así que el diseño debe colocarse y encaminarse manualmente para cada FPGA individual, lo que lo hace muy poco práctico. 
 
                 Sin embargo, COSO-TRNG puede proporcionar una tasa de bits de salida relativamente alta con una huella de área baja.
 

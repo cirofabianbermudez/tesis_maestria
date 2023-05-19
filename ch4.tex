@@ -1,12 +1,12 @@
 \chapter{Implementación de TRNG híbrido}
 
-    En este capítulo se describen los pasos para diseñar un mapa caótico y un ERO-TRNG en FPGA para generar bits aleatorios que servirán como semilla a las condiciones del mapa. Se analiza cómo seleccionar el tamaño de palabra de punto fijo utilizando un simulador en C, cómo mejorar el uso de recursos con multiplicadores de una constante y cómo seleccionar el rango valido de la semilla utilizando el domino de atracción del mapa caótico.
+    En este capítulo se describen los pasos para diseñar un mapa caótico y un ERO-TRNG en FPGA para generar bits aleatorios que servirán como semilla a las condiciones del mapa. Se analiza cómo seleccionar el tamaño de palabra de punto fijo utilizando un simulador en C, cómo mejorar el uso de recursos con multiplicadores de una constante y cómo seleccionar el rango valido de la semilla utilizando el dominio de atracción del mapa caótico.
 
     \section{Aritmética de punto fijo}
         
         Cuando se necesita trabajar con números de punto decimal en dispositivos digitales se puede optar por utilizar aritmética de punto fijo o aritmética de punto flotante. La aritmética de punto fijo en comparación de la de punto flotante tiene la ventaja de ser más rápida y utilizar menos recursos, sin embargo, tiene la desventaja de tener un rango de uso específico el cual se tienen que establecer al principio del diseño y el cual no puede modificarse posteriormente. Por el contrario la aritmética de punto flotante tienen un mayor rango dinámico y resulta útil cuando los algoritmos tienen una complejidad alta. 
 
-        En el proceso de diseño de arquitecturas digitales de aplicación especifica se busca utilizar la menor cantidad de recursos y reducir al máximo el tiempo de ejecución del algoritmo subyacente. Cuando se trabaja con los FPGA se cuenta con la libertad de poder analizar y estudiar el algoritmo antes de comenzar con el proceso de diseño. Por todo lo anterior, es preferible utiliza operaciones en punto fijo en lugar de punto flotante en los FPGA \cite{TleloCuautle2016}.
+        En el proceso de diseño de arquitecturas digitales de aplicación específica se busca utilizar la menor cantidad de recursos y reducir al máximo el tiempo de ejecución del algoritmo subyacente. Cuando se trabaja con los FPGA se cuenta con la libertad de poder analizar y estudiar el algoritmo antes de comenzar con el proceso de diseño. Por todo lo anterior, es preferible utilizar operaciones en punto fijo en lugar de punto flotante en los FPGA \cite{TleloCuautle2016}.
 
         La representación de punto fijo de un número $X$ es $X(a,b)$ donde $a$ es la parte entera y $b$ es la parte fraccionario. De manera que el número de bits de la representación es $a+b+1$, es decir las suma de la parte entera, la parte fraccionaria y el bit de signo. El rango de valores que se puede representar es $[-2^{a}, 2^{a} - 2^{-b}]$ y por lo tanto el número más pequeño que puede representar o visto de otro modo la precisión es de $2^{-b}$. En la Tabla \ref{tab:ejemplos_puntofijo} se muestran ejemplos de diferentes formas de interpretar números binarios  utilizando 5 bits y diferentes formatos de punto fijo.
         
@@ -323,7 +323,7 @@
             %\label{eq:mapa2d}
         \end{equation*}
 
-        Si tomamos los valores extremo de los rangos de $x_{n}$ y $y_{n}$ y analizamos las combinaciones de sumas que puedan generar el número más grande, o más pequeño en $x_{n+1}$ y $y_{n+1}$, al cual llamaremos $\beta$, podemos encontrar la cantidad de bits necesaria para la parte entera $a$ de la siguiente manera:
+        Si tomamos los valores extremos de los rangos de $x_{n}$ y $y_{n}$ y analizamos las combinaciones de sumas que puedan generar el número más grande, o más pequeño en $x_{n+1}$ y $y_{n+1}$, al cual llamaremos $\beta$, podemos encontrar la cantidad de bits necesaria para la parte entera $a$ de la siguiente manera:
 
         \begin{equation}
                 a = \log_{2} ( \text{abs}( \beta ) )
@@ -342,7 +342,7 @@
 
          La idea fundamental detrás de simular los diseños digitales en C antes de realizar su descripción en VHDL o Verilog es poder comprobar que las arquitecturas, ya sean de 16, 32 o 64 bits utilizando aritmética de punto fijo, funcionen correctamente desde el punto de vista de diseño, esto deja únicamente la posibilidad de cometer errores de sintaxis en el código en HDL los cuales se pueden analizar y solucionar por separado.
 
-        Se utilizó el compilador de GCC versión 11.2.0 en una plataforma x64 en Linux. El tipo de dato es el primer punto fundamental para el simulador. Existen diversos tipos de datos en lenguaje C sin embargo para arquitecturas con tamaños de bits definidos podemos reducirlo a cuatro: \verb|__int128|, \verb|long|, \verb|int|, \verb|short|. Cada uno de estos tipos dato tiene una cantidad definida de bytes asociados dependiendo de la computadora y el compilador, para revisar la cantidad de bytes podemos utilizar el Código \ref{cod:A1} del Apéndice A. La salida del código se muestra en la Tabla \ref{tab:tipos_de_datos}.
+        Se utilizó el compilador de GCC versión 11.2.0 en una plataforma x64 en Linux. El tipo de dato es el primer punto fundamental para el simulador. Existen diversos tipos de datos en lenguaje C sin embargo para arquitecturas con tamaños de bits definidos podemos reducirlo a cuatro: \verb|__int128|, \verb|long|, \verb|int|, \verb|short|. Cada uno de estos tipos datos tiene una cantidad definida de bytes asociados dependiendo de la computadora y el compilador, para revisar la cantidad de bytes podemos utilizar el Código \ref{cod:A1} del Apéndice A. La salida del código se muestra en la Tabla \ref{tab:tipos_de_datos}.
 
         \begin{table}[htbp]
             \centering
@@ -397,7 +397,7 @@
 
         Para simular la extracción de bits de la ecuación (\ref{eq:extraccion}) se pueden truncar los 8 bits menos significativos tanto para $x_{n}$ como para $y_{n}$ utilizando un casting del tipo \verb|unsigned char| como se muestra en el Código \ref{cod:A6} y para poder convertir la salida a binario se utilizó el Código \ref{cod:A7}.
         
-        Simulando 100 millones iteraciones y generando palabras de 16 bits podemos ver la distribución de probabilidades de unos y ceros de cada palabra, en la Figura \ref{fig:J0_distribucion_exp} se muestra que la distribución es muy parecida a la ideal. Esto es lo esperado ya que los PRNG tienen por lo general buenas propiedades estadísticas.
+        Simulando 100 millones de iteraciones y generando palabras de 16 bits podemos ver la distribución de probabilidades de unos y ceros de cada palabra, en la Figura \ref{fig:J0_distribucion_exp} se muestra que la distribución es muy parecida a la ideal. Esto es lo esperado ya que los PRNG tienen por lo general buenas propiedades estadísticas.
 
         \begin{figure}[hbtp]
             \centering
@@ -442,7 +442,7 @@
             \label{fig:B1_architecture}
         \end{figure}
 
-        En la Figura \ref{fig:B2_fsm_cm} se muestra la máquina de estados que controla al sistema. El estado $S_{0}$ tiene la función de seleccionar la condición inicial direccionando el multiplexor a partir de la señal EN y esperar a que la señal de inicio START ocurra. El estado $S_{1}$ mantienen el direccionamiento del multiplexor y habilita el registro de salida que almacena la iteración actual atreves de la señal EN. El estado $S_{2}$ es similar en funcionamiento el estado $S_{0}$ con la única diferencia que direcciona el multiplexor al registro de salida para formar un lazo de retroalimentación para las futuras iteraciones. Finalmente el estado $S_{3}$ mantiene el multiplexor direccionando la retroalimentación y habilita el registro de salida para almacenar la iteración actual. 
+        En la Figura \ref{fig:B2_fsm_cm} se muestra la máquina de estados que controla al sistema. El estado $S_{0}$ tiene la función de seleccionar la condición inicial direccionando el multiplexor a partir de la señal EN y esperar a que la señal de inicio START ocurra. El estado $S_{1}$ mantienen el direccionamiento del multiplexor y habilita el registro de salida que almacena la iteración actual a través de la señal EN. El estado $S_{2}$ es similar en funcionamiento el estado $S_{0}$ con la única diferencia que direcciona el multiplexor al registro de salida para formar un lazo de retroalimentación para las futuras iteraciones. Finalmente el estado $S_{3}$ mantiene el multiplexor direccionando la retroalimentación y habilita el registro de salida para almacenar la iteración actual. 
 
         \begin{figure}[hbtp]
             \centering
@@ -454,7 +454,7 @@
 
     \section{Multiplicador de una sola constante (SCM)}
 
-        Es bien sabido que los multiplicadores son estructuras que consumen una gran cantidad de recursos en dispositivos digitales, por esto esta razón, es muy común que los diseñadores realicen optimizaciones creando multiplicadores de una sola constante para reducirlos \cite{Thong2010, GuillenFernandez2019}.
+        Es bien sabido que los multiplicadores son estructuras que consumen una gran cantidad de recursos en dispositivos digitales, por esta razón, es muy común que los diseñadores realicen optimizaciones creando multiplicadores de una sola constante para reducirlos \cite{Thong2010, GuillenFernandez2019}.
 
         Al multiplicar por una constante conocida, podemos explotar las propiedades de la multiplicación binaria para obtener un circuito de hardware funcionalmente equivalente con menos recursos lógicos en comparación con conectar la constante en una entrada de un multiplicador genérico. La multiplicación constante puede implementarse como un conjunto de sumas, restas y desplazamientos binarios.
 
@@ -469,7 +469,7 @@
             \label{fig:J1_scm}
         \end{figure}
         
-        En \cite{Thong2011} se propone un algoritmo óptimo y bastante práctico para poder crear multiplicadores de una constaste de manera sencilla. Se requieren solo la constante y el número de bits fraccionarios, no obstante esta restringido a arquitecturas de máximo 32 bits y máximo 25 bits para la parte fraccionaria.
+        En \cite{Thong2011} se propone un algoritmo óptimo y bastante práctico para poder crear multiplicadores de una constante de manera sencilla. Se requieren solo la constante y el número de bits fraccionarios, no obstante esta restringido a arquitecturas de máximo 32 bits y máximo 25 bits para la parte fraccionaria.
 
         Se pueden crear a mano estos multiplicadores de una constante, no obstante encontrar una solución óptima para estos problemas es NP completo. NP es el conjunto de problemas en los que podemos comprobar en un tiempo razonable si una respuesta al problema es correcta o no y los problemas NP completos son los problemas más difíciles de todo NP. A grandes rasgos se buscan algoritmos que puedan resolver el problema de encontrar la solución de descomponer una multiplicación por una constante en sumas, restas y desplazamientos con la menor cantidad de recursos.
 
@@ -483,7 +483,7 @@
 
         De todos los TRNG presentados en este trabajo el ERO-TRNG fue el candidato seleccionado para servir como generador de semillas. Este TRNG tiene una metodología bien estructurada, un modelo estocástico bien estudiado y sus propiedades tanto de entropía, uso de área y consumo de potencia son buenas. Además tiene la ventaja de ser el TRNG con mayor compatibilidad y su repetibilidad entre familias de FPGA. El diseño no requiere ninguna intervención manual para obtener resultados satisfactorios. 
 
-        En la Figura \ref{fig:J2_trng} se muestra nuestra propuesta para extraer 64 bits aleatorios para generar la semilla del PRNG. Consiste en utilizar un registro de corrimiento a la derecha (RSR) que muestrear el ERO-TNG y comparar si los 64 bits extraídos se encuentran dentro del rango del dominio de atracción del mapa caótico utilizando los parametros del Atractor 1. Un contador de 5 bits de una sola vuelta asegura que se hayan generado 64 bits y no pasé una semilla incompleta.
+        En la Figura \ref{fig:J2_trng} se muestra nuestra propuesta para extraer 64 bits aleatorios para generar la semilla del PRNG. Consiste en utilizar un registro de corrimiento a la derecha (RSR) que muestrea el ERO-TNG y compara si los 64 bits extraídos se encuentran dentro del rango del dominio de atracción del mapa caótico utilizando los parámetros del Atractor 1. Un contador de 5 bits de una sola vuelta asegura que se hayan generado 64 bits y no pasé una semilla incompleta.
 
         \begin{figure}[hbtp]
             \centering
@@ -567,5 +567,5 @@
                 \lstinputlisting[style = VHDL_TEXT, caption = Primitava de OBUFDS., label = cod:obufds]{codigos/vhdl_codes/primitivas/obufds.vhd}
                 % \lstinputlisting[style = VHDL_TEXT]{codigos/vhdl_codes/primitivas/obufds.vhd}
 
-                La libreria del proyecto HECTOR \cite{Laban2016} hace uso de estas libreria para describir el ERO-TRNG y parametríza el número de buffers para fácil modificación de los retardos.
+                La librería del proyecto HECTOR \cite{Laban2016} hace uso de estas librería de Xilinx para describir el ERO-TRNG y parametriza el número de buffers para fácil modificación de los retardos.
 

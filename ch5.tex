@@ -33,9 +33,9 @@
             \label{fig:D0_system}
         \end{figure}
 
-        El generador funciona de la siguiente manera. Cuando el sistema se enciende el generador de semillas comienza a generar bits aleatorios utilizando el ERO-TRNG interno, cuando este proceso termina la señal READY se activa avisando que hay una semilla valida en SEED y este proceso no vuelve a ocurrir a menos que la FPGA se reinicie.
+        El generador funciona de la siguiente manera. Cuando el sistema se enciende el generador de semillas comienza a generar bits aleatorios utilizando el ERO-TRNG interno, cuando este proceso termina la señal READY se activa avisando que hay una semilla válida en SEED y este proceso no vuelve a ocurrir a menos que la FPGA se reinicie.
 
-       El sistema espera que el usuario active la señal BUTTON para comenzar. Cuando el sistema se activa la maquina de estados calcula una iteración del mapa caótico, posteriormente se activa la transmisión que envía los primeros 8 bits aleatorios por medio del protocolo de comunicación RS232, una vez concluida, se envían los siguiente 8 bits aleatorios y el sistema regresa a esperar por la señal BUTTON. 
+       El sistema espera que el usuario active la señal BUTTON para comenzar. Cuando el sistema se activa la maquina de estados calcula una iteración del mapa caótico, posteriormente se activa la transmisión que envía los primeros 8 bits aleatorios por medio del protocolo de comunicación RS232, una vez concluida, se envían los siguientes 8 bits aleatorios y el sistema regresa a esperar por la señal BUTTON. 
 
        Si la señal BUTTON se queda activa este proceso se vuelve cíclico y se generan tantos bits aleatorios cómo el usuario desee.
 
@@ -48,7 +48,7 @@
 
         \section{Pruebas estadísticas}
 
-        Utilizando una computadora con Windows 10 y el programa PuTTY como interfaz, el sistema corriendo se ejecutó por aproximadamente 20 minutos y se almacenaron alrededor 100 millones de bits aleatorios, lo que representan un archivo de aproximadamente 700,000 KB. Los datos se almacenaron como caracteres ASCII donde cada carácter contiene 8 bits aleatorios. Utilizando un programa de C se convirtieron los caracteres a números binarios para poder ingresarse con facilidad a la suite de pruebas estadísticas NIST \cite{Nist2010,Turan2018}. En la Tabla \ref{tab:resultados_NIST_100} se muestran los resultados de las pruebas estadísticas NIST del sistema a 100 secuencias de un millón datos y en la Tabla \ref{tab:resultados_NIST_1000} se muestran los resultados de las pruebas estadísticas NIST a 1000 secuencias de un millón de bits aleatorio.
+        Utilizando una computadora con Windows 10 y el programa PuTTY como interfaz, el sistema corriendo se ejecutó por aproximadamente 20 minutos y se almacenaron alrededor 100 millones de bits aleatorios, lo que representan un archivo de aproximadamente 700,000 KB. Los datos se almacenaron como caracteres ASCII donde cada caracter contiene 8 bits aleatorios. Utilizando un programa de C se convirtieron los caracteres a números binarios para poder ingresarse con facilidad a la suite de pruebas estadísticas NIST \cite{Nist2010,Turan2018}. En la Tabla \ref{tab:resultados_NIST_100} se muestran los resultados de las pruebas estadísticas NIST del sistema a 100 secuencias de un millón datos y en la Tabla \ref{tab:resultados_NIST_1000} se muestran los resultados de las pruebas estadísticas NIST a 1000 secuencias de un millón de bits aleatorio.
 
 \begin{table}[htbp]
   \centering
@@ -144,7 +144,7 @@
         
     La proporción mínima de aprobados para cada prueba estadística es aproximadamente de 96 para 100 millones de secuencias binarias y de 980 para 1000 millones de secuencias binarias. Para ambos casos todas las pruebas pasaron la proporción mínima. 
 
-    Además analizando la distribución de probabilidad de unos y ceros que se muestra en la Figura \ref{fig:J3_distribucion} es consistente con el análisis en simulación y el histograma, que se muestra en la Figura \ref{fig:J4_distribucion} esta perfectamente distribuido de manera uniforme, por lo que de manera cualitativa y cualitativa este TRNG híbrido cumple con las requisitos estadísticos.
+    Además analizando la distribución de probabilidad de unos y ceros que se muestra en la Figura \ref{fig:J3_distribucion} es consistente con el análisis en simulación y el histograma, que se muestra en la Figura \ref{fig:J4_distribucion} esta perfectamente distribuido de manera uniforme, por lo que de manera cualitativa y cuantitativa este TRNG híbrido cumple con las requisitos estadísticos.
  
 
         \begin{figure}[hbtp]
@@ -166,7 +166,7 @@
 
     \section{Uso de recursos y velocidad}
 
-        En cuanto recursos utilizados, en este trabajo se utilizó la tarjeta de desarrollo Basys 3 del fabricante Digilent, la cual cuenta con un FPGA Artix 7 xc7a35tcpg236-1 y un oscilador de 100 MHz. Esta tarjeta se encuentra dentro de la gama media-baja en lo concerniente a recursos, ya que dispone de una cuarta parte o incluso menos de los recursos de tarjetas hermanas como la Nexys A7 o la Zybo Z7. En la Tabla \ref{tab:recursos} se muestran los recursos utilizados todos los multiplicadores son multiplicadores completos. Debido que el sistema necesita 11 multiplicadores de 64 bits, y un solo multiplicador de este tamaño utiliza aproximadamente un 18 \% de los DSP disponibles, el diseño casi utiliza la totalidad de la FPGA. 
+        En cuanto recursos utilizados, en este trabajo se utilizó la tarjeta de desarrollo Basys 3 del fabricante Digilent, la cual cuenta con un FPGA Artix 7 xc7a35tcpg236-1 y un oscilador de 100 MHz. Esta tarjeta se encuentra dentro de la gama media-baja en lo concerniente a recursos, ya que dispone de una cuarta parte o incluso menos de los recursos de tarjetas hermanas como la Nexys A7 o la Zybo Z7. En la Tabla \ref{tab:recursos} se muestran los recursos utilizados todos los multiplicadores son multiplicadores completos. Debido que el sistema necesita 11 multiplicadores de 64 bits, y un solo multiplicador de este tamaño utiliza aproximadamente un 18 \% de los DSPs disponibles, el diseño casi utiliza la totalidad de la FPGA. 
 
         \begin{table}[htbp]
             \centering

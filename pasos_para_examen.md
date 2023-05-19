@@ -17,3 +17,15 @@
 [7.- Formato de constancia de no adeudo](https://posgrados.inaoep.mx/archivos2020s/TRAMITES_Y_SERVICIOS/Examen_de_grado/Constancia_de_NO_ADEUDO-2023.pdf) Las firmas se solicitan de manera autógrafa, para las firmas de Contabilidad y del Subdirector de Recursos Humanos, la DFA las solicitará a través de Memorándum, para ello deberá contar con las firmas restantes, la última firma en solicitar será la de la Jefa del Departamento de Servicios Escolares.
 [8.-Formato de Portada de Tesis](https://posgrados.inaoep.mx/archivos2020s/TRAMITES_Y_SERVICIOS/Examen_de_grado/Formato_portada_de_tesis.doc) 
 [9.- Instrutivo para formato de Tesis](https://posgrados.inaoep.mx/archivos/Formatos_de_examen_de_grado_/INSTRUCTIVO_PARA_FORMATO_DE_TESIS.pdf)
+
+
+
+
+- [ ] 2. Carta del asesor de Tesis
+- [ ] 3. Formato de asignación de jurado de examen
+- [ ] 4. Formato de dictámenes de maestría
+- [ ] 5. Formato de solicitud de fecha de examen
+- [ ] 6. Formato de resumen de Tesis
+- [ ] 7. Formato de constancia de no adeudo
+- [ ] 8. Formato de portada de Tesis
+- [ ] 9. Instructivo de formato de Tesis

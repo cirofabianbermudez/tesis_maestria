@@ -21,7 +21,7 @@
 
 \begin{document}
 
-% Slide 1 Hoja de presentación
+% Slide
 \begin{frame}[plain]
     \fontfamily{cmr}\selectfont
 	\begin{center}
@@ -49,7 +49,7 @@
 	
 	\begin{flushleft}
 		\textbf{Asesor:} Dr. Esteban Tlelo Cuautle (INAOE)\\
-	    \textbf{Coasesor:} Dr. Cuahutemoc Mancillas López (CINVESTAV IPN)
+	    \textbf{Coasesor:} Dr. Cuauhtemoc Mancillas López (CINVESTAV IPN)
 	\end{flushleft}
 	
 	\begin{flushright}
@@ -57,99 +57,291 @@
 	\end{flushright}
 \end{frame}
 
-% Slide 1 Hoja de presentación
-%\begin{frame}
-%  \titlepage
-%\end{frame}
-
-% Slide 2 Tabla de contenidos
+% Slide
 \begin{frame}
     \tableofcontents
 \end{frame}
 
-% Slide 3
+% Slide
 \section{Introducción}
+
+
+% Slide
 \begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
+    \frametitle{Introducción}
+    \begin{block}{}
         \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
 	\end{block}
 \end{frame}
 
-% Slide 4
+
+
+% Slide
 \section{Objetivos}
 \begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
+    \frametitle{Objetivos}
+    \begin{block}{Objetivo general}
         \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+        Diseñar e implementar en FPGA un TRNG híbrido para la generación de secuencias muy largas.
 	\end{block}
+
+    \begin{block}{Objetivo específicos}
+        \justifying
+        \begin{itemize}
+            \item[•] Investigar el estado del arte de diferentes generadores de números aleatorios.
+            \item[•] Estudiar los diferentes tipos de generadores de números aleatorios y analizar sus características principales.
+            \item[•] Estudiar la teoría de los mapas caóticos y su utilidad en generadores de números aleatorios.
+            \item[•] Diseñar un generador de números aleatorios híbrido utilizando un TRNG como generador de semillas y un mapa caótico para realizar un postprocesamiento que mejore sus características estadísticas y comprobar estas utilizando las pruebas NIST.
+            \item[•] Implementar el TRNG híbrido en una FPGA.
+        \end{itemize}
+	\end{block}
+
 \end{frame}
 
-% Slide 5
-\section{Random Number Generators}
+% Slide 
+\section{Generadores de números aleatorios (RNGs)}
 \begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
+    \frametitle{Introducción}
+    \begin{block}{Estructura de los TRNG}
         \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis.
 	\end{block}
-\end{frame}
-
-% Slide 6
-\begin{frame}
-  \frametitle{Título de diapositiva}
-    \begin{figure}[hbtp]
+	
+	\begin{figure}[hbtp]
 	    \centering
-	    \includegraphics[width = 5cm]{example-image}
-        \caption{Some Caption.}
+	    \includegraphics[width=0.8\textwidth]{A0_TRNG_estructura}
+	    \caption{Estructura general de un TRNG \cite{Badrignans2011}.}
+        \label{fig:A1_TRNG_estructura}
     \end{figure}
 \end{frame}
 
-% Slide 7
+% Slide
 \begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
+    \frametitle{Introducción}
+    \begin{block}{Parámetros de evaluación}
         \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
-        
-        \begin{figure}[hbtp]
-	        \centering
-	        \includegraphics[width = 4cm]{example-image}
-            \caption{Some Caption.}
-        \end{figure}
+		\begin{itemize}
+		    \item Parámetros relacionados con la calidad
+		        \begin{itemize}
+		            \item Fuente de aleatoriedad.
+		            \item Método de extracción de aleatoriedad y entropía del ruido digital.
+		            \item Método de postprocesamiento (opcional).
+		            \item Tasa de bits de salida y su estabilidad.
+		        \end{itemize}
+		    \item Parámetros relacionados con la seguridad
+		        \begin{itemize}
+		            \item Existencia de un modelo matemático.
+		            \item Comprobabilidad interna.
+		            \item Seguridad (robustez, resistencia contra ataques).
+		        \end{itemize}
+		    \item Parámetros relacionados con el diseño
+		        \begin{itemize}
+		            \item El uso de recursos.
+		            \item El consumo de energía.
+		            \item Viabilidad en dispositivos lógicos y FPGAs.
+		            \item Automatización del diseño.
+		        \end{itemize}
+		\end{itemize}   
+		\vspace{0.1cm}
 	\end{block}
 \end{frame}
 
-% Slide 8
+
+% Slide
 \begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
+    \frametitle{Introducción}
+    \begin{block}{Jitter}
         \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis. 
+	\end{block}
+	\begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{F9_jitter}
+        \caption{Jitter del reloj.}
+        \label{fig:F9_jitter}
+    \end{figure}
+\end{frame}
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Jitter}
+        \justifying
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis.
+	\end{block}
+    \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{F10_fluctuaciones}
+        \caption{Fluctuaciones del nivel de referencia originadas por ruidos analógicos que provocan jitter del reloj en los circuitos digitales. \cite{Petura2019}}
+        \label{fig:F10_fluctuaciones}
+    \end{figure}
+\end{frame}
+
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleos TRNG en FPGA}
+        \justifying
+        Con base en los criterios del AIS-20/31 \cite{Petura2016}, los núcleos TRNG adecuados para utilizarse en dispositivos lógicos programables (FPGA) que usan estructuras oscilantes son:
+		\begin{itemize}
+            \item Elementary ring oscillator based TRNG (ERO-TRNG).
+            \item Coherent sampling ring oscillator based TRNG (COSO-TRNG).
+            \item Multi-ring oscillator based TRNG (MURO-TRNG).
+            \item Transient effect ring oscillator based TRNG (TERO-TRNG).
+            \item Self-timed ring based TRNG  (STR-TRNG).
+            \item Phase-locked loop based TRNG (PLL-TRNG).
+        \end{itemize}  
 	\end{block}
 \end{frame}
 
-% Slide 9
+
+% Slide
 \begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
+    \frametitle{Introducción}
+    \begin{block}{Núcleo ERO-TRNG}
         \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla.   
+	\end{block}
+	\begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{A1_ERO_TRNG}
+	    \caption{Diagrama de ERO-TRNG.}
+        \label{fig:A1_ERO_TRNG}
+    \end{figure}
+\end{frame}
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleo COSO-TRNG}
+        \justifying
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla.   
+	\end{block}
+	\begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{A2_COSO_TRNG}
+	    \caption{Diagrama de COSO-TRNG.}
+        \label{fig:A2_COSO_TRNG}
+    \end{figure}
+\end{frame}
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleo MURO-TRNG}
+        \justifying
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla.   
+	\end{block}
+	\begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width=0.6\textwidth]{A3_MURO_TRNG}
+	    \caption{Diagrama de MURO-TRNG.}
+        \label{fig:A3_MURO_TRNG}
+    \end{figure}
+\end{frame}
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleo TERO-TRNG}
+        \justifying
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla.   
+	\end{block}
+	\begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width=0.6\textwidth]{A4_TERO_TRNG}
+	    \caption{Diagrama de TERO-TRNG.}
+        \label{fig:A4_TERO_TRNG}
+    \end{figure}
+\end{frame}
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleo STR-TRNG}
+        \justifying
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla.   
+	\end{block}
+	\begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width=0.5\textwidth]{A5_STR_TRNG}
+	    \caption{Diagrama de STR-TRNG.}
+        \label{fig:A5_STR_TRNG}
+    \end{figure}
+\end{frame}
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleo PLL-TRNG}
+        \justifying
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla.   
+	\end{block}
+	\begin{figure}[hbtp]
+	    \centering
+	    \includegraphics[width=0.7\textwidth]{A6_PLL_TRNG}
+	    \caption{Diagrama de PLL-TRNG.}
+        \label{fig:A6_PLL_TRNG}
+    \end{figure}
+\end{frame}
+
+
+% Slide
+\begin{frame}
+    \frametitle{Introducción}
+    \begin{block}{Núcleos TRNG en FPGA}
+        \justifying
+\begin{table}[htbp]
+  \centering
+    \caption{Resumen de los resultados núcleos TRNGs \cite{Petura2016}.}
+    \resizebox{0.9\linewidth}{!}{ 
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \rowcolor{lightgray} TRNG Type & FPGA  & Area  & Power cons. & Bit Rate & Efficiency & Entropy & Entropy * Bit rate & Feasib. \\
+            \rowcolor{lightgray}       & device & (LUT/Reg) & [mW]  & [Mbits/s] & [bits/$\mu$Ws] & per bit &       & \& Repeat. \\
+            \hline
+            \multirow{3}[2]{*}{ERO} & Spartan 6 & 46/19 & 2.16  & 0.0042 & 1.94  & 0.999 & 0.004 & \multirow{3}[2]{*}{5} \\
+                  & Cyclone V & 34/20 & 3.24  & 0.0027 & 0.83  & 0.990 & 0.003 &  \\
+                  & SmartFusion 2 & 45/19 & 4     & 0.014 & 3.5   & 0.980 & 0.013 &  \\
+            \hline
+            \multirow{3}[2]{*}{COSO} & Spartan 6 & 18/3  & 1.22  & 0.54  & 442.6 & 0.999 & 0.539 & \multirow{3}[2]{*}{1} \\
+                  & Cyclone V & 13/3  & 0.9   & 1.44  & 1600  & 0.999 & 1.438 &  \\
+                  & SmartFusion 2 & 23/3  & 1.94  & 0.328 & 169   & 0.999 & 0.327 &  \\
+            \hline
+            \multirow{3}[2]{*}{MURO} & Spartan 6 & 521/131 & 54.72 & 2.57  & 46.9  & 0.999 & 2.567 & \multirow{3}[2]{*}{4} \\
+                  & Cyclone V & 525/130 & 34.93 & 2.2   & 62.9  & 0.999 & 2.197 &  \\
+                  & SmartFusion 2 & 545/130 & 66.41 & 3.62  & 54.5  & 0.999 & 3.616 &  \\
+            \hline
+            \multirow{3}[2]{*}{PLL} & Spartan 6 & 34/14 & 10.6  & 0.44  & 41.5  & 0.981 & 0.431 & \multirow{3}[2]{*}{3} \\
+                  & Cyclone V & 24/14 & 23    & 0.6   & 43.4  & 0.986 & 0.592 &  \\
+                  & SmartFusion 2 & 30/15 & 19.7  & 0.37  & 18.7  & 0.921 & 0.340 &  \\
+            \hline
+            \multirow{3}[2]{*}{TERO} & Spartan 6 & 39/12 & 3.312 & 0.625 & 188.7 & 0.999 & 0.624 & \multirow{3}[2]{*}{1} \\
+                  & Cyclone V & 46/12 & 9.36  & 1     & 106.8 & 0.987 & 0.985 &  \\
+                  & SmartFusion 2 & 46/12 & 1.23  & 1     & 813   & 0.999 & 0.999 &  \\
+            \hline
+            \multirow{3}[2]{*}{STR} & Spartan 6 & 346/256 & 65.9  & 154   & 2343.2 & 0.998 & 154.121 & \multirow{3}[2]{*}{2} \\
+                  & Cyclone V & 352/256 & 49.4  & 245   & 4959.1 & 0.999 & 244.755 &  \\
+                  & SmartFusion 2 & 350/256 & 82.52 & 188   & 2286.7 & 0.999 & 188.522 &  \\
+            \hline
+        \end{tabular}%
+    }
+  \label{tab:resumen_de_trng_cores}
+\end{table}%
+   
 	\end{block}
 \end{frame}
 
-% Slide 10
-\begin{frame}
-    \frametitle{Título de diapositiva}
-    \begin{block}{Título de bloque}
-        \justifying
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis fermentum arcu, in pretium risus convallis vel. Aenean dignissim quis felis interdum aliquam. Duis et vehicula nulla. Ut at mollis felis. Sed sodales ligula eget lacinia egestas. Etiam feugiat viverra tortor, quis ullamcorper lectus pretium eu. Integer eu fringilla nunc, sed maximus justo. Nullam in ornare quam, vel dictum ipsum.
-	\end{block}
-\end{frame}
 
-% Slide 11
+% Slide
+\section{Diseño de TRG híbrido}
 \begin{frame}
     \frametitle{Título de diapositiva}
     \begin{block}{Título de bloque}
@@ -163,6 +355,15 @@
 	\end{block}
 \end{frame}
 
+
+% Slide
+\section{Bibliografía}
+\begin{frame}
+    \frametitle{Bibliografía}
+    %\nocite{*}
+	\bibliographystyle{ieeetr}
+	\bibliography{../bibliografia}
+\end{frame}
 
 
 \end{document}
