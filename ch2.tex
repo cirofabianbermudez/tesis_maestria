@@ -716,7 +716,7 @@
 
             El TERO-TRNG genera bits aleatorios utilizando metaestabilidad oscilatoria, la Figura \ref{fig:A4_TERO_TRNG} muestra la implementación del TERO-TRNG.
 
-            El el flip-flop TFF representa el último bit del contador, que cuenta el número de oscilaciones de la celda TERO. Debido a la metaestabilidad oscilatoria del TERO, el número de oscilaciones es aleatorio. Para producir un flujo de bits aleatorios, el TERO debe reiniciarse periódicamente \cite{Haddad2015}.
+            El flip-flop TFF representa el último bit del contador, que cuenta el número de oscilaciones de la celda TERO. Debido a la metaestabilidad oscilatoria del TERO, el número de oscilaciones es aleatorio. Para producir un flujo de bits aleatorios, el TERO debe reiniciarse periódicamente \cite{Haddad2015}.
 	
             \begin{figure}[hbtp]
                 \centering
@@ -764,7 +764,7 @@
 					\label{fig:A6_PLL_TRNG}
 				\end{figure}
 
-                El PLL-TRNG no requiere ninguna colocación o encaminamiento manual. Proporciona alta seguridad y no se ve afectado por el ruido determinista global (es decir, dependiente de los datos), ya que los PLL están físicamente aislados del resto de la FPGA. La tasa de bits de salida del PLL-TRNG también es considerable \cite{Fischer2019}.
+                El PLL-TRNG no requiere ninguna colocación o enrutamiento manual. Proporciona alta seguridad y no se ve afectado por el ruido determinista global (es decir, dependiente de los datos), ya que los PLL están físicamente aislados del resto de la FPGA. La tasa de bits de salida del PLL-TRNG también es considerable \cite{Fischer2019}.
 
                 El diseño del PLL-TRNG es sencillo, repetible y puede automatizarse. Sin embargo, la elección de los parámetros del PLL no es trivial. Hay que respetar muchas restricciones, incluidas las físicas del fabricante del PLL  y las de seguridad del TRNG. 
 

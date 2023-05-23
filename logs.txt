@@ -218,7 +218,8 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 (c:/texlive/2021/texmf-dist/tex/latex/supertabular/supertabular.sty))
 (c:/texlive/2021/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty))
-(./glossaries.tex)) (./main.aux)
+(./glossaries.tex))
+No file main.aux.
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 (c:/texlive/2021/texmf-dist/tex/latex/pdflscape/pdflscape.sty
@@ -227,7 +228,6 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
 (c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(./main.out) (./main.out)
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
 
@@ -238,25 +238,9 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 (pdfpages)                DVI mode. 
 (pdfpages)                You can use the option `lastpage' to give me a hint.
 
-[1]) [2] (./agradecimientos.tex) [1] [2]
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
-[3] [4]
-
-Package hyperref Warning: old lof file detected, not used; run LaTeX again.
-
-[5] [6]
-
-Package hyperref Warning: old lot file detected, not used; run LaTeX again.
-
-[7] [8]
-
-Package hyperref Warning: old lol file detected, not used; run LaTeX again.
-
-(./main.gls [9] [10] (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)) [11] (./resumen.tex
-[12]) [13] [14] (./ch1.tex
+[1]) [2] (./agradecimientos.tex) [1] [2] [3] [4] [5] [6] [7] [8]
+No file main.gls.
+[9] (./resumen.tex [10]) [11] [12] (./ch1.tex
 Cap\'{\i }tulo 1.
 
 LaTeX Warning: Citation `Knuth2014' on page 1 undefined on input line 5.
@@ -298,7 +282,8 @@ LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 57.
 
 LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 57.
 
-[5]
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd) [5]
 
 LaTeX Warning: Citation `Badrignans2011' on page 6 undefined on input line 86.
 
@@ -1131,19 +1116,25 @@ Ap\'{e}ndice A.
 (./codigos/vhdl_codes/chaotic_map/mult.vhd)
 (./codigos/vhdl_codes/chaotic_map/ff_hab.vhd [95])
 (./codigos/vhdl_codes/chaotic_map/fsm_cm.vhd [96])
-(./codigos/vhdl_codes/chaotic_map/chaotic_map.vhd)) [97] [98] (./main.bbl
-[99] [100] [101] [102] [103]) [104] (./main.aux (./portada.aux)
-(./agradecimientos.aux) (./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux)
-(./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux) (./Ap_A.aux))
+(./codigos/vhdl_codes/chaotic_map/chaotic_map.vhd)) [97] [98]
+No file main.bbl.
+(./main.aux (./portada.aux) (./agradecimientos.aux) (./resumen.aux) (./ch1.aux)
+ (./ch2.aux) (./ch3.aux) (./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux)
+(./Ap_A.aux))
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
  )
 (see the transcript file for additional information)
-Output written on main.dvi (120 pages, 1255772 bytes).
+Output written on main.dvi (112 pages, 1201880 bytes).
 Transcript written on main.log.
 This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
 The top-level auxiliary file: main.aux
@@ -1412,10 +1403,23 @@ Package pdfpages Warning: I cannot determine the number of pages of the
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd) [3] [4]) [5] [6]
 (./main.lof
-Overfull \hbox (275.9131pt too wide) in paragraph at lines 8--8
+
+LaTeX Warning: Citation `Badrignans2011' on page \es@scroman {vii} undefined on
+ input line 5.
+
+
+LaTeX Warning: Citation `Petura2019' on page \es@scroman {vii} undefined on inp
+ut line 8.
+
+
+Overfull \hbox (270.53941pt too wide) in paragraph at lines 8--8
  [][] [] [][]  
 
-Overfull \hbox (56.0116pt too wide) in paragraph at lines 9--9
+LaTeX Warning: Citation `Petura2019' on page \es@scroman {vii} undefined on inp
+ut line 9.
+
+
+Overfull \hbox (50.63791pt too wide) in paragraph at lines 9--9
  [][] [] [][]  
 
 Overfull \hbox (64.62614pt too wide) in paragraph at lines 10--10
@@ -1423,6 +1427,10 @@ Overfull \hbox (64.62614pt too wide) in paragraph at lines 10--10
 
 Overfull \hbox (320.16107pt too wide) in paragraph at lines 13--13
  [][] [] [][]  
+
+LaTeX Warning: Citation `Parker2012' on page \es@scroman {vii} undefined on inp
+ut line 33.
+
 [7]
 Overfull \hbox (118.17558pt too wide) in paragraph at lines 38--38
  [][] [] [][]  
@@ -1433,6 +1441,11 @@ Overfull \hbox (245.43613pt too wide) in paragraph at lines 39--39
 Overfull \hbox (25.2079pt too wide) in paragraph at lines 54--54
  [][] [] [][]  
 ) [8] (./main.lot
+
+LaTeX Warning: Citation `Petura2016' on page \es@scroman {ix} undefined on inpu
+t line 7.
+
+
 Overfull \hbox (73.406pt too wide) in paragraph at lines 11--11
  [][] [] [][]  
 
@@ -1458,40 +1471,346 @@ Overfull \hbox (20.83951pt too wide) in paragraph at lines 10--10
  [][] [] [][]  
 ) (./main.gls [11] [12]) [13] (./resumen.tex [14]) [15] [16] (./ch1.tex
 Cap\'{\i }tulo 1.
-[1] [2] [3] [4] <imagenes//A0_TRNG_estructura.eps> [5] [6] [7] [8] [9])
-[10] (./ch2.tex
+
+LaTeX Warning: Citation `Knuth2014' on page 1 undefined on input line 5.
+
+[1]
+
+LaTeX Warning: Citation `Petura2016' on page 2 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Badrignans2011' on page 2 undefined on input line 9.
+
+
+LaTeX Warning: Citation `Jun1999' on page 2 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Turan2018' on page 2 undefined on input line 11.
+
+
+LaTeX Warning: Citation `AIS2011' on page 2 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Nist2010' on page 2 undefined on input line 20.
+
+
+LaTeX Warning: Citation `Badrignans2011' on page 2 undefined on input line 20.
+
+[2] [3] [4]
+
+LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 52.
+
+<imagenes//A0_TRNG_estructura.eps>
+
+LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 57.
+
+
+LaTeX Warning: Citation `Badrignans2011' on page 5 undefined on input line 57.
+
+[5]
+
+LaTeX Warning: Citation `Badrignans2011' on page 6 undefined on input line 86.
+
+
+LaTeX Warning: Citation `Schindler2003' on page 6 undefined on input line 90.
+
+[6]
+
+LaTeX Warning: Citation `Petura2016' on page 7 undefined on input line 104.
+
+[7]
+
+LaTeX Warning: Citation `Baudet2010' on page 8 undefined on input line 106.
+
+
+LaTeX Warning: Citation `Kohlbrenner2004' on page 8 undefined on input line 106
+.
+
+
+LaTeX Warning: Citation `Varchola2010' on page 8 undefined on input line 106.
+
+
+LaTeX Warning: Citation `Cherkaoui2013' on page 8 undefined on input line 106.
+
+
+LaTeX Warning: Citation `Fischer2003' on page 8 undefined on input line 106.
+
+
+LaTeX Warning: Citation `Wang2021' on page 8 undefined on input line 119.
+
+
+LaTeX Warning: Citation `Peetermans2021' on page 8 undefined on input line 119.
+
+
+
+LaTeX Warning: Citation `Anandakumar2020' on page 8 undefined on input line 119
+.
+
+
+LaTeX Warning: Citation `Liao2022' on page 8 undefined on input line 121.
+
+
+LaTeX Warning: Citation `Vaidyanathan2021' on page 8 undefined on input line 12
+1.
+
+
+LaTeX Warning: Citation `Fraga2017' on page 8 undefined on input line 121.
+
+[8]
+
+LaTeX Warning: Citation `Wong2008' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `AlHazaimeh2017' on page 9 undefined on input line 123.
+
+
+
+LaTeX Warning: Citation `Liu2020' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `Li2013' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `Sivaraman2020' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `Pareek2006' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `Kadir2010' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `Liu2016' on page 9 undefined on input line 123.
+
+
+LaTeX Warning: Citation `Vaidyanathan2018' on page 9 undefined on input line 12
+3.
+
+
+LaTeX Warning: Citation `GarciaGuerrero2020' on page 9 undefined on input line 
+123.
+
+
+LaTeX Warning: Citation `GarciaGrimaldo2021' on page 9 undefined on input line 
+125.
+
+
+LaTeX Warning: Citation `HernandezMorales2022' on page 9 undefined on input lin
+e 125.
+
+[9]) [10] (./ch2.tex
 Cap\'{\i }tulo 2.
-[11] [12] [13] [14] [15] [16] [17] [18] [19] <imagenes//F9_jitter.eps> [20]
-<imagenes//F10_fluctuaciones.eps> <imagenes//F11_jitter_fase.eps> [21]
-<imagenes//F12_jitter_periodo.eps> [22] <imagenes//F13_jitter_ciclo.eps>
+[11] [12] [13] [14] [15] [16] [17] [18]
+
+LaTeX Warning: Citation `Valtchanov2008' on page 19 undefined on input line 168
+.
+
+[19]
+
+LaTeX Warning: Citation `Fischer2003' on page 20 undefined on input line 172.
+
+<imagenes//F9_jitter.eps> [20] <imagenes//F10_fluctuaciones.eps>
+
+LaTeX Warning: Citation `Petura2019' on page 21 undefined on input line 195.
+
+
+LaTeX Warning: Citation `Petura2019' on page 21 undefined on input line 195.
+
+<imagenes//F11_jitter_fase.eps>
+
+LaTeX Warning: Citation `Petura2019' on page 21 undefined on input line 215.
+
+
+LaTeX Warning: Citation `Petura2019' on page 21 undefined on input line 215.
+
+[21] <imagenes//F12_jitter_periodo.eps> [22] <imagenes//F13_jitter_ciclo.eps>
 <imagenes//F14_jitter_componentes.eps> [23] [24]
-<imagenes//F17_extraccion_jitter.eps> <imagenes//G0_ERO_TRNG_simple.eps>
-[25] <imagenes//F15_metaestabilidad.eps> [26] [27]
-<imagenes//F16_internal_tero.eps> [28] [29] [30] <imagenes//E1_PTG1.eps>
-[31] [32] <imagenes//E2_PTG2.eps> [33] <imagenes//E3_PTG3.eps> [34]
-<imagenes//E4_DRG1.eps> [35] [36] [37] [38] <imagenes//A1_ERO_TRNG.eps>
-[39] <imagenes//A2_COSO_TRNG.eps> [40] [41] <imagenes//A3_MURO_TRNG.eps>
+<imagenes//F17_extraccion_jitter.eps>
+
+LaTeX Warning: Citation `Sunar2007' on page 25 undefined on input line 294.
+
+
+LaTeX Warning: Citation `Baudet2010' on page 25 undefined on input line 294.
+
+
+LaTeX Warning: Citation `Rozic2015' on page 25 undefined on input line 294.
+
+
+LaTeX Warning: Citation `Cherkaoui2013' on page 25 undefined on input line 294.
+
+
+
+LaTeX Warning: Citation `Zhang2018' on page 25 undefined on input line 294.
+
+
+LaTeX Warning: Citation `Baudet2010' on page 25 undefined on input line 296.
+
+
+LaTeX Warning: Citation `Baudet2010' on page 25 undefined on input line 298.
+
+<imagenes//G0_ERO_TRNG_simple.eps> [25]
+
+LaTeX Warning: Citation `Sunar2007' on page 26 undefined on input line 309.
+
+
+LaTeX Warning: Citation `Cherkaoui2013' on page 26 undefined on input line 309.
+
+
+<imagenes//F15_metaestabilidad.eps> [26]
+
+LaTeX Warning: Citation `Reyneri1990' on page 27 undefined on input line 331.
+
+
+LaTeX Warning: Citation `Varchola2010' on page 27 undefined on input line 333.
+
+[27] <imagenes//F16_internal_tero.eps>
+
+LaTeX Warning: Citation `Baudet2010' on page 28 undefined on input line 348.
+
+[28]
+
+LaTeX Warning: Citation `Fischer2014' on page 29 undefined on input line 362.
+
+
+LaTeX Warning: Citation `Dworkin2001' on page 29 undefined on input line 373.
+
+
+LaTeX Warning: Citation `JoanDaemen2020' on page 29 undefined on input line 373
+.
+
+
+LaTeX Warning: Citation `Dang2015' on page 29 undefined on input line 373.
+
+
+LaTeX Warning: Citation `Nist2010' on page 29 undefined on input line 375.
+
+[29]
+
+LaTeX Warning: Citation `AIS2011' on page 30 undefined on input line 377.
+
+
+LaTeX Warning: Citation `Turan2018' on page 30 undefined on input line 377.
+
+
+LaTeX Warning: Citation `Petura2019' on page 30 undefined on input line 381.
+
+[30] <imagenes//E1_PTG1.eps> [31] [32] <imagenes//E2_PTG2.eps> [33]
+<imagenes//E3_PTG3.eps> [34]
+
+LaTeX Warning: Citation `AIS2011' on page 35 undefined on input line 489.
+
+<imagenes//E4_DRG1.eps> [35] [36]
+
+LaTeX Warning: Citation `Turan2018' on page 37 undefined on input line 540.
+
+
+LaTeX Warning: Citation `Turan2018' on page 37 undefined on input line 542.
+
+
+LaTeX Warning: Citation `AIS2011' on page 37 undefined on input line 590.
+
+
+LaTeX Warning: Citation `Turan2018' on page 37 undefined on input line 591.
+
+[37]
+
+LaTeX Warning: Citation `Petura2016' on page 38 undefined on input line 605.
+
+[38]
+
+LaTeX Warning: Citation `Baudet2010' on page 39 undefined on input line 633.
+
+<imagenes//A1_ERO_TRNG.eps> [39]
+
+LaTeX Warning: Citation `Choi2021' on page 40 undefined on input line 659.
+
+
+LaTeX Warning: Citation `Bochard2010' on page 40 undefined on input line 661.
+
+
+LaTeX Warning: Citation `Wold2008' on page 40 undefined on input line 661.
+
+
+LaTeX Warning: Citation `Kohlbrenner2004' on page 40 undefined on input line 66
+7.
+
+<imagenes//A2_COSO_TRNG.eps> [40] [41] <imagenes//A3_MURO_TRNG.eps>
 Overfull \hbox (20.56589pt too wide) in paragraph at lines 715--715
 |[]\T1/cmr/bx/n/14.4 Transient ef-fect ring os-ci-lla-tor ba-sed TRNG (TERO-TRN
 G)| 
-[42] <imagenes//A4_TERO_TRNG.eps> <imagenes//A5_STR_TRNG.eps> [43]
-<imagenes//A6_PLL_TRNG.eps> [44] [45]) [46] (./ch3.tex
+[42]
+
+LaTeX Warning: Citation `Haddad2015' on page 43 undefined on input line 719.
+
+<imagenes//A4_TERO_TRNG.eps>
+
+LaTeX Warning: Citation `Bernard2018' on page 43 undefined on input line 738.
+
+<imagenes//A5_STR_TRNG.eps> [43] <imagenes//A6_PLL_TRNG.eps>
+
+LaTeX Warning: Citation `Fischer2019' on page 44 undefined on input line 767.
+
+[44]
+
+LaTeX Warning: Citation `Petura2016' on page 45 undefined on input line 777.
+
+
+LaTeX Warning: Citation `Petura2016' on page 45 undefined on input line 781.
+
+
+LaTeX Warning: Citation `Petura2016' on page 45 undefined on input line 781.
+
+[45]) [46] (./ch3.tex
 Cap\'{\i }tulo 3.
-[47] [48] <imagenes//F0_mapdiagram.eps> [49] <imagenes//F1_logistic_curve.eps>
+
+LaTeX Warning: Citation `Strogatz1994' on page 47 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Sprott2003' on page 47 undefined on input line 9.
+
+[47]
+
+LaTeX Warning: Citation `Sprott2003' on page 48 undefined on input line 40.
+
+[48] <imagenes//F0_mapdiagram.eps> [49] <imagenes//F1_logistic_curve.eps>
 [50] <imagenes//F2_cobwebs_simple.eps> [51] <imagenes//F3_time_series.eps>
 [52] <imagenes//F5_cobwebs_bifurcation.eps> [53] [54] [55]
-<imagenes//F4_bifurcation.eps> [56] <imagenes//F7_cobwebs.eps>
-<imagenes//F8_time_series.eps>
+<imagenes//F4_bifurcation.eps>
+
+LaTeX Warning: Citation `Parker2012' on page 56 undefined on input line 220.
+
+
+LaTeX Warning: Citation `Parker2012' on page 56 undefined on input line 220.
+
+[56] <imagenes//F7_cobwebs.eps> <imagenes//F8_time_series.eps>
 
 LaTeX Warning: Command \textemdash invalid in math mode on input line 249.
 
 [57] [58] <imagenes//F6_many_logistic_curve.eps> [59]) [60] (./ch4.tex
 Cap\'{\i }tulo 4.
-[61] [62] [63] (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd)
-<imagenes//G1_map1.eps> <imagenes//G2_map2.eps> <imagenes//G3_map3.eps>
-<imagenes//G4_map4.eps> <imagenes//G5_map5.eps> <imagenes//G6_map6.eps>
+
+LaTeX Warning: Citation `TleloCuautle2016' on page 61 undefined on input line 9
+.
+
+[61] [62]
+
+LaTeX Warning: Citation `Sprott1993' on page 63 undefined on input line 78.
+
+
+LaTeX Warning: Citation `Sprott1993' on page 63 undefined on input line 88.
+
+[63]
+
+LaTeX Warning: Citation `Sprott1993' on page 64 undefined on input line 135.
+
+(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd) <imagenes//G1_map1.eps>
+<imagenes//G2_map2.eps> <imagenes//G3_map3.eps> <imagenes//G4_map4.eps>
+<imagenes//G5_map5.eps> <imagenes//G6_map6.eps>
 
 LaTeX Warning: Float too large for page by 14.87201pt on input line 205.
+
+
+LaTeX Warning: Citation `Micco2017' on page 64 undefined on input line 207.
 
 [64] [65] <imagenes//H1_map1.eps> <imagenes//H2_map2.eps>
 <imagenes//H3_map3.eps> <imagenes//H4_map4.eps> <imagenes//H5_map5.eps>
@@ -1499,12 +1818,33 @@ LaTeX Warning: Float too large for page by 14.87201pt on input line 205.
 
 LaTeX Warning: Float too large for page by 14.87201pt on input line 289.
 
+
+LaTeX Warning: Citation `Fraga2021' on page 66 undefined on input line 292.
+
+
+LaTeX Warning: Citation `Sprott1993' on page 66 undefined on input line 292.
+
 [66] [67] [68]
 Overfull \hbox (3.67369pt too wide) in paragraph at lines 373--387
  [][] 
 [69] <imagenes//B0_chaotic_map.eps> [70] <imagenes//J0_distribucion_exp.eps>
-[71] <imagenes//B1_architecture.eps> <imagenes//B2_fsm_cm.eps> [72]
-<imagenes//J1_scm.eps> [73] <imagenes//J2_trng.eps>
+[71] <imagenes//B1_architecture.eps> <imagenes//B2_fsm_cm.eps>
+
+LaTeX Warning: Citation `Thong2010' on page 72 undefined on input line 457.
+
+
+LaTeX Warning: Citation `GuillenFernandez2019' on page 72 undefined on input li
+ne 457.
+
+[72] <imagenes//J1_scm.eps>
+
+LaTeX Warning: Citation `Thong2011' on page 73 undefined on input line 472.
+
+[73] <imagenes//J2_trng.eps>
+
+LaTeX Warning: Citation `Laban2016' on page 74 undefined on input line 497.
+
+
 Overfull \hbox (78.04106pt too wide) in paragraph at lines 497--498
 \T1/cmr/m/n/12 ría pro-por-cio-na-da por el [][][][]
 [74] (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty)
@@ -1512,13 +1852,26 @@ Overfull \hbox (78.04106pt too wide) in paragraph at lines 497--498
 (./codigos/vhdl_codes/primitivas/library.vhd) [75] <imagenes//D2_lut1.eps>
 (./codigos/vhdl_codes/primitivas/lut1.vhd
 (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ts1pcr.fd))
-<imagenes//D3_obufds.eps> [76] (./codigos/vhdl_codes/primitivas/obufds.vhd))
-[77] (./ch5.tex [78]
+<imagenes//D3_obufds.eps> [76] (./codigos/vhdl_codes/primitivas/obufds.vhd)
+
+LaTeX Warning: Citation `Laban2016' on page 77 undefined on input line 570.
+
+) [77] (./ch5.tex [78]
 Cap\'{\i }tulo 5.
 <imagenes//C1_architecture_rs232.eps> <imagenes//C0_fsm_rs232.eps>
-<imagenes//D0_system.eps> [79] [80] <imagenes//D1_fsm_system.eps> [81] [82]
-<imagenes//J3_distribucion.eps> <imagenes//Z4_distribucion_normal.eps> [83])
-[84] (./ch6.tex
+<imagenes//D0_system.eps> [79] [80] <imagenes//D1_fsm_system.eps>
+
+LaTeX Warning: Citation `Nist2010' on page 81 undefined on input line 51.
+
+
+LaTeX Warning: Citation `Turan2018' on page 81 undefined on input line 51.
+
+[81] [82] <imagenes//J3_distribucion.eps>
+<imagenes//Z4_distribucion_normal.eps> [83]
+
+LaTeX Warning: Citation `Fraga2021' on page 84 undefined on input line 209.
+
+) [84] (./ch6.tex
 Cap\'{\i }tulo 6.
 ) [85] (./test.tex) [86] (./Ap_A.tex
 Ap\'{e}ndice A.
@@ -1542,11 +1895,19 @@ Ap\'{e}ndice A.
 (./agradecimientos.aux) (./resumen.aux) (./ch1.aux) (./ch2.aux) (./ch3.aux)
 (./ch4.aux) (./ch5.aux) (./ch6.aux) (./test.aux) (./Ap_A.aux))
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
  )
 (see the transcript file for additional information)
-Output written on main.dvi (122 pages, 1377460 bytes).
+Output written on main.dvi (122 pages, 1355968 bytes).
 Transcript written on main.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -1919,5 +2280,5 @@ s/type1/public/cm-super/sfti1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sftt1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfxc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 >
-Output written on main.pdf (122 pages, 4448919 bytes).
+Output written on main.pdf (122 pages, 4448907 bytes).
 Transcript written on main.log.
