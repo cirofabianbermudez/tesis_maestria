@@ -236,13 +236,44 @@
 \end{frame}
 
 
+% Slide 
+\begin{frame}
+    \frametitle{Generadores de números aleatorios (RNGs)}
+    \begin{block}{Características de los generadores}
+        \justifying
+        Random Number Generators (RNG)
+       \begin{footnotesize}
+            \begin{itemize}
+            \item True Random Number Generators (TRNG).
+            \begin{itemize}
+                \item Fenómenos aleatorios no algorítmicos (temperatura, ruido, jitter).
+                \item Datos aleatorios reales (no se pueden predecir).
+                \item Propiedades estadísticas peores que DRNG.
+                \item Más lentos que los DRNG.
+            \end{itemize}
+            \item Deterministic Random Number Generators (DRNG).
+            \begin{itemize}
+                \item Buenas propiedades estadísticas.
+                \item Algoritmo subyacente.
+                \item Semillas.
+                \item Altas tasas de bits de salida.
+            \end{itemize}
+            \item Hibrid Random Number Generators (HRNG).
+            \begin{itemize}
+                \item Combinan las fortalezas de los DRNG (rápidos y de buena calidad) sembrados repetidamente por un TRNG (lento pero impredecible).
+            \end{itemize}
+        \end{itemize}
+       \end{footnotesize}
+	\end{block}
+\end{frame}
+
 
 % Slide 
 \begin{frame}
     \frametitle{Generadores de números aleatorios (RNGs)}
 	\begin{figure}[hbtp]
 	    \centering
-	    \includegraphics[width=0.95\textwidth]{K0_clasificacion}
+	    \includegraphics[width=1.0\textwidth]{K0_clasificacion}
 	    \caption{Clasificación de los RNG.}
         \label{fig:K0_clasificacion}
     \end{figure}
@@ -306,7 +337,7 @@
 	\end{block}
 	\begin{figure}[hbtp]
         \centering
-        \includegraphics[width=0.8\textwidth]{F9_jitter}
+        \includegraphics[width=0.9\textwidth]{F9_jitter}
         \caption{Jitter del reloj.}
         \label{fig:F9_jitter}
     \end{figure}
@@ -839,14 +870,14 @@
             \begin{subfigure}[b]{0.475\textwidth}
                 \centering
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G1_map1}
-                \caption{Atractor 1}    
+                \caption{Atractor 1.}    
                 \label{fig:mapa_1}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}  
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G2_map2}
-                \caption{Atractor 2}    
+                \caption{Atractor 2.}    
                 \label{fig:mapa_2}
             \end{subfigure}
         \end{figure}
@@ -862,14 +893,14 @@
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G3_map3}
-                \caption{Atractor 3}    
+                \caption{Atractor 3.}    
                 \label{fig:mapa_3}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{G4_map4}
-                \caption{Atractor 4}    
+                \caption{Atractor 4.}    
                 \label{fig:mapa_4}
             \end{subfigure}
         \end{figure}
@@ -914,14 +945,14 @@
             \begin{subfigure}[b]{0.475\textwidth}
                 \centering
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H1_map1}
-                \caption{Atractor 1}    
+                \caption{Atractor 1.}    
                 \label{fig:mapa_h1}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}  
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H2_map2}
-                \caption{Atractor 2}    
+                \caption{Atractor 2.}    
                 \label{fig:mapa_h2}
             \end{subfigure}
         \end{figure}
@@ -937,14 +968,14 @@
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H3_map3}
-                \caption{Atractor 3}    
+                \caption{Atractor 3.}    
                 \label{fig:mapa_h3}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.475\textwidth}   
                 \centering 
                 \includegraphics[width=\textwidth,trim=70 0 70 0,clip]{H4_map4}
-                \caption{Atractor 4}    
+                \caption{Atractor 4.}    
                 \label{fig:mapa_h4}
             \end{subfigure}
         \end{figure}
@@ -984,7 +1015,7 @@
     \frametitle{Mapa caótico}
     \begin{block}{DRNG utilizando un mapa caótico bidimensional}
         \justifying
-        En \cite{Fraga2021} se utiliza el mapa caótico bidimensional para diseñar un generador de números psedoaleatorios utilizando una arquitectura de punto fijo y extracción de 16 bits aleatorios haciendo uso de la operación mod 256.
+        En \cite{Fraga2021} se utiliza el mapa caótico bidimensional para diseñar un generador de números \textbf{pseudoaleatorios} utilizando una arquitectura de punto fijo y extracción de 16 bits aleatorios haciendo uso de la operación mod 256.
         \begin{equation*}
             \begin{array}{ccl}
                 x_{n+1} & = &  a_{1} + a_{2}x_{n} + a_{3}x_{n}^{2} + a_{4}x_{n}y_{n} + a_{5}y_{n} + a_{6}y_{n}^{2}\\
@@ -1001,6 +1032,23 @@
 	\end{block}
 \end{frame}
 
+
+% Slide
+\begin{frame}
+    \frametitle{Mapa caótico}
+    \begin{block}{Generadores de números aleatorios deterministas (DRNG/PRNG) }
+        \justifying
+        También conocidos pseudoaleatorios,
+        \begin{itemize}
+            \item Tienen una forma matemática definida (algoritmo).
+            \item Fáciles de implementar en dispositivos lógicos.
+            \item Utilizan valores de inicialización llamados semillas.
+            \item Para cada semilla se genera una secuencia diferente.
+            \item Tienen buenas propiedades estadísticas.
+            \item Altas tasas de bits de salida.
+        \end{itemize}
+	\end{block}
+\end{frame}
 
 
 % Slide
@@ -1435,6 +1483,26 @@
         \item Es repetible en diferentes familias de FPGAs de Xilinx.
     \end{itemize}
 
+	\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Publicaciones}
+    \begin{block}{Publicaciones generadas durante la maestría}
+        \justifying
+        \begin{scriptsize}
+            \begin{enumerate} 
+            \item[(1)] C. García-Grimaldo, C. F. Bermudez-Marquez, E. Tlelo-Cuautle, and E. Campos-Cantón, ``FPGA implementation of a chaotic map with no fixed point,'' Electronics, vol. 12, p. 444, jan 2023.
+
+            \item[(2)] S. Vaidyanathan, A. Sambas, E. Tlelo-Cuautle, C. F. Bermudez-Marquez, K. Benkouider, and S. A. Safaan, ``A new hyperchaotic two-scroll system: Bifurcation study, multistability, circuit simulation, and FPGA realization,'' Discrete Dynamics in Nature and Society, vol. 2022, pp. 1–17, sep 2022.
+
+            \item[(3)] K. Benkouider, S. Vaidyanathan, A. Sambas, E. Tlelo-Cuautle, A. A. A. El-Latif, B. Abd-El-Atty, C. F. Bermudez-Marquez, I. M. Sulaiman, A. M. Awwal, and P. Kumam, ``A new 5-d multistable hyperchaotic system with three positive lyapunov exponents: Bifurcation analysis, circuit design, FPGA realization and image encryption,'' IEEE Access, vol. 10, pp. 90111–90132, 2022.
+
+            \item[(4)] S. Vaidyanathan, I. Moroz, E. Tielo-Cuautle, A. Sambas, C. Bermudez-Marquez, and S. Safaan, ``Mathematical modelling, bifurcation analysis, circuit design and fpga implementation of a 5-d hyperchaotic weather fluctuation model with a line of equilibrium points,'' International Journal of Modelling, Identification and Control, 2022. (En revisión)
+            \end{enumerate}
+
+        \end{scriptsize}
+        
 	\end{block}
 \end{frame}
 
