@@ -2280,5 +2280,5 @@ s/type1/public/cm-super/sfti1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sftt1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfxc1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 >
-Output written on main.pdf (122 pages, 4448910 bytes).
+Output written on main.pdf (122 pages, 4448981 bytes).
 Transcript written on main.log.
