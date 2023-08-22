@@ -33,7 +33,7 @@ grid_minor = 101
 set style line grid_major dashtype 1 linecolor rgb "#E0E0E0"
 set style line grid_minor dashtype 3 linecolor rgb "#C7C7C7"
 set grid
-set mxtics 4; set mytics 4; 
+set mxtics 2; set mytics 2; 
 set grid mxtics mytics linestyle grid_major, lines grid_minor
 set tics scale 1,0.01
 
